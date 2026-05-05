@@ -1,0 +1,30 @@
+{
+  "name": "stepico-financeops-agent",
+  "version": "0.1.0",
+  "description": "Security-hardened FinanceOps AI agent for a game development studio (public mock demo).",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "api": "tsx src/api/server.ts",
+    "api:dev": "tsx watch src/api/server.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "openai": "^6.36.0",
+    "zod": "^4.4.3"
+  }
+}
