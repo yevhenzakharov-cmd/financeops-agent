@@ -1,4 +1,4 @@
-import { projects } from "../domain/mock-data.js";
+import { MockFinanceOpsAdapter } from "../adapters/mock-financeops-adapter.js";
 import {
   calculateProjectMargin,
   detectOverdueInvoices,
@@ -41,7 +41,19 @@ export async function runFinanceOpsPipeline() {
   const mode = getExecutionMode();
   const audit = createAuditLog();
 
-  const project = projects[0];
+  const inputAdapter = new MockFinanceOpsAdapter();
+  const inputSnapshot = await inputAdapter.loadSnapshot();
+
+  recordAuditEvent(audit, "initialization", "INPUT_SNAPSHOT_LOADED", {
+    adapterName: inputAdapter.adapterName,
+    sourceName: inputSnapshot.sourceName,
+    projectCount: inputSnapshot.projects.length,
+    invoiceCount: inputSnapshot.invoices.length,
+    paymentCount: inputSnapshot.payments.length,
+    bankTransactionCount: inputSnapshot.bankTransactions.length
+  });
+
+  const project = inputSnapshot.projects[0];
   if (!project) throw new Error("No project found");
 
   const margin = calculateProjectMargin(project);
@@ -103,6 +115,7 @@ export async function runFinanceOpsPipeline() {
 
   const briefingInput = JSON.stringify(
     {
+      inputSnapshot,
       margin,
       burn,
       overdue,
@@ -128,6 +141,11 @@ export async function runFinanceOpsPipeline() {
 
   return {
     mode,
+    inputSource: {
+      adapterName: inputAdapter.adapterName,
+      sourceName: inputSnapshot.sourceName,
+      loadedAt: inputSnapshot.loadedAt
+    },
     project,
     margin,
     burn,
