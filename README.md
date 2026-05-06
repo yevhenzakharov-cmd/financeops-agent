@@ -818,3 +818,82 @@ The AI layer explains the result.
 Audit logs preserve traceability.
 
 That separation makes the system safer, more explainable, and aligned to how an enterprise finance agent would need to operate.
+
+
+Demo Payment Approval Flow
+
+The current working demo includes a governed payment approval flow.
+
+This demonstrates the following pattern:
+
+agent recommends payment
+→ human reviews
+→ human approves through API
+→ mock payment adapter simulates execution
+→ payment execution audit record is persisted
+
+This is intentionally not a live banking integration. It is a safe mock execution layer that shows how a real client-specific bank, treasury, payment processor, or custom payout API could later be connected through an adapter.
+
+Current payment-related implementation files:
+
+* src/payments/payment-types.ts
+* src/payments/payment-recommendation-builder.ts
+* src/payments/mock-payment-adapter.ts
+* src/payments/payment-execution-service.ts
+* src/payments/payment-execution-store.ts
+
+Current payment API endpoint:
+
+POST /payments/:paymentRecommendationId/approve-and-send
+
+Current demo command:
+
+npm run demo:payment-flow
+
+Current verification command:
+
+./scripts/verify-demo.sh
+
+Current Working Demo vs Planned Sellable Demo Roadmap
+
+Current Working Demo
+
+The current repository already demonstrates:
+
+* governed FinanceOps agent pipeline
+* deterministic finance calculations
+* exception classification
+* action simulation
+* best-action selection
+* risk appetite governance
+* approval routing
+* execution ledger persistence
+* audit log persistence
+* AI CFO briefing generation
+* REST API access
+* input adapter foundation
+* payment recommendation generation
+* human-approved mock payment execution
+* persisted payment execution audit record
+* demo script for the full payment approval flow
+* verification script for build/typecheck/status review
+
+Planned Sellable Demo Roadmap
+
+The next build priorities for the stronger commercial demo are:
+
+* add a cleaner buyer-facing README section at the top
+* add a richer mock client scenario with more realistic finance data
+* add a small CSV or JSON input adapter example
+* add a clearer output adapter example for client-specific exports
+* expose the payment approval flow in a simple dashboard UI
+* add a review screen where a human can approve or reject recommended actions
+* show the payment execution record in the UI
+* add a more polished executive dashboard summary
+* add a demo walkthrough section for non-technical reviewers
+* add a buyer-facing ROI narrative explaining what finance teams save
+* add a “custom client deployment model” section explaining that each buyer can provide their own inputs and required outputs
+* keep all real integrations client-specific instead of pretending the repo is a finished universal SaaS product
+
+This roadmap is intentionally separated from the current working demo so reviewers can clearly see what already works and what is planned next.
+
