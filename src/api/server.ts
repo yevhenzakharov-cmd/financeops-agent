@@ -1,9 +1,11 @@
+import fs from "fs";
 import "dotenv/config";
 import express from "express";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
+import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -124,6 +126,36 @@ app.post("/payments/:paymentRecommendationId/approve-and-send", async (req, res)
 });
 
 const port = Number(process.env.PORT ?? 3001);
+
+
+
+app.get("/artifacts/latest-output", (_req, res) => {
+  try {
+    const artifactPath = getLatestOutputArtifactPath();
+
+    if (!fs.existsSync(artifactPath)) {
+      res.status(404).json({
+        status: "error",
+        message:
+          "No output artifact found. Run the FinanceOps agent before requesting the latest output artifact."
+      });
+      return;
+    }
+
+    const artifact = JSON.parse(fs.readFileSync(artifactPath, "utf-8"));
+
+    res.json({
+      status: "success",
+      artifact
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`FinanceOps Agent API running on http://localhost:${port}`);
