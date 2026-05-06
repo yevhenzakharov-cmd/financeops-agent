@@ -100,8 +100,18 @@ curl -s "$BASE_URL/artifacts/operational-summary" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact data types endpoint ----"
+curl -s "$BASE_URL/artifacts/data-types" | python3 -m json.tool
+echo ""
+
+echo ""
 echo "---- artifact readiness endpoint ----"
 curl -s "$BASE_URL/artifacts/readiness" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- artifact generated-at map endpoint ----"
+curl -s "$BASE_URL/artifacts/generated-at-map" | python3 -m json.tool
 echo ""
 
 echo ""

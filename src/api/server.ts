@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { getArtifactCountByAvailability, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactReadinessReport, getArtifactRegistrySnapshot, getArtifactSizeMap, getArtifactSummaryMap, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getArtifactCountByAvailability, getArtifactDataTypeMap, getArtifactDataTypes, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactGeneratedAtMap, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactPreviewMap, getArtifactReadinessReport, getArtifactRegistrySnapshot, getArtifactReportHeader, getArtifactSizeMap, getArtifactSummaryMap, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -60,7 +60,11 @@ app.get("/system-summary", (_req, res) => {
       "artifact_diagnostics_endpoint",
       "artifact_readiness_endpoint",
       "artifact_names_text_export_endpoint",
-      "artifact_names_csv_export_endpoint"
+      "artifact_names_csv_export_endpoint",
+      "artifact_generated_at_map_endpoint",
+      "artifact_data_type_map_endpoint",
+      "artifact_preview_map_endpoint",
+      "artifact_report_header_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -223,6 +227,46 @@ app.get("/artifacts/operational-summary", (_req, res) => {
   res.json({
     status: "success",
     summary: getArtifactOperationalSummary()
+  });
+});
+
+
+
+
+
+
+app.get("/artifacts/report-header", (_req, res) => {
+  res.json({
+    status: "success",
+    report: getArtifactReportHeader()
+  });
+});
+
+app.get("/artifacts/preview-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactPreviewMap()
+  });
+});
+
+app.get("/artifacts/data-types", (_req, res) => {
+  res.json({
+    status: "success",
+    dataTypes: getArtifactDataTypes()
+  });
+});
+
+app.get("/artifacts/data-type-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactDataTypeMap()
+  });
+});
+
+app.get("/artifacts/generated-at-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactGeneratedAtMap()
   });
 });
 

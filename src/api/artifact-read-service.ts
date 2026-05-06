@@ -274,3 +274,57 @@ export function getArtifactNamesCsv(): string {
 export function getArtifactNamesText(): string {
   return getArtifactNames().join("\n");
 }
+
+
+export function getArtifactGeneratedAtMap(): Record<ArtifactName, string | null> {
+  return Object.fromEntries(
+    Object.keys(ARTIFACT_PATHS).map((name) => {
+      const artifact = readArtifactByName(name as ArtifactName);
+      const data = artifact.data as { generatedAt?: unknown } | null;
+
+      return [
+        name,
+        data && typeof data.generatedAt === "string" ? data.generatedAt : null
+      ];
+    })
+  ) as Record<ArtifactName, string | null>;
+}
+
+
+export function getArtifactDataTypeMap(): Record<ArtifactName, string> {
+  return Object.fromEntries(
+    summarizeAllArtifacts().map((artifact) => [artifact.name, artifact.dataType])
+  ) as Record<ArtifactName, string>;
+}
+
+
+export function getArtifactDataTypes(): string[] {
+  return Array.from(new Set(summarizeAllArtifacts().map((artifact) => artifact.dataType)));
+}
+
+
+export function getArtifactPreviewMap(limit = 300): Record<ArtifactName, string> {
+  return Object.fromEntries(
+    Object.keys(ARTIFACT_PATHS).map((name) => {
+      const artifact = readArtifactByName(name as ArtifactName);
+      const preview = artifact.data === null
+        ? ""
+        : JSON.stringify(artifact.data, null, 2).slice(0, limit);
+
+      return [name, preview];
+    })
+  ) as Record<ArtifactName, string>;
+}
+
+
+export function getArtifactReportHeader(): {
+  service: string;
+  generatedAt: string;
+  artifactCount: number;
+} {
+  return {
+    service: "FinanceOps Agent Artifact Registry",
+    generatedAt: new Date().toISOString(),
+    artifactCount: getArtifactNames().length
+  };
+}
