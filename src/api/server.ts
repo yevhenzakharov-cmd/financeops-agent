@@ -129,6 +129,48 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
+
+app.get("/artifacts/latest-dashboard", (_req, res) => {
+  try {
+    const artifactPath = getLatestOutputArtifactPath();
+
+    if (!fs.existsSync(artifactPath)) {
+      res.status(404).json({
+        status: "error",
+        message:
+          "No output artifact found. Run the FinanceOps agent before requesting the latest dashboard artifact."
+      });
+      return;
+    }
+
+    const artifact = JSON.parse(fs.readFileSync(artifactPath, "utf-8"));
+    const payload = artifact.payload ?? {};
+
+    res.json({
+      status: "success",
+      dashboard: {
+        generatedAt: artifact.generatedAt,
+        artifactType: artifact.artifactType,
+        mode: payload.mode,
+        project: payload.project,
+        financeSummary: payload.financeSummary,
+        governance: payload.governance,
+        cfoBriefing: payload.cfoBriefing
+          ? {
+              executiveSummary: payload.cfoBriefing.executiveSummary,
+              confidenceScore: payload.cfoBriefing.confidenceScore
+            }
+          : null
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
+});
+
 app.get("/artifacts/latest-output", (_req, res) => {
   try {
     const artifactPath = getLatestOutputArtifactPath();
