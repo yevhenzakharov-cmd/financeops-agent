@@ -2,7 +2,7 @@
 set -euo pipefail
 
 BASE_URL="${BASE_URL:-http://localhost:3001}"
-IDEMPOTENCY_KEY="${IDEMPOTENCY_KEY:-demo-payment-key-script-001}"
+IDEMPOTENCY_KEY="${IDEMPOTENCY_KEY:-demo-payment-key-script-$(date +%s)}"
 
 echo "---- health ----"
 curl -s "$BASE_URL/health" | python3 -m json.tool
