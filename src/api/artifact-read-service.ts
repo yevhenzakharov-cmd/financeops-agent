@@ -167,3 +167,44 @@ export function getAverageArtifactSizeBytes(): number {
       artifacts.length
   );
 }
+
+
+export function getArtifactSummaryMap(): Record<ArtifactName, ReturnType<typeof summarizeArtifact>> {
+  return Object.fromEntries(
+    summarizeAllArtifacts().map((artifact) => [artifact.name, artifact])
+  ) as Record<ArtifactName, ReturnType<typeof summarizeArtifact>>;
+}
+
+
+export function getArtifactExistenceMap(): Record<ArtifactName, boolean> {
+  return Object.fromEntries(
+    listArtifactMetadata().map((artifact) => [artifact.name, artifact.exists])
+  ) as Record<ArtifactName, boolean>;
+}
+
+
+export function getArtifactPathMap(): Record<ArtifactName, string> {
+  return Object.fromEntries(
+    listArtifactMetadata().map((artifact) => [artifact.name, artifact.path])
+  ) as Record<ArtifactName, string>;
+}
+
+
+export function getArtifactSizeMap(): Record<ArtifactName, number> {
+  return Object.fromEntries(
+    summarizeAllArtifacts().map((artifact) => [artifact.name, artifact.sizeBytes])
+  ) as Record<ArtifactName, number>;
+}
+
+
+export function getArtifactCountByAvailability(): {
+  available: number;
+  missing: number;
+} {
+  const artifacts = summarizeAllArtifacts();
+
+  return {
+    available: artifacts.filter((artifact) => artifact.exists).length,
+    missing: artifacts.filter((artifact) => !artifact.exists).length
+  };
+}

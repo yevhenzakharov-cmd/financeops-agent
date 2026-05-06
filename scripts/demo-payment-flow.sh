@@ -75,6 +75,21 @@ curl -s "$BASE_URL/artifacts/smallest" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact summary map endpoint ----"
+curl -s "$BASE_URL/artifacts/summary-map" | python3 -m json.tool | head -n 80
+echo ""
+
+echo ""
+echo "---- artifact size map endpoint ----"
+curl -s "$BASE_URL/artifacts/size-map" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- artifact availability counts endpoint ----"
+curl -s "$BASE_URL/artifacts/availability-counts" | python3 -m json.tool
+echo ""
+
+echo ""
 echo "---- artifact summaries endpoint ----"
 curl -s "$BASE_URL/artifacts/summaries" | python3 -m json.tool | head -n 80
 echo ""

@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { getArtifactRegistrySnapshot, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getArtifactCountByAvailability, getArtifactExistenceMap, getArtifactPathMap, getArtifactRegistrySnapshot, getArtifactSizeMap, getArtifactSummaryMap, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -53,7 +53,9 @@ app.get("/system-summary", (_req, res) => {
       "artifact_name_discovery_endpoints",
       "artifact_registry_snapshot_endpoint",
       "artifact_registry_summary_endpoint",
-      "artifact_size_extreme_endpoints"
+      "artifact_size_extreme_endpoints",
+      "artifact_map_utility_endpoints",
+      "artifact_availability_count_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -187,6 +189,46 @@ app.get("/artifacts/largest", (_req, res) => {
   res.json({
     status: "success",
     artifact: getLargestArtifactSummary()
+  });
+});
+
+
+
+
+
+
+app.get("/artifacts/availability-counts", (_req, res) => {
+  res.json({
+    status: "success",
+    counts: getArtifactCountByAvailability()
+  });
+});
+
+app.get("/artifacts/size-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactSizeMap()
+  });
+});
+
+app.get("/artifacts/path-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactPathMap()
+  });
+});
+
+app.get("/artifacts/existence-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactExistenceMap()
+  });
+});
+
+app.get("/artifacts/summary-map", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactSummaryMap()
   });
 });
 

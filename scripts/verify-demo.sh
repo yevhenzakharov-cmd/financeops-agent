@@ -37,6 +37,10 @@ echo "---- largest artifact ----"
 curl -s http://localhost:3001/artifacts/largest | python3 -m json.tool || true
 
 echo ""
+echo "---- artifact size map ----"
+curl -s http://localhost:3001/artifacts/size-map | python3 -m json.tool || true
+
+echo ""
 echo "---- recent commits ----"
 git log --oneline -12
 
