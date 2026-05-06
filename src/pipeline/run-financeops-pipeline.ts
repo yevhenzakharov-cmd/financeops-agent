@@ -28,6 +28,7 @@ import {
   finalizeAuditLog,
   persistAuditLog
 } from "../security/audit-log.js";
+import { buildPaymentRecommendations } from "../payments/payment-recommendation-builder.js";
 
 function scoreAction(action: RankedAction): number {
   return (
@@ -87,6 +88,7 @@ export async function runFinanceOpsPipeline() {
   }
 
   const decisions = evaluateExecution(selectedActions, mode);
+  const paymentRecommendations = buildPaymentRecommendations(selectedActions);
 
   const ledger = buildExecutionLedger(selectedActions, decisions);
   persistExecutionLedger(ledger);
@@ -96,6 +98,10 @@ export async function runFinanceOpsPipeline() {
 
   recordAuditEvent(audit, "action_generation", "BEST_ACTION_SELECTED", {
     count: selectedActions.length
+  });
+
+  recordAuditEvent(audit, "action_generation", "PAYMENT_RECOMMENDATIONS_BUILT", {
+    count: paymentRecommendations.length
   });
 
   recordAuditEvent(audit, "policy_enforcement", "EXECUTION_DECISIONS_MADE", {
@@ -123,6 +129,7 @@ export async function runFinanceOpsPipeline() {
       exceptions,
       selectedActions,
       decisions,
+      paymentRecommendations,
       ledger,
       approvalQueue
     },
@@ -155,6 +162,7 @@ export async function runFinanceOpsPipeline() {
     simulations,
     selectedActions,
     decisions,
+    paymentRecommendations,
     ledger,
     approvalQueue,
     cfoBriefing,
