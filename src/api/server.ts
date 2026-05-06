@@ -4,6 +4,9 @@ import express from "express";
 import { mockGameStudioClient } from "../client-config/mock-game-studio-client.js";
 import { summarizeClientImplementationContract } from "../client-config/client-contract-summary.js";
 import { validateClientImplementationContract } from "../client-config/client-contract-validator.js";
+import { buildClientAdapterPlan } from "../client-config/client-input-mapping-service.js";
+import { buildClientOutputPlan } from "../client-config/client-output-plan-service.js";
+import { buildClientImplementationPlan } from "../client-config/client-implementation-plan.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -18,6 +21,30 @@ app.use(express.json());
 
 
 
+
+
+
+
+app.get("/client-contract/mock-game-studio/output-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    plan: buildClientOutputPlan(mockGameStudioClient)
+  });
+});
+
+app.get("/client-contract/mock-game-studio/input-adapter-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    plan: buildClientAdapterPlan(mockGameStudioClient)
+  });
+});
+
+app.get("/client-contract/mock-game-studio/implementation-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    plan: buildClientImplementationPlan(mockGameStudioClient)
+  });
+});
 
 app.get("/client-contract/mock-game-studio/validation", (_req, res) => {
   res.json({
@@ -99,7 +126,10 @@ app.get("/system-summary", (_req, res) => {
       "artifact_registry_version_endpoint",
       "artifact_registry_envelope_endpoint",
       "client_contract_profile_endpoint",
-      "client_contract_validation_endpoint"
+      "client_contract_validation_endpoint",
+      "client_implementation_plan_endpoint",
+      "client_input_adapter_plan_endpoint",
+      "client_output_plan_endpoint"
     ],
     executionMode: getExecutionMode()
   });

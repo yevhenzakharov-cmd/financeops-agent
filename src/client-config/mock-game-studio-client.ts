@@ -43,6 +43,22 @@ export const mockGameStudioClient: ClientImplementationContract = {
       requiredFields: ["approvalId", "role", "status", "actionType", "reason"]
     }
   ],
+  desiredOutputSpecs: [
+    {
+      outputId: "output-cfo-briefing",
+      format: "dashboard_payload",
+      audience: "cfo",
+      deliveryTarget: "dashboard",
+      description: "CFO-ready dashboard payload summarizing finance risks and recommended actions."
+    },
+    {
+      outputId: "output-approval-queue",
+      format: "json",
+      audience: "controller",
+      deliveryTarget: "api",
+      description: "Structured approval queue for controller review."
+    }
+  ],
   tasks: [
     {
       id: "task-receivables-review",

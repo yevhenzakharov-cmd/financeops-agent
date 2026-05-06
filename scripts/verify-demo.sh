@@ -21,6 +21,10 @@ echo "---- client contract validation ----"
 curl -s http://localhost:3001/client-contract/mock-game-studio/validation | python3 -m json.tool || true
 
 echo ""
+echo "---- client implementation plan ----"
+curl -s http://localhost:3001/client-contract/mock-game-studio/implementation-plan | python3 -m json.tool | head -n 50 || true
+
+echo ""
 echo "---- named artifact smoke check ----"
 curl -s http://localhost:3001/artifacts/executionLedger | python3 -m json.tool | head -n 30 || true
 

@@ -11,3 +11,16 @@ A client implementation contract defines:
 - governance and approval rules
 
 This keeps the core deterministic FinanceOps engine stable while allowing client-specific adapters and reporting formats.
+
+
+
+## Implementation plan
+
+The implementation plan translates a client contract into:
+
+- input adapter plan
+- output delivery plan
+- task count
+- validation summary
+
+This is meant to show how a client can provide messy business-specific requirements while the shared FinanceOps core remains stable.
