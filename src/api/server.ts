@@ -1,6 +1,9 @@
 import fs from "fs";
 import "dotenv/config";
 import express from "express";
+import { mockGameStudioClient } from "../client-config/mock-game-studio-client.js";
+import { summarizeClientImplementationContract } from "../client-config/client-contract-summary.js";
+import { validateClientImplementationContract } from "../client-config/client-contract-validator.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -12,6 +15,30 @@ import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
 app.use(express.json());
+
+
+
+
+app.get("/client-contract/mock-game-studio/validation", (_req, res) => {
+  res.json({
+    status: "success",
+    validation: validateClientImplementationContract(mockGameStudioClient)
+  });
+});
+
+app.get("/client-contract/mock-game-studio/summary", (_req, res) => {
+  res.json({
+    status: "success",
+    summary: summarizeClientImplementationContract(mockGameStudioClient)
+  });
+});
+
+app.get("/client-contract/mock-game-studio", (_req, res) => {
+  res.json({
+    status: "success",
+    contract: mockGameStudioClient
+  });
+});
 
 app.get("/health", (_req, res) => {
   res.json({
@@ -70,7 +97,9 @@ app.get("/system-summary", (_req, res) => {
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
       "artifact_registry_version_endpoint",
-      "artifact_registry_envelope_endpoint"
+      "artifact_registry_envelope_endpoint",
+      "client_contract_profile_endpoint",
+      "client_contract_validation_endpoint"
     ],
     executionMode: getExecutionMode()
   });

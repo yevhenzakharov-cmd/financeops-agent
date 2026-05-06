@@ -897,3 +897,18 @@ The next build priorities for the stronger commercial demo are:
 
 This roadmap is intentionally separated from the current working demo so reviewers can clearly see what already works and what is planned next.
 
+
+## Client-specific implementation contracts
+
+The system is designed to support different accounting departments without rewriting the core engine.
+
+Each client can define:
+
+- one or multiple input sources
+- the finance tasks they want automated
+- the output artifacts they need
+- governance and approval rules
+- escalation roles and risk tolerance
+
+The current mock game studio contract demonstrates how a client-specific implementation can sit on top of the shared FinanceOps core.
+
