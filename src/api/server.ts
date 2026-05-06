@@ -38,7 +38,9 @@ app.get("/system-summary", (_req, res) => {
       "api_response_persistence",
       "payment_recommendation_generation",
       "human_approved_mock_payment_execution",
-      "payment_execution_audit_record_persistence"
+      "payment_execution_audit_record_persistence",
+      "client_output_artifact_generation",
+      "client_output_artifact_persistence"
     ],
     executionMode: getExecutionMode()
   });
