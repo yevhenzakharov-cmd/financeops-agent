@@ -137,33 +137,6 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
-app.get("/artifacts/:artifactName", (req, res) => {
-  const artifactName = req.params.artifactName;
-
-  if (!Object.prototype.hasOwnProperty.call(ARTIFACT_PATHS, artifactName)) {
-    res.status(404).json({
-      status: "error",
-      message: `Unknown artifact: ${artifactName}`
-    });
-    return;
-  }
-
-  const artifact = readArtifactByName(artifactName as keyof typeof ARTIFACT_PATHS);
-
-  if (!artifact.exists) {
-    res.status(404).json({
-      status: "error",
-      artifact
-    });
-    return;
-  }
-
-  res.json({
-    status: "success",
-    artifact
-  });
-});
-
 app.get("/artifacts/status", (_req, res) => {
   const artifacts = Object.fromEntries(
     Object.entries(ARTIFACT_PATHS).map(([name, artifactPath]) => [
@@ -249,6 +222,34 @@ app.get("/artifacts/latest-output", (_req, res) => {
   }
 });
 
+
+
+app.get("/artifacts/:artifactName", (req, res) => {
+  const artifactName = req.params.artifactName;
+
+  if (!Object.prototype.hasOwnProperty.call(ARTIFACT_PATHS, artifactName)) {
+    res.status(404).json({
+      status: "error",
+      message: `Unknown artifact: ${artifactName}`
+    });
+    return;
+  }
+
+  const artifact = readArtifactByName(artifactName as keyof typeof ARTIFACT_PATHS);
+
+  if (!artifact.exists) {
+    res.status(404).json({
+      status: "error",
+      artifact
+    });
+    return;
+  }
+
+  res.json({
+    status: "success",
+    artifact
+  });
+});
 
 app.listen(port, () => {
   console.log(`FinanceOps Agent API running on http://localhost:${port}`);
