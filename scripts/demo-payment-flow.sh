@@ -38,3 +38,8 @@ echo ""
 echo "---- latest client output artifact API endpoint ----"
 curl -s "$BASE_URL/artifacts/latest-output" | python3 -m json.tool | head -n 60
 echo ""
+
+echo ""
+echo "---- compact dashboard artifact API endpoint ----"
+curl -s "$BASE_URL/artifacts/latest-dashboard" | python3 -m json.tool
+echo ""
