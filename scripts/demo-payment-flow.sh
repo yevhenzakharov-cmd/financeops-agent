@@ -33,3 +33,8 @@ echo ""
 echo "---- persisted client output artifact ----"
 cat outputs/artifacts/latest-output-artifact.json
 echo ""
+
+echo ""
+echo "---- latest client output artifact API endpoint ----"
+curl -s "$BASE_URL/artifacts/latest-output" | python3 -m json.tool | head -n 60
+echo ""
