@@ -43,3 +43,8 @@ echo ""
 echo "---- compact dashboard artifact API endpoint ----"
 curl -s "$BASE_URL/artifacts/latest-dashboard" | python3 -m json.tool
 echo ""
+
+echo ""
+echo "---- artifact status endpoint ----"
+curl -s "$BASE_URL/artifacts/status" | python3 -m json.tool
+echo ""
