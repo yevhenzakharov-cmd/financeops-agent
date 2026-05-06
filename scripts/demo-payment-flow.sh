@@ -28,3 +28,8 @@ echo ""
 echo "---- persisted payment execution record ----"
 cat outputs/payments/latest-payment-execution.json
 echo ""
+
+echo ""
+echo "---- persisted client output artifact ----"
+cat outputs/artifacts/latest-output-artifact.json
+echo ""
