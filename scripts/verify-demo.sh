@@ -13,6 +13,10 @@ echo "---- git status ----"
 git status
 
 echo ""
+echo "---- artifact status ----"
+curl -s http://localhost:3001/artifacts/status | python3 -m json.tool || true
+
+echo ""
 echo "---- recent commits ----"
 git log --oneline -12
 
