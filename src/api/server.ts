@@ -3,6 +3,7 @@ import express from "express";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
+import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -61,6 +62,59 @@ app.post("/run-financeops-agent", async (_req, res) => {
     persistApiResponse(responseBody);
 
     res.status(500).json(responseBody);
+  }
+});
+
+app.post("/payments/:paymentRecommendationId/approve-and-send", async (req, res) => {
+  try {
+    const result = await runFinanceOpsPipeline();
+    const paymentRecommendation = result.paymentRecommendations.find(
+      (recommendation) =>
+        recommendation.id === req.params.paymentRecommendationId
+    );
+
+    if (!paymentRecommendation) {
+      return res.status(404).json({
+        status: "error",
+        message: "Payment recommendation not found"
+      });
+    }
+
+    const approvedBy =
+      typeof req.body?.approvedBy === "string"
+        ? req.body.approvedBy
+        : "demo-controller";
+
+    const idempotencyKey =
+      typeof req.body?.idempotencyKey === "string"
+        ? req.body.idempotencyKey
+        : undefined;
+
+    const executionResult = await executeApprovedPayment({
+      recommendation: paymentRecommendation,
+      approvedBy,
+      approvalId: `approval-for-${paymentRecommendation.id}`,
+      idempotencyKey
+    });
+
+    const responseBody = {
+      status: "success",
+      paymentRecommendation,
+      executionResult
+    };
+
+    persistApiResponse(responseBody);
+
+    return res.json(responseBody);
+  } catch (error) {
+    const responseBody = {
+      status: "error",
+      message: error instanceof Error ? error.message : "Unknown error"
+    };
+
+    persistApiResponse(responseBody);
+
+    return res.status(500).json(responseBody);
   }
 });
 

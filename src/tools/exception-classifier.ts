@@ -16,6 +16,7 @@ function generateId(): string {
 }
 
 export function classifyFinanceExceptions(): FinanceException[] {
+  exceptionCounter = 0;
   const exceptions: FinanceException[] = [];
 
   // 1️⃣ Burn-based exceptions
