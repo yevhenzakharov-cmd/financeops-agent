@@ -48,3 +48,13 @@ echo ""
 echo "---- artifact status endpoint ----"
 curl -s "$BASE_URL/artifacts/status" | python3 -m json.tool
 echo ""
+
+echo ""
+echo "---- named artifact endpoint: execution ledger ----"
+curl -s "$BASE_URL/artifacts/executionLedger" | python3 -m json.tool | head -n 50
+echo ""
+
+echo ""
+echo "---- named artifact endpoint: client output artifact ----"
+curl -s "$BASE_URL/artifacts/clientOutputArtifact" | python3 -m json.tool | head -n 50
+echo ""
