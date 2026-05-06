@@ -11,7 +11,8 @@
     "clean": "rm -rf dist",
     "api": "tsx src/api/server.ts",
     "api:dev": "tsx watch src/api/server.ts",
-    "demo:payment-flow": "./scripts/demo-payment-flow.sh"
+    "demo:payment-flow": "./scripts/demo-payment-flow.sh",
+    "verify:demo": "./scripts/verify-demo.sh"
   },
   "engines": {
     "node": ">=20"
