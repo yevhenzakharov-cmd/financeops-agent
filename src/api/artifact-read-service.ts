@@ -46,3 +46,12 @@ export function listArtifactMetadata(): Array<{
 export function isArtifactName(value: string): value is ArtifactName {
   return Object.prototype.hasOwnProperty.call(ARTIFACT_PATHS, value);
 }
+
+
+export function readAllArtifactMetadata(): Array<{
+  name: ArtifactName;
+  path: string;
+  exists: boolean;
+}> {
+  return listArtifactMetadata();
+}

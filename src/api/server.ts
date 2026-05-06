@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { isArtifactName, readArtifactByName } from "./artifact-read-service.js";
+import { isArtifactName, listArtifactMetadata, readArtifactByName } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -145,6 +145,44 @@ app.get("/artifacts", (_req, res) => {
       name,
       path: artifactPath
     }))
+  });
+});
+
+
+
+
+
+app.get("/artifacts/missing", (_req, res) => {
+  const missingArtifacts = listArtifactMetadata().filter((artifact) => !artifact.exists);
+
+  res.json({
+    status: "success",
+    count: missingArtifacts.length,
+    artifacts: missingArtifacts
+  });
+});
+
+app.get("/artifacts/available", (_req, res) => {
+  const availableArtifacts = listArtifactMetadata().filter((artifact) => artifact.exists);
+
+  res.json({
+    status: "success",
+    count: availableArtifacts.length,
+    artifacts: availableArtifacts
+  });
+});
+
+app.get("/artifacts/count", (_req, res) => {
+  res.json({
+    status: "success",
+    count: Object.keys(ARTIFACT_PATHS).length
+  });
+});
+
+app.get("/artifacts/metadata", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: listArtifactMetadata()
   });
 });
 
