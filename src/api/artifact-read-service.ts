@@ -28,3 +28,21 @@ export function readArtifactByName(name: ArtifactName): ArtifactReadResult {
     data: JSON.parse(fs.readFileSync(artifactPath, "utf-8"))
   };
 }
+
+
+export function listArtifactMetadata(): Array<{
+  name: ArtifactName;
+  path: string;
+  exists: boolean;
+}> {
+  return Object.entries(ARTIFACT_PATHS).map(([name, artifactPath]) => ({
+    name: name as ArtifactName,
+    path: artifactPath,
+    exists: fs.existsSync(artifactPath)
+  }));
+}
+
+
+export function isArtifactName(value: string): value is ArtifactName {
+  return Object.prototype.hasOwnProperty.call(ARTIFACT_PATHS, value);
+}

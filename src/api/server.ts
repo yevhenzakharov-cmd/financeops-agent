@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { readArtifactByName } from "./artifact-read-service.js";
+import { isArtifactName, readArtifactByName } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -137,6 +137,17 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
+
+app.get("/artifacts", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: Object.entries(ARTIFACT_PATHS).map(([name, artifactPath]) => ({
+      name,
+      path: artifactPath
+    }))
+  });
+});
+
 app.get("/artifacts/status", (_req, res) => {
   const artifacts = Object.fromEntries(
     Object.entries(ARTIFACT_PATHS).map(([name, artifactPath]) => [
@@ -224,10 +235,11 @@ app.get("/artifacts/latest-output", (_req, res) => {
 
 
 
-app.get("/artifacts/:artifactName", (req, res) => {
+
+app.get("/artifacts/:artifactName/metadata", (req, res) => {
   const artifactName = req.params.artifactName;
 
-  if (!Object.prototype.hasOwnProperty.call(ARTIFACT_PATHS, artifactName)) {
+  if (!isArtifactName(artifactName)) {
     res.status(404).json({
       status: "error",
       message: `Unknown artifact: ${artifactName}`
@@ -235,7 +247,30 @@ app.get("/artifacts/:artifactName", (req, res) => {
     return;
   }
 
-  const artifact = readArtifactByName(artifactName as keyof typeof ARTIFACT_PATHS);
+  const artifact = readArtifactByName(artifactName);
+
+  res.json({
+    status: "success",
+    metadata: {
+      name: artifact.name,
+      path: artifact.path,
+      exists: artifact.exists
+    }
+  });
+});
+
+app.get("/artifacts/:artifactName", (req, res) => {
+  const artifactName = req.params.artifactName;
+
+  if (!isArtifactName(artifactName)) {
+    res.status(404).json({
+      status: "error",
+      message: `Unknown artifact: ${artifactName}`
+    });
+    return;
+  }
+
+  const artifact = readArtifactByName(artifactName);
 
   if (!artifact.exists) {
     res.status(404).json({
