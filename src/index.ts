@@ -47,7 +47,7 @@ function scoreAction(action: RankedAction): number {
 }
 
 (async () => {
-  console.log("Stepico FinanceOps Agent — Governed FinanceOps Platform\n");
+  console.log("FinanceOps Agent — Governed FinanceOps Platform\n");
 
   const mode = getExecutionMode();
   console.log(`Execution Mode: ${mode}\n`);

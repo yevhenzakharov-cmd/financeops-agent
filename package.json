@@ -1,5 +1,5 @@
 {
-  "name": "stepico-financeops-agent",
+  "name": "financeops-agent",
   "version": "0.1.0",
   "description": "Security-hardened FinanceOps AI agent for a game development studio (public mock demo).",
   "type": "module",

@@ -146,14 +146,14 @@ app.use(express.json());
 app.get("/health", (_req, res) => {
   res.json({
     status: "ok",
-    service: "stepico-financeops-agent",
+    service: "financeops-agent",
     mode: getExecutionMode()
   });
 });
 
 app.get("/system-summary", (_req, res) => {
   res.json({
-    service: "Stepico FinanceOps Agent",
+    service: "FinanceOps Agent",
     description:
       "Governed autonomous FinanceOps agent for deterministic analysis, risk classification, action simulation, policy decisions, approval routing, ledger persistence, audit tracing, and AI CFO briefing.",
     capabilities: [
@@ -202,5 +202,5 @@ app.post("/run-financeops-agent", async (_req, res) => {
 const port = Number(process.env.PORT ?? 3001);
 
 app.listen(port, () => {
-  console.log(`Stepico FinanceOps Agent API running on http://localhost:${port}`);
+  console.log(`FinanceOps Agent API running on http://localhost:${port}`);
 });

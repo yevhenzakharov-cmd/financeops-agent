@@ -1,8 +1,8 @@
-# Stepico FinanceOps Agent API
+# FinanceOps Agent API
 
 ## Overview
 
-The Stepico FinanceOps Agent exposes the governed FinanceOps pipeline as a REST API.
+The FinanceOps Agent exposes the governed FinanceOps pipeline as a REST API.
 
 The API runs deterministic financial analysis, classifies exceptions, simulates financial interventions, selects actions, applies governance rules, builds an approval queue, persists an execution ledger, generates an AI CFO briefing, and returns a structured response.
 

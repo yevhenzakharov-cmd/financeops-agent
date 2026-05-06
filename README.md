@@ -1,4 +1,4 @@
-Stepico FinanceOps Agent
+FinanceOps Agent
 
 A governed autonomous FinanceOps agent platform for a game development studio.
 
@@ -12,7 +12,7 @@ A company can provide whichever input type it actually uses, and the system can 
 
 Executive Summary
 
-The Stepico FinanceOps Agent is not a simple AI wrapper.
+The FinanceOps Agent is not a simple AI wrapper.
 
 It is a governed autonomous finance-control system where:
 
