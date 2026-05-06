@@ -35,6 +35,13 @@ import { runFinanceOpsPipeline } from "./pipeline/run-financeops-pipeline.js";
     );
   });
 
+  console.log("\n=== Payment Recommendations ===");
+  result.paymentRecommendations.forEach((payment) => {
+    console.log(
+      `Payment: ${payment.id} | Recipient: ${payment.recipient.name} | Amount: ${payment.amount} ${payment.currency} | Requires Approval: ${payment.requiresHumanApproval}`
+    );
+  });
+
   console.log("\nExecution ledger written to outputs/ledger/latest-execution-ledger.json");
   console.log("Approval queue written to outputs/approvals/latest-approval-queue.json");
 })();
