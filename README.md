@@ -913,6 +913,10 @@ Each client can define:
 The current mock game studio contract demonstrates how a client-specific implementation can sit on top of the shared FinanceOps core.
 
 
+
+Before implementation, each client can provide a lightweight requirements intake describing available inputs, desired outputs, priority finance tasks, and approval requirements. The system converts that intake into a plan before final adapter work begins.
+
+
 The client implementation plan turns a client's requested inputs and desired outputs into a concrete adapter/output plan. This makes the system easier to customize for different accounting teams without changing the deterministic FinanceOps core.
 
 

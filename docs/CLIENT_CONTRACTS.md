@@ -24,3 +24,17 @@ The implementation plan translates a client contract into:
 - validation summary
 
 This is meant to show how a client can provide messy business-specific requirements while the shared FinanceOps core remains stable.
+
+
+
+## Requirements intake
+
+Before building a client-specific adapter, the client should provide:
+
+- available input sources
+- sample files or API schema
+- desired output formats
+- finance tasks they want automated
+- approval rules and escalation requirements
+
+The requirements intake is converted into a requirements plan before a final implementation contract is created.

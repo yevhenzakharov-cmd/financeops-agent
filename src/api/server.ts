@@ -7,6 +7,10 @@ import { validateClientImplementationContract } from "../client-config/client-co
 import { buildClientAdapterPlan } from "../client-config/client-input-mapping-service.js";
 import { buildClientOutputPlan } from "../client-config/client-output-plan-service.js";
 import { buildClientImplementationPlan } from "../client-config/client-implementation-plan.js";
+import { mockGameStudioRequirementsIntake } from "../client-config/mock-client-requirements-intake.js";
+import { buildClientRequirementsPlan } from "../client-config/client-requirements-plan.js";
+import { validateClientRequirementsIntake } from "../client-config/client-requirements-validator.js";
+import { buildClientOnboardingChecklist } from "../client-config/client-onboarding-checklist.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -57,6 +61,38 @@ app.get("/client-contract/mock-game-studio/summary", (_req, res) => {
   res.json({
     status: "success",
     summary: summarizeClientImplementationContract(mockGameStudioClient)
+  });
+});
+
+
+
+
+
+app.get("/client-requirements/mock-game-studio/onboarding-checklist", (_req, res) => {
+  res.json({
+    status: "success",
+    checklist: buildClientOnboardingChecklist(mockGameStudioRequirementsIntake)
+  });
+});
+
+app.get("/client-requirements/mock-game-studio/plan", (_req, res) => {
+  res.json({
+    status: "success",
+    plan: buildClientRequirementsPlan(mockGameStudioRequirementsIntake)
+  });
+});
+
+app.get("/client-requirements/mock-game-studio/validation", (_req, res) => {
+  res.json({
+    status: "success",
+    validation: validateClientRequirementsIntake(mockGameStudioRequirementsIntake)
+  });
+});
+
+app.get("/client-requirements/mock-game-studio", (_req, res) => {
+  res.json({
+    status: "success",
+    requirements: mockGameStudioRequirementsIntake
   });
 });
 
@@ -129,7 +165,11 @@ app.get("/system-summary", (_req, res) => {
       "client_contract_validation_endpoint",
       "client_implementation_plan_endpoint",
       "client_input_adapter_plan_endpoint",
-      "client_output_plan_endpoint"
+      "client_output_plan_endpoint",
+      "client_requirements_intake_endpoint",
+      "client_requirements_validation_endpoint",
+      "client_requirements_plan_endpoint",
+      "client_onboarding_checklist_endpoint"
     ],
     executionMode: getExecutionMode()
   });

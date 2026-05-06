@@ -16,3 +16,10 @@ export { buildClientAdapterPlan } from "./client-input-mapping-service.js";
 export { buildClientOutputPlan } from "./client-output-plan-service.js";
 export { buildClientImplementationPlan } from "./client-implementation-plan.js";
 export { getMockClientContractFixture } from "./client-contract-fixture.js";
+
+export type { ClientRequirementsIntake } from "./client-requirements-intake.js";
+export { mockGameStudioRequirementsIntake } from "./mock-client-requirements-intake.js";
+export { summarizeClientRequirementsIntake } from "./client-requirements-summary.js";
+export { validateClientRequirementsIntake } from "./client-requirements-validator.js";
+export { buildClientRequirementsPlan } from "./client-requirements-plan.js";
+export { buildClientOnboardingChecklist } from "./client-onboarding-checklist.js";
