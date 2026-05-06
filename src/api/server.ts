@@ -6,6 +6,7 @@ import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
+import { ARTIFACT_PATHS } from "./artifact-paths.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -135,15 +136,8 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 app.get("/artifacts/status", (_req, res) => {
-  const paths = {
-    executionLedger: "outputs/ledger/latest-execution-ledger.json",
-    approvalQueue: "outputs/approvals/latest-approval-queue.json",
-    paymentExecution: "outputs/payments/latest-payment-execution.json",
-    clientOutputArtifact: "outputs/artifacts/latest-output-artifact.json"
-  };
-
   const artifacts = Object.fromEntries(
-    Object.entries(paths).map(([name, artifactPath]) => [
+    Object.entries(ARTIFACT_PATHS).map(([name, artifactPath]) => [
       name,
       {
         path: artifactPath,
