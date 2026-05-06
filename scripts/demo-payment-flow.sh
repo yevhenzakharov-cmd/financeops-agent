@@ -50,6 +50,16 @@ curl -s "$BASE_URL/artifacts/status" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact health endpoint ----"
+curl -s "$BASE_URL/artifacts/health" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- artifact summaries endpoint ----"
+curl -s "$BASE_URL/artifacts/summaries" | python3 -m json.tool | head -n 80
+echo ""
+
+echo ""
 echo "---- named artifact endpoint: execution ledger ----"
 curl -s "$BASE_URL/artifacts/executionLedger" | python3 -m json.tool | head -n 50
 echo ""

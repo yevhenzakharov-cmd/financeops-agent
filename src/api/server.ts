@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { isArtifactName, listArtifactMetadata, readArtifactByName } from "./artifact-read-service.js";
+import { isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -47,7 +47,9 @@ app.get("/system-summary", (_req, res) => {
       "client_output_artifact_persistence",
       "artifact_status_endpoint",
       "compact_dashboard_artifact_endpoint",
-      "demo_verification_artifact_status_check"
+      "demo_verification_artifact_status_check",
+      "artifact_metadata_utility_endpoints",
+      "artifact_health_summary_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -151,6 +153,27 @@ app.get("/artifacts", (_req, res) => {
 
 
 
+
+
+
+app.get("/artifacts/health", (_req, res) => {
+  const summaries = summarizeAllArtifacts();
+  const missing = summaries.filter((artifact) => !artifact.exists);
+
+  res.json({
+    status: missing.length === 0 ? "healthy" : "degraded",
+    totalArtifacts: summaries.length,
+    availableArtifacts: summaries.length - missing.length,
+    missingArtifacts: missing.length
+  });
+});
+
+app.get("/artifacts/summaries", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: summarizeAllArtifacts()
+  });
+});
 
 app.get("/artifacts/missing", (_req, res) => {
   const missingArtifacts = listArtifactMetadata().filter((artifact) => !artifact.exists);

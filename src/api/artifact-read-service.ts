@@ -55,3 +55,35 @@ export function readAllArtifactMetadata(): Array<{
 }> {
   return listArtifactMetadata();
 }
+
+
+export function summarizeArtifact(name: ArtifactName): {
+  name: ArtifactName;
+  path: string;
+  exists: boolean;
+  dataType: string;
+  sizeBytes: number;
+} {
+  const artifact = readArtifactByName(name);
+  const serialized = artifact.data === null ? "" : JSON.stringify(artifact.data);
+
+  return {
+    name: artifact.name,
+    path: artifact.path,
+    exists: artifact.exists,
+    dataType: artifact.data === null ? "null" : Array.isArray(artifact.data) ? "array" : typeof artifact.data,
+    sizeBytes: Buffer.byteLength(serialized, "utf-8")
+  };
+}
+
+
+export function summarizeAllArtifacts(): Array<ReturnType<typeof summarizeArtifact>> {
+  return Object.keys(ARTIFACT_PATHS).map((name) =>
+    summarizeArtifact(name as ArtifactName)
+  );
+}
+
+
+export function getArtifactNames(): ArtifactName[] {
+  return Object.keys(ARTIFACT_PATHS) as ArtifactName[];
+}

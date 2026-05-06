@@ -21,6 +21,10 @@ echo "---- named artifact smoke check ----"
 curl -s http://localhost:3001/artifacts/executionLedger | python3 -m json.tool | head -n 30 || true
 
 echo ""
+echo "---- artifact health ----"
+curl -s http://localhost:3001/artifacts/health | python3 -m json.tool || true
+
+echo ""
 echo "---- recent commits ----"
 git log --oneline -12
 
