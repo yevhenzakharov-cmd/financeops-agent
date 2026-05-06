@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BASE_URL="${BASE_URL:-http://localhost:3001}"
+IDEMPOTENCY_KEY="${IDEMPOTENCY_KEY:-demo-payment-key-script-001}"
+
+echo "---- health ----"
+curl -s "$BASE_URL/health" | python3 -m json.tool
+
+echo ""
+echo "---- system summary ----"
+curl -s "$BASE_URL/system-summary" | python3 -m json.tool
+
+echo ""
+echo "---- run financeops agent: payment recommendations ----"
+curl -s -X POST "$BASE_URL/run-financeops-agent" \
+  | python3 -m json.tool \
+  | grep -A 25 "paymentRecommendations"
+
+echo ""
+echo "---- approve and send mock payment ----"
+curl -s -X POST "$BASE_URL/payments/payrec-001/approve-and-send" \
+  -H "Content-Type: application/json" \
+  -d "{\"approvedBy\":\"demo-cfo\",\"idempotencyKey\":\"$IDEMPOTENCY_KEY\"}" \
+  | python3 -m json.tool
+
+echo ""
+echo "---- persisted payment execution record ----"
+cat outputs/payments/latest-payment-execution.json
+echo ""
