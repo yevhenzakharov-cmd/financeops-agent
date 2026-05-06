@@ -29,6 +29,7 @@ import {
   persistAuditLog
 } from "../security/audit-log.js";
 import { buildPaymentRecommendations } from "../payments/payment-recommendation-builder.js";
+import { MockClientOutputAdapter } from "../output-adapters/mock-client-output-adapter.js";
 
 function scoreAction(action: RankedAction): number {
   return (
@@ -143,6 +144,35 @@ export async function runFinanceOpsPipeline() {
     confidenceScore: cfoBriefing.confidenceScore
   });
 
+  const outputAdapter = new MockClientOutputAdapter();
+  const outputArtifact = await outputAdapter.buildArtifact({
+    mode,
+    inputSource: {
+      adapterName: inputAdapter.adapterName,
+      sourceName: inputSnapshot.sourceName,
+      loadedAt: inputSnapshot.loadedAt
+    },
+    project,
+    margin,
+    burn,
+    overdue,
+    reconciliation,
+    exceptions,
+    simulations,
+    selectedActions,
+    decisions,
+    paymentRecommendations,
+    ledger,
+    approvalQueue,
+    cfoBriefing,
+    auditTraceId: audit.traceId
+  });
+
+  recordAuditEvent(audit, "persistence", "OUTPUT_ADAPTER_ARTIFACT_BUILT", {
+    adapterName: outputAdapter.adapterName,
+    artifactType: outputArtifact.artifactType
+  });
+
   finalizeAuditLog(audit);
   persistAuditLog(audit);
 
@@ -165,6 +195,7 @@ export async function runFinanceOpsPipeline() {
     paymentRecommendations,
     ledger,
     approvalQueue,
+    outputArtifact,
     cfoBriefing,
     auditTraceId: audit.traceId
   };

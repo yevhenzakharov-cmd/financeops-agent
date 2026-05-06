@@ -1,7 +1,8 @@
 import type { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 
-export type FinanceOpsPipelineResult = Awaited<
-  ReturnType<typeof runFinanceOpsPipeline>
+export type FinanceOpsPipelineResult = Omit<
+  Awaited<ReturnType<typeof runFinanceOpsPipeline>>,
+  "outputArtifact"
 >;
 
 export interface FinanceOpsOutputArtifact {
