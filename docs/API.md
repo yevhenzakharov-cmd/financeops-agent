@@ -68,3 +68,27 @@ The API currently runs on simulated company data.
 For real company usage, an input adapter can normalize company data into the internal schema, and an output adapter can format the result into the target business output.
 
 The core agent pipeline does not need to be rewritten for each company or data source. Only the adapter layer changes.
+
+
+## Approve and Send Mock Payment
+
+POST /payments/:paymentRecommendationId/approve-and-send
+
+Approves a payment recommendation and executes it through the mock payment adapter.
+
+Flow:
+agent recommends payment -> human approves -> mock payment adapter simulates execution -> payment execution record is persisted.
+
+Request body example:
+{
+  "approvedBy": "demo-cfo",
+  "idempotencyKey": "demo-payment-key-001"
+}
+
+Example request:
+curl -s -X POST http://localhost:3001/payments/payrec-001/approve-and-send -H "Content-Type: application/json" -d '{"approvedBy":"demo-cfo","idempotencyKey":"demo-payment-key-001"}' | python3 -m json.tool
+
+Persisted output:
+outputs/payments/latest-payment-execution.json
+
+Persisted record includes: recommendation, approval, result, recordedAt.
