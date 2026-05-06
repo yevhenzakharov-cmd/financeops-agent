@@ -44,7 +44,8 @@ app.get("/system-summary", (_req, res) => {
       "client_output_artifact_generation",
       "client_output_artifact_persistence",
       "artifact_status_endpoint",
-      "compact_dashboard_artifact_endpoint"
+      "compact_dashboard_artifact_endpoint",
+      "demo_verification_artifact_status_check"
     ],
     executionMode: getExecutionMode()
   });
