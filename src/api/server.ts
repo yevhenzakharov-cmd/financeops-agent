@@ -35,7 +35,10 @@ app.get("/system-summary", (_req, res) => {
       "execution_ledger_persistence",
       "audit_log_persistence",
       "ai_cfo_briefing",
-      "api_response_persistence"
+      "api_response_persistence",
+      "payment_recommendation_generation",
+      "human_approved_mock_payment_execution",
+      "payment_execution_audit_record_persistence"
     ],
     executionMode: getExecutionMode()
   });
