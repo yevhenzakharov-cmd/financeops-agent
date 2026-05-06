@@ -42,7 +42,9 @@ app.get("/system-summary", (_req, res) => {
       "human_approved_mock_payment_execution",
       "payment_execution_audit_record_persistence",
       "client_output_artifact_generation",
-      "client_output_artifact_persistence"
+      "client_output_artifact_persistence",
+      "artifact_status_endpoint",
+      "compact_dashboard_artifact_endpoint"
     ],
     executionMode: getExecutionMode()
   });
