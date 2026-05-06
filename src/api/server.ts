@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { getArtifactCountByAvailability, getArtifactDataTypeMap, getArtifactDataTypes, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactGeneratedAtMap, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactPreviewMap, getArtifactReadinessReport, getArtifactRegistrySnapshot, getArtifactReportHeader, getArtifactSizeMap, getArtifactSummaryMap, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getArtifactApiSurfaceSummary, getArtifactAuditDigest, getArtifactCompactRows, getArtifactCompactTableCsv, getArtifactCompactTableMarkdown, getArtifactCountByAvailability, getArtifactDataTypeMap, getArtifactDataTypes, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactGeneratedAtMap, getArtifactManifest, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactPreviewMap, getArtifactReadinessReport, getArtifactRegistryEnvelope, getArtifactRegistrySnapshot, getArtifactRegistryVersion, getArtifactReportHeader, getArtifactRouteCatalog, getArtifactSizeMap, getArtifactSummaryMap, getAvailableArtifactNames, getAverageArtifactSizeBytes, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -64,7 +64,13 @@ app.get("/system-summary", (_req, res) => {
       "artifact_generated_at_map_endpoint",
       "artifact_data_type_map_endpoint",
       "artifact_preview_map_endpoint",
-      "artifact_report_header_endpoint"
+      "artifact_report_header_endpoint",
+      "artifact_manifest_endpoint",
+      "artifact_audit_digest_endpoint",
+      "artifact_table_export_endpoints",
+      "artifact_route_catalog_endpoint",
+      "artifact_registry_version_endpoint",
+      "artifact_registry_envelope_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -503,6 +509,72 @@ app.get("/artifacts/latest-output", (_req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+app.get("/artifacts/api-surface", (_req, res) => {
+  res.json({
+    status: "success",
+    surface: getArtifactApiSurfaceSummary()
+  });
+});
+
+app.get("/artifacts/registry-envelope", (_req, res) => {
+  res.json({
+    status: "success",
+    envelope: getArtifactRegistryEnvelope()
+  });
+});
+
+app.get("/artifacts/registry-version", (_req, res) => {
+  res.json({
+    status: "success",
+    registry: getArtifactRegistryVersion()
+  });
+});
+
+app.get("/artifacts/routes", (_req, res) => {
+  res.json({
+    status: "success",
+    routes: getArtifactRouteCatalog()
+  });
+});
+
+app.get("/artifacts/audit-digest", (_req, res) => {
+  res.json({
+    status: "success",
+    digest: getArtifactAuditDigest()
+  });
+});
+
+app.get("/artifacts/manifest", (_req, res) => {
+  res.json({
+    status: "success",
+    manifest: getArtifactManifest()
+  });
+});
+
+app.get("/artifacts/table.md", (_req, res) => {
+  res.type("text/markdown").send(getArtifactCompactTableMarkdown());
+});
+
+app.get("/artifacts/table.csv", (_req, res) => {
+  res.type("text/csv").send(getArtifactCompactTableCsv());
+});
+
+app.get("/artifacts/table", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getArtifactCompactRows()
+  });
+});
 
 app.get("/artifacts/:artifactName/metadata", (req, res) => {
   const artifactName = req.params.artifactName;

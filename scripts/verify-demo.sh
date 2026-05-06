@@ -49,6 +49,14 @@ echo "---- artifact data types ----"
 curl -s http://localhost:3001/artifacts/data-types | python3 -m json.tool || true
 
 echo ""
+echo "---- artifact manifest ----"
+curl -s http://localhost:3001/artifacts/manifest | python3 -m json.tool | head -n 40 || true
+
+echo ""
+echo "---- artifact registry version ----"
+curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool || true
+
+echo ""
 echo "---- recent commits ----"
 git log --oneline -12
 

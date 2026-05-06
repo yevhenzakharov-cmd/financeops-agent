@@ -328,3 +328,139 @@ export function getArtifactReportHeader(): {
     artifactCount: getArtifactNames().length
   };
 }
+
+
+export interface ArtifactCompactRow {
+  name: ArtifactName;
+  exists: boolean;
+  path: string;
+  dataType: string;
+  sizeBytes: number;
+}
+
+export function getArtifactCompactRows(): ArtifactCompactRow[] {
+  return summarizeAllArtifacts().map((artifact) => ({
+    name: artifact.name,
+    exists: artifact.exists,
+    path: artifact.path,
+    dataType: artifact.dataType,
+    sizeBytes: artifact.sizeBytes
+  }));
+}
+
+
+function escapeCsvValue(value: unknown): string {
+  const stringValue = String(value);
+  return `"${stringValue.replace(/"/g, '""')}"`;
+}
+
+
+export function getArtifactCompactTableCsv(): string {
+  const header = ["name", "exists", "path", "dataType", "sizeBytes"];
+  const rows = getArtifactCompactRows().map((artifact) =>
+    [
+      artifact.name,
+      artifact.exists,
+      artifact.path,
+      artifact.dataType,
+      artifact.sizeBytes
+    ]
+      .map(escapeCsvValue)
+      .join(",")
+  );
+
+  return [header.join(","), ...rows].join("\n");
+}
+
+
+export function getArtifactCompactTableMarkdown(): string {
+  const rows = getArtifactCompactRows();
+
+  return [
+    "| Artifact | Exists | Type | Size Bytes | Path |",
+    "|---|---:|---|---:|---|",
+    ...rows.map(
+      (artifact) =>
+        `| ${artifact.name} | ${artifact.exists} | ${artifact.dataType} | ${artifact.sizeBytes} | ${artifact.path} |`
+    )
+  ].join("\n");
+}
+
+
+export function getArtifactManifest(): {
+  generatedAt: string;
+  artifacts: ArtifactCompactRow[];
+  summary: ReturnType<typeof getArtifactOperationalSummary>;
+} {
+  return {
+    generatedAt: new Date().toISOString(),
+    artifacts: getArtifactCompactRows(),
+    summary: getArtifactOperationalSummary()
+  };
+}
+
+
+export function getArtifactAuditDigest(): {
+  generatedAt: string;
+  readiness: ReturnType<typeof getArtifactReadinessReport>;
+  diagnostics: ReturnType<typeof getArtifactDiagnostics>;
+} {
+  return {
+    generatedAt: new Date().toISOString(),
+    readiness: getArtifactReadinessReport(),
+    diagnostics: getArtifactDiagnostics()
+  };
+}
+
+
+export function getArtifactRouteCatalog(): Array<{
+  method: "GET";
+  path: string;
+  description: string;
+}> {
+  return [
+    { method: "GET", path: "/artifacts", description: "List artifact registry entries." },
+    { method: "GET", path: "/artifacts/status", description: "Check expected artifact file availability." },
+    { method: "GET", path: "/artifacts/health", description: "Return artifact health summary." },
+    { method: "GET", path: "/artifacts/registry", description: "Return full artifact registry snapshot." },
+    { method: "GET", path: "/artifacts/:artifactName", description: "Read one named artifact." },
+    { method: "GET", path: "/artifacts/:artifactName/raw", description: "Read one named artifact payload only." }
+  ];
+}
+
+
+export function getArtifactRegistryVersion(): {
+  version: string;
+  generatedAt: string;
+} {
+  return {
+    version: "artifact-registry-v1",
+    generatedAt: new Date().toISOString()
+  };
+}
+
+
+export function getArtifactRegistryEnvelope(): {
+  version: ReturnType<typeof getArtifactRegistryVersion>;
+  summary: ReturnType<typeof getArtifactOperationalSummary>;
+  routes: ReturnType<typeof getArtifactRouteCatalog>;
+} {
+  return {
+    version: getArtifactRegistryVersion(),
+    summary: getArtifactOperationalSummary(),
+    routes: getArtifactRouteCatalog()
+  };
+}
+
+
+export function getArtifactApiSurfaceSummary(): {
+  routeCount: number;
+  routes: string[];
+} {
+  const routes = getArtifactRouteCatalog().map((route) => route.path);
+
+  return {
+    routeCount: routes.length,
+    routes
+  };
+}

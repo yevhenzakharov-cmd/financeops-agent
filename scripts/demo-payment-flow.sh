@@ -115,6 +115,16 @@ curl -s "$BASE_URL/artifacts/generated-at-map" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact manifest endpoint ----"
+curl -s "$BASE_URL/artifacts/manifest" | python3 -m json.tool | head -n 80
+echo ""
+
+echo ""
+echo "---- artifact registry envelope endpoint ----"
+curl -s "$BASE_URL/artifacts/registry-envelope" | python3 -m json.tool | head -n 80
+echo ""
+
+echo ""
 echo "---- artifact summaries endpoint ----"
 curl -s "$BASE_URL/artifacts/summaries" | python3 -m json.tool | head -n 80
 echo ""
@@ -132,6 +142,11 @@ echo ""
 echo ""
 echo "---- named artifact endpoint: execution ledger ----"
 curl -s "$BASE_URL/artifacts/executionLedger" | python3 -m json.tool | head -n 50
+echo ""
+
+echo ""
+echo "---- artifact compact table endpoint ----"
+curl -s "$BASE_URL/artifacts/table" | python3 -m json.tool
 echo ""
 
 echo ""
