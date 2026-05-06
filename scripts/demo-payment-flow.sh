@@ -60,6 +60,11 @@ curl -s "$BASE_URL/artifacts/names" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact registry summary endpoint ----"
+curl -s "$BASE_URL/artifacts/registry/summary" | python3 -m json.tool
+echo ""
+
+echo ""
 echo "---- artifact summaries endpoint ----"
 curl -s "$BASE_URL/artifacts/summaries" | python3 -m json.tool | head -n 80
 echo ""

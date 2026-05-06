@@ -29,6 +29,10 @@ echo "---- artifact names ----"
 curl -s http://localhost:3001/artifacts/names | python3 -m json.tool || true
 
 echo ""
+echo "---- artifact registry summary ----"
+curl -s http://localhost:3001/artifacts/registry/summary | python3 -m json.tool || true
+
+echo ""
 echo "---- recent commits ----"
 git log --oneline -12
 

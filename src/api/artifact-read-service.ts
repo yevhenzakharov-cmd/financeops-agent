@@ -101,3 +101,29 @@ export function getMissingArtifactNames(): ArtifactName[] {
     .filter((artifact) => !artifact.exists)
     .map((artifact) => artifact.name);
 }
+
+
+export function getArtifactRegistrySnapshot(): {
+  totalArtifacts: number;
+  availableArtifacts: number;
+  missingArtifacts: number;
+  artifacts: Array<ReturnType<typeof summarizeArtifact>>;
+} {
+  const artifacts = summarizeAllArtifacts();
+  const availableArtifacts = artifacts.filter((artifact) => artifact.exists).length;
+
+  return {
+    totalArtifacts: artifacts.length,
+    availableArtifacts,
+    missingArtifacts: artifacts.length - availableArtifacts,
+    artifacts
+  };
+}
+
+
+export function getTotalArtifactSizeBytes(): number {
+  return summarizeAllArtifacts().reduce(
+    (total, artifact) => total + artifact.sizeBytes,
+    0
+  );
+}

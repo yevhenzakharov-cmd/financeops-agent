@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { getAvailableArtifactNames, getMissingArtifactNames, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getArtifactRegistrySnapshot, getAvailableArtifactNames, getMissingArtifactNames, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -50,7 +50,9 @@ app.get("/system-summary", (_req, res) => {
       "demo_verification_artifact_status_check",
       "artifact_metadata_utility_endpoints",
       "artifact_health_summary_endpoint",
-      "artifact_name_discovery_endpoints"
+      "artifact_name_discovery_endpoints",
+      "artifact_registry_snapshot_endpoint",
+      "artifact_registry_summary_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -159,6 +161,36 @@ app.get("/artifacts", (_req, res) => {
 
 
 
+
+
+
+
+app.get("/artifacts/size", (_req, res) => {
+  res.json({
+    status: "success",
+    totalSizeBytes: getTotalArtifactSizeBytes()
+  });
+});
+
+app.get("/artifacts/registry/summary", (_req, res) => {
+  const registry = getArtifactRegistrySnapshot();
+
+  res.json({
+    status: "success",
+    summary: {
+      totalArtifacts: registry.totalArtifacts,
+      availableArtifacts: registry.availableArtifacts,
+      missingArtifacts: registry.missingArtifacts
+    }
+  });
+});
+
+app.get("/artifacts/registry", (_req, res) => {
+  res.json({
+    status: "success",
+    registry: getArtifactRegistrySnapshot()
+  });
+});
 
 app.get("/artifacts/missing-names", (_req, res) => {
   res.json({
