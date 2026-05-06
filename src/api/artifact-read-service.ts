@@ -87,3 +87,17 @@ export function summarizeAllArtifacts(): Array<ReturnType<typeof summarizeArtifa
 export function getArtifactNames(): ArtifactName[] {
   return Object.keys(ARTIFACT_PATHS) as ArtifactName[];
 }
+
+
+export function getAvailableArtifactNames(): ArtifactName[] {
+  return summarizeAllArtifacts()
+    .filter((artifact) => artifact.exists)
+    .map((artifact) => artifact.name);
+}
+
+
+export function getMissingArtifactNames(): ArtifactName[] {
+  return summarizeAllArtifacts()
+    .filter((artifact) => !artifact.exists)
+    .map((artifact) => artifact.name);
+}

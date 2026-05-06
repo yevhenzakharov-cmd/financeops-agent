@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getAvailableArtifactNames, getMissingArtifactNames, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -49,7 +49,8 @@ app.get("/system-summary", (_req, res) => {
       "compact_dashboard_artifact_endpoint",
       "demo_verification_artifact_status_check",
       "artifact_metadata_utility_endpoints",
-      "artifact_health_summary_endpoint"
+      "artifact_health_summary_endpoint",
+      "artifact_name_discovery_endpoints"
     ],
     executionMode: getExecutionMode()
   });
@@ -155,6 +156,30 @@ app.get("/artifacts", (_req, res) => {
 
 
 
+
+
+
+
+app.get("/artifacts/missing-names", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getMissingArtifactNames()
+  });
+});
+
+app.get("/artifacts/available-names", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: getAvailableArtifactNames()
+  });
+});
+
+app.get("/artifacts/names", (_req, res) => {
+  res.json({
+    status: "success",
+    artifacts: Object.keys(ARTIFACT_PATHS)
+  });
+});
 
 app.get("/artifacts/health", (_req, res) => {
   const summaries = summarizeAllArtifacts();

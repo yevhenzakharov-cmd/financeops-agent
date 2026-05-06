@@ -55,8 +55,23 @@ curl -s "$BASE_URL/artifacts/health" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact names endpoint ----"
+curl -s "$BASE_URL/artifacts/names" | python3 -m json.tool
+echo ""
+
+echo ""
 echo "---- artifact summaries endpoint ----"
 curl -s "$BASE_URL/artifacts/summaries" | python3 -m json.tool | head -n 80
+echo ""
+
+echo ""
+echo "---- available artifact names endpoint ----"
+curl -s "$BASE_URL/artifacts/available-names" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- missing artifact names endpoint ----"
+curl -s "$BASE_URL/artifacts/missing-names" | python3 -m json.tool
 echo ""
 
 echo ""
