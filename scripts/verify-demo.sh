@@ -41,6 +41,10 @@ echo "---- artifact size map ----"
 curl -s http://localhost:3001/artifacts/size-map | python3 -m json.tool || true
 
 echo ""
+echo "---- artifact readiness ----"
+curl -s http://localhost:3001/artifacts/readiness | python3 -m json.tool || true
+
+echo ""
 echo "---- recent commits ----"
 git log --oneline -12
 

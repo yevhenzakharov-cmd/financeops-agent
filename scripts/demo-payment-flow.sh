@@ -60,6 +60,11 @@ curl -s "$BASE_URL/artifacts/names" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- artifact names text endpoint ----"
+curl -s "$BASE_URL/artifacts/names.txt"
+echo ""
+
+echo ""
 echo "---- artifact registry summary endpoint ----"
 curl -s "$BASE_URL/artifacts/registry/summary" | python3 -m json.tool
 echo ""
@@ -87,6 +92,16 @@ echo ""
 echo ""
 echo "---- artifact availability counts endpoint ----"
 curl -s "$BASE_URL/artifacts/availability-counts" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- artifact operational summary endpoint ----"
+curl -s "$BASE_URL/artifacts/operational-summary" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- artifact readiness endpoint ----"
+curl -s "$BASE_URL/artifacts/readiness" | python3 -m json.tool
 echo ""
 
 echo ""

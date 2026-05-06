@@ -208,3 +208,69 @@ export function getArtifactCountByAvailability(): {
     missing: artifacts.filter((artifact) => !artifact.exists).length
   };
 }
+
+
+export function getArtifactOperationalSummary(): {
+  health: "healthy" | "degraded";
+  totalArtifacts: number;
+  availableArtifacts: number;
+  missingArtifacts: number;
+  totalSizeBytes: number;
+  averageSizeBytes: number;
+  largestArtifact: ReturnType<typeof summarizeArtifact> | null;
+  smallestArtifact: ReturnType<typeof summarizeArtifact> | null;
+} {
+  const registry = getArtifactRegistrySnapshot();
+
+  return {
+    health: registry.missingArtifacts === 0 ? "healthy" : "degraded",
+    totalArtifacts: registry.totalArtifacts,
+    availableArtifacts: registry.availableArtifacts,
+    missingArtifacts: registry.missingArtifacts,
+    totalSizeBytes: getTotalArtifactSizeBytes(),
+    averageSizeBytes: getAverageArtifactSizeBytes(),
+    largestArtifact: getLargestArtifactSummary(),
+    smallestArtifact: getSmallestArtifactSummary()
+  };
+}
+
+
+export function getArtifactDiagnostics(): {
+  generatedAt: string;
+  operationalSummary: ReturnType<typeof getArtifactOperationalSummary>;
+  registry: ReturnType<typeof getArtifactRegistrySnapshot>;
+} {
+  return {
+    generatedAt: new Date().toISOString(),
+    operationalSummary: getArtifactOperationalSummary(),
+    registry: getArtifactRegistrySnapshot()
+  };
+}
+
+
+export function getArtifactReadinessReport(): {
+  ready: boolean;
+  message: string;
+  missingArtifacts: ArtifactName[];
+} {
+  const missingArtifacts = getMissingArtifactNames();
+
+  return {
+    ready: missingArtifacts.length === 0,
+    message:
+      missingArtifacts.length === 0
+        ? "All expected artifacts are available."
+        : "One or more expected artifacts are missing.",
+    missingArtifacts
+  };
+}
+
+
+export function getArtifactNamesCsv(): string {
+  return getArtifactNames().join(",");
+}
+
+
+export function getArtifactNamesText(): string {
+  return getArtifactNames().join("\n");
+}

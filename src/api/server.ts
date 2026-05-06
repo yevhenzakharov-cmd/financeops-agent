@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { getArtifactCountByAvailability, getArtifactExistenceMap, getArtifactPathMap, getArtifactRegistrySnapshot, getArtifactSizeMap, getArtifactSummaryMap, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getArtifactCountByAvailability, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactReadinessReport, getArtifactRegistrySnapshot, getArtifactSizeMap, getArtifactSummaryMap, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -55,7 +55,12 @@ app.get("/system-summary", (_req, res) => {
       "artifact_registry_summary_endpoint",
       "artifact_size_extreme_endpoints",
       "artifact_map_utility_endpoints",
-      "artifact_availability_count_endpoint"
+      "artifact_availability_count_endpoint",
+      "artifact_operational_summary_endpoint",
+      "artifact_diagnostics_endpoint",
+      "artifact_readiness_endpoint",
+      "artifact_names_text_export_endpoint",
+      "artifact_names_csv_export_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -197,6 +202,30 @@ app.get("/artifacts/largest", (_req, res) => {
 
 
 
+
+
+
+app.get("/artifacts/readiness", (_req, res) => {
+  res.json({
+    status: "success",
+    readiness: getArtifactReadinessReport()
+  });
+});
+
+app.get("/artifacts/diagnostics", (_req, res) => {
+  res.json({
+    status: "success",
+    diagnostics: getArtifactDiagnostics()
+  });
+});
+
+app.get("/artifacts/operational-summary", (_req, res) => {
+  res.json({
+    status: "success",
+    summary: getArtifactOperationalSummary()
+  });
+});
+
 app.get("/artifacts/availability-counts", (_req, res) => {
   res.json({
     status: "success",
@@ -271,6 +300,16 @@ app.get("/artifacts/available-names", (_req, res) => {
     status: "success",
     artifacts: getAvailableArtifactNames()
   });
+});
+
+
+
+app.get("/artifacts/names.txt", (_req, res) => {
+  res.type("text/plain").send(getArtifactNamesText());
+});
+
+app.get("/artifacts/names.csv", (_req, res) => {
+  res.type("text/csv").send(getArtifactNamesCsv());
 });
 
 app.get("/artifacts/names", (_req, res) => {
