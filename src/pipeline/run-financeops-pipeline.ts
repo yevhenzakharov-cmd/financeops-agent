@@ -30,6 +30,7 @@ import {
 } from "../security/audit-log.js";
 import { buildPaymentRecommendations } from "../payments/payment-recommendation-builder.js";
 import { MockClientOutputAdapter } from "../output-adapters/mock-client-output-adapter.js";
+import { persistOutputArtifact } from "../output-adapters/output-artifact-store.js";
 
 function scoreAction(action: RankedAction): number {
   return (
@@ -170,6 +171,12 @@ export async function runFinanceOpsPipeline() {
 
   recordAuditEvent(audit, "persistence", "OUTPUT_ADAPTER_ARTIFACT_BUILT", {
     adapterName: outputAdapter.adapterName,
+    artifactType: outputArtifact.artifactType
+  });
+
+  persistOutputArtifact(outputArtifact);
+
+  recordAuditEvent(audit, "persistence", "OUTPUT_ADAPTER_ARTIFACT_PERSISTED", {
     artifactType: outputArtifact.artifactType
   });
 
