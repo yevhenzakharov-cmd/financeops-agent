@@ -138,6 +138,9 @@ Current Capabilities
 * audit log persistence
 * API response persistence
 * AI CFO briefing generation
+* payment recommendation generation
+* human-approved mock payment execution
+* payment execution audit record persistence
 * secret-safe output writing
 * REST API access
 * system summary endpoint
