@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 
 import { MockPaymentAdapter } from "./mock-payment-adapter.js";
-import { persistPaymentExecutionResult } from "./payment-execution-store.js";
+import { persistPaymentExecutionRecord } from "./payment-execution-store.js";
 import type {
   PaymentApprovalRequest,
   PaymentExecutionResult,
@@ -44,7 +44,12 @@ export async function executeApprovedPayment(
   );
 
   executedIdempotencyKeys.set(idempotencyKey, result);
-  persistPaymentExecutionResult(result);
+  persistPaymentExecutionRecord({
+    recordedAt: new Date().toISOString(),
+    recommendation: input.recommendation,
+    approval,
+    result
+  });
 
   return result;
 }
