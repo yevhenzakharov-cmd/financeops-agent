@@ -130,6 +130,31 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
+
+app.get("/artifacts/status", (_req, res) => {
+  const paths = {
+    executionLedger: "outputs/ledger/latest-execution-ledger.json",
+    approvalQueue: "outputs/approvals/latest-approval-queue.json",
+    paymentExecution: "outputs/payments/latest-payment-execution.json",
+    clientOutputArtifact: "outputs/artifacts/latest-output-artifact.json"
+  };
+
+  const artifacts = Object.fromEntries(
+    Object.entries(paths).map(([name, artifactPath]) => [
+      name,
+      {
+        path: artifactPath,
+        exists: fs.existsSync(artifactPath)
+      }
+    ])
+  );
+
+  res.json({
+    status: "success",
+    artifacts
+  });
+});
+
 app.get("/artifacts/latest-dashboard", (_req, res) => {
   try {
     const artifactPath = getLatestOutputArtifactPath();
