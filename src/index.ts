@@ -44,4 +44,5 @@ import { runFinanceOpsPipeline } from "./pipeline/run-financeops-pipeline.js";
 
   console.log("\nExecution ledger written to outputs/ledger/latest-execution-ledger.json");
   console.log("Approval queue written to outputs/approvals/latest-approval-queue.json");
+  console.log("Client output artifact written to outputs/artifacts/latest-output-artifact.json");
 })();
