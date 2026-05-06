@@ -127,3 +127,43 @@ export function getTotalArtifactSizeBytes(): number {
     0
   );
 }
+
+
+export function getLargestArtifactSummary(): ReturnType<typeof summarizeArtifact> | null {
+  const artifacts = summarizeAllArtifacts();
+
+  if (artifacts.length === 0) {
+    return null;
+  }
+
+  return artifacts.reduce((largest, artifact) =>
+    artifact.sizeBytes > largest.sizeBytes ? artifact : largest
+  );
+}
+
+
+export function getSmallestArtifactSummary(): ReturnType<typeof summarizeArtifact> | null {
+  const artifacts = summarizeAllArtifacts();
+
+  if (artifacts.length === 0) {
+    return null;
+  }
+
+  return artifacts.reduce((smallest, artifact) =>
+    artifact.sizeBytes < smallest.sizeBytes ? artifact : smallest
+  );
+}
+
+
+export function getAverageArtifactSizeBytes(): number {
+  const artifacts = summarizeAllArtifacts();
+
+  if (artifacts.length === 0) {
+    return 0;
+  }
+
+  return Math.round(
+    artifacts.reduce((total, artifact) => total + artifact.sizeBytes, 0) /
+      artifacts.length
+  );
+}

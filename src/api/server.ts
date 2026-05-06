@@ -7,7 +7,7 @@ import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
 import { executeApprovedPayment } from "../payments/payment-execution-service.js";
 import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-store.js";
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
-import { getArtifactRegistrySnapshot, getAvailableArtifactNames, getMissingArtifactNames, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
+import { getArtifactRegistrySnapshot, getAverageArtifactSizeBytes, getAvailableArtifactNames, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts, summarizeArtifact } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 
 const app = express();
@@ -52,7 +52,8 @@ app.get("/system-summary", (_req, res) => {
       "artifact_health_summary_endpoint",
       "artifact_name_discovery_endpoints",
       "artifact_registry_snapshot_endpoint",
-      "artifact_registry_summary_endpoint"
+      "artifact_registry_summary_endpoint",
+      "artifact_size_extreme_endpoints"
     ],
     executionMode: getExecutionMode()
   });
@@ -164,6 +165,30 @@ app.get("/artifacts", (_req, res) => {
 
 
 
+
+
+
+
+app.get("/artifacts/average-size", (_req, res) => {
+  res.json({
+    status: "success",
+    averageSizeBytes: getAverageArtifactSizeBytes()
+  });
+});
+
+app.get("/artifacts/smallest", (_req, res) => {
+  res.json({
+    status: "success",
+    artifact: getSmallestArtifactSummary()
+  });
+});
+
+app.get("/artifacts/largest", (_req, res) => {
+  res.json({
+    status: "success",
+    artifact: getLargestArtifactSummary()
+  });
+});
 
 app.get("/artifacts/size", (_req, res) => {
   res.json({

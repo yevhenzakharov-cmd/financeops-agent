@@ -65,6 +65,16 @@ curl -s "$BASE_URL/artifacts/registry/summary" | python3 -m json.tool
 echo ""
 
 echo ""
+echo "---- largest artifact endpoint ----"
+curl -s "$BASE_URL/artifacts/largest" | python3 -m json.tool
+echo ""
+
+echo ""
+echo "---- smallest artifact endpoint ----"
+curl -s "$BASE_URL/artifacts/smallest" | python3 -m json.tool
+echo ""
+
+echo ""
 echo "---- artifact summaries endpoint ----"
 curl -s "$BASE_URL/artifacts/summaries" | python3 -m json.tool | head -n 80
 echo ""
