@@ -54,6 +54,7 @@ import {
   getClientFollowUpEmail,
   getClientBuyerFaq,
   getClientSalesHandoffPackage,
+  buildClientReviewerAudit,
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -1044,6 +1045,11 @@ app.get("/client/follow-up-email", (_req, res) => {
 
 app.get("/client/buyer-faq", (_req, res) => {
   res.json({ status: "success", result: getClientBuyerFaq() });
+});
+
+
+app.get("/client/reviewer-audit", (_req, res) => {
+  res.json({ status: "success", result: buildClientReviewerAudit() });
 });
 
 app.get("/client/sales-handoff-package", (_req, res) => {
