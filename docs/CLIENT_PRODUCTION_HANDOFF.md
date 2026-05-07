@@ -1,0 +1,27 @@
+# Client Production Handoff
+
+The client production handoff layer turns pilot readiness into a production implementation decision.
+
+It includes:
+
+- production prerequisites,
+- production handoff risk report,
+- production handoff plan,
+- production demo script,
+- production handoff package.
+
+## Purpose
+
+The layer makes production boundaries explicit before implementation starts.
+
+It protects the client and builder by showing:
+
+- what is ready,
+- what requires client action,
+- what is blocked,
+- what must be excluded from production scope,
+- which risks remain open.
+
+## Key rule
+
+Production handoff is blocked if required client data, payment data, mapping confirmation, or high-risk governance items are unresolved.

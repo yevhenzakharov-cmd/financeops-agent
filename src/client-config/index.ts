@@ -55,3 +55,9 @@ export * from "./client-pilot-scope.js";
 export * from "./client-pilot-risk-register.js";
 export * from "./client-pilot-success-metrics.js";
 export * from "./client-pilot-plan.js";
+
+export * from "./client-production-prerequisites.js";
+export * from "./client-production-handoff-risk.js";
+export * from "./client-production-handoff-plan.js";
+export * from "./client-production-demo-script.js";
+export * from "./client-production-handoff-package.js";

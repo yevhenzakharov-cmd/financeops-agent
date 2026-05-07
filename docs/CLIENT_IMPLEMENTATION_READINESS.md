@@ -60,3 +60,7 @@ After readiness and build package generation, the acceptance package provides de
 ## Related pilot plan layer
 
 After readiness, build package, and acceptance package generation, the pilot plan defines the safe limited pilot scope, risks, success metrics, and pilot decision.
+
+## Related production handoff layer
+
+After pilot planning, the production handoff layer defines production prerequisites, risk posture, exclusions, and final recommendation.

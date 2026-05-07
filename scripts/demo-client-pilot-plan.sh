@@ -17,3 +17,7 @@ curl -s "$BASE_URL/client/pilot-success-metrics" | python3 -m json.tool | head -
 echo
 echo "---- client pilot plan ----"
 curl -s "$BASE_URL/client/pilot-plan" | python3 -m json.tool | head -200
+
+echo
+echo "---- related production handoff ----"
+curl -s "$BASE_URL/client/production-handoff-package" | python3 -m json.tool | head -80

@@ -16,3 +16,7 @@ The pilot layer defines what can safely be demonstrated before production creden
 ## Key rule
 
 A blocked production workflow can still be shown in a controlled demo, but it should not be included in a production pilot until missing client data and approval rules are resolved.
+
+## Related production handoff
+
+After pilot planning, the production handoff layer defines what must be true before moving from controlled demo or limited pilot scope into production implementation.

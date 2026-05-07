@@ -151,3 +151,25 @@ echo
 echo "---- client pilot plan ----"
 curl -s "$BASE_URL/client/pilot-plan" | python3 -m json.tool | head -100
 
+
+
+echo
+echo "---- client production prerequisites ----"
+curl -s "$BASE_URL/client/production-prerequisites" | python3 -m json.tool | head -80
+
+echo
+echo "---- client production risk report ----"
+curl -s "$BASE_URL/client/production-risk-report" | python3 -m json.tool | head -80
+
+echo
+echo "---- client production handoff plan ----"
+curl -s "$BASE_URL/client/production-handoff-plan" | python3 -m json.tool | head -100
+
+echo
+echo "---- client production demo script ----"
+curl -s "$BASE_URL/client/production-demo-script" | python3 -m json.tool | head -80
+
+echo
+echo "---- client production handoff package ----"
+curl -s "$BASE_URL/client/production-handoff-package" | python3 -m json.tool | head -100
+

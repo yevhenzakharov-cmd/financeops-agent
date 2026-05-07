@@ -99,3 +99,15 @@ The pilot plan should define:
 - pilot decision.
 
 Payment execution or payment preparation must remain excluded from pilot scope until required vendor payment data and approval policy are confirmed.
+
+## Client production handoff contract
+
+The production handoff package should define:
+
+- production prerequisites,
+- production risks,
+- production exclusions,
+- handoff decision,
+- final recommendation.
+
+The package must keep production credentials client-owned and must not allow payment execution or accounting posting without explicit human approval.

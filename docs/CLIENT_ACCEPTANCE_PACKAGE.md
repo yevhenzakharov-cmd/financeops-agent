@@ -36,3 +36,7 @@ Blocked means required client data or governance confirmation is still missing.
 ## Related pilot plan
 
 After acceptance, the pilot plan defines what can safely be included in a limited pilot, which risks remain open, and how pilot success will be measured.
+
+## Related production handoff
+
+The production handoff package converts acceptance and pilot context into a production implementation decision with prerequisites, risks, exclusions, and final recommendation.

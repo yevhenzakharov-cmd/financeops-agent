@@ -31,7 +31,12 @@ import {
   buildClientPilotPlan,
   buildClientPilotRiskRegister,
   buildClientPilotScope,
-  buildClientPilotSuccessMetrics
+  buildClientPilotSuccessMetrics,
+  buildClientProductionDemoScript,
+  buildClientProductionHandoffPackage,
+  buildClientProductionHandoffPlan,
+  buildClientProductionHandoffRiskReport,
+  buildClientProductionPrerequisites
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -888,6 +893,42 @@ app.get("/client/pilot-plan", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientPilotPlan()
+  });
+});
+
+
+app.get("/client/production-prerequisites", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientProductionPrerequisites()
+  });
+});
+
+app.get("/client/production-risk-report", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientProductionHandoffRiskReport()
+  });
+});
+
+app.get("/client/production-handoff-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientProductionHandoffPlan()
+  });
+});
+
+app.get("/client/production-demo-script", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientProductionDemoScript()
+  });
+});
+
+app.get("/client/production-handoff-package", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientProductionHandoffPackage()
   });
 });
 
