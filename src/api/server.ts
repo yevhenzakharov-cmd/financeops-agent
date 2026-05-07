@@ -49,6 +49,11 @@ import {
   buildClientObjectionHandlingGuide,
   buildClientRoiModel,
   buildClientCommercialSummary
+  getClientSalesNarrative,
+  getClientDemoAgenda,
+  getClientFollowUpEmail,
+  getClientBuyerFaq,
+  getClientSalesHandoffPackage,
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";

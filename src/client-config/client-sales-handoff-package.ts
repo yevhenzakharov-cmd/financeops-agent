@@ -1,8 +1,8 @@
-import { getClientSalesNarrative } from "./client-sales-narrative";
-import { getClientDemoAgenda } from "./client-demo-agenda";
-import { getClientFollowUpEmail } from "./client-follow-up-email";
-import { getClientBuyerFaq } from "./client-buyer-faq";
-import { getClientCommercialPackage } from "./client-commercial-package";
+import { getClientSalesNarrative } from "./client-sales-narrative.js";
+import { getClientDemoAgenda } from "./client-demo-agenda.js";
+import { getClientFollowUpEmail } from "./client-follow-up-email.js";
+import { getClientBuyerFaq } from "./client-buyer-faq.js";
+import { getClientCommercialPackage } from "./client-commercial-package.js";
 
 export type ClientSalesHandoffPackage = {
   title: string;

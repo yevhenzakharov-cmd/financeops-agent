@@ -1,4 +1,4 @@
-import { getClientCommercialSummary } from "./client-commercial-summary";
+import { getClientCommercialSummary } from "./client-commercial-summary.js";
 
 export type ClientFollowUpEmail = {
   title: string;
