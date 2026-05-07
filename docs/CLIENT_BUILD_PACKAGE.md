@@ -36,3 +36,7 @@ Blocked means required data or approval rules are missing.
 Ready for mapping means data exists, but fields still need to be mapped.
 
 Ready for build means the builder can start creating client-specific adapters and output delivery.
+
+## Acceptance handoff
+
+After a build package is generated, the acceptance package can be used to decide whether the implementation is ready to move forward, blocked by missing client data, or accepted with documented warnings.

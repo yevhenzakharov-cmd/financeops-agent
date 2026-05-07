@@ -957,3 +957,11 @@ It helps answer:
 - what field mappings are required,
 - what outputs the client expects,
 - what approval gates must exist before any finance action is prepared.
+
+## Client acceptance package
+
+The project includes a client acceptance package layer.
+
+This layer packages acceptance criteria, test scenarios, demo script, and build package into a final demo-to-build handoff.
+
+It helps show whether a client implementation is accepted, accepted with warnings, or blocked before deeper client-specific build work starts.

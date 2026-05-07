@@ -45,3 +45,8 @@ export * from "./client-adapter-blueprint.js";
 export * from "./client-output-delivery-plan.js";
 export * from "./client-deployment-checklist.js";
 export * from "./client-build-package.js";
+
+export * from "./client-acceptance-criteria.js";
+export * from "./client-test-scenarios.js";
+export * from "./client-demo-script.js";
+export * from "./client-acceptance-package.js";

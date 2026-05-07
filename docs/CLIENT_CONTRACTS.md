@@ -73,3 +73,17 @@ It should include:
 - next builder actions.
 
 The package must not assume access to production credentials. The client owns credentials, source systems, compliance decisions, and final approval policy.
+
+## Client acceptance package contract
+
+The acceptance package is the final demo-to-build handoff.
+
+It should include:
+
+- acceptance criteria,
+- test scenarios,
+- demo script,
+- build package,
+- handoff decision.
+
+The package must clearly identify blockers before production planning starts.

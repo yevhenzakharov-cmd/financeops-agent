@@ -115,3 +115,21 @@ echo
 echo "---- client build package ----"
 curl -s "$BASE_URL/client/build-package" | python3 -m json.tool | head -100
 
+
+
+echo
+echo "---- client acceptance criteria ----"
+curl -s "$BASE_URL/client/acceptance-criteria" | python3 -m json.tool | head -80
+
+echo
+echo "---- client test scenarios ----"
+curl -s "$BASE_URL/client/test-scenarios" | python3 -m json.tool | head -80
+
+echo
+echo "---- client demo script ----"
+curl -s "$BASE_URL/client/demo-script" | python3 -m json.tool | head -80
+
+echo
+echo "---- client acceptance package ----"
+curl -s "$BASE_URL/client/acceptance-package" | python3 -m json.tool | head -100
+

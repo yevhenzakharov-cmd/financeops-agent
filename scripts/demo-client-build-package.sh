@@ -17,3 +17,7 @@ curl -s "$BASE_URL/client/deployment-checklist" | python3 -m json.tool | head -1
 echo
 echo "---- client build package ----"
 curl -s "$BASE_URL/client/build-package" | python3 -m json.tool | head -180
+
+echo
+echo "---- related acceptance package ----"
+curl -s "$BASE_URL/client/acceptance-package" | python3 -m json.tool | head -80

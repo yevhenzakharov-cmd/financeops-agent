@@ -23,7 +23,11 @@ import {
   buildClientAdapterBlueprint,
   buildClientBuildPackage,
   buildClientDeploymentChecklist,
-  buildClientOutputDeliveryPlan
+  buildClientOutputDeliveryPlan,
+  buildClientAcceptanceCriteriaReport,
+  buildClientAcceptancePackage,
+  buildClientDemoScript,
+  buildClientTestScenarioPack
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -822,6 +826,35 @@ app.get("/client/build-package", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientBuildPackage()
+  });
+});
+
+
+app.get("/client/acceptance-criteria", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientAcceptanceCriteriaReport()
+  });
+});
+
+app.get("/client/test-scenarios", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientTestScenarioPack()
+  });
+});
+
+app.get("/client/demo-script", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientDemoScript()
+  });
+});
+
+app.get("/client/acceptance-package", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientAcceptancePackage()
   });
 });
 
