@@ -199,3 +199,36 @@ The project is strongest as a public portfolio demo for showing how an AI agent 
 
 ```bash
 npm run api
+```
+
+2. In another terminal tab, run the full verification script.
+
+```bash
+npm run verify:demo
+```
+
+3. Inspect the reviewer audit endpoint.
+
+```bash
+curl -s http://localhost:3001/client/reviewer-audit | python3 -m json.tool
+```
+
+4. Inspect the sales handoff package.
+
+```bash
+curl -s http://localhost:3001/client/sales-handoff-package | python3 -m json.tool
+```
+
+5. Inspect the artifact manifest.
+
+```bash
+curl -s http://localhost:3001/artifacts/manifest | python3 -m json.tool
+```
+
+## Current status
+
+The current project is best described as:
+
+> A production-aware, governed FinanceOps agent demo that shows how finance exceptions, client readiness, approval gates, audit artifacts, go-live planning, and buyer-facing handoff material can be modeled in a structured TypeScript API.
+
+It should not be described as a production-ready accounting system until real client data, integrations, credentials, approvals, and deployment controls are implemented in a client-owned environment.
