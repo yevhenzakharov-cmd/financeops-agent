@@ -917,6 +917,28 @@ The current mock game studio contract demonstrates how a client-specific impleme
 Before implementation, each client can provide a lightweight requirements intake describing available inputs, desired outputs, priority finance tasks, and approval requirements. The system converts that intake into a plan before final adapter work begins.
 
 
+The client data request packet turns onboarding requirements into a concrete list of files, fields, questions, and desired outputs needed before building a client-specific adapter.
+
+
+
 The client implementation plan turns a client's requested inputs and desired outputs into a concrete adapter/output plan. This makes the system easier to customize for different accounting teams without changing the deterministic FinanceOps core.
 
 
+
+## Client implementation readiness
+
+The project includes a client-readiness layer for custom FinanceOps implementations.
+
+This is not a SaaS onboarding flow. It is a builder-side scoping system that helps determine whether a specific client has provided enough information to build their client-owned agent.
+
+It checks:
+
+- required client input fields,
+- missing data,
+- fields that need mapping,
+- optional enhancements,
+- governance rules,
+- human approval requirements,
+- next implementation steps.
+
+This supports the intended business model: each client provides their own inputs, desired outputs, rules, and infrastructure; the FinanceOps core is adapted to that client-specific scope.

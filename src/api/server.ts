@@ -11,6 +11,16 @@ import { mockGameStudioRequirementsIntake } from "../client-config/mock-client-r
 import { buildClientRequirementsPlan } from "../client-config/client-requirements-plan.js";
 import { validateClientRequirementsIntake } from "../client-config/client-requirements-validator.js";
 import { buildClientOnboardingChecklist } from "../client-config/client-onboarding-checklist.js";
+import {
+  buildClientDataRequestPacket,
+  buildClientGovernanceBrief,
+  buildClientImplementationReadiness,
+  buildClientOnboardingQuestionnaire,
+  evaluateClientFieldCoverage,
+  mockGameStudioReadinessFixture,
+  analyzeClientInputFieldCoverage,
+  evaluateClientImplementationReadiness
+} from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -28,6 +38,38 @@ app.use(express.json());
 
 
 
+
+
+
+
+
+app.get("/client-contract/mock-game-studio/implementation-readiness", (_req, res) => {
+  res.json({
+    status: "success",
+    readiness: evaluateClientImplementationReadiness(mockGameStudioClient, mockGameStudioRequirementsIntake)
+  });
+});
+
+app.get("/client-contract/mock-game-studio/governance-brief", (_req, res) => {
+  res.json({
+    status: "success",
+    governanceBrief: buildClientGovernanceBrief(mockGameStudioClient, mockGameStudioRequirementsIntake)
+  });
+});
+
+app.get("/client-contract/mock-game-studio/data-request-packet", (_req, res) => {
+  res.json({
+    status: "success",
+    packet: buildClientDataRequestPacket(mockGameStudioClient, mockGameStudioRequirementsIntake)
+  });
+});
+
+app.get("/client-contract/mock-game-studio/field-coverage", (_req, res) => {
+  res.json({
+    status: "success",
+    fieldCoverage: analyzeClientInputFieldCoverage(mockGameStudioClient)
+  });
+});
 
 app.get("/client-contract/mock-game-studio/output-plan", (_req, res) => {
   res.json({
@@ -67,6 +109,14 @@ app.get("/client-contract/mock-game-studio/summary", (_req, res) => {
 
 
 
+
+
+app.get("/client-requirements/mock-game-studio/questionnaire", (_req, res) => {
+  res.json({
+    status: "success",
+    questionnaire: buildClientOnboardingQuestionnaire(mockGameStudioClient, mockGameStudioRequirementsIntake)
+  });
+});
 
 app.get("/client-requirements/mock-game-studio/onboarding-checklist", (_req, res) => {
   res.json({
@@ -169,7 +219,12 @@ app.get("/system-summary", (_req, res) => {
       "client_requirements_intake_endpoint",
       "client_requirements_validation_endpoint",
       "client_requirements_plan_endpoint",
-      "client_onboarding_checklist_endpoint"
+      "client_onboarding_checklist_endpoint",
+      "client_onboarding_questionnaire_endpoint",
+      "client_data_request_packet_endpoint",
+      "client_field_coverage_endpoint",
+      "client_governance_brief_endpoint",
+      "client_implementation_readiness_endpoint"
     ],
     executionMode: getExecutionMode()
   });
@@ -697,6 +752,45 @@ app.get("/artifacts/:artifactName/metadata", (req, res) => {
     }
   });
 });
+
+
+app.get("/client/onboarding-questionnaire", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientOnboardingQuestionnaire()
+  });
+});
+
+app.get("/client/field-coverage", (_req, res) => {
+  res.json({
+    status: "success",
+    result: evaluateClientFieldCoverage(mockGameStudioReadinessFixture.fieldRequirements)
+  });
+});
+
+app.get("/client/data-request-packet", (_req, res) => {
+  const coverage = evaluateClientFieldCoverage(mockGameStudioReadinessFixture.fieldRequirements);
+
+  res.json({
+    status: "success",
+    result: buildClientDataRequestPacket(coverage)
+  });
+});
+
+app.get("/client/governance-brief", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientGovernanceBrief(mockGameStudioReadinessFixture.governanceRules)
+  });
+});
+
+app.get("/client/implementation-readiness", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientImplementationReadiness(mockGameStudioReadinessFixture)
+  });
+});
+
 
 app.get("/artifacts/:artifactName", (req, res) => {
   const artifactName = req.params.artifactName;

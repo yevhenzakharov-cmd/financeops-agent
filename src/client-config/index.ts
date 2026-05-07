@@ -23,3 +23,20 @@ export { summarizeClientRequirementsIntake } from "./client-requirements-summary
 export { validateClientRequirementsIntake } from "./client-requirements-validator.js";
 export { buildClientRequirementsPlan } from "./client-requirements-plan.js";
 export { buildClientOnboardingChecklist } from "./client-onboarding-checklist.js";
+
+export type { ClientOnboardingQuestion, ClientQuestionCategory } from "./client-questionnaire.js";
+export type { ClientInputFieldCoverage } from "./client-field-coverage.js";
+export { buildClientOnboardingQuestionnaire } from "./client-onboarding-questionnaire.js";
+export { analyzeClientInputFieldCoverage } from "./client-field-coverage.js";
+export { buildClientDataRequestPacket } from "./client-data-request-packet.js";
+export { buildClientGovernanceBrief } from "./client-governance-brief.js";
+export { evaluateClientImplementationReadiness } from "./client-implementation-readiness.js";
+export { getMockClientReadinessFixture } from "./client-readiness-fixture.js";
+
+export * from "./client-questionnaire.js";
+export * from "./client-onboarding-questionnaire.js";
+export * from "./client-field-coverage.js";
+export * from "./client-data-request-packet.js";
+export * from "./client-governance-brief.js";
+export * from "./client-readiness-fixture.js";
+export * from "./client-implementation-readiness.js";

@@ -12,7 +12,8 @@
     "api": "tsx src/api/server.ts",
     "api:dev": "tsx watch src/api/server.ts",
     "demo:payment-flow": "./scripts/demo-payment-flow.sh",
-    "verify:demo": "./scripts/verify-demo.sh"
+    "verify:demo": "./scripts/verify-demo.sh",
+    "demo:client-readiness": "./scripts/demo-client-readiness.sh"
   },
   "engines": {
     "node": ">=20"
