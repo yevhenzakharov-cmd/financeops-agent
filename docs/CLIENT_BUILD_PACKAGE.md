@@ -40,3 +40,7 @@ Ready for build means the builder can start creating client-specific adapters an
 ## Acceptance handoff
 
 After a build package is generated, the acceptance package can be used to decide whether the implementation is ready to move forward, blocked by missing client data, or accepted with documented warnings.
+
+## Related pilot plan
+
+The pilot plan converts the build package and acceptance package into a limited pilot scope with measurable success criteria.

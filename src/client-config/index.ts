@@ -50,3 +50,8 @@ export * from "./client-acceptance-criteria.js";
 export * from "./client-test-scenarios.js";
 export * from "./client-demo-script.js";
 export * from "./client-acceptance-package.js";
+
+export * from "./client-pilot-scope.js";
+export * from "./client-pilot-risk-register.js";
+export * from "./client-pilot-success-metrics.js";
+export * from "./client-pilot-plan.js";

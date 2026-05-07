@@ -17,3 +17,7 @@ curl -s "$BASE_URL/client/demo-script" | python3 -m json.tool | head -140
 echo
 echo "---- client acceptance package ----"
 curl -s "$BASE_URL/client/acceptance-package" | python3 -m json.tool | head -200
+
+echo
+echo "---- related pilot plan ----"
+curl -s "$BASE_URL/client/pilot-plan" | python3 -m json.tool | head -80

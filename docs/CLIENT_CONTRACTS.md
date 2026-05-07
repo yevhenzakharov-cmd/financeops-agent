@@ -87,3 +87,15 @@ It should include:
 - handoff decision.
 
 The package must clearly identify blockers before production planning starts.
+
+## Client pilot plan contract
+
+The pilot plan should define:
+
+- included pilot workflows,
+- excluded pilot workflows,
+- open pilot risks,
+- success metrics,
+- pilot decision.
+
+Payment execution or payment preparation must remain excluded from pilot scope until required vendor payment data and approval policy are confirmed.

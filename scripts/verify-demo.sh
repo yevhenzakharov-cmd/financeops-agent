@@ -133,3 +133,21 @@ echo
 echo "---- client acceptance package ----"
 curl -s "$BASE_URL/client/acceptance-package" | python3 -m json.tool | head -100
 
+
+
+echo
+echo "---- client pilot scope ----"
+curl -s "$BASE_URL/client/pilot-scope" | python3 -m json.tool | head -80
+
+echo
+echo "---- client pilot risk register ----"
+curl -s "$BASE_URL/client/pilot-risk-register" | python3 -m json.tool | head -80
+
+echo
+echo "---- client pilot success metrics ----"
+curl -s "$BASE_URL/client/pilot-success-metrics" | python3 -m json.tool | head -80
+
+echo
+echo "---- client pilot plan ----"
+curl -s "$BASE_URL/client/pilot-plan" | python3 -m json.tool | head -100
+

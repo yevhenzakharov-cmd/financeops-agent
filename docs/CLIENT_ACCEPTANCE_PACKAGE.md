@@ -32,3 +32,7 @@ The acceptance package can be:
 - blocked.
 
 Blocked means required client data or governance confirmation is still missing.
+
+## Related pilot plan
+
+After acceptance, the pilot plan defines what can safely be included in a limited pilot, which risks remain open, and how pilot success will be measured.

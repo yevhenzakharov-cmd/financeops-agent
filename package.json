@@ -15,7 +15,8 @@
     "verify:demo": "./scripts/verify-demo.sh",
     "demo:client-readiness": "./scripts/demo-client-readiness.sh",
     "demo:client-build-package": "./scripts/demo-client-build-package.sh",
-    "demo:client-acceptance-package": "./scripts/demo-client-acceptance-package.sh"
+    "demo:client-acceptance-package": "./scripts/demo-client-acceptance-package.sh",
+    "demo:client-pilot-plan": "./scripts/demo-client-pilot-plan.sh"
   },
   "engines": {
     "node": ">=20"

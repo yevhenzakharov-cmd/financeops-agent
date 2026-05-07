@@ -27,7 +27,11 @@ import {
   buildClientAcceptanceCriteriaReport,
   buildClientAcceptancePackage,
   buildClientDemoScript,
-  buildClientTestScenarioPack
+  buildClientTestScenarioPack,
+  buildClientPilotPlan,
+  buildClientPilotRiskRegister,
+  buildClientPilotScope,
+  buildClientPilotSuccessMetrics
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -855,6 +859,35 @@ app.get("/client/acceptance-package", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientAcceptancePackage()
+  });
+});
+
+
+app.get("/client/pilot-scope", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientPilotScope()
+  });
+});
+
+app.get("/client/pilot-risk-register", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientPilotRiskRegister()
+  });
+});
+
+app.get("/client/pilot-success-metrics", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientPilotSuccessMetrics()
+  });
+});
+
+app.get("/client/pilot-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientPilotPlan()
   });
 });
 

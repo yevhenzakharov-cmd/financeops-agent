@@ -56,3 +56,7 @@ After readiness is evaluated, the build package layer groups the adapter bluepri
 ## Related acceptance package layer
 
 After readiness and build package generation, the acceptance package provides demo acceptance criteria, test scenarios, and final handoff decision.
+
+## Related pilot plan layer
+
+After readiness, build package, and acceptance package generation, the pilot plan defines the safe limited pilot scope, risks, success metrics, and pilot decision.
