@@ -2,7 +2,7 @@ import { getClientSalesNarrative } from "./client-sales-narrative.js";
 import { getClientDemoAgenda } from "./client-demo-agenda.js";
 import { getClientFollowUpEmail } from "./client-follow-up-email.js";
 import { getClientBuyerFaq } from "./client-buyer-faq.js";
-import { getClientCommercialPackage } from "./client-commercial-package.js";
+import { buildClientCommercialPackage } from "./client-commercial-package.js";
 
 export type ClientSalesHandoffPackage = {
   title: string;
@@ -14,13 +14,13 @@ export type ClientSalesHandoffPackage = {
   demoAgenda: ReturnType<typeof getClientDemoAgenda>;
   followUpEmail: ReturnType<typeof getClientFollowUpEmail>;
   buyerFaq: ReturnType<typeof getClientBuyerFaq>;
-  commercialPackage: ReturnType<typeof getClientCommercialPackage>;
+  commercialPackage: ReturnType<typeof buildClientCommercialPackage>;
   nextBestAction: string;
 };
 
 export function getClientSalesHandoffPackage(): ClientSalesHandoffPackage {
   const narrative = getClientSalesNarrative();
-  const commercialPackage = getClientCommercialPackage();
+  const commercialPackage = buildClientCommercialPackage();
 
   return {
     title: "Client Sales Handoff Package",
@@ -35,7 +35,7 @@ export function getClientSalesHandoffPackage(): ClientSalesHandoffPackage {
     buyerFaq: getClientBuyerFaq(),
     commercialPackage,
     nextBestAction:
-      commercialPackage.status === "ready"
+      commercialPackage.status === "pilot_sellable" || commercialPackage.status === "production_sellable"
         ? "Use for external buyer demo with approved claims."
         : "Use for internal rehearsal or controlled discovery until commercial blockers are reduced."
   };

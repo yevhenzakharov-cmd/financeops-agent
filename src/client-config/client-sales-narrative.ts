@@ -1,4 +1,4 @@
-import { getClientCommercialSummary } from "./client-commercial-summary.js";
+import { buildClientCommercialSummary } from "./client-commercial-summary.js";
 
 export type ClientSalesNarrative = {
   title: string;
@@ -14,7 +14,7 @@ export type ClientSalesNarrative = {
 };
 
 export function getClientSalesNarrative(): ClientSalesNarrative {
-  const commercialSummary = getClientCommercialSummary();
+  const commercialSummary = buildClientCommercialSummary();
 
   return {
     title: "Client Sales Narrative",

@@ -48,7 +48,7 @@ import {
   buildClientCommercialValueHypothesis,
   buildClientObjectionHandlingGuide,
   buildClientRoiModel,
-  buildClientCommercialSummary
+  buildClientCommercialSummary,
   getClientSalesNarrative,
   getClientDemoAgenda,
   getClientFollowUpEmail,
