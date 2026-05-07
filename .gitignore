@@ -21,3 +21,6 @@ node_modules/
 
 # Backup files
 *.save
+
+# Local recovery handoff files
+PROJECT_RECOVERY_HANDOFF.txt
