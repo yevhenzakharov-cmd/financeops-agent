@@ -1,3 +1,11 @@
+
+## Reviewer Architecture Summary
+
+For a high-level reviewer explanation of the FinanceOps Agent architecture, demo boundaries, proof endpoints, and portfolio value, see:
+
+- [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md)
+
+
 FinanceOps Agent
 
 A governed autonomous FinanceOps agent platform for a game development studio.
