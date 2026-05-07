@@ -1,14 +1,14 @@
 
+
+FinanceOps Agent
+
+A governed autonomous FinanceOps agent platform for a game development studio.
+
 ## Reviewer Architecture Summary
 
 For a high-level reviewer explanation of the FinanceOps Agent architecture, demo boundaries, proof endpoints, and portfolio value, see:
 
 - [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md)
-
-
-FinanceOps Agent
-
-A governed autonomous FinanceOps agent platform for a game development studio.
 
 This project demonstrates an enterprise-style AI agent architecture that combines deterministic financial controls, risk classification, financial intervention simulation, intelligent strategy selection, risk appetite governance, approval routing, execution ledger persistence, audit tracing, REST API access, API response persistence, safe output enforcement, and AI-generated CFO briefings.
 
