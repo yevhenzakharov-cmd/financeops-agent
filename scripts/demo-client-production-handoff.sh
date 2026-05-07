@@ -21,3 +21,7 @@ curl -s "$BASE_URL/client/production-demo-script" | python3 -m json.tool | head 
 echo
 echo "---- client production handoff package ----"
 curl -s "$BASE_URL/client/production-handoff-package" | python3 -m json.tool | head -220
+
+echo
+echo "---- related go-live package ----"
+curl -s "$BASE_URL/client/go-live-package" | python3 -m json.tool | head -80

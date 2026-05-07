@@ -111,3 +111,15 @@ The production handoff package should define:
 - final recommendation.
 
 The package must keep production credentials client-owned and must not allow payment execution or accounting posting without explicit human approval.
+
+## Client go-live contract
+
+The go-live package should define:
+
+- go-live checklist,
+- go-live risks,
+- allowed launch scope,
+- excluded launch scope,
+- final launch decision.
+
+Go-live must remain blocked if high-risk payment or credential issues are unresolved.

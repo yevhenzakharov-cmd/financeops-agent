@@ -64,3 +64,7 @@ After readiness, build package, and acceptance package generation, the pilot pla
 ## Related production handoff layer
 
 After pilot planning, the production handoff layer defines production prerequisites, risk posture, exclusions, and final recommendation.
+
+## Related go-live layer
+
+After production handoff, the go-live layer defines checklist status, launch risk, allowed scope, exclusions, and final go/no-go decision.

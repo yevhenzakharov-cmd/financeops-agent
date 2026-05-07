@@ -36,7 +36,12 @@ import {
   buildClientProductionHandoffPackage,
   buildClientProductionHandoffPlan,
   buildClientProductionHandoffRiskReport,
-  buildClientProductionPrerequisites
+  buildClientProductionPrerequisites,
+  buildClientGoLiveChecklist,
+  buildClientGoLiveDecision,
+  buildClientGoLivePackage,
+  buildClientGoLiveRiskReport,
+  buildClientLaunchBrief
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -929,6 +934,42 @@ app.get("/client/production-handoff-package", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientProductionHandoffPackage()
+  });
+});
+
+
+app.get("/client/go-live-checklist", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientGoLiveChecklist()
+  });
+});
+
+app.get("/client/go-live-risk-report", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientGoLiveRiskReport()
+  });
+});
+
+app.get("/client/go-live-decision", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientGoLiveDecision()
+  });
+});
+
+app.get("/client/launch-brief", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientLaunchBrief()
+  });
+});
+
+app.get("/client/go-live-package", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientGoLivePackage()
   });
 });
 

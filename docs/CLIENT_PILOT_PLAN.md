@@ -20,3 +20,7 @@ A blocked production workflow can still be shown in a controlled demo, but it sh
 ## Related production handoff
 
 After pilot planning, the production handoff layer defines what must be true before moving from controlled demo or limited pilot scope into production implementation.
+
+## Related go-live layer
+
+The go-live package should only be evaluated after pilot scope, production prerequisites, and production handoff risks are reviewed.

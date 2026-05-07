@@ -17,7 +17,8 @@
     "demo:client-build-package": "./scripts/demo-client-build-package.sh",
     "demo:client-acceptance-package": "./scripts/demo-client-acceptance-package.sh",
     "demo:client-pilot-plan": "./scripts/demo-client-pilot-plan.sh",
-    "demo:client-production-handoff": "./scripts/demo-client-production-handoff.sh"
+    "demo:client-production-handoff": "./scripts/demo-client-production-handoff.sh",
+    "demo:client-go-live": "./scripts/demo-client-go-live.sh"
   },
   "engines": {
     "node": ">=20"

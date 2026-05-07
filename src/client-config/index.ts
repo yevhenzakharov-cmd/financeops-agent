@@ -61,3 +61,9 @@ export * from "./client-production-handoff-risk.js";
 export * from "./client-production-handoff-plan.js";
 export * from "./client-production-demo-script.js";
 export * from "./client-production-handoff-package.js";
+
+export * from "./client-go-live-checklist.js";
+export * from "./client-go-live-risk.js";
+export * from "./client-go-live-decision.js";
+export * from "./client-launch-brief.js";
+export * from "./client-go-live-package.js";

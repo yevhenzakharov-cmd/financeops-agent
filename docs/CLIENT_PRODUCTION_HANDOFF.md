@@ -25,3 +25,7 @@ It protects the client and builder by showing:
 ## Key rule
 
 Production handoff is blocked if required client data, payment data, mapping confirmation, or high-risk governance items are unresolved.
+
+## Related go-live layer
+
+After production handoff, the go-live package converts prerequisites, risk posture, and production exclusions into a final launch decision.
