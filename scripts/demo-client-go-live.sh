@@ -21,3 +21,7 @@ curl -s "$BASE_URL/client/launch-brief" | python3 -m json.tool | head -140
 echo
 echo "---- client go-live package ----"
 curl -s "$BASE_URL/client/go-live-package" | python3 -m json.tool | head -220
+
+echo
+echo "---- related commercial package ----"
+curl -s "$BASE_URL/client/commercial-package" | python3 -m json.tool | head -100

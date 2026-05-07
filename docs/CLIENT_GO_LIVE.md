@@ -17,3 +17,7 @@ The layer explains whether the client implementation is ready for launch plannin
 ## Key rule
 
 If payment data, required production-shaped data, approval policy, or open high-risk items are unresolved, go-live remains blocked or limited to explicitly approved scope.
+
+## Related commercial package
+
+After go-live evaluation, the commercial package explains what can be safely claimed in a sales conversation and what claims should be avoided.

@@ -68,3 +68,7 @@ After pilot planning, the production handoff layer defines production prerequisi
 ## Related go-live layer
 
 After production handoff, the go-live layer defines checklist status, launch risk, allowed scope, exclusions, and final go/no-go decision.
+
+## Related commercial package
+
+After go-live readiness, the commercial package defines buyer-facing value, ROI assumptions, safe claims, objections, and claims to avoid.

@@ -123,3 +123,16 @@ The go-live package should define:
 - final launch decision.
 
 Go-live must remain blocked if high-risk payment or credential issues are unresolved.
+
+## Client commercial package contract
+
+The commercial package should define:
+
+- safe value claims,
+- ROI assumptions,
+- buyer pain,
+- objections and responses,
+- claims to avoid,
+- commercial recommendation.
+
+The package must not claim production readiness, payment execution support, or verified ROI unless those claims are backed by accepted client evidence.

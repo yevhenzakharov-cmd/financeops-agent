@@ -29,3 +29,7 @@ Production handoff is blocked if required client data, payment data, mapping con
 ## Related go-live layer
 
 After production handoff, the go-live package converts prerequisites, risk posture, and production exclusions into a final launch decision.
+
+## Related commercial package
+
+The commercial package uses production handoff and go-live readiness to define safe buyer-facing claims, objections, and ROI assumptions.

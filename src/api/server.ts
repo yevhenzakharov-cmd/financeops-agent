@@ -41,7 +41,14 @@ import {
   buildClientGoLiveDecision,
   buildClientGoLivePackage,
   buildClientGoLiveRiskReport,
-  buildClientLaunchBrief
+  buildClientLaunchBrief,
+  buildClientBuyerBrief,
+  buildClientCommercialPackage,
+  buildClientCommercialReadinessScore,
+  buildClientCommercialValueHypothesis,
+  buildClientObjectionHandlingGuide,
+  buildClientRoiModel,
+  buildClientCommercialSummary
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -970,6 +977,57 @@ app.get("/client/go-live-package", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientGoLivePackage()
+  });
+});
+
+
+app.get("/client/commercial-value-hypothesis", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientCommercialValueHypothesis()
+  });
+});
+
+app.get("/client/roi-model", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientRoiModel()
+  });
+});
+
+app.get("/client/commercial-readiness-score", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientCommercialReadinessScore()
+  });
+});
+
+app.get("/client/buyer-brief", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientBuyerBrief()
+  });
+});
+
+app.get("/client/objection-handling", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientObjectionHandlingGuide()
+  });
+});
+
+app.get("/client/commercial-package", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientCommercialPackage()
+  });
+});
+
+
+app.get("/client/commercial-summary", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientCommercialSummary()
   });
 });
 

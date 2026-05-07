@@ -67,3 +67,12 @@ export * from "./client-go-live-risk.js";
 export * from "./client-go-live-decision.js";
 export * from "./client-launch-brief.js";
 export * from "./client-go-live-package.js";
+
+export * from "./client-commercial-value-hypothesis.js";
+export * from "./client-roi-model.js";
+export * from "./client-commercial-readiness-score.js";
+export * from "./client-buyer-brief.js";
+export * from "./client-objection-handling.js";
+export * from "./client-commercial-package.js";
+
+export * from "./client-commercial-summary.js";
