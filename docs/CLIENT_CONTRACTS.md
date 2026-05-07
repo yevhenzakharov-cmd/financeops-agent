@@ -136,3 +136,15 @@ The commercial package should define:
 - commercial recommendation.
 
 The package must not claim production readiness, payment execution support, or verified ROI unless those claims are backed by accepted client evidence.
+
+## Client sales handoff contract
+
+The sales handoff package should define:
+
+- sales narrative,
+- demo agenda,
+- follow-up email,
+- buyer FAQ,
+- sales handoff package.
+
+The package must keep claims safe. It must not claim production readiness, payment execution support, or verified ROI before client-owned data and production approvals are confirmed.

@@ -1024,6 +1024,27 @@ app.get("/client/commercial-package", (_req, res) => {
 });
 
 
+
+app.get("/client/sales-narrative", (_req, res) => {
+  res.json({ status: "success", result: getClientSalesNarrative() });
+});
+
+app.get("/client/demo-agenda", (_req, res) => {
+  res.json({ status: "success", result: getClientDemoAgenda() });
+});
+
+app.get("/client/follow-up-email", (_req, res) => {
+  res.json({ status: "success", result: getClientFollowUpEmail() });
+});
+
+app.get("/client/buyer-faq", (_req, res) => {
+  res.json({ status: "success", result: getClientBuyerFaq() });
+});
+
+app.get("/client/sales-handoff-package", (_req, res) => {
+  res.json({ status: "success", result: getClientSalesHandoffPackage() });
+});
+
 app.get("/client/commercial-summary", (_req, res) => {
   res.json({
     status: "success",

@@ -76,3 +76,8 @@ export * from "./client-objection-handling.js";
 export * from "./client-commercial-package.js";
 
 export * from "./client-commercial-summary.js";
+export * from "./client-sales-narrative";
+export * from "./client-demo-agenda";
+export * from "./client-follow-up-email";
+export * from "./client-buyer-faq";
+export * from "./client-sales-handoff-package";

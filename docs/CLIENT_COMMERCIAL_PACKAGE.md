@@ -22,3 +22,7 @@ The project should be positioned as a production-aware demo or controlled pilot 
 ## Commercial summary
 
 The commercial summary provides the short buyer-facing pitch, safe claims, claims to avoid, and next best action.
+
+## Related sales handoff
+
+After commercial readiness, the sales handoff layer converts the value hypothesis, ROI model, buyer brief, and objection handling into buyer-facing sales material.
