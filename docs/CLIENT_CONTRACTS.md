@@ -59,3 +59,17 @@ The readiness layer turns discovery answers into a practical build decision:
 - whether the build is blocked, mapping-ready, or ready for client-specific adapter work.
 
 This keeps the FinanceOps core generic while making every client implementation scoped around their actual inputs, outputs, approval rules, and deployment ownership.
+
+## Client build package contract
+
+The client build package is the implementation handoff created after the readiness review.
+
+It should include:
+
+- readiness status,
+- adapter blueprint,
+- output delivery plan,
+- deployment checklist,
+- next builder actions.
+
+The package must not assume access to production credentials. The client owns credentials, source systems, compliance decisions, and final approval policy.

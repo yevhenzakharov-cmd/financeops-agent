@@ -40,3 +40,8 @@ export * from "./client-data-request-packet.js";
 export * from "./client-governance-brief.js";
 export * from "./client-readiness-fixture.js";
 export * from "./client-implementation-readiness.js";
+
+export * from "./client-adapter-blueprint.js";
+export * from "./client-output-delivery-plan.js";
+export * from "./client-deployment-checklist.js";
+export * from "./client-build-package.js";

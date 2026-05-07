@@ -19,7 +19,11 @@ import {
   evaluateClientFieldCoverage,
   mockGameStudioReadinessFixture,
   analyzeClientInputFieldCoverage,
-  evaluateClientImplementationReadiness
+  evaluateClientImplementationReadiness,
+  buildClientAdapterBlueprint,
+  buildClientBuildPackage,
+  buildClientDeploymentChecklist,
+  buildClientOutputDeliveryPlan
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -791,6 +795,35 @@ app.get("/client/implementation-readiness", (_req, res) => {
   });
 });
 
+
+
+app.get("/client/adapter-blueprint", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientAdapterBlueprint()
+  });
+});
+
+app.get("/client/output-delivery-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientOutputDeliveryPlan()
+  });
+});
+
+app.get("/client/deployment-checklist", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientDeploymentChecklist()
+  });
+});
+
+app.get("/client/build-package", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientBuildPackage()
+  });
+});
 
 app.get("/artifacts/:artifactName", (req, res) => {
   const artifactName = req.params.artifactName;

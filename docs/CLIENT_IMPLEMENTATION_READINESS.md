@@ -48,3 +48,7 @@ The client owns:
 - final validation of finance outputs.
 
 The builder adapts the reusable FinanceOps core to the client's actual workflow.
+
+## Related build package layer
+
+After readiness is evaluated, the build package layer groups the adapter blueprint, output delivery plan, deployment checklist, and builder next actions into a single implementation handoff.

@@ -97,3 +97,21 @@ curl -s "$BASE_URL/client/governance-brief" | python3 -m json.tool | head -80
 echo "\n---- client implementation readiness ----"
 curl -s "$BASE_URL/client/implementation-readiness" | python3 -m json.tool | head -100
 
+
+
+echo
+echo "---- client adapter blueprint ----"
+curl -s "$BASE_URL/client/adapter-blueprint" | python3 -m json.tool | head -80
+
+echo
+echo "---- client output delivery plan ----"
+curl -s "$BASE_URL/client/output-delivery-plan" | python3 -m json.tool | head -80
+
+echo
+echo "---- client deployment checklist ----"
+curl -s "$BASE_URL/client/deployment-checklist" | python3 -m json.tool | head -80
+
+echo
+echo "---- client build package ----"
+curl -s "$BASE_URL/client/build-package" | python3 -m json.tool | head -100
+

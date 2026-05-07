@@ -942,3 +942,18 @@ It checks:
 - next implementation steps.
 
 This supports the intended business model: each client provides their own inputs, desired outputs, rules, and infrastructure; the FinanceOps core is adapted to that client-specific scope.
+
+## Client build package
+
+The project now includes a client build package layer.
+
+This combines implementation readiness, adapter planning, output delivery, deployment checklist, and builder next actions into one implementation handoff.
+
+It helps answer:
+
+- what can be reused from the FinanceOps core,
+- what must be customized for the client,
+- what data is missing,
+- what field mappings are required,
+- what outputs the client expects,
+- what approval gates must exist before any finance action is prepared.
