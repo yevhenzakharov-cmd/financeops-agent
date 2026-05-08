@@ -272,3 +272,7 @@ curl -s "$BASE_URL/client/validation-matrix" | python3 -m json.tool | sed -n '1,
 echo
 echo "---- client plugin contracts ----"
 curl -s "$BASE_URL/client/plugin-contracts" | python3 -m json.tool | sed -n '1,120p'
+
+echo
+echo "---- standardized 404 response ----"
+curl -s "$BASE_URL/not-a-real-route" | python3 -m json.tool | sed -n '1,60p'

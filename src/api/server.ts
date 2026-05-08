@@ -70,6 +70,7 @@ import { getLatestOutputArtifactPath } from "../output-adapters/output-artifact-
 import { ARTIFACT_PATHS } from "./artifact-paths.js";
 import { getArtifactApiSurfaceSummary, getArtifactAuditDigest, getArtifactCompactRows, getArtifactCompactTableCsv, getArtifactCompactTableMarkdown, getArtifactCountByAvailability, getArtifactDataTypeMap, getArtifactDataTypes, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactGeneratedAtMap, getArtifactManifest, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactPreviewMap, getArtifactReadinessReport, getArtifactRegistryEnvelope, getArtifactRegistrySnapshot, getArtifactRegistryVersion, getArtifactReportHeader, getArtifactRouteCatalog, getArtifactSizeMap, getArtifactSummaryMap, getAvailableArtifactNames, getAverageArtifactSizeBytes, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
+import { registerStandardApiErrorHandlers } from "./error-response.js";
 
 const app = express();
 app.use(express.json());
@@ -1150,6 +1151,8 @@ app.get("/artifacts/:artifactName", (req, res) => {
     artifact
   });
 });
+
+registerStandardApiErrorHandlers(app);
 
 app.listen(port, () => {
   console.log(`FinanceOps Agent API running on http://localhost:${port}`);
