@@ -86,3 +86,4 @@ export * from "./client-reviewer-dashboard.js";
 export * from "./client-sample-input-fixtures.js";
 export * from "./client-security-boundary.js";
 export * from "./client-validation-matrix.js";
+export * from "./client-plugin-contracts.js";

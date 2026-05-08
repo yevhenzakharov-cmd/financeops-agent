@@ -268,3 +268,7 @@ curl -s "$BASE_URL/client/security-boundary" | python3 -m json.tool | sed -n '1,
 echo
 echo "---- client validation matrix ----"
 curl -s "$BASE_URL/client/validation-matrix" | python3 -m json.tool | sed -n '1,120p'
+
+echo
+echo "---- client plugin contracts ----"
+curl -s "$BASE_URL/client/plugin-contracts" | python3 -m json.tool | sed -n '1,120p'

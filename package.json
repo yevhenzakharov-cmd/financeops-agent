@@ -29,7 +29,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint .",
-    "lint:strict": "eslint . --max-warnings=0"
+    "lint:strict": "eslint . --max-warnings=0",
+    "demo:client-plugin-contracts": "./scripts/demo-client-plugin-contracts.sh"
   },
   "engines": {
     "node": ">=20"

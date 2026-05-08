@@ -58,7 +58,9 @@ import {
   buildClientReviewerDashboard,
   buildClientSampleInputFixtures,
   buildClientSecurityBoundary,
-  buildClientValidationMatrix
+  buildClientValidationMatrix,
+  buildClientPluginContractsPackage,
+  validateClientPluginContractsPackage
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -249,6 +251,7 @@ app.get("/system-summary", (_req, res) => {
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
       "client_validation_matrix_endpoint",
+      "client_plugin_contracts_endpoint",
       "client_security_boundary_endpoint",
       "client_sample_input_fixtures_endpoint",
       "client_reviewer_dashboard_endpoint",
@@ -1092,6 +1095,17 @@ app.get("/client/reviewer-dashboard", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientReviewerDashboard()
+  });
+});
+
+
+app.get("/client/plugin-contracts", (_req, res) => {
+  const packageResult = buildClientPluginContractsPackage();
+
+  res.json({
+    status: "success",
+    result: packageResult,
+    validation: validateClientPluginContractsPackage(packageResult)
   });
 });
 
