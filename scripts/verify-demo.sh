@@ -256,3 +256,7 @@ curl -s "$BASE_URL/client/reviewer-audit" | python3 -m json.tool | head -120
 echo
 echo "---- client reviewer dashboard ----"
 curl -s "$BASE_URL/client/reviewer-dashboard" | python3 -m json.tool | head -120
+
+echo
+echo "---- client sample input fixtures ----"
+curl -s "$BASE_URL/client/sample-input-fixtures" | python3 -m json.tool | head -120

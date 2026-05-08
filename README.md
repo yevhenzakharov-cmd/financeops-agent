@@ -981,3 +981,11 @@ The project exposes a reviewer-friendly dashboard endpoint:
 curl -s http://localhost:3001/client/reviewer-dashboard | python3 -m json.tool
 
 Use this endpoint first when demonstrating the repo. It summarizes the deterministic finance core, artifact proof, approval-gated safety model, production blockers, and suggested demo order.
+
+## Client Sample Input Fixtures
+
+The project includes a client sample input fixtures endpoint:
+
+curl -s http://localhost:3001/client/sample-input-fixtures | python3 -m json.tool
+
+Use it to show the data readiness layer before discussing real client adapters.

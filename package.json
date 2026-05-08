@@ -22,7 +22,8 @@
     "demo:client-commercial-package": "./scripts/demo-client-commercial-package.sh",
     "demo:client-sales-handoff": "./scripts/demo-client-sales-handoff.sh",
     "demo:client-reviewer-audit": "./scripts/demo-client-reviewer-audit.sh",
-    "demo:client-reviewer-dashboard": "./scripts/demo-client-reviewer-dashboard.sh"
+    "demo:client-reviewer-dashboard": "./scripts/demo-client-reviewer-dashboard.sh",
+    "demo:client-sample-input-fixtures": "./scripts/demo-client-sample-input-fixtures.sh"
   },
   "engines": {
     "node": ">=20"

@@ -39,3 +39,9 @@ The commercial package uses production handoff and go-live readiness to define s
 The reviewer dashboard provides a concise entry point for explaining why the demo is strong as a governed FinanceOps proof but still blocked for production.
 
 GET /client/reviewer-dashboard
+
+## Sample Input Fixture Context
+
+GET /client/sample-input-fixtures
+
+The sample fixture layer supports production handoff by making missing vendor payment data and bank mapping questions explicit.

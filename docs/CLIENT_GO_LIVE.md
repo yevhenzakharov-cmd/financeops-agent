@@ -27,3 +27,9 @@ After go-live evaluation, the commercial package explains what can be safely cla
 The reviewer dashboard intentionally keeps the project marked as blocked for production until client-owned data, mapping confirmation, output acceptance, and approval policy are confirmed.
 
 GET /client/reviewer-dashboard
+
+## Sample Input Fixture Context
+
+GET /client/sample-input-fixtures
+
+The sample input fixtures clarify which data inputs can support demo flow and which fields still block production readiness.

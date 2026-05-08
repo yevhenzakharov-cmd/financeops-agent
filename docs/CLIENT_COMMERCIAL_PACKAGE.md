@@ -34,3 +34,9 @@ For a fast reviewer or buyer walkthrough, start with:
 GET /client/reviewer-dashboard
 
 Then continue into the commercial package, sales handoff package, go-live package, and artifact manifest.
+
+## Sample Input Fixtures Link
+
+GET /client/sample-input-fixtures
+
+This endpoint supports buyer conversations by making the required client data shape visible before scoping custom adapter work.

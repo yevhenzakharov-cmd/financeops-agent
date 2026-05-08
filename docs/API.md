@@ -98,3 +98,9 @@ Persisted record includes: recommendation, approval, result, recordedAt.
 GET /client/reviewer-dashboard
 
 Returns a compact reviewer-facing dashboard containing the project summary, proof cards, trust signals, production blockers, proof endpoints, suggested demo order, and next best actions.
+
+## Client Sample Input Fixtures
+
+GET /client/sample-input-fixtures
+
+Returns typed sample input fixtures for invoice exports, bank transaction exports, project margin data, and vendor payment profiles. The response shows which inputs are ready, which need mapping, and which remain blocked.

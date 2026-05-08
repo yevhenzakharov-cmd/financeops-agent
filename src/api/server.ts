@@ -55,7 +55,8 @@ import {
   getClientBuyerFaq,
   getClientSalesHandoffPackage,
   buildClientReviewerAudit,
-  buildClientReviewerDashboard
+  buildClientReviewerDashboard,
+  buildClientSampleInputFixtures
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -245,6 +246,7 @@ app.get("/system-summary", (_req, res) => {
       "artifact_audit_digest_endpoint",
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
+      "client_sample_input_fixtures_endpoint",
       "client_reviewer_dashboard_endpoint",
       "artifact_registry_version_endpoint",
       "artifact_registry_envelope_endpoint",
@@ -1057,6 +1059,14 @@ app.get("/client/buyer-faq", (_req, res) => {
 });
 
 
+
+
+app.get("/client/sample-input-fixtures", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientSampleInputFixtures()
+  });
+});
 
 app.get("/client/reviewer-dashboard", (_req, res) => {
   res.json({
