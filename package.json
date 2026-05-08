@@ -36,7 +36,8 @@
     "demo:api-inventory": "./scripts/demo-api-inventory.sh",
     "demo:openapi-contract": "./scripts/demo-openapi-contract.sh",
     "demo:request-observability": "./scripts/demo-request-observability.sh",
-    "demo:container-build": "./scripts/demo-container-build.sh"
+    "demo:container-build": "./scripts/demo-container-build.sh",
+    "test:coverage": "vitest run --coverage"
   },
   "engines": {
     "node": ">=20"
@@ -45,6 +46,7 @@
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
+    "@vitest/coverage-v8": "^4.1.5",
     "eslint": "^10.3.0",
     "globals": "^17.6.0",
     "tsx": "^4.21.0",

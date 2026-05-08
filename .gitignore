@@ -24,3 +24,4 @@ node_modules/
 
 # Local recovery handoff files
 PROJECT_RECOVERY_HANDOFF.txt
+coverage/
