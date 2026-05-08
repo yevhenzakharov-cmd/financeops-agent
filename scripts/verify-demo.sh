@@ -33,6 +33,11 @@ curl -s "$BASE_URL/run-financeops-agent" \
   -H "x-demo-api-key: $DEMO_API_KEY" | python3 -m json.tool | sed -n '1,120p'
 
 
+echo
+echo "---- audit visibility ----"
+curl -s "$BASE_URL/audit/visibility" | python3 -m json.tool | sed -n '1,120p'
+
+
 echo "---- artifact status ----"
 curl -s http://localhost:3001/artifacts/status | python3 -m json.tool || true
 

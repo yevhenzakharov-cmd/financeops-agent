@@ -31,7 +31,8 @@
     "lint": "eslint .",
     "lint:strict": "eslint . --max-warnings=0",
     "demo:client-plugin-contracts": "./scripts/demo-client-plugin-contracts.sh",
-    "demo:protected-action-routes": "./scripts/demo-protected-action-routes.sh"
+    "demo:protected-action-routes": "./scripts/demo-protected-action-routes.sh",
+    "demo:audit-visibility": "./scripts/demo-audit-visibility.sh"
   },
   "engines": {
     "node": ">=20"

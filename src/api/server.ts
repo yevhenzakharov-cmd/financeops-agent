@@ -72,6 +72,7 @@ import { getArtifactApiSurfaceSummary, getArtifactAuditDigest, getArtifactCompac
 import { persistApiResponse } from "./api-output-writer.js";
 import { registerStandardApiErrorHandlers } from "./error-response.js";
 import { buildDemoAuthStatus, requireDemoApiKey } from "./demo-auth.js";
+import { buildAuditVisibilityPackage, getAuditHealth, summarizeLatestAuditLog } from "./audit-read-service.js";
 
 const app = express();
 app.use(express.json());
@@ -221,6 +222,7 @@ app.get("/system-summary", (_req, res) => {
       "approval_workflow_routing",
       "execution_ledger_persistence",
       "audit_log_persistence",
+      "audit_visibility_endpoints",
       "ai_cfo_briefing",
       "api_response_persistence",
       "payment_recommendation_generation",
@@ -363,6 +365,30 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
+
+
+app.get("/audit/health", (_req, res) => {
+  res.json({
+    status: "success",
+    health: getAuditHealth()
+  });
+});
+
+app.get("/audit/summary", (_req, res) => {
+  const summary = summarizeLatestAuditLog();
+
+  res.json({
+    status: summary ? "success" : "missing",
+    summary
+  });
+});
+
+app.get("/audit/visibility", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildAuditVisibilityPackage()
+  });
+});
 
 app.get("/security/demo-auth-status", (_req, res) => {
   res.json({
