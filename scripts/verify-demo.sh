@@ -35,6 +35,11 @@ curl -s "$BASE_URL/run-financeops-agent" \
 
 echo
 echo
+echo
+echo "---- openapi contract ----"
+curl -s "$BASE_URL/openapi.json" | python3 -m json.tool | sed -n '1,120p'
+
+
 echo "---- api inventory ----"
 curl -s "$BASE_URL/api/inventory" | python3 -m json.tool | sed -n '1,120p'
 

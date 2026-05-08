@@ -87,6 +87,22 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
       riskNotes: ["Read-only system summary."]
     },
     {
+      method: "GET",
+      path: "/api/inventory",
+      group: "core",
+      accessLevel: "public_demo",
+      purpose: "Expose grouped API inventory, auth boundary, error model, and reviewer notes.",
+      riskNotes: ["Read-only API documentation endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/api/routes",
+      group: "core",
+      accessLevel: "public_demo",
+      purpose: "Expose route inventory entries as a compact list.",
+      riskNotes: ["Read-only API route inventory endpoint."]
+    },
+    {
       method: "POST",
       path: "/run-financeops-agent",
       group: "protected_action",
