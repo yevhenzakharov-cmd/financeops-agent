@@ -736,6 +736,13 @@ app.get("/artifacts/routes", (_req, res) => {
   });
 });
 
+app.get("/artifacts/route-catalog", (_req, res) => {
+  res.json({
+    status: "success",
+    routes: getArtifactRouteCatalog()
+  });
+});
+
 app.get("/artifacts/audit-digest", (_req, res) => {
   res.json({
     status: "success",
