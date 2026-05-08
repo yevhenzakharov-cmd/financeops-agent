@@ -21,3 +21,9 @@ If payment data, required production-shaped data, approval policy, or open high-
 ## Related commercial package
 
 After go-live evaluation, the commercial package explains what can be safely claimed in a sales conversation and what claims should be avoided.
+
+## Reviewer Dashboard Context
+
+The reviewer dashboard intentionally keeps the project marked as blocked for production until client-owned data, mapping confirmation, output acceptance, and approval policy are confirmed.
+
+GET /client/reviewer-dashboard

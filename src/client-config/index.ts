@@ -82,3 +82,4 @@ export * from "./client-follow-up-email.js";
 export * from "./client-buyer-faq.js";
 export * from "./client-sales-handoff-package.js";
 export * from "./client-reviewer-audit.js";
+export * from "./client-reviewer-dashboard.js";

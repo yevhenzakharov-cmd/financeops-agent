@@ -973,3 +973,11 @@ The project includes a client acceptance package layer.
 This layer packages acceptance criteria, test scenarios, demo script, and build package into a final demo-to-build handoff.
 
 It helps show whether a client implementation is accepted, accepted with warnings, or blocked before deeper client-specific build work starts.
+
+## Reviewer Dashboard
+
+The project exposes a reviewer-friendly dashboard endpoint:
+
+curl -s http://localhost:3001/client/reviewer-dashboard | python3 -m json.tool
+
+Use this endpoint first when demonstrating the repo. It summarizes the deterministic finance core, artifact proof, approval-gated safety model, production blockers, and suggested demo order.

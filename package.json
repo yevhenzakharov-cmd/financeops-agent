@@ -21,7 +21,8 @@
     "demo:client-go-live": "./scripts/demo-client-go-live.sh",
     "demo:client-commercial-package": "./scripts/demo-client-commercial-package.sh",
     "demo:client-sales-handoff": "./scripts/demo-client-sales-handoff.sh",
-    "demo:client-reviewer-audit": "./scripts/demo-client-reviewer-audit.sh"
+    "demo:client-reviewer-audit": "./scripts/demo-client-reviewer-audit.sh",
+    "demo:client-reviewer-dashboard": "./scripts/demo-client-reviewer-dashboard.sh"
   },
   "engines": {
     "node": ">=20"

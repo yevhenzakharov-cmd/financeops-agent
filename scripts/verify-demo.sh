@@ -252,3 +252,7 @@ curl -s "$BASE_URL/client/sales-handoff-package" | python3 -m json.tool | head -
 echo
 echo "---- client reviewer audit ----"
 curl -s "$BASE_URL/client/reviewer-audit" | python3 -m json.tool | head -120
+
+echo
+echo "---- client reviewer dashboard ----"
+curl -s "$BASE_URL/client/reviewer-dashboard" | python3 -m json.tool | head -120

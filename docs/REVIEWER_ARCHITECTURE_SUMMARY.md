@@ -232,3 +232,11 @@ The current project is best described as:
 > A production-aware, governed FinanceOps agent demo that shows how finance exceptions, client readiness, approval gates, audit artifacts, go-live planning, and buyer-facing handoff material can be modeled in a structured TypeScript API.
 
 It should not be described as a production-ready accounting system until real client data, integrations, credentials, approvals, and deployment controls are implemented in a client-owned environment.
+
+## Reviewer Dashboard Endpoint
+
+GET /client/reviewer-dashboard
+
+This endpoint provides a compact reviewer-facing dashboard for explaining the system quickly. It summarizes deterministic FinanceOps core proof, artifact and audit proof, approval-gated action safety, commercial readiness status, production blockers, proof endpoints, and suggested demo order.
+
+This is intentionally a sales and reviewer artifact, not a production claim.

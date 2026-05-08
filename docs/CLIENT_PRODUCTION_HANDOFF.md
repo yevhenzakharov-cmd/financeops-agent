@@ -33,3 +33,9 @@ After production handoff, the go-live package converts prerequisites, risk postu
 ## Related commercial package
 
 The commercial package uses production handoff and go-live readiness to define safe buyer-facing claims, objections, and ROI assumptions.
+
+## Reviewer Dashboard Context
+
+The reviewer dashboard provides a concise entry point for explaining why the demo is strong as a governed FinanceOps proof but still blocked for production.
+
+GET /client/reviewer-dashboard

@@ -1,0 +1,24 @@
+# Client Reviewer Dashboard
+
+The Client Reviewer Dashboard is a compact proof endpoint for explaining FinanceOps Agent quickly to a technical reviewer, CFO, founder, operator, potential client, or hiring manager.
+
+Endpoint: GET /client/reviewer-dashboard
+
+## Purpose
+
+The endpoint summarizes:
+
+- deterministic FinanceOps core proof,
+- artifact and audit proof,
+- approval-gated action safety,
+- commercial readiness status,
+- production blockers,
+- proof endpoints,
+- suggested demo order,
+- next best actions.
+
+## Positioning
+
+This endpoint is intentionally a reviewer and sales artifact. It does not claim the public demo is production-ready.
+
+The dashboard should be shown before deeper endpoint walkthroughs because it gives reviewers a fast map of what the system proves and what remains blocked.

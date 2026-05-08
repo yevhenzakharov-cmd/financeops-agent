@@ -92,3 +92,9 @@ Persisted output:
 outputs/payments/latest-payment-execution.json
 
 Persisted record includes: recommendation, approval, result, recordedAt.
+
+## Client Reviewer Dashboard
+
+GET /client/reviewer-dashboard
+
+Returns a compact reviewer-facing dashboard containing the project summary, proof cards, trust signals, production blockers, proof endpoints, suggested demo order, and next best actions.

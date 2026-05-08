@@ -26,3 +26,11 @@ It makes the project easier to present by separating:
 ## Key rule
 
 Sales handoff must not claim the project is production-ready, payment-ready, or ROI-verified until client-owned data, mappings, approvals, and production exclusions are accepted.
+
+## Suggested Reviewer Demo Entry Point
+
+Start demos from:
+
+GET /client/reviewer-dashboard
+
+This gives a quick summary before showing deeper sales handoff, commercial package, go-live, production handoff, and artifact endpoints.

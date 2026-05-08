@@ -26,3 +26,11 @@ The commercial summary provides the short buyer-facing pitch, safe claims, claim
 ## Related sales handoff
 
 After commercial readiness, the sales handoff layer converts the value hypothesis, ROI model, buyer brief, and objection handling into buyer-facing sales material.
+
+## Reviewer Dashboard Link
+
+For a fast reviewer or buyer walkthrough, start with:
+
+GET /client/reviewer-dashboard
+
+Then continue into the commercial package, sales handoff package, go-live package, and artifact manifest.

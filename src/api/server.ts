@@ -55,6 +55,7 @@ import {
   getClientBuyerFaq,
   getClientSalesHandoffPackage,
   buildClientReviewerAudit,
+  buildClientReviewerDashboard
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -244,6 +245,7 @@ app.get("/system-summary", (_req, res) => {
       "artifact_audit_digest_endpoint",
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
+      "client_reviewer_dashboard_endpoint",
       "artifact_registry_version_endpoint",
       "artifact_registry_envelope_endpoint",
       "client_contract_profile_endpoint",
@@ -1054,6 +1056,14 @@ app.get("/client/buyer-faq", (_req, res) => {
   res.json({ status: "success", result: getClientBuyerFaq() });
 });
 
+
+
+app.get("/client/reviewer-dashboard", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientReviewerDashboard()
+  });
+});
 
 app.get("/client/reviewer-audit", (_req, res) => {
   res.json({ status: "success", result: buildClientReviewerAudit() });
