@@ -75,9 +75,11 @@ import { buildDemoAuthStatus, requireDemoApiKey } from "./demo-auth.js";
 import { buildAuditVisibilityPackage, getAuditHealth, summarizeLatestAuditLog } from "./audit-read-service.js";
 import { buildApiInventoryPackage, getApiInventoryRoutes } from "./api-inventory-service.js";
 import { buildOpenApiDocument } from "./openapi-service.js";
+import { buildRequestObservabilitySummary, createRequestObservabilityMiddleware, getRecentRequestObservations } from "./request-observability.js";
 
 const app = express();
 app.use(express.json());
+app.use(createRequestObservabilityMiddleware());
 
 
 
@@ -375,6 +377,20 @@ const port = Number(process.env.PORT ?? 3001);
 
 app.get("/openapi.json", (_req, res) => {
   res.json(buildOpenApiDocument());
+});
+
+app.get("/observability/request-summary", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildRequestObservabilitySummary()
+  });
+});
+
+app.get("/observability/recent-requests", (_req, res) => {
+  res.json({
+    status: "success",
+    requests: getRecentRequestObservations(20)
+  });
 });
 
 app.get("/api/inventory", (_req, res) => {

@@ -310,3 +310,6 @@ curl -s "$BASE_URL/client/plugin-contracts" | python3 -m json.tool | sed -n '1,1
 echo
 echo "---- standardized 404 response ----"
 curl -s "$BASE_URL/not-a-real-route" | python3 -m json.tool | sed -n '1,60p'
+
+echo "\n---- request observability ----"
+curl -s "$BASE_URL/observability/request-summary" | python3 -m json.tool | sed -n '1,100p'

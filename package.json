@@ -34,7 +34,8 @@
     "demo:protected-action-routes": "./scripts/demo-protected-action-routes.sh",
     "demo:audit-visibility": "./scripts/demo-audit-visibility.sh",
     "demo:api-inventory": "./scripts/demo-api-inventory.sh",
-    "demo:openapi-contract": "./scripts/demo-openapi-contract.sh"
+    "demo:openapi-contract": "./scripts/demo-openapi-contract.sh",
+    "demo:request-observability": "./scripts/demo-request-observability.sh"
   },
   "engines": {
     "node": ">=20"

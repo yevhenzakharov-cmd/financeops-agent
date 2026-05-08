@@ -2,6 +2,7 @@ export type ApiInventoryRouteGroup =
   | "core"
   | "protected_action"
   | "audit"
+  | "observability"
   | "security"
   | "artifact"
   | "client"
@@ -55,6 +56,7 @@ function countByGroup(routes: ApiInventoryRoute[]): Record<ApiInventoryRouteGrou
     protected_action: 0,
     audit: 0,
     security: 0,
+    observability: 0,
     artifact: 0,
     client: 0,
     client_contract: 0,
@@ -133,6 +135,30 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
       accessLevel: "public_demo",
       purpose: "Explain which demo routes require the API key header.",
       riskNotes: ["Does not reveal secret values."]
+    },
+    {
+      method: "GET",
+      path: "/observability/request-summary",
+      group: "observability",
+      accessLevel: "public_demo",
+      purpose: "Expose demo-safe request counts, status counts, method counts, durations, and recent request metadata.",
+      riskNotes: [
+        "Read-only observability endpoint.",
+        "Does not store request bodies, API keys, payment payloads, or client-owned secrets.",
+        "Production implementation should use client-owned logging and monitoring."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/observability/recent-requests",
+      group: "observability",
+      accessLevel: "public_demo",
+      purpose: "Expose recent demo request metadata with request IDs for reviewer traceability.",
+      riskNotes: [
+        "Read-only observability endpoint.",
+        "Recent request storage is in-memory and demo-scoped.",
+        "Production implementation should use client-owned log retention policy."
+      ]
     },
     {
       method: "GET",
