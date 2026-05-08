@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 BASE_URL="${BASE_URL:-http://localhost:3001}"
+DEMO_API_KEY="${DEMO_API_KEY:-local-demo-key}"
 set -euo pipefail
 
 echo "---- typecheck ----"
@@ -14,6 +15,24 @@ echo "---- git status ----"
 git status
 
 echo ""
+echo
+echo "---- demo auth status ----"
+curl -s "$BASE_URL/security/demo-auth-status" | python3 -m json.tool | sed -n '1,80p'
+
+echo
+echo "---- protected action route without key ----"
+curl -s "$BASE_URL/run-financeops-agent" \
+  -X POST \
+  -H "Content-Type: application/json" | python3 -m json.tool | sed -n '1,80p'
+
+echo
+echo "---- protected action route with key ----"
+curl -s "$BASE_URL/run-financeops-agent" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "x-demo-api-key: $DEMO_API_KEY" | python3 -m json.tool | sed -n '1,120p'
+
+
 echo "---- artifact status ----"
 curl -s http://localhost:3001/artifacts/status | python3 -m json.tool || true
 

@@ -71,6 +71,7 @@ import { ARTIFACT_PATHS } from "./artifact-paths.js";
 import { getArtifactApiSurfaceSummary, getArtifactAuditDigest, getArtifactCompactRows, getArtifactCompactTableCsv, getArtifactCompactTableMarkdown, getArtifactCountByAvailability, getArtifactDataTypeMap, getArtifactDataTypes, getArtifactDiagnostics, getArtifactExistenceMap, getArtifactGeneratedAtMap, getArtifactManifest, getArtifactNamesCsv, getArtifactNamesText, getArtifactOperationalSummary, getArtifactPathMap, getArtifactPreviewMap, getArtifactReadinessReport, getArtifactRegistryEnvelope, getArtifactRegistrySnapshot, getArtifactRegistryVersion, getArtifactReportHeader, getArtifactRouteCatalog, getArtifactSizeMap, getArtifactSummaryMap, getAvailableArtifactNames, getAverageArtifactSizeBytes, getLargestArtifactSummary, getMissingArtifactNames, getSmallestArtifactSummary, getTotalArtifactSizeBytes, isArtifactName, listArtifactMetadata, readArtifactByName, summarizeAllArtifacts } from "./artifact-read-service.js";
 import { persistApiResponse } from "./api-output-writer.js";
 import { registerStandardApiErrorHandlers } from "./error-response.js";
+import { buildDemoAuthStatus, requireDemoApiKey } from "./demo-auth.js";
 
 const app = express();
 app.use(express.json());
@@ -277,7 +278,7 @@ app.get("/system-summary", (_req, res) => {
   });
 });
 
-app.post("/run-financeops-agent", async (_req, res) => {
+app.post("/run-financeops-agent", requireDemoApiKey, async (_req, res) => {
   try {
     const result = await runFinanceOpsPipeline();
 
@@ -301,7 +302,7 @@ app.post("/run-financeops-agent", async (_req, res) => {
   }
 });
 
-app.post("/payments/:paymentRecommendationId/approve-and-send", async (req, res) => {
+app.post("/payments/:paymentRecommendationId/approve-and-send", requireDemoApiKey, async (req, res) => {
   try {
     const result = await runFinanceOpsPipeline();
     const paymentRecommendation = result.paymentRecommendations.find(
@@ -361,6 +362,14 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
+
+
+app.get("/security/demo-auth-status", (_req, res) => {
+  res.json({
+    status: "success",
+    auth: buildDemoAuthStatus()
+  });
+});
 
 app.get("/artifacts", (_req, res) => {
   res.json({

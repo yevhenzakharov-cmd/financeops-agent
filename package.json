@@ -30,7 +30,8 @@
     "test:watch": "vitest",
     "lint": "eslint .",
     "lint:strict": "eslint . --max-warnings=0",
-    "demo:client-plugin-contracts": "./scripts/demo-client-plugin-contracts.sh"
+    "demo:client-plugin-contracts": "./scripts/demo-client-plugin-contracts.sh",
+    "demo:protected-action-routes": "./scripts/demo-protected-action-routes.sh"
   },
   "engines": {
     "node": ">=20"
