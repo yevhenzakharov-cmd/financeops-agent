@@ -788,26 +788,36 @@ Possible execution adapters:
 
 ⸻
 
-Production Hardening Ideas
+Production Hardening Status
 
-To move from demo to production, the next hardening steps would include:
+The public demo now includes several production-aware controls:
 
-* authentication and authorization
-* API rate limiting
-* request validation
-* idempotency keys
+* demo API-key protection for action-like POST routes
+* HTTP security headers
+* demo rate limiting
+* standardized JSON error responses
+* OpenAPI contract export
+* API route inventory
+* audit visibility endpoints
+* request observability endpoints
+* automated regression tests
+* test coverage reporting
+* GitHub Actions CI
+* Docker packaging
+* idempotency support for simulated payment execution
+
+Remaining production work for a real client-owned deployment would include:
+
+* client-owned authentication and authorization
+* client-owned encrypted secret management
+* real client input adapters
 * external database persistence
-* structured logging
-* real input adapters
-* monitoring and alerting
-* test coverage
-* CI pipeline
-* deployment configuration
-* encrypted secret management
+* client-owned logging, monitoring, and alerting
 * real approval identity checks
 * tenant isolation
 * background job processing
 * webhook delivery
+* accepted client output formats
 * observability dashboards
 
 ⸻
