@@ -34,6 +34,11 @@ curl -s "$BASE_URL/run-financeops-agent" \
 
 
 echo
+echo
+echo "---- api inventory ----"
+curl -s "$BASE_URL/api/inventory" | python3 -m json.tool | sed -n '1,120p'
+
+
 echo "---- audit visibility ----"
 curl -s "$BASE_URL/audit/visibility" | python3 -m json.tool | sed -n '1,120p'
 

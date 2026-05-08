@@ -73,6 +73,7 @@ import { persistApiResponse } from "./api-output-writer.js";
 import { registerStandardApiErrorHandlers } from "./error-response.js";
 import { buildDemoAuthStatus, requireDemoApiKey } from "./demo-auth.js";
 import { buildAuditVisibilityPackage, getAuditHealth, summarizeLatestAuditLog } from "./audit-read-service.js";
+import { buildApiInventoryPackage, getApiInventoryRoutes } from "./api-inventory-service.js";
 
 const app = express();
 app.use(express.json());
@@ -254,6 +255,7 @@ app.get("/system-summary", (_req, res) => {
       "artifact_audit_digest_endpoint",
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
+      "api_inventory_endpoint",
       "client_validation_matrix_endpoint",
       "client_plugin_contracts_endpoint",
       "client_security_boundary_endpoint",
@@ -366,6 +368,21 @@ const port = Number(process.env.PORT ?? 3001);
 
 
 
+
+
+app.get("/api/inventory", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildApiInventoryPackage()
+  });
+});
+
+app.get("/api/routes", (_req, res) => {
+  res.json({
+    status: "success",
+    routes: getApiInventoryRoutes()
+  });
+});
 
 app.get("/audit/health", (_req, res) => {
   res.json({
