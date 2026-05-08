@@ -1,4 +1,3 @@
-import type { Invoice } from "../domain/schemas.js";
 import { invoices } from "../domain/mock-data.js";
 
 export interface OverdueInvoiceResult {

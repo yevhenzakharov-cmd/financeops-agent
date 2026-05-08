@@ -19,38 +19,34 @@ export function simulateActionsForException(
 
   const baseAmount = 50000; // Demo assumption — later replaced with real amount
 
-  let actionTypes: SimulatedActionType[] = [];
+  const actionTypes: SimulatedActionType[] = (() => {
+    switch (exception.category) {
+      case "overdue_invoice":
+        return [
+          "escalate_collection",
+          "offer_settlement",
+          "write_off_invoice"
+        ];
 
-  switch (exception.category) {
-    case "overdue_invoice":
-      actionTypes = [
-        "escalate_collection",
-        "offer_settlement",
-        "write_off_invoice"
-      ];
-      break;
+      case "underburn":
+        return [
+          "reallocate_budget"
+        ];
 
-    case "underburn":
-      actionTypes = [
-        "reallocate_budget"
-      ];
-      break;
+      case "missing_payment":
+        return [
+          "escalate_collection"
+        ];
 
-    case "missing_payment":
-      actionTypes = [
-        "escalate_collection"
-      ];
-      break;
+      case "orphan_bank":
+        return [
+          "freeze_vendor_payments"
+        ];
 
-    case "orphan_bank":
-      actionTypes = [
-        "freeze_vendor_payments"
-      ];
-      break;
-
-    default:
-      actionTypes = [];
-  }
+      default:
+        return [];
+    }
+  })();
 
   const proposedActions = actionTypes.map((action) =>
     simulateFinancialImpact(action, baseAmount)
