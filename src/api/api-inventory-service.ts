@@ -138,6 +138,18 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/security/http-hardening",
+      group: "security",
+      accessLevel: "public_demo",
+      purpose: "Expose demo-safe HTTP security header and rate-limit configuration for reviewers.",
+      riskNotes: [
+        "Read-only security visibility endpoint.",
+        "Does not expose secret values.",
+        "Production implementations should tune rate limits and security controls in a client-owned environment."
+      ]
+    },
+    {
+      method: "GET",
       path: "/observability/request-summary",
       group: "observability",
       accessLevel: "public_demo",
