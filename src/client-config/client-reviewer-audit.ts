@@ -86,7 +86,7 @@ export function buildClientReviewerAudit(): ClientReviewerAudit {
       "Add a reviewer-facing README section explaining the system architecture in one page.",
       "Add a dashboard route that visualizes readiness, blockers, artifacts, and sales handoff outputs.",
       "Add typed sample input fixtures for invoices, bank transactions, project margin, and vendor payment profiles.",
-      "Add automated tests for readiness scoring and blocked payment behavior.",
+      "Readiness scoring and blocked payment behavior are covered by deterministic regression tests.",
       "Add a lightweight architecture diagram showing deterministic core, AI explanation layer, approval gate, artifact registry, and client handoff outputs."
     ],
     proofEndpoints: [

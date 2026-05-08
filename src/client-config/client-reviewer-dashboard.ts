@@ -151,7 +151,7 @@ export function buildClientReviewerDashboard(): ClientReviewerDashboard {
     nextBestActions: [
       "Add a lightweight architecture diagram to docs.",
       "Add typed sample input fixtures for invoice, bank, margin, and vendor payment profile examples.",
-      "Add minimal deterministic tests for readiness scoring and blocked payment behavior."
+      "Readiness scoring and blocked payment behavior are covered by deterministic regression tests."
     ]
   };
 }
