@@ -1,0 +1,11 @@
+services:
+  financeops-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DEMO_API_KEY: ${DEMO_API_KEY:-local-demo-key}
+    ports:
+      - "3001:3001"
