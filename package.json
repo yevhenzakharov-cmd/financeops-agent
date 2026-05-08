@@ -23,7 +23,8 @@
     "demo:client-sales-handoff": "./scripts/demo-client-sales-handoff.sh",
     "demo:client-reviewer-audit": "./scripts/demo-client-reviewer-audit.sh",
     "demo:client-reviewer-dashboard": "./scripts/demo-client-reviewer-dashboard.sh",
-    "demo:client-sample-input-fixtures": "./scripts/demo-client-sample-input-fixtures.sh"
+    "demo:client-sample-input-fixtures": "./scripts/demo-client-sample-input-fixtures.sh",
+    "demo:client-security-boundary": "./scripts/demo-client-security-boundary.sh"
   },
   "engines": {
     "node": ">=20"

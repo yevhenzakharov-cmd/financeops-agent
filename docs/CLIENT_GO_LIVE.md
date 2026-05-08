@@ -33,3 +33,9 @@ GET /client/reviewer-dashboard
 GET /client/sample-input-fixtures
 
 The sample input fixtures clarify which data inputs can support demo flow and which fields still block production readiness.
+
+## Security Boundary Context
+
+GET /client/security-boundary
+
+Go-live should remain blocked until the security boundary is accepted by the client, especially around production credentials and money movement.

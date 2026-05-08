@@ -989,3 +989,11 @@ The project includes a client sample input fixtures endpoint:
 curl -s http://localhost:3001/client/sample-input-fixtures | python3 -m json.tool
 
 Use it to show the data readiness layer before discussing real client adapters.
+
+## Client Security Boundary
+
+The project includes a client security boundary endpoint:
+
+curl -s http://localhost:3001/client/security-boundary | python3 -m json.tool
+
+Use it to explain why the public demo is safe to review but still blocked for production until client-owned data, credentials, mappings, and approval policy are confirmed.

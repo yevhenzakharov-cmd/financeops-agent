@@ -104,3 +104,9 @@ Returns a compact reviewer-facing dashboard containing the project summary, proo
 GET /client/sample-input-fixtures
 
 Returns typed sample input fixtures for invoice exports, bank transaction exports, project margin data, and vendor payment profiles. The response shows which inputs are ready, which need mapping, and which remain blocked.
+
+## Client Security Boundary
+
+GET /client/security-boundary
+
+Returns the security and production boundary package for mock data usage, client-owned credentials, approval-gated payments, deterministic finance logic, AI explanation boundaries, and audit traceability.

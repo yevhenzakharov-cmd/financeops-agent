@@ -56,7 +56,8 @@ import {
   getClientSalesHandoffPackage,
   buildClientReviewerAudit,
   buildClientReviewerDashboard,
-  buildClientSampleInputFixtures
+  buildClientSampleInputFixtures,
+  buildClientSecurityBoundary
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -246,6 +247,7 @@ app.get("/system-summary", (_req, res) => {
       "artifact_audit_digest_endpoint",
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
+      "client_security_boundary_endpoint",
       "client_sample_input_fixtures_endpoint",
       "client_reviewer_dashboard_endpoint",
       "artifact_registry_version_endpoint",
@@ -1065,6 +1067,14 @@ app.get("/client/sample-input-fixtures", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientSampleInputFixtures()
+  });
+});
+
+
+app.get("/client/security-boundary", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientSecurityBoundary()
   });
 });
 

@@ -18,3 +18,9 @@ The endpoint makes client data requirements visible before adapter work starts. 
 ## Production boundary
 
 These fixtures are mock-shaped examples. Production implementation still requires client-approved samples, field mapping confirmation, approval policy, and client-owned credentials.
+
+## Security Boundary Link
+
+GET /client/security-boundary
+
+The fixture layer should be reviewed together with the security boundary so the client understands that public fixtures are mock-shaped examples, not production data.

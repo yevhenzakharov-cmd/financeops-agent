@@ -45,3 +45,9 @@ GET /client/reviewer-dashboard
 GET /client/sample-input-fixtures
 
 The sample fixture layer supports production handoff by making missing vendor payment data and bank mapping questions explicit.
+
+## Security Boundary Context
+
+GET /client/security-boundary
+
+The security boundary package supports production handoff by making credential ownership, mock data limits, payment approval gating, and audit traceability explicit.

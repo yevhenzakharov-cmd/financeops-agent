@@ -84,3 +84,4 @@ export * from "./client-sales-handoff-package.js";
 export * from "./client-reviewer-audit.js";
 export * from "./client-reviewer-dashboard.js";
 export * from "./client-sample-input-fixtures.js";
+export * from "./client-security-boundary.js";

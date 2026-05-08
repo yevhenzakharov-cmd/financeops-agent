@@ -28,3 +28,9 @@ The dashboard should be shown before deeper endpoint walkthroughs because it giv
 GET /client/sample-input-fixtures
 
 Use this endpoint after the reviewer dashboard to show exactly what sample client data is ready, what needs mapping, and what remains blocked before production.
+
+## Related Security Boundary Endpoint
+
+GET /client/security-boundary
+
+Use this endpoint after the reviewer dashboard to explain the mock data boundary, credential boundary, approval-gated payment workflow, and production deployment boundary.
