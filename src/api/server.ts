@@ -76,8 +76,13 @@ import { buildAuditVisibilityPackage, getAuditHealth, summarizeLatestAuditLog } 
 import { buildApiInventoryPackage, getApiInventoryRoutes } from "./api-inventory-service.js";
 import { buildOpenApiDocument } from "./openapi-service.js";
 import { buildRequestObservabilitySummary, createRequestObservabilityMiddleware, getRecentRequestObservations } from "./request-observability.js";
+import { buildDemoRateLimitMiddleware, buildSecurityHeadersMiddleware, securityStatusHandler } from "./security-middleware.js";
 
 const app = express();
+
+app.disable("x-powered-by");
+app.use(buildSecurityHeadersMiddleware());
+app.use(buildDemoRateLimitMiddleware());
 app.use(express.json());
 app.use(createRequestObservabilityMiddleware());
 
@@ -429,6 +434,8 @@ app.get("/audit/visibility", (_req, res) => {
     result: buildAuditVisibilityPackage()
   });
 });
+
+app.get("/security/http-hardening", securityStatusHandler);
 
 app.get("/security/demo-auth-status", (_req, res) => {
   res.json({
