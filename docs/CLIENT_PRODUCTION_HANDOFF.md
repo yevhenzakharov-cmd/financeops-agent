@@ -51,3 +51,9 @@ The sample fixture layer supports production handoff by making missing vendor pa
 GET /client/security-boundary
 
 The security boundary package supports production handoff by making credential ownership, mock data limits, payment approval gating, and audit traceability explicit.
+
+## Validation Matrix Context
+
+GET /client/validation-matrix
+
+The validation matrix supports production handoff by making pass, warning, and blocked readiness checks explicit.

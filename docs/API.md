@@ -110,3 +110,9 @@ Returns typed sample input fixtures for invoice exports, bank transaction export
 GET /client/security-boundary
 
 Returns the security and production boundary package for mock data usage, client-owned credentials, approval-gated payments, deterministic finance logic, AI explanation boundaries, and audit traceability.
+
+## Client Validation Matrix
+
+GET /client/validation-matrix
+
+Returns reviewer-facing acceptance checks that validate data readiness, mapping status, payment blocking, AI boundaries, security boundaries, audit traceability, and output acceptance.

@@ -57,7 +57,8 @@ import {
   buildClientReviewerAudit,
   buildClientReviewerDashboard,
   buildClientSampleInputFixtures,
-  buildClientSecurityBoundary
+  buildClientSecurityBoundary,
+  buildClientValidationMatrix
 } from "../client-config/index.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
@@ -247,6 +248,7 @@ app.get("/system-summary", (_req, res) => {
       "artifact_audit_digest_endpoint",
       "artifact_table_export_endpoints",
       "artifact_route_catalog_endpoint",
+      "client_validation_matrix_endpoint",
       "client_security_boundary_endpoint",
       "client_sample_input_fixtures_endpoint",
       "client_reviewer_dashboard_endpoint",
@@ -1075,6 +1077,14 @@ app.get("/client/security-boundary", (_req, res) => {
   res.json({
     status: "success",
     result: buildClientSecurityBoundary()
+  });
+});
+
+
+app.get("/client/validation-matrix", (_req, res) => {
+  res.json({
+    status: "success",
+    result: buildClientValidationMatrix()
   });
 });
 

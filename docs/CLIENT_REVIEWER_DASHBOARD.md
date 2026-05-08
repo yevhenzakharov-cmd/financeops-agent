@@ -34,3 +34,9 @@ Use this endpoint after the reviewer dashboard to show exactly what sample clien
 GET /client/security-boundary
 
 Use this endpoint after the reviewer dashboard to explain the mock data boundary, credential boundary, approval-gated payment workflow, and production deployment boundary.
+
+## Related Validation Matrix Endpoint
+
+GET /client/validation-matrix
+
+Use this endpoint after the reviewer dashboard to show explicit pass, warning, and blocked acceptance checks.

@@ -24,3 +24,9 @@ These fixtures are mock-shaped examples. Production implementation still require
 GET /client/security-boundary
 
 The fixture layer should be reviewed together with the security boundary so the client understands that public fixtures are mock-shaped examples, not production data.
+
+## Validation Matrix Link
+
+GET /client/validation-matrix
+
+Use the validation matrix after reviewing sample fixtures to show which sample inputs are ready, which need mapping, and which block production.

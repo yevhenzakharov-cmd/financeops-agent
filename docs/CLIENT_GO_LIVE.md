@@ -39,3 +39,9 @@ The sample input fixtures clarify which data inputs can support demo flow and wh
 GET /client/security-boundary
 
 Go-live should remain blocked until the security boundary is accepted by the client, especially around production credentials and money movement.
+
+## Validation Matrix Context
+
+GET /client/validation-matrix
+
+Go-live should remain blocked while the validation matrix contains blocked payment workflow checks or unresolved client-owned data requirements.

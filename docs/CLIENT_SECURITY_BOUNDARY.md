@@ -21,3 +21,9 @@ This layer makes the project more credible for technical reviewers and buyers be
 ## Production boundary
 
 Production work remains blocked until the client provides approved data samples, confirms field mappings, owns credentials, defines approval policy, and accepts output formats.
+
+## Validation Matrix Link
+
+GET /client/validation-matrix
+
+Use the validation matrix after the security boundary to show which trust and production-readiness checks pass, warn, or block the implementation.
