@@ -125,6 +125,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client security questionnaire package ----"
+curl -s "$BASE_URL/client/security-questionnaire-package" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client security questionnaire package validation ----"
+curl -s "$BASE_URL/client/security-questionnaire-package/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client procurement review package ----"
 curl -s "$BASE_URL/client/procurement-review-package" | python3 -m json.tool | sed -n '1,100p'

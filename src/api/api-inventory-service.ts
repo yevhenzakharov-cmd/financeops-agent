@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/security-questionnaire-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a security questionnaire package covering data handling, auth, authorization, secrets, audit logging, monitoring, AI boundaries, payment boundaries, deployment, and incident response.",
+      riskNotes: [
+        "Read-only security questionnaire endpoint.",
+        "Draft security review support only.",
+        "Does not approve production security, deployment, or autonomous money movement."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/security-questionnaire-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact security questionnaire counts for demo answers, client-required inputs, blocked client-owned controls, reviewer notes, and blocked production claims.",
+      riskNotes: ["Read-only security questionnaire summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/security-questionnaire-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate security questionnaire coverage across data handling, auth, authorization, secrets, audit, monitoring, AI, payment, deployment, and incident response categories.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production security."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/procurement-review-package",
       group: "client",
       accessLevel: "public_demo",

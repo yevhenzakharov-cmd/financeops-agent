@@ -80,6 +80,7 @@ import { buildClientPilotKickoffPackage, summarizeClientPilotKickoffPackage, val
 import { buildClientPilotSowPackage, summarizeClientPilotSowPackage, validateClientPilotSowPackage } from "../client-config/client-pilot-sow-package.js";
 import { buildClientPilotProposalPackage, summarizeClientPilotProposalPackage, validateClientPilotProposalPackage } from "../client-config/client-pilot-proposal-package.js";
 import { buildClientProcurementReviewPackage, summarizeClientProcurementReviewPackage, validateClientProcurementReviewPackage } from "../client-config/client-procurement-review-package.js";
+import { buildClientSecurityQuestionnairePackage, summarizeClientSecurityQuestionnairePackage, validateClientSecurityQuestionnairePackage } from "../client-config/client-security-questionnaire-package.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -241,6 +242,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/security-questionnaire-package", (_req, res) => {
+  const questionnairePackage = buildClientSecurityQuestionnairePackage();
+
+  res.json({
+    status: "success",
+    result: questionnairePackage
+  });
+});
+
+app.get("/client/security-questionnaire-package/summary", (_req, res) => {
+  const questionnairePackage = buildClientSecurityQuestionnairePackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientSecurityQuestionnairePackage(questionnairePackage)
+  });
+});
+
+app.get("/client/security-questionnaire-package/validation", (_req, res) => {
+  const questionnairePackage = buildClientSecurityQuestionnairePackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientSecurityQuestionnairePackage(questionnairePackage)
+  });
+});
 
 app.get("/client/procurement-review-package", (_req, res) => {
   const procurementPackage = buildClientProcurementReviewPackage();
