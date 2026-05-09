@@ -52,7 +52,8 @@
     "ci:watch": "./scripts/watch-latest-ci.sh",
     "demo:client-due-diligence-pack": "./scripts/demo-client-due-diligence-pack.sh",
     "demo:client-control-matrix": "./scripts/demo-client-control-matrix.sh",
-    "demo:client-evidence-binder": "./scripts/demo-client-evidence-binder.sh"
+    "demo:client-evidence-binder": "./scripts/demo-client-evidence-binder.sh",
+    "demo:client-pilot-decision-packet": "./scripts/demo-client-pilot-decision-packet.sh"
   },
   "engines": {
     "node": ">=20"

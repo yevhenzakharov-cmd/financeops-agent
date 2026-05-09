@@ -75,6 +75,7 @@ import { buildClientEnterpriseRedTeamReport, summarizeClientEnterpriseRedTeamRep
 import { buildClientDueDiligencePack, summarizeClientDueDiligencePack, validateClientDueDiligencePack } from "../client-config/client-due-diligence-pack.js";
 import { buildClientControlMatrix, summarizeClientControlMatrix, validateClientControlMatrix } from "../client-config/client-control-matrix.js";
 import { buildClientEvidenceBinder, summarizeClientEvidenceBinder, validateClientEvidenceBinder } from "../client-config/client-evidence-binder.js";
+import { buildClientPilotDecisionPacket, summarizeClientPilotDecisionPacket, validateClientPilotDecisionPacket } from "../client-config/client-pilot-decision-packet.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -231,6 +232,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/pilot-decision-packet", (_req, res) => {
+  const packet = buildClientPilotDecisionPacket();
+
+  res.json({
+    status: "success",
+    result: packet
+  });
+});
+
+app.get("/client/pilot-decision-packet/summary", (_req, res) => {
+  const packet = buildClientPilotDecisionPacket();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientPilotDecisionPacket(packet)
+  });
+});
+
+app.get("/client/pilot-decision-packet/validation", (_req, res) => {
+  const packet = buildClientPilotDecisionPacket();
+
+  res.json({
+    status: "success",
+    validation: validateClientPilotDecisionPacket(packet)
+  });
+});
 
 app.get("/client/evidence-binder", (_req, res) => {
   const binder = buildClientEvidenceBinder();

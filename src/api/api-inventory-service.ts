@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/pilot-decision-packet",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a buyer-facing pilot decision packet with gates for scope, data, security, finance controls, evidence, deployment, and commercial readiness.",
+      riskNotes: [
+        "Read-only pilot decision endpoint.",
+        "Frames pilot readiness without claiming production authorization.",
+        "Production claims remain blocked until client-owned controls exist."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-decision-packet/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact pilot gate counts, readiness score, client answers needed, and blocked production claims.",
+      riskNotes: ["Read-only pilot decision summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-decision-packet/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate pilot decision gate coverage across scope, data, security, finance controls, evidence, deployment, and commercial readiness.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production use."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/evidence-binder",
       group: "client",
       accessLevel: "public_demo",
