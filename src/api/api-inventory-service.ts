@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/production-readiness-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose production readiness gates across data, authentication, authorization, secrets, finance controls, payment controls, accounting controls, audit logging, monitoring, deployment, incident response, and compliance.",
+      riskNotes: [
+        "Read-only production readiness endpoint.",
+        "Draft readiness review support only.",
+        "Does not approve production deployment, autonomous money movement, accounting write-back, or compliance certification."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/production-readiness-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact production readiness counts for gates, client inputs, client-owned blockers, and production blockers.",
+      riskNotes: ["Read-only production readiness summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/production-readiness-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate production readiness gate coverage and ensure payment, accounting, deployment, and compliance remain blocked until client-owned controls exist.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/risk-acceptance-package",
       group: "client",
       accessLevel: "public_demo",

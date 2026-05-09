@@ -60,7 +60,8 @@
     "demo:client-procurement-review-package": "./scripts/demo-client-procurement-review-package.sh",
     "demo:client-security-questionnaire-package": "./scripts/demo-client-security-questionnaire-package.sh",
     "demo:client-compliance-review-package": "./scripts/demo-client-compliance-review-package.sh",
-    "demo:client-risk-acceptance-package": "./scripts/demo-client-risk-acceptance-package.sh"
+    "demo:client-risk-acceptance-package": "./scripts/demo-client-risk-acceptance-package.sh",
+    "demo:client-production-readiness-package": "./scripts/demo-client-production-readiness-package.sh"
   },
   "engines": {
     "node": ">=20"

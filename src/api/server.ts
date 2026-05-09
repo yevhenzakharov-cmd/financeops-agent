@@ -83,6 +83,7 @@ import { buildClientProcurementReviewPackage, summarizeClientProcurementReviewPa
 import { buildClientSecurityQuestionnairePackage, summarizeClientSecurityQuestionnairePackage, validateClientSecurityQuestionnairePackage } from "../client-config/client-security-questionnaire-package.js";
 import { buildClientComplianceReviewPackage, summarizeClientComplianceReviewPackage, validateClientComplianceReviewPackage } from "../client-config/client-compliance-review-package.js";
 import { buildClientRiskAcceptancePackage, summarizeClientRiskAcceptancePackage, validateClientRiskAcceptancePackage } from "../client-config/client-risk-acceptance-package.js";
+import { buildClientProductionReadinessPackage, summarizeClientProductionReadinessPackage, validateClientProductionReadinessPackage } from "../client-config/client-production-readiness-package.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -247,6 +248,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/production-readiness-package", (_req, res) => {
+  const readinessPackage = buildClientProductionReadinessPackage();
+
+  res.json({
+    status: "success",
+    result: readinessPackage
+  });
+});
+
+app.get("/client/production-readiness-package/summary", (_req, res) => {
+  const readinessPackage = buildClientProductionReadinessPackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientProductionReadinessPackage(readinessPackage)
+  });
+});
+
+app.get("/client/production-readiness-package/validation", (_req, res) => {
+  const readinessPackage = buildClientProductionReadinessPackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientProductionReadinessPackage(readinessPackage)
+  });
+});
 
 app.get("/client/risk-acceptance-package", (_req, res) => {
   const riskPackage = buildClientRiskAcceptancePackage();
