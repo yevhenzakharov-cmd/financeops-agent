@@ -43,4 +43,33 @@ jobs:
         run: pnpm run build
 
       - name: Run demo verification
-        run: pnpm run verify:demo
+        run: |
+          pnpm run api > /tmp/financeops-api.log 2>&1 &
+          API_PID=$!
+
+          cleanup() {
+            kill "$API_PID" >/dev/null 2>&1 || true
+          }
+
+          trap cleanup EXIT
+
+          for i in {1..30}; do
+            if curl -fsS http://localhost:3001/health >/dev/null 2>&1; then
+              break
+            fi
+
+            sleep 1
+          done
+
+          if ! curl -fsS http://localhost:3001/health >/dev/null 2>&1; then
+            echo "API failed to start"
+            cat /tmp/financeops-api.log
+            exit 1
+          fi
+
+          pnpm run verify:demo || {
+            echo
+            echo "---- API log ----"
+            cat /tmp/financeops-api.log
+            exit 1
+          }
