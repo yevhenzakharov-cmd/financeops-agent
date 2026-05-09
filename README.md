@@ -42,6 +42,20 @@ The current version is a working public demo with:
 
 This is not a finished enterprise product yet. It is a strong technical foundation and reviewable demo for a future client-specific FinanceOps product.
 
+## Reviewer quick path
+
+If you are reviewing this repository for technical, product, or buyer-readiness reasons, start here:
+
+1. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level overview of the architecture, control boundaries, auditability, and reviewer-facing design.
+2. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - explains how the public demo can become a client-specific FinanceOps implementation.
+3. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
+
+Recommended first local checks:
+
+- pnpm run verify:local
+- pnpm run demo:api-inventory
+
+
 ## What this project is
 
 FinanceOps Agent is a reusable governed automation core for finance operations.
