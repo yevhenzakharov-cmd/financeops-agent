@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/enterprise-sales-brief",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose an enterprise buyer-facing sales brief that turns implementation evidence into honest positioning, buyer signals, demo talk track, objections, and production boundaries.",
+      riskNotes: [
+        "Read-only enterprise sales brief endpoint.",
+        "Does not claim production readiness.",
+        "Blocks production claims until client-owned controls and approvals exist."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/enterprise-sales-brief/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact enterprise sales brief counts for buyer signals, objections, demo steps, and production proof requirements.",
+      riskNotes: ["Read-only enterprise sales brief summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/enterprise-sales-brief/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that the enterprise sales brief includes buyer signals, honest production boundary, deterministic finance signal, and client proof requirements.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate real enterprise production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/delivery-package",
       group: "client",
       accessLevel: "public_demo",

@@ -95,3 +95,4 @@ export * from "./client-implementation-roadmap.js";
 export * from "./client-deployment-profile.js";
 export * from "./client-acceptance-gate.js";
 export * from "./client-delivery-package.js";
+export * from "./client-enterprise-sales-brief.js";

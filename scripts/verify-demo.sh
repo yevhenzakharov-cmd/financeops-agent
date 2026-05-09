@@ -115,6 +115,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client enterprise sales brief ----"
+curl -s "$BASE_URL/client/enterprise-sales-brief" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client enterprise sales brief validation ----"
+curl -s "$BASE_URL/client/enterprise-sales-brief/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client delivery package ----"
 curl -s "$BASE_URL/client/delivery-package" | python3 -m json.tool | sed -n '1,100p'

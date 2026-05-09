@@ -70,6 +70,7 @@ import { buildClientImplementationRoadmap, summarizeClientImplementationRoadmap,
 import { buildClientDeploymentProfile, summarizeClientDeploymentProfile, validateClientDeploymentProfile } from "../client-config/client-deployment-profile.js";
 import { buildClientAcceptanceGate, summarizeClientAcceptanceGate, validateClientAcceptanceGate } from "../client-config/client-acceptance-gate.js";
 import { buildClientDeliveryPackage, summarizeClientDeliveryPackage, validateClientDeliveryPackage } from "../client-config/client-delivery-package.js";
+import { buildClientEnterpriseSalesBrief, summarizeClientEnterpriseSalesBrief, validateClientEnterpriseSalesBrief } from "../client-config/client-enterprise-sales-brief.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -221,6 +222,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/enterprise-sales-brief", (_req, res) => {
+  const brief = buildClientEnterpriseSalesBrief();
+
+  res.json({
+    status: "success",
+    result: brief
+  });
+});
+
+app.get("/client/enterprise-sales-brief/summary", (_req, res) => {
+  const brief = buildClientEnterpriseSalesBrief();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientEnterpriseSalesBrief(brief)
+  });
+});
+
+app.get("/client/enterprise-sales-brief/validation", (_req, res) => {
+  const brief = buildClientEnterpriseSalesBrief();
+
+  res.json({
+    status: "success",
+    validation: validateClientEnterpriseSalesBrief(brief)
+  });
+});
 
 app.get("/client/delivery-package", (_req, res) => {
   const deliveryPackage = buildClientDeliveryPackage();
