@@ -38,7 +38,8 @@
     "demo:request-observability": "./scripts/demo-request-observability.sh",
     "demo:container-build": "./scripts/demo-container-build.sh",
     "test:coverage": "vitest run --coverage",
-    "demo:client-implementation-manifest": "./scripts/demo-client-implementation-manifest.sh"
+    "demo:client-implementation-manifest": "./scripts/demo-client-implementation-manifest.sh",
+    "demo:client-work-order": "./scripts/demo-client-work-order.sh"
   },
   "engines": {
     "node": ">=20"

@@ -63,6 +63,7 @@ import {
   validateClientPluginContractsPackage
 } from "../client-config/index.js";
 import { buildClientImplementationManifest, summarizeClientImplementationManifest, validateClientImplementationManifest } from "../client-config/client-implementation-manifest.js";
+import { buildClientWorkOrder, summarizeClientWorkOrder, validateClientWorkOrder } from "../client-config/client-work-order.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -207,6 +208,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
   });
 });
 
+
+
+app.get("/client/work-order", (_req, res) => {
+  const workOrder = buildClientWorkOrder();
+
+  res.json({
+    status: "success",
+    result: workOrder
+  });
+});
+
+app.get("/client/work-order/summary", (_req, res) => {
+  const workOrder = buildClientWorkOrder();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientWorkOrder(workOrder)
+  });
+});
+
+app.get("/client/work-order/validation", (_req, res) => {
+  const workOrder = buildClientWorkOrder();
+
+  res.json({
+    status: "success",
+    validation: validateClientWorkOrder(workOrder)
+  });
+});
 
 app.get("/client/implementation-manifest", (_req, res) => {
   const manifest = buildClientImplementationManifest();

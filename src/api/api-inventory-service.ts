@@ -209,6 +209,36 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/work-order",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a builder-facing client work order that translates client task, input, output, and approval needs into implementation items.",
+      riskNotes: [
+        "Read-only client work-order endpoint.",
+        "Uses mock client data and demo-safe planning contracts only."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/work-order/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact work-order status, item counts, and blocked/client-action counts.",
+      riskNotes: ["Read-only summary for reviewers and implementation planning."]
+    },
+    {
+      method: "GET",
+      path: "/client/work-order/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that the client work order has required task, input, output, and approval planning fields.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate production credentials or real client data."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/implementation-manifest",
       group: "client",
       accessLevel: "public_demo",
