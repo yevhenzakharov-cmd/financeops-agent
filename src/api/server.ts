@@ -71,6 +71,7 @@ import { buildClientDeploymentProfile, summarizeClientDeploymentProfile, validat
 import { buildClientAcceptanceGate, summarizeClientAcceptanceGate, validateClientAcceptanceGate } from "../client-config/client-acceptance-gate.js";
 import { buildClientDeliveryPackage, summarizeClientDeliveryPackage, validateClientDeliveryPackage } from "../client-config/client-delivery-package.js";
 import { buildClientEnterpriseSalesBrief, summarizeClientEnterpriseSalesBrief, validateClientEnterpriseSalesBrief } from "../client-config/client-enterprise-sales-brief.js";
+import { buildClientEnterpriseRedTeamReport, summarizeClientEnterpriseRedTeamReport, validateClientEnterpriseRedTeamReport } from "../client-config/client-enterprise-red-team.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -223,6 +224,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/enterprise-red-team", (_req, res) => {
+  const report = buildClientEnterpriseRedTeamReport();
+
+  res.json({
+    status: "success",
+    result: report
+  });
+});
+
+app.get("/client/enterprise-red-team/summary", (_req, res) => {
+  const report = buildClientEnterpriseRedTeamReport();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientEnterpriseRedTeamReport(report)
+  });
+});
+
+app.get("/client/enterprise-red-team/validation", (_req, res) => {
+  const report = buildClientEnterpriseRedTeamReport();
+
+  res.json({
+    status: "success",
+    validation: validateClientEnterpriseRedTeamReport(report)
+  });
+});
 
 app.get("/client/enterprise-sales-brief", (_req, res) => {
   const brief = buildClientEnterpriseSalesBrief();

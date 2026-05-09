@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/enterprise-red-team",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a red-team report for enterprise buyer claims, risky assumptions, safe replacement wording, and production blockers.",
+      riskNotes: [
+        "Read-only enterprise red-team endpoint.",
+        "Designed to prevent overclaiming production readiness.",
+        "Does not validate real enterprise compliance certification."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/enterprise-red-team/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact enterprise red-team finding counts by severity and claim boundary.",
+      riskNotes: ["Read-only enterprise red-team summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/enterprise-red-team/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that enterprise red-team findings block production-ready, autonomous money movement, secret handling, and client data overclaims.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate real enterprise production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/enterprise-sales-brief",
       group: "client",
       accessLevel: "public_demo",

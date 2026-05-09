@@ -116,6 +116,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client enterprise red team ----"
+curl -s "$BASE_URL/client/enterprise-red-team" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client enterprise red team validation ----"
+curl -s "$BASE_URL/client/enterprise-red-team/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client enterprise sales brief ----"
 curl -s "$BASE_URL/client/enterprise-sales-brief" | python3 -m json.tool | sed -n '1,100p'
