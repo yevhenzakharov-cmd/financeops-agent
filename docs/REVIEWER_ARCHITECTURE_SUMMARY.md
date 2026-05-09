@@ -1,242 +1,347 @@
-# FinanceOps Agent — Reviewer Architecture Summary
+# Reviewer Architecture Summary
 
-FinanceOps Agent is a governed finance operations agent demo designed to show how an AI-assisted finance system can review structured finance data, surface exceptions, prepare CFO-style outputs, and keep sensitive actions approval-gated.
+This document gives a fast technical review of the FinanceOps Agent repository.
 
-The project is intentionally positioned as a production-aware public demo, not as a production-ready finance system.
+It is written for an AI engineer, full-stack engineer, CFO-style buyer, founder, hiring manager, or technical reviewer who wants to understand what the project proves without reading every source file.
 
-## What the system demonstrates
+## One-line summary
 
-The system models a finance operations workflow where client finance data can be turned into:
-
-- exception queues
-- CFO briefings
-- audit artifacts
-- approval-gated recommendations
-- client readiness reports
-- implementation handoff packages
-- pilot plans
-- production handoff reports
-- go-live decision packages
-- commercial sales material
-- reviewer-facing audit summaries
-
-The key design choice is that finance calculations and readiness logic are deterministic. AI-style explanation is treated as a communication layer, not as the source of financial truth.
-
-## Why this matters
-
-Finance automation is risky if an AI system can invent numbers, trigger payments, or post accounting changes without review.
-
-This project demonstrates a safer pattern:
-
-1. Deterministic logic produces structured outputs.
-2. Artifacts make outputs traceable.
-3. Sensitive actions are blocked or approval-gated.
-4. Client data requirements are made explicit.
-5. Production readiness is scored honestly.
-6. Sales claims are constrained by current evidence.
-
-## Main architecture layers
-
-### Deterministic workflow layer
-
-The deterministic layer models finance operations outputs such as exception queues, execution ledgers, approval queues, payment execution artifacts, and client output artifacts.
-
-### Artifact registry layer
-
-The artifact layer exposes generated outputs through registry-style endpoints so a reviewer can inspect what exists, what is missing, and what can be used as evidence.
-
-Useful endpoints:
-
-- `/artifacts/status`
-- `/artifacts/manifest`
-- `/artifacts/health`
-- `/artifacts/readiness`
-
-### Client implementation layer
-
-The client implementation layer models what would be needed to adapt the system to a real client environment.
-
-It covers:
-
-- input requirements
-- field coverage
-- adapter planning
-- data request packets
-- governance rules
-- deployment checklist
-- readiness status
-
-Useful endpoints:
-
-- `/client/onboarding-questionnaire`
-- `/client/field-coverage`
-- `/client/data-request-packet`
-- `/client/governance-brief`
-- `/client/implementation-readiness`
-- `/client/build-package`
-
-### Acceptance and pilot layer
-
-The acceptance and pilot layer explains what can be safely tested before production.
-
-It covers:
-
-- acceptance criteria
-- scenario tests
-- demo script
-- pilot scope
-- pilot risks
-- pilot success metrics
-
-Useful endpoints:
-
-- `/client/acceptance-criteria`
-- `/client/test-scenarios`
-- `/client/demo-script`
-- `/client/pilot-plan`
-
-### Production handoff and go-live layer
-
-The production handoff layer explains what is still required before a real deployment.
-
-It covers:
-
-- production prerequisites
-- production risks
-- credential boundaries
-- go-live checklist
-- go-live decision
-- launch brief
-
-Useful endpoints:
-
-- `/client/production-handoff-package`
-- `/client/go-live-package`
-- `/client/go-live-decision`
-
-### Commercial and sales layer
-
-The commercial layer turns the technical system into buyer-facing material while avoiding unsafe claims.
-
-It covers:
-
-- value hypothesis
-- ROI model
-- commercial readiness score
-- buyer brief
-- objection handling
-- commercial package
-- sales narrative
-- demo agenda
-- buyer FAQ
-- follow-up email
-
-Useful endpoints:
-
-- `/client/commercial-package`
-- `/client/commercial-summary`
-- `/client/sales-handoff-package`
-
-### Reviewer audit layer
-
-The reviewer audit layer gives a single high-level explanation of what the repo demonstrates.
-
-Useful endpoint:
-
-- `/client/reviewer-audit`
-
-This endpoint is especially useful for technical reviewers, hiring managers, founders, CFOs, and potential clients who want to understand the project quickly.
-
-## What is intentionally demo-only
-
-The public repo does not include:
-
-- real client financial data
-- production bank credentials
-- ERP credentials
-- payment processor credentials
-- payroll system credentials
-- live money movement
-- live accounting posting
-- authenticated production dashboard
-- real client adapter integrations
-
-These exclusions are intentional. The project demonstrates architecture, workflow design, governance, and product thinking without pretending that mock data equals production readiness.
-
-## Safety and governance posture
-
-The system is designed around explicit boundaries:
-
-- payment execution is excluded
-- payment preparation requires missing vendor data and human approval
-- accounting posting requires approval
-- tax/legal advice is blocked
-- production credentials stay client-owned
-- ROI is framed as a discovery estimate, not a verified savings claim
-
-## Why this repo is useful as a portfolio project
-
-This repo demonstrates more than a simple AI wrapper.
-
-It shows:
-
-- TypeScript backend implementation
-- structured API design
-- finance workflow modeling
-- deterministic output generation
-- governance-aware automation design
-- auditability
-- client onboarding logic
-- production-readiness thinking
-- commercial packaging
-- reviewer-facing communication
-
-The project is strongest as a public portfolio demo for showing how an AI agent system can be designed around real business risk, not just prompt-based output generation.
-
-## Suggested reviewer flow
-
-1. Start the API server.
-
-```bash
-npm run api
-```
-
-2. In another terminal tab, run the full verification script.
-
-```bash
-npm run verify:demo
-```
-
-3. Inspect the reviewer audit endpoint.
-
-```bash
-curl -s http://localhost:3001/client/reviewer-audit | python3 -m json.tool
-```
-
-4. Inspect the sales handoff package.
-
-```bash
-curl -s http://localhost:3001/client/sales-handoff-package | python3 -m json.tool
-```
-
-5. Inspect the artifact manifest.
-
-```bash
-curl -s http://localhost:3001/artifacts/manifest | python3 -m json.tool
-```
+FinanceOps Agent is a governed finance automation demo built around a deterministic FinanceOps core, approval gates, auditability, API visibility, client-specific implementation planning, and an AI explanation layer that does not perform financial calculations.
 
 ## Current status
 
-The current project is best described as:
+The project is currently a public technical demo and architecture foundation.
 
-> A production-aware, governed FinanceOps agent demo that shows how finance exceptions, client readiness, approval gates, audit artifacts, go-live planning, and buyer-facing handoff material can be modeled in a structured TypeScript API.
+It is not positioned as a finished enterprise deployment.
 
-It should not be described as a production-ready accounting system until real client data, integrations, credentials, approvals, and deployment controls are implemented in a client-owned environment.
+The current repository demonstrates:
 
-## Reviewer Dashboard Endpoint
+- deterministic finance checks
+- mock finance data processing
+- exception detection
+- risk classification
+- approval-gated recommendations
+- execution ledger output
+- approval queue output
+- audit visibility
+- artifact registry
+- protected action-like API routes
+- public reviewer API routes
+- OpenAPI contract
+- API inventory
+- request observability
+- client implementation planning
+- procurement review package
+- security questionnaire package
+- compliance review package
+- risk acceptance package
+- production readiness package
+- local validation
+- pre-push validation
+- GitHub Actions CI
 
-GET /client/reviewer-dashboard
+## Most important design principle
 
-This endpoint provides a compact reviewer-facing dashboard for explaining the system quickly. It summarizes deterministic FinanceOps core proof, artifact and audit proof, approval-gated action safety, commercial readiness status, production blockers, proof endpoints, and suggested demo order.
+AI does not perform the financial calculations.
 
-This is intentionally a sales and reviewer artifact, not a production claim.
+The system separates:
+
+- deterministic finance logic
+- governance and approval rules
+- audit and evidence artifacts
+- API and reviewer visibility
+- AI-generated explanation
+
+The AI layer can explain already-computed outputs, but it does not calculate financial values, approve payments, send money, post accounting entries, or make final finance decisions.
+
+## High-level architecture
+
+FinanceOps Agent follows this architecture:
+
+    Client inputs or mock demo data
+              |
+              v
+    Input adapter / normalized schema
+              |
+              v
+    Deterministic FinanceOps core
+              |
+              v
+    Exception detection and classification
+              |
+              v
+    Governance, approval gates, and blocked-action rules
+              |
+              v
+    Audit log, execution ledger, approval queue, output artifacts
+              |
+              v
+    API endpoints, reviewer packages, CFO-style explanation
+
+## Main architecture layers
+
+### 1. Input layer
+
+The current demo uses mock data.
+
+The intended client implementation model supports client-specific input adapters after the client provides real data samples, schemas, access patterns, and security requirements.
+
+Possible future input types include:
+
+- CSV exports
+- JSON files
+- Excel files
+- Google Sheets
+- ERP exports
+- accounting system exports
+- bank transaction exports
+- payroll exports
+- payment processor exports
+- internal APIs
+- databases
+- data warehouses
+- webhook events
+- manual uploads
+
+The core system does not need to be rewritten for each input type. Each input source should be normalized into the internal FinanceOps schema.
+
+### 2. Deterministic FinanceOps core
+
+The deterministic core is responsible for the actual finance logic.
+
+Current examples include:
+
+- overdue invoice detection
+- missing payment detection
+- orphan bank transaction detection
+- project margin review
+- budget burn review
+- reconciliation review
+- exception classification
+- recommendation preparation
+- approval requirement detection
+
+This is the part of the system that should be trusted for calculations and rules.
+
+### 3. Governance and approval layer
+
+The governance layer decides what is safe, what needs approval, and what must remain blocked.
+
+Examples:
+
+- pass
+- warning
+- blocked
+- human review required
+- client input required
+- blocked until client-owned controls exist
+- production blocked
+
+This is important because finance workflows can involve sensitive outputs such as payment preparation, accounting drafts, budget decisions, and executive reporting.
+
+### 4. Audit and artifact layer
+
+The project generates and exposes reviewable artifacts.
+
+Current artifacts include:
+
+- execution ledger
+- approval queue
+- payment execution artifact
+- client output artifact
+- audit log
+- artifact manifest
+- artifact readiness checks
+- artifact size map
+- artifact registry version
+
+The goal is to make outputs traceable and reviewable.
+
+### 5. API and reviewer visibility layer
+
+The project exposes API routes for both the demo workflow and reviewer inspection.
+
+Important route groups include:
+
+- health and system summary
+- protected action-like routes
+- demo auth status
+- HTTP hardening status
+- request observability
+- audit visibility
+- artifact registry
+- OpenAPI contract
+- API inventory
+- client implementation packages
+- client security and procurement packages
+- client production readiness packages
+
+The API is designed so a reviewer can inspect capabilities without manually opening every source file.
+
+### 6. AI explanation layer
+
+AI is treated as a communication layer.
+
+AI may be used to:
+
+- summarize deterministic outputs
+- explain exceptions in CFO-style language
+- turn structured findings into readable briefings
+- help reviewers understand the result
+
+AI must not be used to:
+
+- calculate finance numbers
+- approve payments
+- post accounting entries
+- decide final finance actions
+- provide final tax advice
+- provide final legal advice
+- override approval gates
+
+## Current demo workflow
+
+The demo workflow proves this path:
+
+1. Load mock finance data.
+2. Run deterministic finance checks.
+3. Detect exceptions.
+4. Classify risks.
+5. Generate recommendations.
+6. Apply approval and blocked-action rules.
+7. Persist audit and execution artifacts.
+8. Expose outputs through reviewer-friendly API routes.
+9. Generate explanation and briefing outputs from verified data.
+
+## Current enterprise safety boundaries
+
+The public demo intentionally does not include:
+
+- production client data
+- production credentials
+- real payment execution
+- real accounting write-back
+- client-owned authentication
+- client-owned authorization
+- production monitoring
+- production incident response
+- production secret management
+- enterprise compliance certification
+
+These are blocked until a real client provides requirements and owns the production environment.
+
+## Client-specific implementation model
+
+The project is designed to become client-specific.
+
+Each real client implementation may require:
+
+- dedicated website or dashboard
+- client-owned hosting
+- client-owned data access
+- client-owned credentials
+- client-specific input adapters
+- client-specific output adapters
+- client-specific approval rules
+- client-specific roles and permissions
+- client-specific retention requirements
+- client-specific audit requirements
+- client-specific monitoring and incident response
+
+The current repo proves the architecture. A production implementation would adapt the core to the client's actual inputs, outputs, workflow, controls, and deployment environment.
+
+## What a reviewer should notice
+
+A reviewer should notice that this is not a generic chatbot.
+
+The project demonstrates:
+
+- typed TypeScript architecture
+- deterministic finance workflow design
+- separation of finance logic from AI wording
+- approval-gated action design
+- security boundary thinking
+- audit and traceability thinking
+- OpenAPI and route inventory visibility
+- client onboarding and readiness modeling
+- procurement and compliance readiness thinking
+- production-blocked enterprise controls
+- CI, pre-push validation, and repeatable checks
+
+## What this project is strong at
+
+The strongest technical signals are:
+
+- clear finance-control boundary
+- deterministic calculations
+- strict separation between AI and finance logic
+- many reviewer-visible endpoints
+- rich client implementation planning layer
+- production readiness gating
+- audit and artifact persistence
+- protected action-like routes
+- local and GitHub validation workflow
+- enterprise-aware safety posture
+
+## What is intentionally not complete yet
+
+The following are intentionally not finished in the public demo:
+
+- real client input adapters
+- real ERP/accounting integrations
+- real bank integrations
+- real payment rail integration
+- production authentication
+- role-based authorization
+- production dashboard UI
+- production monitoring
+- incident response process
+- production data retention policy
+- compliance certification
+- client-specific deployment
+
+These should be added only after a real client provides requirements and approves the production environment.
+
+## How to review the project quickly
+
+A fast technical review should check:
+
+- README for project positioning
+- this architecture summary for system design
+- API inventory for available routes
+- OpenAPI contract for machine-readable API structure
+- audit visibility endpoints for traceability
+- artifact registry endpoints for generated outputs
+- client implementation packages for enterprise readiness
+- production readiness package for blocked production gates
+- tests and CI for repeatability
+
+## Suggested reviewer commands
+
+Install dependencies:
+
+    pnpm install
+
+Run full local validation:
+
+    pnpm run verify:local
+
+Run the API:
+
+    pnpm run api
+
+Run demo verification:
+
+    pnpm run verify:demo
+
+Watch latest GitHub Actions run:
+
+    pnpm run ci:watch
+
+## Final reviewer takeaway
+
+FinanceOps Agent is best evaluated as a governed finance automation architecture, not as a generic AI chatbot.
+
+The project proves that a finance AI system can be structured around deterministic logic, strict approval gates, audit evidence, client-specific implementation planning, and safe AI explanation on top of verified results.
+
+Production use should remain blocked until a real client provides inputs, outputs, security requirements, approval policies, hosting requirements, monitoring requirements, and compliance signoff.
