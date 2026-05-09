@@ -122,6 +122,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client pilot SOW package ----"
+curl -s "$BASE_URL/client/pilot-sow-package" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client pilot SOW package validation ----"
+curl -s "$BASE_URL/client/pilot-sow-package/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client pilot kickoff package ----"
 curl -s "$BASE_URL/client/pilot-kickoff-package" | python3 -m json.tool | sed -n '1,100p'

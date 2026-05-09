@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/pilot-sow-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a statement-of-work style pilot package with scope, deliverables, responsibilities, exclusions, acceptance criteria, and production boundaries.",
+      riskNotes: [
+        "Read-only pilot SOW endpoint.",
+        "Draft package only; does not create legal terms.",
+        "Keeps production claims and autonomous money movement blocked."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-sow-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact pilot SOW counts for draft sections, required client input, exclusions, acceptance criteria, and blocked production claims.",
+      riskNotes: ["Read-only pilot SOW summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-sow-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate pilot SOW coverage across scope, deliverables, responsibilities, acceptance criteria, exclusions, risk boundaries, and commercial terms.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production use or create a legal agreement."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/pilot-kickoff-package",
       group: "client",
       accessLevel: "public_demo",
