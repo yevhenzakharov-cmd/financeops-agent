@@ -79,6 +79,7 @@ import { buildClientPilotDecisionPacket, summarizeClientPilotDecisionPacket, val
 import { buildClientPilotKickoffPackage, summarizeClientPilotKickoffPackage, validateClientPilotKickoffPackage } from "../client-config/client-pilot-kickoff-package.js";
 import { buildClientPilotSowPackage, summarizeClientPilotSowPackage, validateClientPilotSowPackage } from "../client-config/client-pilot-sow-package.js";
 import { buildClientPilotProposalPackage, summarizeClientPilotProposalPackage, validateClientPilotProposalPackage } from "../client-config/client-pilot-proposal-package.js";
+import { buildClientProcurementReviewPackage, summarizeClientProcurementReviewPackage, validateClientProcurementReviewPackage } from "../client-config/client-procurement-review-package.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -239,6 +240,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/procurement-review-package", (_req, res) => {
+  const procurementPackage = buildClientProcurementReviewPackage();
+
+  res.json({
+    status: "success",
+    result: procurementPackage
+  });
+});
+
+app.get("/client/procurement-review-package/summary", (_req, res) => {
+  const procurementPackage = buildClientProcurementReviewPackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientProcurementReviewPackage(procurementPackage)
+  });
+});
+
+app.get("/client/procurement-review-package/validation", (_req, res) => {
+  const procurementPackage = buildClientProcurementReviewPackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientProcurementReviewPackage(procurementPackage)
+  });
+});
 
 app.get("/client/pilot-proposal-package", (_req, res) => {
   const proposalPackage = buildClientPilotProposalPackage();

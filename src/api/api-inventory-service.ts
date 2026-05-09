@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/procurement-review-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose an enterprise procurement review package covering vendor intake, security, legal, data, finance terms, procurement workflow, pilot boundary, and decision ownership.",
+      riskNotes: [
+        "Read-only procurement review endpoint.",
+        "Draft procurement package only.",
+        "Does not approve production use, autonomous money movement, or legal terms."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/procurement-review-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact procurement readiness counts for sections, vendor checklist, security/legal questions, and blocked production claims.",
+      riskNotes: ["Read-only procurement review summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/procurement-review-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate procurement package coverage across vendor intake, security, legal, data, finance, workflow, pilot boundary, and decision owner categories.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production use or create a legal agreement."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/pilot-proposal-package",
       group: "client",
       accessLevel: "public_demo",
