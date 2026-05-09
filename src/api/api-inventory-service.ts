@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/pilot-kickoff-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a pilot kickoff package with scope, data, access, approval, evidence, runtime, success metrics, and next-step sections.",
+      riskNotes: [
+        "Read-only pilot kickoff endpoint.",
+        "Keeps production boundaries visible.",
+        "Does not authorize production deployment or autonomous money movement."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-kickoff-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact pilot kickoff readiness counts, prework items, agenda items, success criteria, and blocked production boundaries.",
+      riskNotes: ["Read-only pilot kickoff summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-kickoff-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate pilot kickoff coverage across scope, data, access, approval policy, evidence, runtime, success metrics, and next steps.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production use."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/pilot-decision-packet",
       group: "client",
       accessLevel: "public_demo",
