@@ -1,1009 +1,512 @@
+# FinanceOps Agent
 
+A governed FinanceOps automation system for client-specific accounting and finance operations.
 
-FinanceOps Agent
+This repository is a public technical demo showing how a finance operations agent can be built with deterministic business logic, strict approval gates, auditability, API visibility, security boundaries, and client-specific implementation packages.
 
-A governed autonomous FinanceOps agent platform for client-specific finance operations.
+The most important design principle:
 
-## Reviewer Architecture Summary
+AI does not perform the financial calculations.
 
-For a high-level reviewer explanation of the FinanceOps Agent architecture, demo boundaries, proof endpoints, and portfolio value, see:
+The system is built around a deterministic FinanceOps core. The core handles calculations, validation, policy checks, exception detection, risk classification, approval preparation, audit logging, and artifact generation.
 
-- [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md)
+AI is only used as an explanation and briefing layer on top of already-computed results. It can summarize and explain. It does not invent numbers, approve payments, post accounting entries, or make final finance decisions.
 
-This project demonstrates an enterprise-style AI agent architecture that combines deterministic financial controls, risk classification, financial intervention simulation, intelligent strategy selection, risk appetite governance, approval routing, execution ledger persistence, audit tracing, REST API access, API response persistence, safe output enforcement, and AI-generated CFO briefings.
+## Current project status
 
-The core system does not need to be rewritten for every new input source. Each adapter would normalize external data into the internal domain schema.
-In the simplest case, where the company provides a clean CSV/JSON export and a clearly defined target output, adding a new input/output adapter is usually a small implementation task. In a clean-data scenario, this could realistically be completed in roughly 1–2 hours max. More complex integrations may take longer depending on authentication, data quality, field mapping, approval logic, and system access.
+The current version is a working public demo with:
 
-The system currently uses simulated company data for demo purposes. The architecture is intentionally designed so real company inputs can later be connected through adapters, including ERP exports, accounting systems, bank feeds, payroll systems, payment processors, Google Sheets, CSV files, JSON files, data warehouses, or internal APIs.
-A company can provide whichever input type it actually uses, and the system can be adapted to produce whichever output format the company needs based on that data.
+- deterministic FinanceOps logic
+- mock client data
+- protected action-like API routes
+- read-only reviewer endpoints
+- approval workflow
+- audit log generation
+- execution ledger generation
+- approval queue generation
+- payment recommendation artifacts
+- client output artifacts
+- artifact registry
+- OpenAPI contract
+- API inventory
+- request observability
+- security boundary documentation
+- due diligence package
+- control matrix
+- evidence binder
+- procurement review package
+- security questionnaire package
+- local validation checks
+- pre-push verification
+- GitHub Actions CI
 
-Executive Summary
+This is not a finished enterprise product yet. It is a strong technical foundation and reviewable demo for a future client-specific FinanceOps product.
 
-The FinanceOps Agent is not a simple AI wrapper.
+## What this project is
 
-It is a governed autonomous finance-control system where:
+FinanceOps Agent is a reusable governed automation core for finance operations.
 
-* deterministic tools calculate financial truth
-* exception classifiers identify operational risk
-* simulation engines model possible financial interventions
-* strategy selection logic chooses the best action per exception
-* risk appetite configuration controls what is allowed
-* execution modes define the level of autonomy
-* approval workflows route decisions to the right role
-* execution ledgers persist decision history
-* audit logs preserve traceability
-* safe output policies block secret leakage
-* the AI layer generates a CFO-style briefing from validated structured data
+The goal is to build a system that can be adapted to each client’s actual finance process, inputs, outputs, approval policies, and hosting requirements.
 
-The LLM is not the source of truth.
+Instead of building a generic chatbot, the project follows a safer enterprise pattern:
 
-The deterministic finance engine is the source of truth.
+1. load client data through adapters
+2. normalize and validate the data
+3. run deterministic finance checks
+4. classify exceptions
+5. apply governance rules
+6. prepare approval-ready outputs
+7. generate audit evidence
+8. use AI only to explain already-computed results
 
-The AI layer is used for executive interpretation, not uncontrolled financial calculation or blind action execution.
+## What this project demonstrates
 
-Why This Is Not a Simple AI Wrapper
+The current demo demonstrates:
 
-Many AI agent demos follow this pattern:
-raw data
-→ LLM prompt
-→ free-form response
+- overdue invoice detection
+- missing payment detection
+- orphan bank transaction detection
+- reconciliation review
+- project margin review
+- budget burn review
+- exception classification
+- action simulation
+- approval queue generation
+- CFO-style briefing generation
+- audit log generation
+- execution ledger generation
+- payment recommendation artifact generation
+- client output artifact generation
+- protected action-like API routes
+- read-only reviewer API routes
+- demo API key gating
+- route inventory
+- OpenAPI contract generation
+- request observability
+- artifact registry
+- security boundary documentation
+- procurement review support
+- security questionnaire support
+- client implementation planning
+- client readiness checks
+- client deployment profile
+- client acceptance gates
+- client evidence package
+- client pilot proposal package
 
-This project follows a controlled enterprise pattern:
-simulated company inputs
-→ deterministic finance engine
-→ exception classification
-→ intervention simulation
-→ strategy selection
-→ policy governance
-→ approval routing
-→ ledger persistence
-→ audit trace
-→ AI CFO briefing
-→ REST API response
-The AI model is deliberately placed near the end of the pipeline. It receives structured outputs from deterministic tools and produces an executive briefing. The system calculates financial numbers through deterministic TypeScript tools, not through the LLM. The AI layer receives those already-computed results and explains them in CFO-style language.
+## What AI does and does not do
 
-Why This Architecture Matters
+AI can:
 
-Most AI agents directly reason over unstructured data and produce free-form output.
+- explain already-computed results
+- produce CFO-style summaries
+- turn structured exceptions into readable briefings
+- help reviewers understand why something was flagged
+- help prepare business-facing outputs from deterministic data
 
-This system separates responsibilities:
-Deterministic tools calculate financial truth.
-Simulation engines model possible interventions.
-Governance policies decide what is allowed.
-Approval workflows route human review.
-Execution ledgers preserve decision history.
-The AI layer explains the result.
-Audit logs preserve traceability.
+AI does not:
 
-                       ┌────────────────────────────┐
-                       │  Simulated Company Inputs  │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Deterministic Finance Core │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Exception Classification   │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Financial Action Simulator │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Intelligent Strategy Select│
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Risk Appetite Governance   │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Approval Workflow Routing  │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Execution Ledger           │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ AI CFO Briefing Layer      │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ Audit + Safe Persistence   │
-                       └─────────────┬──────────────┘
-                                     │
-                                     ▼
-                       ┌────────────────────────────┐
-                       │ REST API Response          │
-                       └────────────────────────────┘
-     
+- calculate financial results
+- decide whether invoices are overdue
+- decide whether payments are matched
+- decide margin or budget burn values
+- approve payments
+- send money
+- post accounting entries
+- provide final tax advice
+- provide final legal advice
+- bypass human approval gates
 
-Current Capabilities
-* deterministic margin analysis
-* budget burn risk detection
-* overdue receivables detection
-* reconciliation exception detection
-* finance exception classification
-* financial intervention simulation
-* intelligent best-action selection
-* risk appetite governance
-* execution mode control
-* approval queue generation
-* execution ledger persistence
-* audit log persistence
-* API response persistence
-* AI CFO briefing generation
-* payment recommendation generation
-* human-approved mock payment execution
-* payment execution audit record persistence
-* secret-safe output writing
-* REST API access
-* system summary endpoint
-* health check endpoint
+The financial logic is deterministic. AI sits on top as a communication layer.
 
-Simulated Company Data
+## Core architecture
 
-The current project uses simulated company data for demonstration.
+The project is designed around four main layers.
 
-The simulated data represents a client finance operations team with:
+### 1. Input adapters
 
-* projects
-* project budgets
-* invoices
-* payments
-* expenses
-* contractor costs
-* bank transactions
-* reconciliation events
-* finance exceptions
+Input adapters load and normalize client data.
 
-This allows the agent to demonstrate realistic FinanceOps workflows without exposing private company data.
+The current demo uses mock data, but the intended product can be adapted to many client input sources, including:
 
-Source files:
+- CSV exports
+- JSON files
+- Google Sheets
+- accounting system exports
+- ERP exports
+- bank transaction exports
+- payroll exports
+- payment processor exports
+- procurement exports
+- CRM exports
+- internal APIs
+- databases
+- data warehouses
+- webhook events
+- manual uploads
+- scheduled reports
 
-* src/domain/mock-data.ts￼
-* src/domain/schemas.ts￼
+The exact adapter depends on the client’s real workflow and data format.
 
-Real Input Adapter Strategy
+### 2. Deterministic FinanceOps core
 
-The system is designed so real company inputs can be added later through adapters.
+The core performs the actual checks and calculations.
 
-Possible input sources:
+Current examples include:
 
-* NetSuite
-* QuickBooks
-* Xero
-* SAP
-* Oracle
-* Stripe
-* Wise
-* bank transaction feeds
-* payroll systems
-* Google Sheets
-* CSV exports
-* JSON exports
-* Snowflake
-* BigQuery
-* internal finance APIs
-* ERP exports
-* invoice aging reports
-* accounts receivable reports
-* vendor payment files
+- overdue invoice detection
+- budget burn review
+- project margin review
+- reconciliation checks
+- missing payment detection
+- orphan bank transaction detection
+- exception classification
+- risk level assignment
+- recommended action simulation
+- approval requirement detection
 
-The core system does not need to be rewritten for every new input source. Each adapter would normalize external data into the internal domain schema.
+This is the part that should be trusted for logic, not the AI layer.
 
-Custom Output Strategy
+### 3. Governance and approval layer
 
-A company can define whichever output format it needs.
-
-Possible outputs:
-
-* structured JSON API response
-* CFO executive summary
-* margin risk report
-* overdue receivables queue
-* reconciliation exception report
-* approval queue
-* execution ledger
-* audit trace
-* Slack notification payload
-* CSV export
-* dashboard API response
-* PDF report
-* ERP task payload
-* finance operations ticket
-* compliance review package
-
-The current demo returns structured API JSON and persists generated artifacts locally. Future company-specific output adapters could convert the same internal results into whichever output format the company wants.
-
-Deterministic Finance Core
-
-The financial calculations are handled by deterministic TypeScript tools, not by the LLM. This reduces the risk of the AI model inventing financial numbers, because the model receives already-computed financial outputs instead of being asked to calculate them from scratch.
+The governance layer decides what can happen next.
 
 Examples:
 
-* revenue
-* costs
-* gross margin
-* margin percentage
-* budget utilization
-* expected burn percentage
-* burn variance
-* overdue invoice detection
-* reconciliation mismatch detection
-
-This prevents the AI model from inventing financial numbers.
-Implementation files:
-
-* src/tools/project-margin.ts￼
-* src/tools/budget-burn.ts￼
-* src/tools/overdue-invoices.ts￼
-* src/tools/reconciliation.ts￼
-* src/tools/index.ts￼
-
-Exception Classification Layer
-
-Detected issues are converted into structured finance exceptions.
-
-Example categories:
-
-* underburn
-* overdue invoice
-* missing payment
-* orphan bank transaction
-
-Each exception includes:
-
-* ID
-* source
-* reference ID
-* category
-* severity
-* recommended action type
-* human review flag
-
-Implementation file:
-
-* src/tools/exception-classifier.ts￼
-
-⸻
-
-Financial Intervention Simulation
-
-The system simulates potential finance actions before any execution.
-
-Example simulated actions:
-
-* escalate collection
-* offer settlement
-* write off invoice
-* freeze vendor payments
-* reallocate budget
-
-Each simulated action includes:
-
-* projected cash delta
-* projected margin delta
-* projected risk delta
-* explanation
-
-Implementation files:
-
-* src/simulation/financial-impact-engine.ts￼
-* src/simulation/action-simulator.ts￼
-
-Intelligent Strategy Selection
-
-The system scores simulated actions and selects the best strategy per exception.
-
-The scoring logic considers:
-
-* projected cash impact
-* projected margin impact
-* projected risk delta
-
-Instead of returning every possible action as equal, the agent selects the best intervention per exception and then passes that selected strategy into the governance layer.
-
-Strategy selection currently happens inside:
-
-* src/index.ts￼
-* src/api/server.ts￼
-
-Risk Appetite Governance
-
-Execution decisions are controlled by configurable risk appetite settings.
-
-Examples:
-
-* maximum allowed risk increase
-* minimum required cash delta
-* minimum required margin delta
-* whether negative-margin actions are allowed
-
-Environment variables:
-MAX_ALLOWED_RISK_INCREASE=5
-MIN_REQUIRED_CASH_DELTA=0
-MIN_REQUIRED_MARGIN_DELTA=0
-ALLOW_NEGATIVE_MARGIN_ACTIONS=false
-Implementation files:
-
-* src/config/risk-appetite.ts￼
-* src/execution/execution-mode.ts￼
-* src/execution/auto-executor.ts￼
-
-Execution Mode Control
-
-The system supports multiple execution modes:
-simulation
-approval_required
-auto_execute_safe
-full_autonomous
-
-Configured through .env:
-EXECUTION_MODE=simulation
-
-simulation
-
-All selected actions are simulated. No action is treated as executed.
-
-approval_required
-
-All selected actions require approval.
-
-auto_execute_safe
-
-Only actions satisfying configured risk appetite are treated as executable.
-
-full_autonomous
-
-The system allows broader autonomous execution while still applying core policy checks.
-
-For the public demo, simulation mode is the safest and recommended mode.
-
-Implementation file:
-
-* src/execution/execution-mode.ts￼
-
-Approval Workflow
-
-The system creates an approval queue with role routing.
-
-Example roles:
-
-* controller
-* CFO
-* auditor
-
-Approval statuses:
-
-* pending
-* not_required
-* blocked
-
-This simulates how a real finance team could review agent-selected actions before execution.
-
-Implementation file:
-* src/approval/approval-workflow.ts￼
-
-Execution Ledger
-
-Every selected strategy and governance decision is persisted into a structured execution ledger.
-
-The ledger records:
-
-* ledger entry ID
-* timestamp
-* exception ID
-* action type
-* decision
-* reason
-* projected cash delta
-* projected margin delta
-* projected risk delta
-* explanation
-
-Implementation file:
-* src/execution/execution-ledger.ts￼
-
-Audit Logging
-
-The system creates traceable audit logs with execution phases and trace IDs.
-
-Audit events can include:
-
-* system start
-* action generation
-* policy enforcement
-* AI briefing validation
-* artifact persistence
-* system completion
-
-Implementation file:
-* src/security/audit-log.ts￼
-
-Secure Output Policy
-
-All persisted JSON artifacts go through safeWriteJson.
-
-The output policy scans for sensitive secret patterns before writing files.
-
-The current policy blocks patterns such as:
-
-* OpenAI-style API keys
-* private key blocks
-* AWS access keys
-* Google API keys
-
-This helps prevent accidental secret leakage into generated runtime outputs.
-
-Implementation file:
-* src/security/safe-output-policy.ts￼
-
-Additional Security and Validation Files
-
-The project also includes policy/evidence modules from the earlier security layer:
-
-* src/security/action-policy.ts￼
-* src/security/evidence-judge.ts￼
-
-These files demonstrate the broader intended security model around action gating and evidence validation.
-
-AI CFO Briefing Layer
-
-The OpenAI-powered CFO briefing is generated only after deterministic analysis, action simulation, strategy selection, governance decisions, approval routing, and ledger construction are complete.
-
-The AI receives structured system outputs and produces a CFO-style briefing.
-
-The AI output is schema-validated before use.
-
-The AI layer is used for executive interpretation, not financial calculation.
-
-Implementation files:
-* src/agent/cfo-briefing.ts￼
-* src/agent/briefing-schema.ts￼
-
-API Response Shape
-
-The /run-financeops-agent endpoint returns:
-status
-result.mode
-result.project
-result.margin
-result.burn
-result.overdue
-result.reconciliation
-result.exceptions
-result.selectedActions
-result.decisions
-result.ledger
-result.approvalQueue
-result.cfoBriefing
-result.auditTraceId
-
-Persisted Artifacts
-
-Each run can produce structured artifacts:
-outputs/audit/latest-audit-log.json
-outputs/ledger/latest-execution-ledger.json
-outputs/approvals/latest-approval-queue.json
-outputs/api/latest-api-response.json
-These outputs are ignored by git because they are generated runtime artifacts.
-
-Writers:
-
-* src/security/audit-log.ts￼
-* src/execution/execution-ledger.ts￼
-* src/approval/approval-workflow.ts￼
-* src/api/api-output-writer.ts￼
-* src/security/safe-output-policy.ts￼
-
-Key Implementation Files
-
-This section maps the architecture to the actual source files so reviewers can quickly inspect the system.
-
-Domain Layer
-
-* src/domain/schemas.ts￼
-* src/domain/mock-data.ts￼
-
-Purpose:
-
-* defines the core financial domain objects
-* provides simulated company data for the public demo
-* can later be replaced by real input adapters
-
-Deterministic Finance Tools
-
-* src/tools/project-margin.ts￼
-* src/tools/budget-burn.ts￼
-* src/tools/overdue-invoices.ts￼
-* src/tools/reconciliation.ts￼
-* src/tools/exception-classifier.ts￼
-* src/tools/index.ts￼
-
-Purpose:
-
-* computes financial state deterministically
-* detects receivables, burn, margin, and reconciliation issues
-* produces structured exceptions used by the agent pipeline
-
-Simulation Engine
-
-* src/simulation/financial-impact-engine.ts￼
-* src/simulation/action-simulator.ts￼
-
-Purpose:
-
-* simulates possible finance interventions
-* models projected cash delta, margin delta, and risk delta
-* provides candidate actions before governance selection
-
-Governance and Execution Layer
-
-* src/config/risk-appetite.ts￼
-* src/execution/execution-mode.ts￼
-* src/execution/auto-executor.ts￼
-* src/execution/execution-ledger.ts￼
-
-Purpose:
-
-* loads configurable risk appetite values
-* controls execution mode
-* applies governance rules before any action is treated as executable
-* persists selected strategies and governance decisions
-
-Approval Workflow
-
-* src/approval/approval-workflow.ts￼
-
-Purpose:
-
-* builds an approval queue
-* assigns controller, CFO, or auditor roles
-* marks actions as pending, blocked, or not required
-
-AI CFO Briefing Layer
-
-* src/agent/cfo-briefing.ts￼
-* src/agent/briefing-schema.ts￼
-
-Purpose:
-
-* calls the OpenAI API
-* generates a CFO-style structured briefing
-* parses model output
-* validates output against the briefing schema
-
-Security Layer
-
-* src/security/safe-output-policy.ts￼
-* src/security/audit-log.ts￼
-* src/security/action-policy.ts￼
-* src/security/evidence-judge.ts￼
-
-Purpose:
-
-* blocks secret-like patterns before writing outputs
-* persists structured audit logs
-* enforces action policy decisions
-* validates evidence consistency
-
-REST API Layer
-
-* src/api/server.ts￼
-* src/api/api-output-writer.ts￼
-
-Purpose:
-
-* exposes the governed FinanceOps pipeline as an API service
-* provides /health, /system-summary, and /run-financeops-agent
-* persists the latest API response for review
-
-Architecture-to-File Map
-Simulated company inputs
-  → src/domain/mock-data.ts
-
-Domain modeling
-  → src/domain/schemas.ts
-
-Deterministic finance analysis
-  → src/tools/project-margin.ts
-  → src/tools/budget-burn.ts
-  → src/tools/overdue-invoices.ts
-  → src/tools/reconciliation.ts
-
-Exception classification
-  → src/tools/exception-classifier.ts
-
-Financial intervention simulation
-  → src/simulation/financial-impact-engine.ts
-  → src/simulation/action-simulator.ts
-
-Risk appetite governance
-  → src/config/risk-appetite.ts
-  → src/execution/execution-mode.ts
-  → src/execution/auto-executor.ts
-
-Approval workflow
-  → src/approval/approval-workflow.ts
-
-Execution ledger
-  → src/execution/execution-ledger.ts
-
-AI CFO briefing
-  → src/agent/cfo-briefing.ts
-  → src/agent/briefing-schema.ts
-
-Audit and safe persistence
-  → src/security/audit-log.ts
-  → src/security/safe-output-policy.ts
-
-REST API
-  → src/api/server.ts
-  → src/api/api-output-writer.ts
-
-  Security Model
-
-This project demonstrates several security-focused design choices:
-
-* API keys are stored only in .env
-* .env is ignored by git
-* .env.example documents required variables without secrets
-* runtime outputs are ignored by git
-* persisted JSON goes through safe output writing
-* secret patterns are blocked before file writes
-* AI output is schema-validated
-* AI does not directly execute financial actions
-* execution modes control autonomy
-* approval workflow simulates human-in-the-loop governance
-* audit logs preserve traceability
-* deterministic tools remain the source of financial truth
-
-Security Features Implemented
-
-Environment Secret Isolation
-
-Secrets are stored in .env and excluded from git.
-
-Files:
-
-* .gitignore￼
-* .env.example￼
-
-Safe Output Persistence
-
-All generated JSON artifacts pass through safeWriteJson.
-
-The safe writer scans generated output for secret-like patterns before writing to disk.
-
-File:
-
-* src/security/safe-output-policy.ts￼
-
-Schema Validation
-
-The AI CFO briefing is validated against a schema before use.
-
-Files:
-
-* src/agent/briefing-schema.ts￼
-* src/agent/cfo-briefing.ts￼
-
-Strict TypeScript
-
-The project uses strict TypeScript settings.
-
-Files:
-
-* tsconfig.json￼
-* package.json￼
-
-API Boundary
-
-The system exposes a REST API using Express.
-
-File:
-
-* src/api/server.ts￼
-
-Audit Traceability
-
-The system persists audit logs with trace IDs and execution phases.
-
-File:
-
-* src/security/audit-log.ts￼
-
-Governance Before Autonomy
-
-Execution modes and risk appetite controls prevent uncontrolled autonomous execution.
-
-Files:
-
-* src/config/risk-appetite.ts￼
-* src/execution/execution-mode.ts￼
-* src/execution/auto-executor.ts￼
-
-⸻
-
-Current Demo Scope
-
-This is a public simulated-data demo.
-
-It does not connect to real:
-
-* bank accounts
-* ERP systems
-* payroll systems
-* payment processors
-* accounting systems
-
-The current goal is to demonstrate the architecture of a governed autonomous FinanceOps agent.
-
-Real company inputs can later be connected through adapters without changing the core system design.
-
-⸻
-
-Future Production Integrations
-
-Possible real-world input adapters:
-
-* NetSuite
-* QuickBooks
-* Xero
-* Stripe
-* Wise
-* bank transaction feeds
-* payroll systems
-* Snowflake
-* BigQuery
-* Google Sheets
-* internal finance exports
-* CSV upload
-* JSON upload
-
-Possible execution adapters:
-
-* create ERP task
-* open collection escalation
-* route approval to CFO
-* create audit case
-* send Slack notification
-* persist action to internal ledger
-* create finance operations ticket
-* write back to internal dashboard
-
-⸻
-
-Production Hardening Status
-
-The public demo now includes several production-aware controls:
-
-* demo API-key protection for action-like POST routes
-* HTTP security headers
-* demo rate limiting
-* standardized JSON error responses
-* OpenAPI contract export
-* API route inventory
-* audit visibility endpoints
-* request observability endpoints
-* automated regression tests
-* test coverage reporting
-* GitHub Actions CI
-* Docker packaging
-* idempotency support for simulated payment execution
-
-Remaining production work for a real client-owned deployment would include:
-
-* client-owned authentication and authorization
-* client-owned encrypted secret management
-* real client input adapters
-* external database persistence
-* client-owned logging, monitoring, and alerting
-* real approval identity checks
-* tenant isolation
-* background job processing
-* webhook delivery
-* accepted client output formats
-* observability dashboards
-
-⸻
-
-Why This Architecture Matters
-
-Most AI agents directly reason over unstructured data and produce free-form output.
-
-This system separates responsibilities:
-Deterministic tools calculate financial truth.
-Simulation engines model possible interventions.
-Governance policies decide what is allowed.
-Approval workflows route human review.
-Execution ledgers preserve decision history.
-The AI layer explains the result.
-Audit logs preserve traceability.
-
-That separation makes the system safer, more explainable, and aligned to how an enterprise finance agent would need to operate.
-
-
-Demo Payment Approval Flow
-
-The current working demo includes a governed payment approval flow.
-
-This demonstrates the following pattern:
-
-agent recommends payment
-→ human reviews
-→ human approves through API
-→ mock payment adapter simulates execution
-→ payment execution audit record is persisted
-
-This is intentionally not a live banking integration. It is a safe mock execution layer that shows how a real client-specific bank, treasury, payment processor, or custom payout API could later be connected through an adapter.
-
-Current payment-related implementation files:
-
-* src/payments/payment-types.ts
-* src/payments/payment-recommendation-builder.ts
-* src/payments/mock-payment-adapter.ts
-* src/payments/payment-execution-service.ts
-* src/payments/payment-execution-store.ts
-
-Current payment API endpoint:
-
-POST /payments/:paymentRecommendationId/approve-and-send
-
-Current demo command:
-
-npm run demo:payment-flow
-
-Current verification command:
-
-./scripts/verify-demo.sh
-
-Current Working Demo vs Planned Sellable Demo Roadmap
-
-Current Working Demo
-
-The current repository already demonstrates:
-
-* governed FinanceOps agent pipeline
-* deterministic finance calculations
-* exception classification
-* action simulation
-* best-action selection
-* risk appetite governance
-* approval routing
-* execution ledger persistence
-* audit log persistence
-* AI CFO briefing generation
-* REST API access
-* input adapter foundation
-* payment recommendation generation
-* human-approved mock payment execution
-* persisted payment execution audit record
-* demo script for the full payment approval flow
-* verification script for build/typecheck/status review
-
-Planned Sellable Demo Roadmap
-
-The next build priorities for the stronger commercial demo are:
-
-* add a cleaner buyer-facing README section at the top
-* add a richer mock client scenario with more realistic finance data
-* add a small CSV or JSON input adapter example
-* add a clearer output adapter example for client-specific exports
-* expose the payment approval flow in a simple dashboard UI
-* add a review screen where a human can approve or reject recommended actions
-* show the payment execution record in the UI
-* add a more polished executive dashboard summary
-* add a demo walkthrough section for non-technical reviewers
-* add a buyer-facing ROI narrative explaining what finance teams save
-* add a “custom client deployment model” section explaining that each buyer can provide their own inputs and required outputs
-* keep all real integrations client-specific instead of pretending the repo is a finished universal SaaS product
-
-This roadmap is intentionally separated from the current working demo so reviewers can clearly see what already works and what is planned next.
-
-
-## Client-specific implementation contracts
-
-The system is designed to support different accounting departments without rewriting the core engine.
-
-Each client can define:
-
-- one or multiple input sources
-- the finance tasks they want automated
-- the output artifacts they need
-- governance and approval rules
-- escalation roles and risk tolerance
-
-The current mock client contract demonstrates how a client-specific implementation can sit on top of the shared FinanceOps core.
-
-
-
-Before implementation, each client can provide a lightweight requirements intake describing available inputs, desired outputs, priority finance tasks, and approval requirements. The system converts that intake into a plan before final adapter work begins.
-
-
-The client data request packet turns onboarding requirements into a concrete list of files, fields, questions, and desired outputs needed before building a client-specific adapter.
-
-
-
-The client implementation plan turns a client's requested inputs and desired outputs into a concrete adapter/output plan. This makes the system easier to customize for different accounting teams without changing the deterministic FinanceOps core.
-
-
-
-## Client implementation readiness
-
-The project includes a client-readiness layer for custom FinanceOps implementations.
-
-This is not a SaaS onboarding flow. It is a builder-side scoping system that helps determine whether a specific client has provided enough information to build their client-owned agent.
-
-It checks:
-
-- required client input fields,
-- missing data,
-- fields that need mapping,
-- optional enhancements,
-- governance rules,
-- human approval requirements,
-- next implementation steps.
-
-This supports the intended business model: each client provides their own inputs, desired outputs, rules, and infrastructure; the FinanceOps core is adapted to that client-specific scope.
-
-## Client build package
-
-The project now includes a client build package layer.
-
-This combines implementation readiness, adapter planning, output delivery, deployment checklist, and builder next actions into one implementation handoff.
-
-It helps answer:
-
-- what can be reused from the FinanceOps core,
-- what must be customized for the client,
-- what data is missing,
-- what field mappings are required,
-- what outputs the client expects,
-- what approval gates must exist before any finance action is prepared.
-
-## Client acceptance package
-
-The project includes a client acceptance package layer.
-
-This layer packages acceptance criteria, test scenarios, demo script, and build package into a final demo-to-build handoff.
-
-It helps show whether a client implementation is accepted, accepted with warnings, or blocked before deeper client-specific build work starts.
-
-## Reviewer Dashboard
-
-The project exposes a reviewer-friendly dashboard endpoint:
-
-curl -s http://localhost:3001/client/reviewer-dashboard | python3 -m json.tool
-
-Use this endpoint first when demonstrating the repo. It summarizes the deterministic finance core, artifact proof, approval-gated safety model, production blockers, and suggested demo order.
-
-## Client Sample Input Fixtures
-
-The project includes a client sample input fixtures endpoint:
-
-curl -s http://localhost:3001/client/sample-input-fixtures | python3 -m json.tool
-
-Use it to show the data readiness layer before discussing real client adapters.
-
-## Client Security Boundary
-
-The project includes a client security boundary endpoint:
-
-curl -s http://localhost:3001/client/security-boundary | python3 -m json.tool
-
-Use it to explain why the public demo is safe to review but still blocked for production until client-owned data, credentials, mappings, and approval policy are confirmed.
+- pass
+- warning
+- blocked
+- human review required
+- approval required
+- client-owned control required
+- production blocked
+
+This is especially important for finance workflows because payment-like actions, accounting write-backs, and sensitive decisions must remain controlled.
+
+### 4. Output adapters
+
+Output adapters deliver results to the right destination.
+
+The current demo generates local and API-visible artifacts, but the intended product can support many output destinations, including:
+
+- CFO briefing
+- approval queue
+- exception queue
+- audit log
+- execution ledger
+- dashboard UI
+- Slack notifications
+- email summaries
+- JSON API responses
+- CSV exports
+- PDF-style reports
+- accounting draft entries
+- ERP updates
+- payment approval requests
+- payroll review packages
+- procurement review packages
+- client-specific reports
+
+## Client-specific implementation model
+
+The product is intended to be implemented separately for each client.
+
+Each client can have:
+
+- their own dedicated website or dashboard
+- their own deployment
+- their own input adapters
+- their own output adapters
+- their own approval rules
+- their own roles and permissions
+- their own hosting environment
+- their own data retention rules
+- their own audit requirements
+- their own security requirements
+
+The final production implementation is not meant to be one generic shared website for every company.
+
+Instead, each client receives a tailored implementation based on their actual finance operations workflow.
+
+## How a real client implementation would work
+
+Before building a production client version, the client would provide:
+
+- exact input sources
+- sample files or API schemas
+- field definitions
+- output requirements
+- approval workflow requirements
+- user roles
+- hosting requirements
+- security requirements
+- monitoring requirements
+- audit requirements
+- reporting requirements
+- integration targets
+
+Then the codebase would be modified so the FinanceOps core does exactly what that client needs.
+
+For example, one client may need overdue invoice review and Slack alerts. Another client may need bank reconciliation and ERP draft entries. Another may need vendor payment approval preparation and a CFO dashboard.
+
+The core stays reusable. The adapters and policies become client-specific.
+
+## Input and output flexibility
+
+The system is designed to handle nearly any structured finance operations input or output once the client provides the schema, field definitions, access pattern, and security requirements.
+
+This includes:
+
+- different file formats
+- different finance systems
+- different approval flows
+- different output destinations
+- different reviewer roles
+- different audit requirements
+- different hosting requirements
+
+The current repository proves the architecture with mock data and demo-safe artifacts. Production integrations would be added only after client-specific requirements are confirmed.
+
+## Current API and visibility features
+
+The project includes reviewer-friendly endpoints for:
+
+- service health
+- system summary
+- API inventory
+- API route list
+- OpenAPI contract
+- demo auth status
+- HTTP hardening status
+- request observability
+- audit visibility
+- artifact status
+- artifact health
+- artifact manifest
+- artifact size map
+- artifact readiness
+- client contract validation
+- client implementation plan
+- client requirements plan
+- client implementation readiness
+- client package validation routes
+
+The goal is to make the project reviewable without forcing an engineer to inspect every file manually.
+
+## Current client package features
+
+The repository includes multiple client-facing and reviewer-facing packages, including:
+
+- client readiness package
+- client build package
+- client acceptance package
+- client pilot plan
+- client production handoff package
+- client go-live package
+- client commercial package
+- client sales handoff package
+- client reviewer audit package
+- client reviewer dashboard package
+- client sample input fixtures package
+- client security boundary package
+- client validation matrix
+- client plugin contracts
+- client implementation manifest
+- client work order package
+- client repository starter
+- client adapter registry
+- client implementation roadmap
+- client deployment profile
+- client acceptance gate
+- client delivery package
+- client enterprise sales brief
+- client enterprise red-team package
+- client due diligence package
+- client control matrix
+- client evidence binder
+- client pilot decision packet
+- client pilot kickoff package
+- client pilot SOW package
+- client pilot proposal package
+- client procurement review package
+- client security questionnaire package
+
+These packages are meant to show how the project can move from technical demo to client discovery, pilot planning, procurement review, and production-readiness discussion.
+
+## Enterprise safety boundaries
+
+The current public demo intentionally does not include:
+
+- production client data
+- production credentials
+- real payment execution
+- real accounting write-back
+- client-owned authentication
+- client-owned authorization
+- production secret management
+- production monitoring
+- production incident response
+- production deployment approval
+- enterprise compliance certification
+
+Those are blocked until a real client provides requirements and owns the production environment.
+
+## Why this matters
+
+Enterprise finance teams do not need an AI system that guesses.
+
+They need:
+
+- deterministic calculations
+- explainable outputs
+- audit logs
+- approval gates
+- blocked risky actions
+- traceable artifacts
+- clear security boundaries
+- client-owned credentials
+- client-owned data
+- client-owned hosting
+- client-specific integrations
+- reviewer-friendly evidence
+
+This repository is built to demonstrate those patterns.
+
+## Future roadmap
+
+### Phase 1: Technical review and demo polish
+
+- strengthen README
+- keep CI green
+- keep local validation simple
+- improve reviewer flow
+- add clearer architecture explanation
+- add more sample API output examples
+- improve test coverage for lower-covered files
+- clean up naming where useful
+
+### Phase 2: Client discovery
+
+- collect real client input examples
+- collect required output formats
+- define first workflow
+- define manual baseline
+- define approval policies
+- define user roles
+- define hosting requirements
+- define security requirements
+- define monitoring requirements
+- define success criteria
+
+### Phase 3: Client-specific adapter build
+
+- build input adapters
+- build output adapters
+- map client fields into the FinanceOps schema
+- configure client-specific workflow checks
+- configure client-specific approval rules
+- configure client-specific output artifacts
+- test against safe client sample data
+
+### Phase 4: Pilot deployment
+
+- deploy a client-specific website or dashboard
+- use client-approved hosting
+- keep private data in client-owned systems
+- keep secrets in client-owned secret management
+- run in approval-required mode
+- generate audit artifacts
+- review results with finance and technical stakeholders
+
+### Phase 5: Production hardening
+
+- client-owned authentication
+- role-based authorization
+- production logging
+- production monitoring
+- alerting
+- incident response
+- secure secret management
+- environment separation
+- data retention policy
+- disaster recovery planning
+- compliance review
+- production deployment checklist
+
+### Phase 6: Expanded automation
+
+Potential future workflows include:
+
+- accounts receivable review
+- accounts payable review
+- vendor payment approval
+- bank reconciliation
+- month-end close support
+- revenue recognition support
+- payroll review
+- procurement review
+- project profitability monitoring
+- cashflow monitoring
+- multi-entity reporting
+- multi-currency reporting
+- CFO dashboard
+- Slack and email reporting
+- ERP integrations
+- accounting draft write-back
+- payment processor approval flows
+- custom client reporting
+
+## How to run locally
+
+Install dependencies:
+
+- pnpm install
+
+Run full local verification:
+
+- pnpm run verify:local
+
+Run the API server:
+
+- pnpm run api
+
+Run demo verification:
+
+- pnpm run verify:demo
+
+Watch the latest GitHub Actions run after pushing:
+
+- pnpm run ci:watch
+
+## Current validation approach
+
+The project currently uses:
+
+- pnpm run lint:strict
+- pnpm run typecheck
+- pnpm run test
+- pnpm run test:coverage
+- pnpm run build
+- pnpm run verify:demo
+- pre-push verification
+- GitHub Actions CI
+- CI watcher for the exact pushed commit
+
+This helps prevent broken commits from being pushed unnoticed.
+
+## Reviewer note
+
+This project should be reviewed as a public technical demo and architecture foundation, not as a finished enterprise deployment.
+
+The strongest parts of the project are:
+
+- deterministic finance logic
+- governance boundaries
+- approval gates
+- auditability
+- API visibility
+- client-specific implementation planning
+- procurement and security review support
+- clear separation between finance logic and AI explanation
+
+The intended final product is a client-specific implementation where the core is adapted to each client’s inputs, outputs, workflows, controls, and hosting environment.
