@@ -107,6 +107,15 @@ echo ""
 echo "---- artifact registry version ----"
 curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool || true
 
+
+echo
+echo "---- client implementation manifest ----"
+curl -s "$BASE_URL/client/implementation-manifest" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client implementation manifest validation ----"
+curl -s "$BASE_URL/client/implementation-manifest/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo ""
 echo "---- recent commits ----"
 git log --oneline -12

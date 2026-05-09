@@ -87,3 +87,4 @@ export * from "./client-sample-input-fixtures.js";
 export * from "./client-security-boundary.js";
 export * from "./client-validation-matrix.js";
 export * from "./client-plugin-contracts.js";
+export * from "./client-implementation-manifest.js";

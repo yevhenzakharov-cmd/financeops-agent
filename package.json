@@ -37,7 +37,8 @@
     "demo:openapi-contract": "./scripts/demo-openapi-contract.sh",
     "demo:request-observability": "./scripts/demo-request-observability.sh",
     "demo:container-build": "./scripts/demo-container-build.sh",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "demo:client-implementation-manifest": "./scripts/demo-client-implementation-manifest.sh"
   },
   "engines": {
     "node": ">=20"

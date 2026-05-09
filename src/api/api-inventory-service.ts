@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/implementation-manifest",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose the clone-per-client implementation manifest for configuring client-specific inputs, outputs, workflows, and approval boundaries.",
+      riskNotes: [
+        "Read-only client implementation planning endpoint.",
+        "Uses mock data and demo-safe contracts only.",
+        "Production implementation must be configured in a client-owned environment."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/implementation-manifest/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact manifest counts, readiness status, and missing client items.",
+      riskNotes: ["Read-only summary for reviewers and builders."]
+    },
+    {
+      method: "GET",
+      path: "/client/implementation-manifest/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate the implementation manifest boundary before adapting the repo for a client.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate production credentials or real client data."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/*",
       group: "client",
       accessLevel: "public_demo",

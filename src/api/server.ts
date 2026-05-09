@@ -62,6 +62,7 @@ import {
   buildClientPluginContractsPackage,
   validateClientPluginContractsPackage
 } from "../client-config/index.js";
+import { buildClientImplementationManifest, summarizeClientImplementationManifest, validateClientImplementationManifest } from "../client-config/client-implementation-manifest.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -206,6 +207,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
   });
 });
 
+
+app.get("/client/implementation-manifest", (_req, res) => {
+  const manifest = buildClientImplementationManifest();
+
+  res.json({
+    status: "success",
+    result: manifest
+  });
+});
+
+app.get("/client/implementation-manifest/summary", (_req, res) => {
+  const manifest = buildClientImplementationManifest();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientImplementationManifest(manifest)
+  });
+});
+
+app.get("/client/implementation-manifest/validation", (_req, res) => {
+  const manifest = buildClientImplementationManifest();
+
+  res.json({
+    status: "success",
+    validation: validateClientImplementationManifest(manifest)
+  });
+});
+
 app.get("/health", (_req, res) => {
   res.json({
     status: "ok",
@@ -285,7 +314,8 @@ app.get("/system-summary", (_req, res) => {
       "client_data_request_packet_endpoint",
       "client_field_coverage_endpoint",
       "client_governance_brief_endpoint",
-      "client_implementation_readiness_endpoint"
+      "client_implementation_readiness_endpoint",
+      "client_implementation_manifest_endpoint"
     ],
     executionMode: getExecutionMode()
   });
