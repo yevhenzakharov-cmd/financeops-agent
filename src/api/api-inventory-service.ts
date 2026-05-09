@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/control-matrix",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose enterprise control matrix mapping finance risks to demo evidence, owners, production requirements, and reviewer questions.",
+      riskNotes: [
+        "Read-only control matrix endpoint.",
+        "Production controls are visible but not claimed as configured.",
+        "Sensitive controls remain client-owned."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/control-matrix/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact control counts by demo-ready, client-configuration-required, and client-owned-blocked status.",
+      riskNotes: ["Read-only control matrix summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/control-matrix/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate coverage across data, auth, secrets, payments, accounting, audit, monitoring, and AI-boundary controls.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not certify production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/due-diligence-pack",
       group: "client",
       accessLevel: "public_demo",

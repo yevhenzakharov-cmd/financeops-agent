@@ -73,6 +73,7 @@ import { buildClientDeliveryPackage, summarizeClientDeliveryPackage, validateCli
 import { buildClientEnterpriseSalesBrief, summarizeClientEnterpriseSalesBrief, validateClientEnterpriseSalesBrief } from "../client-config/client-enterprise-sales-brief.js";
 import { buildClientEnterpriseRedTeamReport, summarizeClientEnterpriseRedTeamReport, validateClientEnterpriseRedTeamReport } from "../client-config/client-enterprise-red-team.js";
 import { buildClientDueDiligencePack, summarizeClientDueDiligencePack, validateClientDueDiligencePack } from "../client-config/client-due-diligence-pack.js";
+import { buildClientControlMatrix, summarizeClientControlMatrix, validateClientControlMatrix } from "../client-config/client-control-matrix.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -227,6 +228,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/control-matrix", (_req, res) => {
+  const matrix = buildClientControlMatrix();
+
+  res.json({
+    status: "success",
+    result: matrix
+  });
+});
+
+app.get("/client/control-matrix/summary", (_req, res) => {
+  const matrix = buildClientControlMatrix();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientControlMatrix(matrix)
+  });
+});
+
+app.get("/client/control-matrix/validation", (_req, res) => {
+  const matrix = buildClientControlMatrix();
+
+  res.json({
+    status: "success",
+    validation: validateClientControlMatrix(matrix)
+  });
+});
 
 app.get("/client/due-diligence-pack", (_req, res) => {
   const pack = buildClientDueDiligencePack();

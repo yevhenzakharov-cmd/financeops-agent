@@ -118,6 +118,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client control matrix ----"
+curl -s "$BASE_URL/client/control-matrix" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client control matrix validation ----"
+curl -s "$BASE_URL/client/control-matrix/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client due diligence pack ----"
 curl -s "$BASE_URL/client/due-diligence-pack" | python3 -m json.tool | sed -n '1,100p'
