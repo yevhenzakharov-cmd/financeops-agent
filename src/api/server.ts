@@ -82,6 +82,7 @@ import { buildClientPilotProposalPackage, summarizeClientPilotProposalPackage, v
 import { buildClientProcurementReviewPackage, summarizeClientProcurementReviewPackage, validateClientProcurementReviewPackage } from "../client-config/client-procurement-review-package.js";
 import { buildClientSecurityQuestionnairePackage, summarizeClientSecurityQuestionnairePackage, validateClientSecurityQuestionnairePackage } from "../client-config/client-security-questionnaire-package.js";
 import { buildClientComplianceReviewPackage, summarizeClientComplianceReviewPackage, validateClientComplianceReviewPackage } from "../client-config/client-compliance-review-package.js";
+import { buildClientRiskAcceptancePackage, summarizeClientRiskAcceptancePackage, validateClientRiskAcceptancePackage } from "../client-config/client-risk-acceptance-package.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -245,6 +246,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/risk-acceptance-package", (_req, res) => {
+  const riskPackage = buildClientRiskAcceptancePackage();
+
+  res.json({
+    status: "success",
+    result: riskPackage
+  });
+});
+
+app.get("/client/risk-acceptance-package/summary", (_req, res) => {
+  const riskPackage = buildClientRiskAcceptancePackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientRiskAcceptancePackage(riskPackage)
+  });
+});
+
+app.get("/client/risk-acceptance-package/validation", (_req, res) => {
+  const riskPackage = buildClientRiskAcceptancePackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientRiskAcceptancePackage(riskPackage)
+  });
+});
 
 app.get("/client/compliance-review-package", (_req, res) => {
   const compliancePackage = buildClientComplianceReviewPackage();

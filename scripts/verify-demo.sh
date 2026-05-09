@@ -127,6 +127,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client risk acceptance package ----"
+curl -s "$BASE_URL/client/risk-acceptance-package" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client risk acceptance package validation ----"
+curl -s "$BASE_URL/client/risk-acceptance-package/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client compliance review package ----"
 curl -s "$BASE_URL/client/compliance-review-package" | python3 -m json.tool | sed -n '1,100p'

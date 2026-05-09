@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/risk-acceptance-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a risk acceptance package that classifies demo, pilot, client-input-required, and production-blocked risks across data, security, payments, accounting, AI governance, auditability, deployment, compliance, procurement, and operations.",
+      riskNotes: [
+        "Read-only risk acceptance endpoint.",
+        "Draft risk review support only.",
+        "Does not approve production use, autonomous money movement, accounting write-back, compliance certification, or deployment."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/risk-acceptance-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact risk acceptance counts for demo-accepted, pilot-accepted-with-controls, client-input-required, and production-blocked risks.",
+      riskNotes: ["Read-only risk acceptance summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/risk-acceptance-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate risk acceptance coverage across data, security, payments, accounting, AI governance, auditability, deployment, compliance, procurement, and operations categories.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production risk acceptance."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/compliance-review-package",
       group: "client",
       accessLevel: "public_demo",
