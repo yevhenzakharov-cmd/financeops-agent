@@ -65,6 +65,7 @@ import {
 import { buildClientImplementationManifest, summarizeClientImplementationManifest, validateClientImplementationManifest } from "../client-config/client-implementation-manifest.js";
 import { buildClientWorkOrder, summarizeClientWorkOrder, validateClientWorkOrder } from "../client-config/client-work-order.js";
 import { buildClientRepoStarterPackage, summarizeClientRepoStarterPackage, validateClientRepoStarterPackage } from "../client-config/client-repo-starter.js";
+import { buildClientAdapterRegistry, summarizeClientAdapterRegistry, validateClientAdapterRegistry } from "../client-config/client-adapter-registry.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -211,6 +212,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/adapter-registry", (_req, res) => {
+  const registry = buildClientAdapterRegistry();
+
+  res.json({
+    status: "success",
+    result: registry
+  });
+});
+
+app.get("/client/adapter-registry/summary", (_req, res) => {
+  const registry = buildClientAdapterRegistry();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientAdapterRegistry(registry)
+  });
+});
+
+app.get("/client/adapter-registry/validation", (_req, res) => {
+  const registry = buildClientAdapterRegistry();
+
+  res.json({
+    status: "success",
+    validation: validateClientAdapterRegistry(registry)
+  });
+});
 
 app.get("/client/repo-starter", (_req, res) => {
   const starterPackage = buildClientRepoStarterPackage();

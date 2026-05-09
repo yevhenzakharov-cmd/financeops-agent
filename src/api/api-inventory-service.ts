@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/adapter-registry",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose input, output, approval, and audit adapters needed for client-specific FinanceOps implementations.",
+      riskNotes: [
+        "Read-only adapter registry endpoint.",
+        "Uses demo-safe planning metadata only.",
+        "Production adapters must be configured in a client-owned environment."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/adapter-registry/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact adapter counts by type and readiness status.",
+      riskNotes: ["Read-only summary for implementation planning."]
+    },
+    {
+      method: "GET",
+      path: "/client/adapter-registry/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that required input, output, approval, audit, and payment-boundary adapter rules exist.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate production credentials or real client integrations."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/repo-starter",
       group: "client",
       accessLevel: "public_demo",
