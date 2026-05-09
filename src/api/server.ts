@@ -74,6 +74,7 @@ import { buildClientEnterpriseSalesBrief, summarizeClientEnterpriseSalesBrief, v
 import { buildClientEnterpriseRedTeamReport, summarizeClientEnterpriseRedTeamReport, validateClientEnterpriseRedTeamReport } from "../client-config/client-enterprise-red-team.js";
 import { buildClientDueDiligencePack, summarizeClientDueDiligencePack, validateClientDueDiligencePack } from "../client-config/client-due-diligence-pack.js";
 import { buildClientControlMatrix, summarizeClientControlMatrix, validateClientControlMatrix } from "../client-config/client-control-matrix.js";
+import { buildClientEvidenceBinder, summarizeClientEvidenceBinder, validateClientEvidenceBinder } from "../client-config/client-evidence-binder.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -229,6 +230,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/evidence-binder", (_req, res) => {
+  const binder = buildClientEvidenceBinder();
+
+  res.json({
+    status: "success",
+    result: binder
+  });
+});
+
+app.get("/client/evidence-binder/summary", (_req, res) => {
+  const binder = buildClientEvidenceBinder();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientEvidenceBinder(binder)
+  });
+});
+
+app.get("/client/evidence-binder/validation", (_req, res) => {
+  const binder = buildClientEvidenceBinder();
+
+  res.json({
+    status: "success",
+    validation: validateClientEvidenceBinder(binder)
+  });
+});
 
 app.get("/client/control-matrix", (_req, res) => {
   const matrix = buildClientControlMatrix();

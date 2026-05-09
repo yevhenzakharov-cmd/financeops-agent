@@ -119,6 +119,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client evidence binder ----"
+curl -s "$BASE_URL/client/evidence-binder" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client evidence binder validation ----"
+curl -s "$BASE_URL/client/evidence-binder/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client control matrix ----"
 curl -s "$BASE_URL/client/control-matrix" | python3 -m json.tool | sed -n '1,100p'

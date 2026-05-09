@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/evidence-binder",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose reviewer-facing evidence across architecture, controls, auditability, finance logic, delivery, and production-readiness boundaries.",
+      riskNotes: [
+        "Read-only evidence binder endpoint.",
+        "Packages demo evidence without claiming production authorization.",
+        "Production evidence remains client-owned."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/evidence-binder/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact evidence counts by demo-ready, client-review-required, and production-blocked status.",
+      riskNotes: ["Read-only evidence binder summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/evidence-binder/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate evidence coverage across architecture, controls, audit, security, finance, delivery, and production boundary categories.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not certify enterprise production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/control-matrix",
       group: "client",
       accessLevel: "public_demo",

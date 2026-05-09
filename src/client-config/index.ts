@@ -99,3 +99,4 @@ export * from "./client-enterprise-sales-brief.js";
 export * from "./client-enterprise-red-team.js";
 export * from "./client-due-diligence-pack.js";
 export * from "./client-control-matrix.js";
+export * from "./client-evidence-binder.js";
