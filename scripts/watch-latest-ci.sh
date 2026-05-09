@@ -1,10 +1,33 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RUN_ID="$(gh run list --workflow CI --limit 1 --json databaseId --jq '.[0].databaseId')"
+WORKFLOW="${WORKFLOW:-CI}"
+HEAD_SHA="$(git rev-parse HEAD)"
 
-if [ -z "$RUN_ID" ] || [ "$RUN_ID" = "null" ]; then
-  echo "No CI run found."
+echo "Waiting for CI run for commit: $HEAD_SHA"
+
+RUN_ID=""
+
+for i in {1..30}; do
+  RUN_ID="$(gh run list \
+    --workflow "$WORKFLOW" \
+    --commit "$HEAD_SHA" \
+    --limit 1 \
+    --json databaseId \
+    --jq '.[0].databaseId // empty')"
+
+  if [ -n "$RUN_ID" ]; then
+    break
+  fi
+
+  sleep 2
+done
+
+if [ -z "$RUN_ID" ]; then
+  echo "No CI run found yet for commit: $HEAD_SHA"
+  echo
+  echo "Recent CI runs:"
+  gh run list --workflow "$WORKFLOW" --limit 5
   exit 1
 fi
 
