@@ -866,6 +866,7 @@ app.get("/system-summary", (_req, res) => {
       "financial_intervention_simulation",
       "intelligent_strategy_selection",
       "risk_appetite_governance",
+      "accounting_task_control_framework",
       "approval_workflow_routing",
       "execution_ledger_persistence",
       "audit_log_persistence",
