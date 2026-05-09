@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/implementation-roadmap",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a phased roadmap for turning a client work order, adapter registry, and repo starter package into a client-specific implementation.",
+      riskNotes: [
+        "Read-only roadmap endpoint.",
+        "Uses demo-safe planning metadata only.",
+        "Production rollout remains blocked until client-owned inputs, credentials, and approval boundaries exist."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/implementation-roadmap/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact roadmap counts by phase status, critical path, and non-negotiable controls.",
+      riskNotes: ["Read-only roadmap summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/implementation-roadmap/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that roadmap phases include discovery, safe sample data, production boundary, credential controls, and human approval controls.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate production deployment or client-owned credentials."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/adapter-registry",
       group: "client",
       accessLevel: "public_demo",

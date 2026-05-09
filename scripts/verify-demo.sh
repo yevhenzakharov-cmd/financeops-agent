@@ -111,6 +111,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client implementation roadmap ----"
+curl -s "$BASE_URL/client/implementation-roadmap" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client implementation roadmap validation ----"
+curl -s "$BASE_URL/client/implementation-roadmap/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client adapter registry ----"
 curl -s "$BASE_URL/client/adapter-registry" | python3 -m json.tool | sed -n '1,100p'

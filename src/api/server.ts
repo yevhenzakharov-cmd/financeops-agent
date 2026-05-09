@@ -66,6 +66,7 @@ import { buildClientImplementationManifest, summarizeClientImplementationManifes
 import { buildClientWorkOrder, summarizeClientWorkOrder, validateClientWorkOrder } from "../client-config/client-work-order.js";
 import { buildClientRepoStarterPackage, summarizeClientRepoStarterPackage, validateClientRepoStarterPackage } from "../client-config/client-repo-starter.js";
 import { buildClientAdapterRegistry, summarizeClientAdapterRegistry, validateClientAdapterRegistry } from "../client-config/client-adapter-registry.js";
+import { buildClientImplementationRoadmap, summarizeClientImplementationRoadmap, validateClientImplementationRoadmap } from "../client-config/client-implementation-roadmap.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -213,6 +214,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/implementation-roadmap", (_req, res) => {
+  const roadmap = buildClientImplementationRoadmap();
+
+  res.json({
+    status: "success",
+    result: roadmap
+  });
+});
+
+app.get("/client/implementation-roadmap/summary", (_req, res) => {
+  const roadmap = buildClientImplementationRoadmap();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientImplementationRoadmap(roadmap)
+  });
+});
+
+app.get("/client/implementation-roadmap/validation", (_req, res) => {
+  const roadmap = buildClientImplementationRoadmap();
+
+  res.json({
+    status: "success",
+    validation: validateClientImplementationRoadmap(roadmap)
+  });
+});
 
 app.get("/client/adapter-registry", (_req, res) => {
   const registry = buildClientAdapterRegistry();
