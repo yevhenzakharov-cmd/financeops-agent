@@ -72,6 +72,7 @@ import { buildClientAcceptanceGate, summarizeClientAcceptanceGate, validateClien
 import { buildClientDeliveryPackage, summarizeClientDeliveryPackage, validateClientDeliveryPackage } from "../client-config/client-delivery-package.js";
 import { buildClientEnterpriseSalesBrief, summarizeClientEnterpriseSalesBrief, validateClientEnterpriseSalesBrief } from "../client-config/client-enterprise-sales-brief.js";
 import { buildClientEnterpriseRedTeamReport, summarizeClientEnterpriseRedTeamReport, validateClientEnterpriseRedTeamReport } from "../client-config/client-enterprise-red-team.js";
+import { buildClientDueDiligencePack, summarizeClientDueDiligencePack, validateClientDueDiligencePack } from "../client-config/client-due-diligence-pack.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -225,6 +226,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/due-diligence-pack", (_req, res) => {
+  const pack = buildClientDueDiligencePack();
+
+  res.json({
+    status: "success",
+    result: pack
+  });
+});
+
+app.get("/client/due-diligence-pack/summary", (_req, res) => {
+  const pack = buildClientDueDiligencePack();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientDueDiligencePack(pack)
+  });
+});
+
+app.get("/client/due-diligence-pack/validation", (_req, res) => {
+  const pack = buildClientDueDiligencePack();
+
+  res.json({
+    status: "success",
+    validation: validateClientDueDiligencePack(pack)
+  });
+});
 
 app.get("/client/enterprise-red-team", (_req, res) => {
   const report = buildClientEnterpriseRedTeamReport();

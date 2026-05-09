@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/due-diligence-pack",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose enterprise due diligence questions, demo evidence, production requirements, and blocked claims for client-facing review.",
+      riskNotes: [
+        "Read-only due diligence endpoint.",
+        "Designed to support enterprise review without claiming production readiness.",
+        "Does not expose private client records or secrets."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/due-diligence-pack/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact due diligence item counts, blocked items, required answers, and production claim boundaries.",
+      riskNotes: ["Read-only due diligence summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/due-diligence-pack/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate due diligence coverage across data, security, controls, finance, audit, and deployment review areas.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not certify enterprise production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/enterprise-red-team",
       group: "client",
       accessLevel: "public_demo",
