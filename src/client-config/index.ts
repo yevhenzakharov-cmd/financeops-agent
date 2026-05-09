@@ -5,7 +5,7 @@ export type { ClientOutputContract, ClientOutputType } from "./client-output-con
 export type { ClientProfile, ClientIndustry, AccountingDepartmentSize } from "./client-profile.js";
 export type { ClientTaskContract, ClientFinanceTask } from "./client-task-contract.js";
 
-export { mockGameStudioClient } from "./mock-game-studio-client.js";
+export { mockClientContract } from "./mock-client-contract.js";
 export { summarizeClientImplementationContract } from "./client-contract-summary.js";
 export { validateClientImplementationContract } from "./client-contract-validator.js";
 
@@ -18,7 +18,7 @@ export { buildClientImplementationPlan } from "./client-implementation-plan.js";
 export { getMockClientContractFixture } from "./client-contract-fixture.js";
 
 export type { ClientRequirementsIntake } from "./client-requirements-intake.js";
-export { mockGameStudioRequirementsIntake } from "./mock-client-requirements-intake.js";
+export { mockClientRequirementsIntake } from "./mock-client-requirements-intake.js";
 export { summarizeClientRequirementsIntake } from "./client-requirements-summary.js";
 export { validateClientRequirementsIntake } from "./client-requirements-validator.js";
 export { buildClientRequirementsPlan } from "./client-requirements-plan.js";

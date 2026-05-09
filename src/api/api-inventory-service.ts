@@ -217,15 +217,15 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
-      path: "/client-contract/mock-game-studio/*",
+      path: "/client-contract/mock-client/*",
       group: "client_contract",
       accessLevel: "public_demo",
-      purpose: "Expose mock game studio client contract and implementation planning views.",
+      purpose: "Expose mock client client contract and implementation planning views.",
       riskNotes: ["Mock data only."]
     },
     {
       method: "GET",
-      path: "/client-requirements/mock-game-studio/*",
+      path: "/client-requirements/mock-client/*",
       group: "client_requirements",
       accessLevel: "public_demo",
       purpose: "Expose mock client requirements intake, validation, plan, and questionnaire views.",

@@ -8,8 +8,8 @@ export interface ClientReadinessFixture {
   governanceRules: ClientGovernanceRule[];
 }
 
-export const mockGameStudioReadinessFixture: ClientReadinessFixture = {
-  clientName: "Mock Game Studio Finance Team",
+export const mockClientReadinessFixture: ClientReadinessFixture = {
+  clientName: "Mock Client Finance Team",
   scenario:
     "Client wants an agent that reviews overdue invoices, orphan bank transactions, project margin risk, and payment approval recommendations.",
   fieldRequirements: [
@@ -53,7 +53,7 @@ export const mockGameStudioReadinessFixture: ClientReadinessFixture = {
       label: "Project code",
       requiredFor: ["project_margin_review"],
       status: "provided",
-      notes: "Used to connect spend to game/project profitability."
+      notes: "Used to connect spend to client project profitability."
     },
     {
       id: "slack-channel",
@@ -86,5 +86,5 @@ export const mockGameStudioReadinessFixture: ClientReadinessFixture = {
 };
 
 export function getMockClientReadinessFixture(): ClientReadinessFixture {
-  return mockGameStudioReadinessFixture;
+  return mockClientReadinessFixture;
 }

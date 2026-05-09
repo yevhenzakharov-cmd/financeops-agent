@@ -181,7 +181,7 @@ export function buildClientValidationMatrix(): ClientValidationMatrixPackage {
   return {
     title: "Client Validation Matrix",
     generatedAt: new Date().toISOString(),
-    clientName: "Mock Game Studio Finance Team",
+    clientName: "Mock Client Finance Team",
     status: blockedCount > 0 ? "blocked_for_production" : "demo_validated",
     summary: "Reviewer-facing validation matrix that converts sample inputs, security boundaries, governance rules, and artifact traceability into explicit acceptance checks.",
     cases,

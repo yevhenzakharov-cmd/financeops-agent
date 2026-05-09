@@ -118,7 +118,7 @@ export function buildClientSampleInputFixtures(): ClientSampleInputFixturesPacka
         { name: "paymentLimit", type: "number", required: false, status: "missing", notes: "Optional policy limit." }
       ],
       sampleRows: [
-        { vendorId: "VEN-301", vendorName: "Motion Capture Studio", paymentMethod: null, authorizedApprover: null, paymentLimit: null }
+        { vendorId: "VEN-301", vendorName: "Vendor Services Provider", paymentMethod: null, authorizedApprover: null, paymentLimit: null }
       ],
       mappingQuestions: [
         "Confirm payment profile source format.",
@@ -134,7 +134,7 @@ export function buildClientSampleInputFixtures(): ClientSampleInputFixturesPacka
   return {
     title: "Client Sample Input Fixtures",
     generatedAt: new Date().toISOString(),
-    clientName: "Mock Game Studio Finance Team",
+    clientName: "Mock Client Finance Team",
     status: "blocked",
     summary: "Typed sample input fixtures for explaining which client data is ready, which fields need mapping, and which payment fields block production scope.",
     fixtures,

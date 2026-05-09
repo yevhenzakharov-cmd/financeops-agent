@@ -53,19 +53,19 @@ curl -s http://localhost:3001/artifacts/status | python3 -m json.tool || true
 
 echo ""
 echo "---- client contract validation ----"
-curl -s http://localhost:3001/client-contract/mock-game-studio/validation | python3 -m json.tool || true
+curl -s http://localhost:3001/client-contract/mock-client/validation | python3 -m json.tool || true
 
 echo ""
 echo "---- client implementation plan ----"
-curl -s http://localhost:3001/client-contract/mock-game-studio/implementation-plan | python3 -m json.tool | sed -n '1,50p' || true
+curl -s http://localhost:3001/client-contract/mock-client/implementation-plan | python3 -m json.tool | sed -n '1,50p' || true
 
 echo ""
 echo "---- client requirements plan ----"
-curl -s http://localhost:3001/client-requirements/mock-game-studio/plan | python3 -m json.tool | sed -n '1,50p' || true
+curl -s http://localhost:3001/client-requirements/mock-client/plan | python3 -m json.tool | sed -n '1,50p' || true
 
 echo ""
 echo "---- client implementation readiness ----"
-curl -s http://localhost:3001/client-contract/mock-game-studio/implementation-readiness | python3 -m json.tool || true
+curl -s http://localhost:3001/client-contract/mock-client/implementation-readiness | python3 -m json.tool || true
 
 echo ""
 echo "---- named artifact smoke check ----"

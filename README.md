@@ -2,7 +2,7 @@
 
 FinanceOps Agent
 
-A governed autonomous FinanceOps agent platform for a game development studio.
+A governed autonomous FinanceOps agent platform for client-specific finance operations.
 
 ## Reviewer Architecture Summary
 
@@ -158,7 +158,7 @@ Simulated Company Data
 
 The current project uses simulated company data for demonstration.
 
-The simulated data represents a game development studio with:
+The simulated data represents a client finance operations team with:
 
 * projects
 * project budgets
@@ -928,7 +928,7 @@ Each client can define:
 - governance and approval rules
 - escalation roles and risk tolerance
 
-The current mock game studio contract demonstrates how a client-specific implementation can sit on top of the shared FinanceOps core.
+The current mock client contract demonstrates how a client-specific implementation can sit on top of the shared FinanceOps core.
 
 
 

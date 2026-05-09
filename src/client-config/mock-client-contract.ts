@@ -1,10 +1,10 @@
 import type { ClientImplementationContract } from "./client-implementation-contract.js";
 
-export const mockGameStudioClient: ClientImplementationContract = {
+export const mockClientContract: ClientImplementationContract = {
   profile: {
-    id: "client-game-studio-001",
-    name: "Mock Game Studio Finance Team",
-    industry: "game_studio",
+    id: "client-template-001",
+    name: "Mock Client Finance Team",
+    industry: "general_business",
     accountingDepartmentSize: "small_team",
     baseCurrency: "USD",
     timezone: "UTC"

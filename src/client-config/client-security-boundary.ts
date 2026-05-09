@@ -113,7 +113,7 @@ export function buildClientSecurityBoundary(): ClientSecurityBoundaryPackage {
   return {
     title: "Client Security Boundary Package",
     generatedAt: new Date().toISOString(),
-    clientName: "Mock Game Studio Finance Team",
+    clientName: "Mock Client Finance Team",
     status: "blocked_for_production",
     summary: "Security and trust boundary package for explaining what is safe in the public demo, what must remain client-owned, and what blocks production execution.",
     boundaries,

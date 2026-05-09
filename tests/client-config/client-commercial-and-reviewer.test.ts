@@ -66,7 +66,7 @@ describe("commercial and reviewer packages", () => {
 
     expect(result.title).toContain("Commercial");
     expect(result.status).toBeDefined();
-    expect(result.clientName).toBe("Mock Game Studio Finance Team");
+    expect(result.clientName).toBe("Mock Client Finance Team");
     expect(result.valueHypothesis).toBeDefined();
     expect(result.roiModel).toBeDefined();
     expect(result.readinessScore).toBeDefined();

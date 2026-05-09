@@ -1,7 +1,7 @@
 {
   "name": "financeops-agent",
   "version": "0.1.0",
-  "description": "Security-hardened FinanceOps AI agent for a game development studio (public mock demo).",
+  "description": "Security-hardened FinanceOps AI agent for client-specific finance operations (public mock demo).",
   "type": "module",
   "private": true,
   "scripts": {

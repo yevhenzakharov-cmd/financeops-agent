@@ -15,7 +15,7 @@ export function buildDeterministicCFOBriefing(
         projectId: "project-001",
         riskLevel: "medium",
         explanation:
-          "Project Nebula has positive gross margin, but budget burn and reconciliation exceptions still require finance review before production-style action."
+          "Project Atlas has positive gross margin, but budget burn and reconciliation exceptions still require finance review before production-style action."
       }
     ],
     overdueReceivables: [

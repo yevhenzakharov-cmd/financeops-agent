@@ -1,5 +1,5 @@
 import { buildClientImplementationReadiness } from "./client-implementation-readiness.js";
-import { mockGameStudioReadinessFixture } from "./client-readiness-fixture.js";
+import { mockClientReadinessFixture } from "./client-readiness-fixture.js";
 
 export type AdapterBuildStatus = "blocked" | "mapping_required" | "ready";
 
@@ -22,7 +22,7 @@ export interface ClientAdapterBlueprint {
 }
 
 export function buildClientAdapterBlueprint(): ClientAdapterBlueprint {
-  const readiness = buildClientImplementationReadiness(mockGameStudioReadinessFixture);
+  const readiness = buildClientImplementationReadiness(mockClientReadinessFixture);
 
   const status: AdapterBuildStatus =
     readiness.readinessStatus === "blocked"

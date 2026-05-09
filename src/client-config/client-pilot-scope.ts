@@ -76,7 +76,7 @@ export function buildClientPilotScope(): ClientPilotScope {
 
   return {
     title: "Client Pilot Scope",
-    clientName: "Mock Game Studio Finance Team",
+    clientName: "Mock Client Finance Team",
     status,
     summary:
       "Defines which client workflows are safe to include in a limited pilot before production credentials, mappings, and payment data are finalized.",

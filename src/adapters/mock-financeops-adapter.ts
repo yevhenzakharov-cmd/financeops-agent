@@ -14,7 +14,7 @@ export class MockFinanceOpsAdapter implements FinanceOpsInputAdapter {
 
   async loadSnapshot(): Promise<FinanceOpsInputSnapshot> {
     return {
-      sourceName: "public_mock_game_studio_dataset",
+      sourceName: "public_mock_client_dataset",
       loadedAt: new Date().toISOString(),
       projects,
       invoices,

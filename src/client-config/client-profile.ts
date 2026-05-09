@@ -1,5 +1,4 @@
 export type ClientIndustry =
-  | "game_studio"
   | "agency"
   | "saas"
   | "marketplace"

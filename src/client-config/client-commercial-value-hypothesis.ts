@@ -60,7 +60,7 @@ export function buildClientCommercialValueHypothesis(): ClientCommercialValueHyp
 
   return {
     title: "Client Commercial Value Hypothesis",
-    clientName: "Mock Game Studio Finance Team",
+    clientName: "Mock Client Finance Team",
     summary:
       "Commercial framing for why the FinanceOps Agent can be valuable to a finance team without pretending the demo is production-ready.",
     valueDrivers,

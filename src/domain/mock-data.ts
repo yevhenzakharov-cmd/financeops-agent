@@ -21,10 +21,10 @@ export const clients: Client[] = [
 export const projects: Project[] = [
   {
     id: "project-001",
-    name: "Project Nebula",
+    name: "Project Atlas",
     clientId: "client-001",
-    engine: "Unity",
-    platform: ["Mobile"],
+    engine: "FinanceOpsCore",
+    platform: ["Operations"],
     stage: "beta",
     budget: {
       totalBudget: { amount: 500000, currency: "USD" },
@@ -87,7 +87,7 @@ export const expenses: Expense[] = [
     category: "software",
     date: "2025-02-01",
     amount: { amount: 20000, currency: "USD" },
-    description: "Unity Pro licenses"
+    description: "FinanceOpsCore Pro licenses"
   }
 ];
 

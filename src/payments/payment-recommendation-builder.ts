@@ -20,7 +20,7 @@ export function buildPaymentRecommendations(
       actionType: action.actionType,
       recipient: {
         id: "vendor-001",
-        name: "Mock Vendor Studio Services",
+        name: "Mock Vendor Services",
         type: "vendor",
         reference: "mock-vendor-bank-profile"
       },

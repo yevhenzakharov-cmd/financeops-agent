@@ -4,11 +4,11 @@ import { buildClientOutputDeliveryPlan } from "../../src/client-config/client-ou
 import { buildClientTestScenarioPack } from "../../src/client-config/client-test-scenarios.js";
 import { buildClientValidationMatrix } from "../../src/client-config/client-validation-matrix.js";
 import { evaluateClientFieldCoverage } from "../../src/client-config/client-field-coverage.js";
-import { mockGameStudioReadinessFixture } from "../../src/client-config/client-readiness-fixture.js";
+import { mockClientReadinessFixture } from "../../src/client-config/client-readiness-fixture.js";
 
 describe("client readiness and payment gates", () => {
   test("blocks implementation readiness when required payment data is missing", () => {
-    const readiness = buildClientImplementationReadiness(mockGameStudioReadinessFixture);
+    const readiness = buildClientImplementationReadiness(mockClientReadinessFixture);
 
     expect(readiness.readinessStatus).toBe("blocked");
     expect(readiness.readinessScore).toBe(67);
@@ -18,7 +18,7 @@ describe("client readiness and payment gates", () => {
   });
 
   test("calculates readiness coverage from provided, missing, mapping, and optional fields", () => {
-    const coverage = evaluateClientFieldCoverage(mockGameStudioReadinessFixture.fieldRequirements);
+    const coverage = evaluateClientFieldCoverage(mockClientReadinessFixture.fieldRequirements);
 
     expect(coverage.totalFields).toBe(7);
     expect(coverage.requiredFields).toBe(6);

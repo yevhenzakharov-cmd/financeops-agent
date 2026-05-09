@@ -1,13 +1,13 @@
 import fs from "fs";
 import "dotenv/config";
 import express from "express";
-import { mockGameStudioClient } from "../client-config/mock-game-studio-client.js";
+import { mockClientContract } from "../client-config/mock-client-contract.js";
 import { summarizeClientImplementationContract } from "../client-config/client-contract-summary.js";
 import { validateClientImplementationContract } from "../client-config/client-contract-validator.js";
 import { buildClientAdapterPlan } from "../client-config/client-input-mapping-service.js";
 import { buildClientOutputPlan } from "../client-config/client-output-plan-service.js";
 import { buildClientImplementationPlan } from "../client-config/client-implementation-plan.js";
-import { mockGameStudioRequirementsIntake } from "../client-config/mock-client-requirements-intake.js";
+import { mockClientRequirementsIntake } from "../client-config/mock-client-requirements-intake.js";
 import { buildClientRequirementsPlan } from "../client-config/client-requirements-plan.js";
 import { validateClientRequirementsIntake } from "../client-config/client-requirements-validator.js";
 import { buildClientOnboardingChecklist } from "../client-config/client-onboarding-checklist.js";
@@ -17,7 +17,7 @@ import {
   buildClientImplementationReadiness,
   buildClientOnboardingQuestionnaire,
   evaluateClientFieldCoverage,
-  mockGameStudioReadinessFixture,
+  mockClientReadinessFixture,
   analyzeClientInputFieldCoverage,
   evaluateClientImplementationReadiness,
   buildClientAdapterBlueprint,
@@ -96,66 +96,66 @@ app.use(createRequestObservabilityMiddleware());
 
 
 
-app.get("/client-contract/mock-game-studio/implementation-readiness", (_req, res) => {
+app.get("/client-contract/mock-client/implementation-readiness", (_req, res) => {
   res.json({
     status: "success",
-    readiness: evaluateClientImplementationReadiness(mockGameStudioClient, mockGameStudioRequirementsIntake)
+    readiness: evaluateClientImplementationReadiness(mockClientContract, mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-contract/mock-game-studio/governance-brief", (_req, res) => {
+app.get("/client-contract/mock-client/governance-brief", (_req, res) => {
   res.json({
     status: "success",
-    governanceBrief: buildClientGovernanceBrief(mockGameStudioClient, mockGameStudioRequirementsIntake)
+    governanceBrief: buildClientGovernanceBrief(mockClientContract, mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-contract/mock-game-studio/data-request-packet", (_req, res) => {
+app.get("/client-contract/mock-client/data-request-packet", (_req, res) => {
   res.json({
     status: "success",
-    packet: buildClientDataRequestPacket(mockGameStudioClient, mockGameStudioRequirementsIntake)
+    packet: buildClientDataRequestPacket(mockClientContract, mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-contract/mock-game-studio/field-coverage", (_req, res) => {
+app.get("/client-contract/mock-client/field-coverage", (_req, res) => {
   res.json({
     status: "success",
-    fieldCoverage: analyzeClientInputFieldCoverage(mockGameStudioClient)
+    fieldCoverage: analyzeClientInputFieldCoverage(mockClientContract)
   });
 });
 
-app.get("/client-contract/mock-game-studio/output-plan", (_req, res) => {
+app.get("/client-contract/mock-client/output-plan", (_req, res) => {
   res.json({
     status: "success",
-    plan: buildClientOutputPlan(mockGameStudioClient)
+    plan: buildClientOutputPlan(mockClientContract)
   });
 });
 
-app.get("/client-contract/mock-game-studio/input-adapter-plan", (_req, res) => {
+app.get("/client-contract/mock-client/input-adapter-plan", (_req, res) => {
   res.json({
     status: "success",
-    plan: buildClientAdapterPlan(mockGameStudioClient)
+    plan: buildClientAdapterPlan(mockClientContract)
   });
 });
 
-app.get("/client-contract/mock-game-studio/implementation-plan", (_req, res) => {
+app.get("/client-contract/mock-client/implementation-plan", (_req, res) => {
   res.json({
     status: "success",
-    plan: buildClientImplementationPlan(mockGameStudioClient)
+    plan: buildClientImplementationPlan(mockClientContract)
   });
 });
 
-app.get("/client-contract/mock-game-studio/validation", (_req, res) => {
+app.get("/client-contract/mock-client/validation", (_req, res) => {
   res.json({
     status: "success",
-    validation: validateClientImplementationContract(mockGameStudioClient)
+    validation: validateClientImplementationContract(mockClientContract)
   });
 });
 
-app.get("/client-contract/mock-game-studio/summary", (_req, res) => {
+app.get("/client-contract/mock-client/summary", (_req, res) => {
   res.json({
     status: "success",
-    summary: summarizeClientImplementationContract(mockGameStudioClient)
+    summary: summarizeClientImplementationContract(mockClientContract)
   });
 });
 
@@ -164,45 +164,45 @@ app.get("/client-contract/mock-game-studio/summary", (_req, res) => {
 
 
 
-app.get("/client-requirements/mock-game-studio/questionnaire", (_req, res) => {
+app.get("/client-requirements/mock-client/questionnaire", (_req, res) => {
   res.json({
     status: "success",
-    questionnaire: buildClientOnboardingQuestionnaire(mockGameStudioClient, mockGameStudioRequirementsIntake)
+    questionnaire: buildClientOnboardingQuestionnaire(mockClientContract, mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-requirements/mock-game-studio/onboarding-checklist", (_req, res) => {
+app.get("/client-requirements/mock-client/onboarding-checklist", (_req, res) => {
   res.json({
     status: "success",
-    checklist: buildClientOnboardingChecklist(mockGameStudioRequirementsIntake)
+    checklist: buildClientOnboardingChecklist(mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-requirements/mock-game-studio/plan", (_req, res) => {
+app.get("/client-requirements/mock-client/plan", (_req, res) => {
   res.json({
     status: "success",
-    plan: buildClientRequirementsPlan(mockGameStudioRequirementsIntake)
+    plan: buildClientRequirementsPlan(mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-requirements/mock-game-studio/validation", (_req, res) => {
+app.get("/client-requirements/mock-client/validation", (_req, res) => {
   res.json({
     status: "success",
-    validation: validateClientRequirementsIntake(mockGameStudioRequirementsIntake)
+    validation: validateClientRequirementsIntake(mockClientRequirementsIntake)
   });
 });
 
-app.get("/client-requirements/mock-game-studio", (_req, res) => {
+app.get("/client-requirements/mock-client", (_req, res) => {
   res.json({
     status: "success",
-    requirements: mockGameStudioRequirementsIntake
+    requirements: mockClientRequirementsIntake
   });
 });
 
-app.get("/client-contract/mock-game-studio", (_req, res) => {
+app.get("/client-contract/mock-client", (_req, res) => {
   res.json({
     status: "success",
-    contract: mockGameStudioClient
+    contract: mockClientContract
   });
 });
 
@@ -900,12 +900,12 @@ app.get("/client/onboarding-questionnaire", (_req, res) => {
 app.get("/client/field-coverage", (_req, res) => {
   res.json({
     status: "success",
-    result: evaluateClientFieldCoverage(mockGameStudioReadinessFixture.fieldRequirements)
+    result: evaluateClientFieldCoverage(mockClientReadinessFixture.fieldRequirements)
   });
 });
 
 app.get("/client/data-request-packet", (_req, res) => {
-  const coverage = evaluateClientFieldCoverage(mockGameStudioReadinessFixture.fieldRequirements);
+  const coverage = evaluateClientFieldCoverage(mockClientReadinessFixture.fieldRequirements);
 
   res.json({
     status: "success",
@@ -916,14 +916,14 @@ app.get("/client/data-request-packet", (_req, res) => {
 app.get("/client/governance-brief", (_req, res) => {
   res.json({
     status: "success",
-    result: buildClientGovernanceBrief(mockGameStudioReadinessFixture.governanceRules)
+    result: buildClientGovernanceBrief(mockClientReadinessFixture.governanceRules)
   });
 });
 
 app.get("/client/implementation-readiness", (_req, res) => {
   res.json({
     status: "success",
-    result: buildClientImplementationReadiness(mockGameStudioReadinessFixture)
+    result: buildClientImplementationReadiness(mockClientReadinessFixture)
   });
 });
 

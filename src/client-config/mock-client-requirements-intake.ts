@@ -1,8 +1,8 @@
 import type { ClientRequirementsIntake } from "./client-requirements-intake.js";
 
-export const mockGameStudioRequirementsIntake: ClientRequirementsIntake = {
-  clientName: "Mock Game Studio Finance Team",
-  industryNotes: "Game studio with project-based revenue, vendor payments, invoices, and milestone-based production spend.",
+export const mockClientRequirementsIntake: ClientRequirementsIntake = {
+  clientName: "Mock Client Finance Team",
+  industryNotes: "Client finance team with project-based revenue, vendor payments, invoices, and milestone-based operating spend.",
   currentAccountingPain: "Manual review of overdue invoices, orphan bank transactions, and project margin risk takes too long.",
   inputTypesAvailable: ["csv", "bank_export", "payment_processor_export"],
   desiredOutputs: ["cfo_briefing", "approval_queue", "dashboard_payload"],

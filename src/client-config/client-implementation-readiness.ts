@@ -2,7 +2,7 @@ import { buildClientDataRequestPacket } from "./client-data-request-packet.js";
 import { evaluateClientFieldCoverage } from "./client-field-coverage.js";
 import { buildClientGovernanceBrief } from "./client-governance-brief.js";
 import {
-  mockGameStudioReadinessFixture,
+  mockClientReadinessFixture,
   type ClientReadinessFixture
 } from "./client-readiness-fixture.js";
 
@@ -19,7 +19,7 @@ export interface ClientImplementationReadiness {
 }
 
 export function buildClientImplementationReadiness(
-  fixture: ClientReadinessFixture = mockGameStudioReadinessFixture
+  fixture: ClientReadinessFixture = mockClientReadinessFixture
 ): ClientImplementationReadiness {
   const fieldCoverage = evaluateClientFieldCoverage(fixture.fieldRequirements);
   const dataRequestPacket = buildClientDataRequestPacket(fieldCoverage);

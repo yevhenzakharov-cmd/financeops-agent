@@ -13,7 +13,7 @@ describe("client delivery packages", () => {
   test("builds adapter blueprint with ready, mapping, and blocked adapters", () => {
     const result = buildClientAdapterBlueprint();
 
-    expect(result.clientName).toBe("Mock Game Studio Finance Team");
+    expect(result.clientName).toBe("Mock Client Finance Team");
     expect(result.inputAdapters.length).toBeGreaterThanOrEqual(3);
     expect(result.inputAdapters.some((adapter) => adapter.status === "ready")).toBe(true);
     expect(result.inputAdapters.some((adapter) => adapter.status === "mapping_required")).toBe(true);
