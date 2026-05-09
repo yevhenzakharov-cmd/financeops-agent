@@ -133,6 +133,25 @@ AI does not:
 
 The financial logic is deterministic. AI sits on top as a communication layer.
 
+### Accounting control framework
+
+The repository includes an Accounting Control Framework that classifies accounting department tasks before execution.
+
+It is designed around this operating model:
+
+- AI prepares and explains.
+- Code performs deterministic calculations.
+- Controls validate the task.
+- Human reviewers approve sensitive outcomes.
+- Audit artifacts record what happened.
+
+The framework handles task categories such as read-only analysis, deterministic calculation, approval preparation, external writeback, money movement, accounting posting, tax calculation, and tax/legal advice.
+
+Its decisions include allowed, optional review, approval required, professional review required, simulation only, blocked for missing data, and blocked for unsafe autonomy.
+
+This makes the core safer for future client-specific accounting workflows where the final step is usually accountant, controller, CFO, tax professional, or legal review unless the client explicitly classifies the task as low-risk.
+
+
 ## Core architecture
 
 The project is designed around four main layers.
