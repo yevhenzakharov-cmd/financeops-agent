@@ -106,3 +106,4 @@ export * from "./client-pilot-sow-package.js";
 export * from "./client-pilot-proposal-package.js";
 export * from "./client-procurement-review-package.js";
 export * from "./client-security-questionnaire-package.js";
+export * from "./client-compliance-review-package.js";

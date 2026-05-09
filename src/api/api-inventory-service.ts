@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/compliance-review-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a compliance review package covering data privacy, finance controls, AI governance, auditability, payment controls, accounting controls, access controls, retention, vendor review, and production approval.",
+      riskNotes: [
+        "Read-only compliance review endpoint.",
+        "Draft compliance review support only.",
+        "Does not approve production compliance, autonomous money movement, accounting write-back, or deployment."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/compliance-review-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact compliance readiness counts for sections, blocked client-owned controls, required client inputs, and production claims still blocked.",
+      riskNotes: ["Read-only compliance review summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/compliance-review-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate compliance package coverage across data privacy, finance controls, AI governance, auditability, payments, accounting, access, retention, vendor review, and production approval.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production compliance."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/security-questionnaire-package",
       group: "client",
       accessLevel: "public_demo",

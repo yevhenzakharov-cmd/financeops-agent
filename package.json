@@ -58,7 +58,8 @@
     "demo:client-pilot-sow-package": "./scripts/demo-client-pilot-sow-package.sh",
     "demo:client-pilot-proposal-package": "./scripts/demo-client-pilot-proposal-package.sh",
     "demo:client-procurement-review-package": "./scripts/demo-client-procurement-review-package.sh",
-    "demo:client-security-questionnaire-package": "./scripts/demo-client-security-questionnaire-package.sh"
+    "demo:client-security-questionnaire-package": "./scripts/demo-client-security-questionnaire-package.sh",
+    "demo:client-compliance-review-package": "./scripts/demo-client-compliance-review-package.sh"
   },
   "engines": {
     "node": ">=20"
