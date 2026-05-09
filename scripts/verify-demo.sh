@@ -112,6 +112,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client deployment profile ----"
+curl -s "$BASE_URL/client/deployment-profile" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client deployment profile validation ----"
+curl -s "$BASE_URL/client/deployment-profile/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client implementation roadmap ----"
 curl -s "$BASE_URL/client/implementation-roadmap" | python3 -m json.tool | sed -n '1,100p'

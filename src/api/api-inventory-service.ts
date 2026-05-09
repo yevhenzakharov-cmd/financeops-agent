@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/deployment-profile",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose demo, pilot, and production deployment boundaries for client-owned enterprise implementations.",
+      riskNotes: [
+        "Read-only deployment profile endpoint.",
+        "Does not expose secrets.",
+        "Production deployment requires client-owned auth, credentials, monitoring, and approval policy."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/deployment-profile/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact deployment control counts and blocked enterprise readiness items.",
+      riskNotes: ["Read-only deployment profile summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/deployment-profile/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that deployment profile includes environment, secrets, auth, data, monitoring, approval, and audit controls.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate production infrastructure or client credentials."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/implementation-roadmap",
       group: "client",
       accessLevel: "public_demo",

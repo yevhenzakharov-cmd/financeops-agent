@@ -67,6 +67,7 @@ import { buildClientWorkOrder, summarizeClientWorkOrder, validateClientWorkOrder
 import { buildClientRepoStarterPackage, summarizeClientRepoStarterPackage, validateClientRepoStarterPackage } from "../client-config/client-repo-starter.js";
 import { buildClientAdapterRegistry, summarizeClientAdapterRegistry, validateClientAdapterRegistry } from "../client-config/client-adapter-registry.js";
 import { buildClientImplementationRoadmap, summarizeClientImplementationRoadmap, validateClientImplementationRoadmap } from "../client-config/client-implementation-roadmap.js";
+import { buildClientDeploymentProfile, summarizeClientDeploymentProfile, validateClientDeploymentProfile } from "../client-config/client-deployment-profile.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -215,6 +216,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/deployment-profile", (_req, res) => {
+  const profile = buildClientDeploymentProfile();
+
+  res.json({
+    status: "success",
+    result: profile
+  });
+});
+
+app.get("/client/deployment-profile/summary", (_req, res) => {
+  const profile = buildClientDeploymentProfile();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientDeploymentProfile(profile)
+  });
+});
+
+app.get("/client/deployment-profile/validation", (_req, res) => {
+  const profile = buildClientDeploymentProfile();
+
+  res.json({
+    status: "success",
+    validation: validateClientDeploymentProfile(profile)
+  });
+});
 
 app.get("/client/implementation-roadmap", (_req, res) => {
   const roadmap = buildClientImplementationRoadmap();

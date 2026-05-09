@@ -42,7 +42,8 @@
     "demo:client-work-order": "./scripts/demo-client-work-order.sh",
     "demo:client-repo-starter": "./scripts/demo-client-repo-starter.sh",
     "demo:client-adapter-registry": "./scripts/demo-client-adapter-registry.sh",
-    "demo:client-implementation-roadmap": "./scripts/demo-client-implementation-roadmap.sh"
+    "demo:client-implementation-roadmap": "./scripts/demo-client-implementation-roadmap.sh",
+    "demo:client-deployment-profile": "./scripts/demo-client-deployment-profile.sh"
   },
   "engines": {
     "node": ">=20"
