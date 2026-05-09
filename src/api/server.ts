@@ -69,6 +69,7 @@ import { buildClientAdapterRegistry, summarizeClientAdapterRegistry, validateCli
 import { buildClientImplementationRoadmap, summarizeClientImplementationRoadmap, validateClientImplementationRoadmap } from "../client-config/client-implementation-roadmap.js";
 import { buildClientDeploymentProfile, summarizeClientDeploymentProfile, validateClientDeploymentProfile } from "../client-config/client-deployment-profile.js";
 import { buildClientAcceptanceGate, summarizeClientAcceptanceGate, validateClientAcceptanceGate } from "../client-config/client-acceptance-gate.js";
+import { buildClientDeliveryPackage, summarizeClientDeliveryPackage, validateClientDeliveryPackage } from "../client-config/client-delivery-package.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -219,6 +220,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/delivery-package", (_req, res) => {
+  const deliveryPackage = buildClientDeliveryPackage();
+
+  res.json({
+    status: "success",
+    result: deliveryPackage
+  });
+});
+
+app.get("/client/delivery-package/summary", (_req, res) => {
+  const deliveryPackage = buildClientDeliveryPackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientDeliveryPackage(deliveryPackage)
+  });
+});
+
+app.get("/client/delivery-package/validation", (_req, res) => {
+  const deliveryPackage = buildClientDeliveryPackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientDeliveryPackage(deliveryPackage)
+  });
+});
 
 app.get("/client/acceptance-gate", (_req, res) => {
   const gate = buildClientAcceptanceGate();

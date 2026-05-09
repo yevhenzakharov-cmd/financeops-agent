@@ -44,7 +44,8 @@
     "demo:client-adapter-registry": "./scripts/demo-client-adapter-registry.sh",
     "demo:client-implementation-roadmap": "./scripts/demo-client-implementation-roadmap.sh",
     "demo:client-deployment-profile": "./scripts/demo-client-deployment-profile.sh",
-    "demo:client-acceptance-gate": "./scripts/demo-client-acceptance-gate.sh"
+    "demo:client-acceptance-gate": "./scripts/demo-client-acceptance-gate.sh",
+    "demo:client-delivery-package": "./scripts/demo-client-delivery-package.sh"
   },
   "engines": {
     "node": ">=20"

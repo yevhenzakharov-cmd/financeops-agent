@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/delivery-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a buyer and reviewer-facing delivery package for the reusable client-specific FinanceOps implementation layers.",
+      riskNotes: [
+        "Read-only delivery package endpoint.",
+        "Uses demo-safe metadata only.",
+        "Blocks unsupported production-readiness claims until client-owned controls exist."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/delivery-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact delivery package artifact counts, buyer proof points, and blocked production claims.",
+      riskNotes: ["Read-only delivery package summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/delivery-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that delivery package artifacts and production-claim boundaries are present.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate real enterprise production readiness."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/acceptance-gate",
       group: "client",
       accessLevel: "public_demo",
