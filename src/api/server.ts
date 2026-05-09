@@ -68,6 +68,7 @@ import { buildClientRepoStarterPackage, summarizeClientRepoStarterPackage, valid
 import { buildClientAdapterRegistry, summarizeClientAdapterRegistry, validateClientAdapterRegistry } from "../client-config/client-adapter-registry.js";
 import { buildClientImplementationRoadmap, summarizeClientImplementationRoadmap, validateClientImplementationRoadmap } from "../client-config/client-implementation-roadmap.js";
 import { buildClientDeploymentProfile, summarizeClientDeploymentProfile, validateClientDeploymentProfile } from "../client-config/client-deployment-profile.js";
+import { buildClientAcceptanceGate, summarizeClientAcceptanceGate, validateClientAcceptanceGate } from "../client-config/client-acceptance-gate.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -217,6 +218,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/acceptance-gate", (_req, res) => {
+  const gate = buildClientAcceptanceGate();
+
+  res.json({
+    status: "success",
+    result: gate
+  });
+});
+
+app.get("/client/acceptance-gate/summary", (_req, res) => {
+  const gate = buildClientAcceptanceGate();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientAcceptanceGate(gate)
+  });
+});
+
+app.get("/client/acceptance-gate/validation", (_req, res) => {
+  const gate = buildClientAcceptanceGate();
+
+  res.json({
+    status: "success",
+    validation: validateClientAcceptanceGate(gate)
+  });
+});
 
 app.get("/client/deployment-profile", (_req, res) => {
   const profile = buildClientDeploymentProfile();

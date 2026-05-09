@@ -93,3 +93,4 @@ export * from "./client-repo-starter.js";
 export * from "./client-adapter-registry.js";
 export * from "./client-implementation-roadmap.js";
 export * from "./client-deployment-profile.js";
+export * from "./client-acceptance-gate.js";

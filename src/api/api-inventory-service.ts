@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/acceptance-gate",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a client acceptance gate that separates demo-ready evidence from pilot acceptance and production blockers.",
+      riskNotes: [
+        "Read-only acceptance gate endpoint.",
+        "Uses demo-safe planning metadata only.",
+        "Production remains blocked until client-owned controls and approvals exist."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/acceptance-gate/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact acceptance gate counts by pass, warning, blocked, and production blocker status.",
+      riskNotes: ["Read-only acceptance gate summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/acceptance-gate/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that acceptance gates keep production deployment and sensitive actions blocked until client-owned controls exist.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate real client production authorization."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/deployment-profile",
       group: "client",
       accessLevel: "public_demo",

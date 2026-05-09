@@ -113,6 +113,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client acceptance gate ----"
+curl -s "$BASE_URL/client/acceptance-gate" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client acceptance gate validation ----"
+curl -s "$BASE_URL/client/acceptance-gate/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client deployment profile ----"
 curl -s "$BASE_URL/client/deployment-profile" | python3 -m json.tool | sed -n '1,100p'
