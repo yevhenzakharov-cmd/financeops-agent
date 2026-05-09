@@ -47,7 +47,9 @@
     "demo:client-acceptance-gate": "./scripts/demo-client-acceptance-gate.sh",
     "demo:client-delivery-package": "./scripts/demo-client-delivery-package.sh",
     "demo:client-enterprise-sales-brief": "./scripts/demo-client-enterprise-sales-brief.sh",
-    "demo:client-enterprise-red-team": "./scripts/demo-client-enterprise-red-team.sh"
+    "demo:client-enterprise-red-team": "./scripts/demo-client-enterprise-red-team.sh",
+    "verify:local": "./scripts/verify-local.sh",
+    "ci:watch": "./scripts/watch-latest-ci.sh"
   },
   "engines": {
     "node": ">=20"
