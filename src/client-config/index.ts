@@ -103,3 +103,4 @@ export * from "./client-evidence-binder.js";
 export * from "./client-pilot-decision-packet.js";
 export * from "./client-pilot-kickoff-package.js";
 export * from "./client-pilot-sow-package.js";
+export * from "./client-pilot-proposal-package.js";

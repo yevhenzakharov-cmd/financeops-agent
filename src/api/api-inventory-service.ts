@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/pilot-proposal-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a buyer-facing pilot proposal package connecting business problem, pilot offer, value hypothesis, delivery plan, commercial terms, risk boundaries, and decision process.",
+      riskNotes: [
+        "Read-only pilot proposal endpoint.",
+        "Draft buyer-facing package only.",
+        "Does not claim ROI, production readiness, or autonomous money movement."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-proposal-package/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact proposal counts for sections, decision inputs, exclusions, and blocked client-owned controls.",
+      riskNotes: ["Read-only pilot proposal summary endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/client/pilot-proposal-package/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate proposal coverage across buyer problem, offer, value hypothesis, delivery plan, commercial terms, risk boundaries, decision process, and next steps.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not approve production use or create a legal agreement."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/pilot-sow-package",
       group: "client",
       accessLevel: "public_demo",

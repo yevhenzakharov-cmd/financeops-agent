@@ -55,7 +55,8 @@
     "demo:client-evidence-binder": "./scripts/demo-client-evidence-binder.sh",
     "demo:client-pilot-decision-packet": "./scripts/demo-client-pilot-decision-packet.sh",
     "demo:client-pilot-kickoff-package": "./scripts/demo-client-pilot-kickoff-package.sh",
-    "demo:client-pilot-sow-package": "./scripts/demo-client-pilot-sow-package.sh"
+    "demo:client-pilot-sow-package": "./scripts/demo-client-pilot-sow-package.sh",
+    "demo:client-pilot-proposal-package": "./scripts/demo-client-pilot-proposal-package.sh"
   },
   "engines": {
     "node": ">=20"

@@ -78,6 +78,7 @@ import { buildClientEvidenceBinder, summarizeClientEvidenceBinder, validateClien
 import { buildClientPilotDecisionPacket, summarizeClientPilotDecisionPacket, validateClientPilotDecisionPacket } from "../client-config/client-pilot-decision-packet.js";
 import { buildClientPilotKickoffPackage, summarizeClientPilotKickoffPackage, validateClientPilotKickoffPackage } from "../client-config/client-pilot-kickoff-package.js";
 import { buildClientPilotSowPackage, summarizeClientPilotSowPackage, validateClientPilotSowPackage } from "../client-config/client-pilot-sow-package.js";
+import { buildClientPilotProposalPackage, summarizeClientPilotProposalPackage, validateClientPilotProposalPackage } from "../client-config/client-pilot-proposal-package.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -237,6 +238,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 
 
 
+
+
+app.get("/client/pilot-proposal-package", (_req, res) => {
+  const proposalPackage = buildClientPilotProposalPackage();
+
+  res.json({
+    status: "success",
+    result: proposalPackage
+  });
+});
+
+app.get("/client/pilot-proposal-package/summary", (_req, res) => {
+  const proposalPackage = buildClientPilotProposalPackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientPilotProposalPackage(proposalPackage)
+  });
+});
+
+app.get("/client/pilot-proposal-package/validation", (_req, res) => {
+  const proposalPackage = buildClientPilotProposalPackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientPilotProposalPackage(proposalPackage)
+  });
+});
 
 app.get("/client/pilot-sow-package", (_req, res) => {
   const sowPackage = buildClientPilotSowPackage();
