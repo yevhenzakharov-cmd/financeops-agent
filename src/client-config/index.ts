@@ -89,3 +89,4 @@ export * from "./client-validation-matrix.js";
 export * from "./client-plugin-contracts.js";
 export * from "./client-implementation-manifest.js";
 export * from "./client-work-order.js";
+export * from "./client-repo-starter.js";

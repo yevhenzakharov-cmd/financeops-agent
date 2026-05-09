@@ -209,6 +209,37 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/repo-starter",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose a client repository starter package that identifies what to keep, replace, configure, and block when cloning the core for a client.",
+      riskNotes: [
+        "Read-only client repo starter endpoint.",
+        "Designed for implementation planning only.",
+        "Does not expose production credentials or client-owned data."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/repo-starter/summary",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Expose compact starter package counts for replacement, configuration, blocked, and safety items.",
+      riskNotes: ["Read-only summary for reviewers and builders."]
+    },
+    {
+      method: "GET",
+      path: "/client/repo-starter/validation",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose: "Validate that client repo starter boundaries include mock-data replacement, payment blocking, and safety rules.",
+      riskNotes: [
+        "Read-only validation endpoint.",
+        "Does not validate production infrastructure or client credentials."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/work-order",
       group: "client",
       accessLevel: "public_demo",

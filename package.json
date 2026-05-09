@@ -39,7 +39,8 @@
     "demo:container-build": "./scripts/demo-container-build.sh",
     "test:coverage": "vitest run --coverage",
     "demo:client-implementation-manifest": "./scripts/demo-client-implementation-manifest.sh",
-    "demo:client-work-order": "./scripts/demo-client-work-order.sh"
+    "demo:client-work-order": "./scripts/demo-client-work-order.sh",
+    "demo:client-repo-starter": "./scripts/demo-client-repo-starter.sh"
   },
   "engines": {
     "node": ">=20"

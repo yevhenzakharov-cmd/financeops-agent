@@ -109,6 +109,15 @@ curl -s http://localhost:3001/artifacts/registry-version | python3 -m json.tool 
 
 
 
+
+echo
+echo "---- client repo starter ----"
+curl -s "$BASE_URL/client/repo-starter" | python3 -m json.tool | sed -n '1,100p'
+
+echo
+echo "---- client repo starter validation ----"
+curl -s "$BASE_URL/client/repo-starter/validation" | python3 -m json.tool | sed -n '1,80p'
+
 echo
 echo "---- client work order ----"
 curl -s "$BASE_URL/client/work-order" | python3 -m json.tool | sed -n '1,100p'

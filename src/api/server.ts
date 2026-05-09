@@ -64,6 +64,7 @@ import {
 } from "../client-config/index.js";
 import { buildClientImplementationManifest, summarizeClientImplementationManifest, validateClientImplementationManifest } from "../client-config/client-implementation-manifest.js";
 import { buildClientWorkOrder, summarizeClientWorkOrder, validateClientWorkOrder } from "../client-config/client-work-order.js";
+import { buildClientRepoStarterPackage, summarizeClientRepoStarterPackage, validateClientRepoStarterPackage } from "../client-config/client-repo-starter.js";
 
 import { getExecutionMode } from "../execution/execution-mode.js";
 import { runFinanceOpsPipeline } from "../pipeline/run-financeops-pipeline.js";
@@ -209,6 +210,34 @@ app.get("/client-contract/mock-client", (_req, res) => {
 });
 
 
+
+
+app.get("/client/repo-starter", (_req, res) => {
+  const starterPackage = buildClientRepoStarterPackage();
+
+  res.json({
+    status: "success",
+    result: starterPackage
+  });
+});
+
+app.get("/client/repo-starter/summary", (_req, res) => {
+  const starterPackage = buildClientRepoStarterPackage();
+
+  res.json({
+    status: "success",
+    summary: summarizeClientRepoStarterPackage(starterPackage)
+  });
+});
+
+app.get("/client/repo-starter/validation", (_req, res) => {
+  const starterPackage = buildClientRepoStarterPackage();
+
+  res.json({
+    status: "success",
+    validation: validateClientRepoStarterPackage(starterPackage)
+  });
+});
 
 app.get("/client/work-order", (_req, res) => {
   const workOrder = buildClientWorkOrder();
