@@ -33,6 +33,8 @@ function routeSummary(path: string): string {
   if (path === "/run-financeops-agent") return "Run FinanceOps agent pipeline";
   if (path.includes("approve-and-send")) return "Approve and simulate payment execution";
   if (path.includes("audit")) return "Audit visibility endpoint";
+  if (path.includes("workflow-intake-plan")) return "Client workflow intake planning endpoint";
+  if (path.includes("client-requirements")) return "Client requirements planning endpoint";
   if (path.includes("accounting/tasks") && path.includes("control-decision")) return "Accounting task control decision endpoint";
   if (path.includes("accounting/tasks")) return "Accounting task registry endpoint";
   if (path.includes("security")) return "Demo auth status endpoint";
@@ -157,12 +159,28 @@ export function buildOpenApiDocument(): OpenApiDocument {
         description: "Demo security boundary endpoints."
       },
       {
+        name: "observability",
+        description: "Request observability and demo runtime visibility endpoints."
+      },
+      {
+        name: "artifact",
+        description: "Runtime artifact visibility endpoints."
+      },
+      {
         name: "accounting",
         description: "Read-only accounting task registry and control-decision endpoints."
       },
       {
         name: "client",
         description: "Client readiness, validation, commercial, and reviewer package endpoints."
+      },
+      {
+        name: "client_contract",
+        description: "Client contract and implementation planning endpoints."
+      },
+      {
+        name: "client_requirements",
+        description: "Client requirements and workflow intake planning endpoints."
       }
     ]
   };

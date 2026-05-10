@@ -26,6 +26,19 @@ The project should be reviewed as a production-aware public demo and implementat
 - pnpm run demo:accounting-workflow-router
 - pnpm run demo:client-workflow-intake
 
+## Sales demo script
+
+Use this sequence for a buyer, founder, hiring manager, senior engineer, or CFO-style reviewer:
+
+1. Start with `pnpm run verify:local` to prove the repo passes lint, typecheck, tests, coverage, build, and demo verification.
+2. Run `pnpm run demo:api-inventory` to show the API surface, protected action routes, read-only reviewer routes, and production safety notes.
+3. Run `pnpm run demo:accounting-task-registry` to show the reusable accounting task templates before a real client provides inputs and outputs.
+4. Run `pnpm run demo:accounting-workflow-router` to show how accounting workflows are routed into safe lanes: allowed, simulation-only, approval-gated, professionally reviewed, or blocked.
+5. Run `pnpm run demo:client-workflow-intake` to show how a client-described workflow becomes an implementation plan without pretending production adapters already exist.
+6. Close with the Implementation Model to explain why real input and output adapters are scoped after client discovery.
+
+The buyer-facing message is simple: this repo proves the governed FinanceOps core, while real client adapters are intentionally added only after the client confirms source data, required calculations, approval rules, and output destinations.
+
 ## What to notice
 
 The project is not trying to make AI perform accounting decisions.

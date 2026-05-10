@@ -33,6 +33,39 @@ describe("openapi service", () => {
     expect(document.paths["/accounting/workflows/route"]?.post).toBeDefined();
   });
 
+  test("documents client workflow intake routes", () => {
+    const document = buildOpenApiDocument();
+
+    const mockWorkflowRoute = document.paths["/client-requirements/mock-client/workflow-intake-plan"]?.get as
+      | { summary?: string; tags?: string[] }
+      | undefined;
+    const customWorkflowRoute = document.paths["/client-requirements/workflow-intake-plan"]?.post as
+      | { summary?: string; tags?: string[] }
+      | undefined;
+
+    expect(mockWorkflowRoute).toBeDefined();
+    expect(customWorkflowRoute).toBeDefined();
+    expect(mockWorkflowRoute?.summary).toBe("Client workflow intake planning endpoint");
+    expect(customWorkflowRoute?.summary).toBe("Client workflow intake planning endpoint");
+    expect(mockWorkflowRoute?.tags).toContain("client_requirements");
+    expect(customWorkflowRoute?.tags).toContain("client_requirements");
+  });
+
+  test("declares every operation tag in the OpenAPI tag list", () => {
+    const document = buildOpenApiDocument();
+    const declaredTags = new Set(document.tags.map((tag) => tag.name));
+
+    for (const methods of Object.values(document.paths)) {
+      for (const operation of Object.values(methods)) {
+        const tags = (operation as { tags?: string[] }).tags ?? [];
+
+        for (const tag of tags) {
+          expect(declaredTags.has(tag)).toBe(true);
+        }
+      }
+    }
+  });
+
   test("includes standard error schema", () => {
     const document = buildOpenApiDocument();
 

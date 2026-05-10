@@ -118,3 +118,17 @@ Returns the security and production boundary package for mock data usage, client
 GET /client/validation-matrix
 
 Returns reviewer-facing acceptance checks that validate data readiness, mapping status, payment blocking, AI boundaries, security boundaries, audit traceability, and output acceptance.
+
+## Client Workflow Intake
+
+GET /client-requirements/mock-client/workflow-intake-plan
+
+Returns a demo-safe workflow intake plan from the mock client requirements intake. This shows how client-described finance work is translated into a governed implementation plan before production adapters exist.
+
+POST /client-requirements/workflow-intake-plan
+
+Accepts a client requirements intake payload and returns a workflow intake plan. The endpoint is demo-safe: it plans and classifies the workflow, but does not move money, post accounting entries, write to external systems, or treat AI output as approval.
+
+Recommended demo command:
+
+pnpm run demo:client-workflow-intake
