@@ -68,6 +68,7 @@ Client onboarding pack command:
 
 ```bash
 pnpm run demo:client-onboarding-pack
+pnpm run demo:client-ready-checkpoint
 ```
 
 Recommended first local checks:
