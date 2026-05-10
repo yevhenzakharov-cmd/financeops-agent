@@ -51,6 +51,7 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 
 1. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level overview of the architecture, control boundaries, auditability, and reviewer-facing design.
 2. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - explains how the public demo can become a client-specific FinanceOps implementation.
+3. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - connects requirements intake, workflow intake, task routing, controls, approvals, audit evidence, and production blockers.
 3. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
 4. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
 5. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.

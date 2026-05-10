@@ -1,5 +1,7 @@
 # FinanceOps Agent Implementation Model
 
+Related guide: [Client Implementation Path](CLIENT_IMPLEMENTATION_PATH.md).
+
 This document explains how the FinanceOps Agent public demo can be adapted into a real client-specific finance operations implementation.
 
 The current repository is a demo-safe foundation. It uses mock data, deterministic finance logic, approval gates, audit artifacts, and reviewer-friendly APIs to show how the system works without exposing real client data or production credentials.

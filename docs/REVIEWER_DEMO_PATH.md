@@ -9,6 +9,7 @@ The project should be reviewed as a production-aware public demo and implementat
 1. Read the README reviewer quick path.
 2. Read the Reviewer Architecture Summary.
 3. Read the Implementation Model.
+4. Read the Client Implementation Path.
 4. Review the Accounting Task Registry.
 5. Review the Accounting Workflow Routing guide.
 6. Review the Client Workflow Intake guide.
