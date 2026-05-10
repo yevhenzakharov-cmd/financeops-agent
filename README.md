@@ -53,11 +53,12 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 2. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - explains how the public demo can become a client-specific FinanceOps implementation.
 3. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - connects requirements intake, workflow intake, task routing, controls, approvals, audit evidence, and production blockers.
 4. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - explains exactly what a real client should provide before client-specific adapters are built.
-5. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
-6. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
-7. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
-8. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
-9. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
+5. [Client Input and Output Email Template](docs/CLIENT_INPUT_OUTPUT_EMAIL_TEMPLATE.md) - gives a copy-ready message for asking a client to send safe sample inputs and desired outputs.
+6. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
+7. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
+8. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
+9. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
+10. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
 
 Recommended first local checks:
 

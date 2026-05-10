@@ -11,11 +11,12 @@ The project should be reviewed as a production-aware public demo and implementat
 3. Read the Implementation Model.
 4. Read the Client Implementation Path.
 5. Read the Client Input and Output Request guide.
-6. Review the Accounting Task Registry.
-7. Review the Accounting Workflow Routing guide.
-8. Review the Client Workflow Intake guide.
-9. Run local verification.
-10. Run the reviewer demo path command.
+6. Read the Client Input and Output Email Template.
+7. Review the Accounting Task Registry.
+8. Review the Accounting Workflow Routing guide.
+9. Review the Client Workflow Intake guide.
+10. Run local verification.
+11. Run the reviewer demo path command.
 
 ## Recommended commands
 

@@ -4,6 +4,8 @@ This guide explains what a real client should provide before a client-specific F
 
 The public repository intentionally uses mock data only. Real input adapters, output destinations, approval rules, and production integrations should be added only after the client confirms their actual workflow, sample data, field meanings, and control requirements.
 
+Related email template: [Client Input and Output Email Template](CLIENT_INPUT_OUTPUT_EMAIL_TEMPLATE.md).
+
 ## What the client should send first
 
 Ask the client for safe sample materials, not full private production data.
