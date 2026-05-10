@@ -33,7 +33,6 @@
     "demo:client-plugin-contracts": "./scripts/demo-client-plugin-contracts.sh",
     "demo:protected-action-routes": "./scripts/demo-protected-action-routes.sh",
     "demo:audit-visibility": "./scripts/demo-audit-visibility.sh",
-    "demo:api-inventory": "./scripts/demo-api-inventory.sh",
     "demo:openapi-contract": "./scripts/demo-openapi-contract.sh",
     "demo:request-observability": "./scripts/demo-request-observability.sh",
     "demo:container-build": "./scripts/demo-container-build.sh",
@@ -61,7 +60,9 @@
     "demo:client-security-questionnaire-package": "./scripts/demo-client-security-questionnaire-package.sh",
     "demo:client-compliance-review-package": "./scripts/demo-client-compliance-review-package.sh",
     "demo:client-risk-acceptance-package": "./scripts/demo-client-risk-acceptance-package.sh",
-    "demo:client-production-readiness-package": "./scripts/demo-client-production-readiness-package.sh"
+    "demo:client-production-readiness-package": "./scripts/demo-client-production-readiness-package.sh",
+    "demo:api-inventory": "./scripts/demo-api-inventory.sh",
+    "demo:accounting-task-registry": "./scripts/demo-accounting-task-registry.sh"
   },
   "engines": {
     "node": ">=20"

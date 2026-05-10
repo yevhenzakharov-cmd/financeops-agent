@@ -7,7 +7,8 @@ export type ApiInventoryRouteGroup =
   | "artifact"
   | "client"
   | "client_contract"
-  | "client_requirements";
+  | "client_requirements"
+  | "accounting";
 
 export type ApiInventoryAccessLevel =
   | "public_demo"
@@ -60,7 +61,8 @@ function countByGroup(routes: ApiInventoryRoute[]): Record<ApiInventoryRouteGrou
     artifact: 0,
     client: 0,
     client_contract: 0,
-    client_requirements: 0
+    client_requirements: 0,
+    accounting: 0
   };
 
   for (const route of routes) {
@@ -103,6 +105,39 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
       accessLevel: "public_demo",
       purpose: "Expose route inventory entries as a compact list.",
       riskNotes: ["Read-only API route inventory endpoint."]
+    },
+    {
+      method: "GET",
+      path: "/accounting/tasks",
+      group: "accounting",
+      accessLevel: "public_demo",
+      purpose: "Expose the reusable accounting task registry for reviewer and client discovery.",
+      riskNotes: [
+        "Read-only accounting task registry endpoint.",
+        "Does not execute accounting work, move money, write to external systems, or expose secrets."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/accounting/tasks/:templateId",
+      group: "accounting",
+      accessLevel: "public_demo",
+      purpose: "Expose one accounting task template by id.",
+      riskNotes: [
+        "Read-only accounting task template endpoint.",
+        "Unknown task ids return an explicit not-found response."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/accounting/tasks/:templateId/control-decision",
+      group: "accounting",
+      accessLevel: "public_demo",
+      purpose: "Evaluate one accounting task template through the accounting control framework.",
+      riskNotes: [
+        "Read-only control decision endpoint.",
+        "Shows what would be allowed, blocked, simulated, or approval-gated without executing the task."
+      ]
     },
     {
       method: "POST",

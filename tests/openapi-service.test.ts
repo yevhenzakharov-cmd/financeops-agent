@@ -26,6 +26,9 @@ describe("openapi service", () => {
     expect(document.paths["/system-summary"]?.get).toBeDefined();
     expect(document.paths["/audit/visibility"]?.get).toBeDefined();
     expect(document.paths["/api/inventory"]?.get).toBeDefined();
+    expect(document.paths["/accounting/tasks"]?.get).toBeDefined();
+    expect(document.paths["/accounting/tasks/{templateId}"]?.get).toBeDefined();
+    expect(document.paths["/accounting/tasks/{templateId}/control-decision"]?.get).toBeDefined();
   });
 
   test("includes standard error schema", () => {

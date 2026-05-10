@@ -24,13 +24,17 @@ export interface OpenApiDocument {
 }
 
 function toOpenApiPath(path: string): string {
-  return path.replace(":paymentRecommendationId", "{paymentRecommendationId}");
+  return path
+    .replace(":paymentRecommendationId", "{paymentRecommendationId}")
+    .replace(":templateId", "{templateId}");
 }
 
 function routeSummary(path: string): string {
   if (path === "/run-financeops-agent") return "Run FinanceOps agent pipeline";
   if (path.includes("approve-and-send")) return "Approve and simulate payment execution";
   if (path.includes("audit")) return "Audit visibility endpoint";
+  if (path.includes("accounting/tasks") && path.includes("control-decision")) return "Accounting task control decision endpoint";
+  if (path.includes("accounting/tasks")) return "Accounting task registry endpoint";
   if (path.includes("security")) return "Demo auth status endpoint";
   if (path.includes("api")) return "API inventory endpoint";
   if (path.includes("client")) return "Client and reviewer package endpoint";
@@ -151,6 +155,10 @@ export function buildOpenApiDocument(): OpenApiDocument {
       {
         name: "security",
         description: "Demo security boundary endpoints."
+      },
+      {
+        name: "accounting",
+        description: "Read-only accounting task registry and control-decision endpoints."
       },
       {
         name: "client",

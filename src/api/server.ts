@@ -97,6 +97,12 @@ import { buildDemoAuthStatus, requireDemoApiKey } from "./demo-auth.js";
 import { buildAuditVisibilityPackage, getAuditHealth, summarizeLatestAuditLog } from "./audit-read-service.js";
 import { buildApiInventoryPackage, getApiInventoryRoutes } from "./api-inventory-service.js";
 import { buildOpenApiDocument } from "./openapi-service.js";
+import {
+  evaluateAccountingTaskTemplate,
+  getAccountingTaskTemplate,
+  listAccountingTaskTemplates,
+  type AccountingTaskTemplateId
+} from "../security/accounting-task-registry.js";
 import { buildRequestObservabilitySummary, createRequestObservabilityMiddleware, getRecentRequestObservations } from "./request-observability.js";
 import { buildDemoRateLimitMiddleware, buildSecurityHeadersMiddleware, securityStatusHandler } from "./security-middleware.js";
 
@@ -929,6 +935,64 @@ app.get("/system-summary", (_req, res) => {
       "client_implementation_manifest_endpoint"
     ],
     executionMode: getExecutionMode()
+  });
+});
+
+app.get("/accounting/tasks", (_req, res) => {
+  const templates = listAccountingTaskTemplates();
+
+  res.json({
+    status: "success",
+    result: {
+      packageVersion: "accounting-task-registry-v1",
+      totalTemplates: templates.length,
+      templates
+    }
+  });
+});
+
+app.get("/accounting/tasks/:templateId", (req, res) => {
+  const template = getAccountingTaskTemplate(req.params.templateId as AccountingTaskTemplateId);
+
+  if (!template) {
+    res.status(404).json({
+      status: "error",
+      error: {
+        code: "accounting_task_template_not_found",
+        message: "Accounting task template was not found.",
+        templateId: req.params.templateId
+      }
+    });
+    return;
+  }
+
+  res.json({
+    status: "success",
+    result: template
+  });
+});
+
+app.get("/accounting/tasks/:templateId/control-decision", (req, res) => {
+  const template = getAccountingTaskTemplate(req.params.templateId as AccountingTaskTemplateId);
+
+  if (!template) {
+    res.status(404).json({
+      status: "error",
+      error: {
+        code: "accounting_task_template_not_found",
+        message: "Accounting task template was not found.",
+        templateId: req.params.templateId
+      }
+    });
+    return;
+  }
+
+  res.json({
+    status: "success",
+    result: {
+      template,
+      decision: evaluateAccountingTaskTemplate(template.id)
+    }
   });
 });
 
