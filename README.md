@@ -1,5 +1,7 @@
 # FinanceOps Agent
 
+For AI companies and hiring teams: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).
+
 A governed FinanceOps automation system for client-specific accounting and finance operations.
 
 This repository is a public technical demo showing how a finance operations agent can be built with deterministic business logic, strict approval gates, auditability, API visibility, security boundaries, and client-specific implementation packages.
@@ -107,6 +109,7 @@ For the shortest reviewer or buyer walkthrough, run:
 ```bash
 pnpm run verify:local
 pnpm run demo:reviewer-path
+pnpm run demo:ai-company-reviewer-path
 ```
 
 The wrapper command runs:

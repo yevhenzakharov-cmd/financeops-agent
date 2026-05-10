@@ -1,5 +1,7 @@
 # Reviewer Demo Path
 
+Hiring/team reviewer guide: [AI Company Reviewer Path](AI_COMPANY_REVIEWER_PATH.md).
+
 This guide gives a reviewer the shortest path through the FinanceOps Agent repository.
 
 The project should be reviewed as a production-aware public demo and implementation foundation, not as a finished enterprise deployment.
@@ -30,6 +32,7 @@ First-adapter decision tree: [First Adapter Decision Tree](FIRST_ADAPTER_DECISIO
 
 - pnpm run verify:local
 - pnpm run demo:reviewer-path
+- pnpm run demo:ai-company-reviewer-path
 - pnpm run demo:client-onboarding-pack
 - pnpm run demo:client-ready-checkpoint
 - pnpm run demo:first-adapter-decision-tree
