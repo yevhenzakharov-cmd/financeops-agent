@@ -151,6 +151,18 @@ Its decisions include allowed, optional review, approval required, professional 
 
 This makes the core safer for future client-specific accounting workflows where the final step is usually accountant, controller, CFO, tax professional, or legal review unless the client explicitly classifies the task as low-risk.
 
+### Accounting task registry
+
+The repository also includes an Accounting Task Registry that defines reusable accounting department task templates before client-specific inputs and outputs are known.
+
+The registry is not meant to pre-build every possible business integration. It provides a typed catalog of common accounting workstreams that can later be adapted during client discovery.
+
+Current task templates include CFO exception briefing, receivables aging review, bank reconciliation review, budget variance review, project margin review, duplicate invoice review, expense policy exception review, payment approval preparation, journal entry draft preparation, tax calculation packets, tax/legal review packets, and external writeback dry runs.
+
+Each template records the task category, default risk level, default autonomy level, typical inputs, expected outputs, reviewer role, client configuration needed, and production boundary.
+
+This gives reviewers a clear enterprise pattern: the client provides the actual inputs, task, and desired output later, while the core already knows how to classify accounting work into controlled, reviewable, approval-gated task types.
+
 
 ## Core architecture
 
