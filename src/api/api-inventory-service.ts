@@ -963,6 +963,28 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client-requirements/mock-client/workflow-intake-plan",
+      group: "client_requirements",
+      accessLevel: "public_demo",
+      purpose: "Expose the mock client workflow intake plan that maps requirements into routed accounting workflows.",
+      riskNotes: [
+        "Read-only mock-data endpoint.",
+        "Does not execute accounting work, move money, write to external systems, or approve client work."
+      ]
+    },
+    {
+      method: "POST",
+      path: "/client-requirements/workflow-intake-plan",
+      group: "client_requirements",
+      accessLevel: "public_demo",
+      purpose: "Evaluate a client-provided requirements intake payload into a controlled workflow intake plan.",
+      riskNotes: [
+        "Read-only planning endpoint.",
+        "Returns validation, blockers, routed workflows, and client questions without executing actions."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client-requirements/mock-client/*",
       group: "client_requirements",
       accessLevel: "public_demo",

@@ -10,6 +10,8 @@ import { buildClientImplementationPlan } from "../client-config/client-implement
 import { mockClientRequirementsIntake } from "../client-config/mock-client-requirements-intake.js";
 import { buildClientRequirementsPlan } from "../client-config/client-requirements-plan.js";
 import { validateClientRequirementsIntake } from "../client-config/client-requirements-validator.js";
+import type { ClientRequirementsIntake } from "../client-config/client-requirements-intake.js";
+import { buildClientWorkflowIntakePlan } from "../client-config/client-workflow-intake-plan.js";
 import { buildClientOnboardingChecklist } from "../client-config/client-onboarding-checklist.js";
 import {
   buildClientDataRequestPacket,
@@ -222,6 +224,55 @@ app.get("/client-requirements/mock-client/validation", (_req, res) => {
   res.json({
     status: "success",
     validation: validateClientRequirementsIntake(mockClientRequirementsIntake)
+  });
+});
+
+app.get("/client-requirements/mock-client/workflow-intake-plan", (_req, res) => {
+  res.json({
+    status: "success",
+    plan: buildClientWorkflowIntakePlan(mockClientRequirementsIntake)
+  });
+});
+
+app.post("/client-requirements/workflow-intake-plan", (req, res) => {
+  const body = req.body as Partial<ClientRequirementsIntake> | undefined;
+
+  if (!body || typeof body.clientName !== "string") {
+    res.status(400).json({
+      status: "error",
+      error: {
+        code: "invalid_client_workflow_intake",
+        message: "Client workflow intake planning requires at least a clientName field.",
+        requiredFields: [
+          "clientName",
+          "industryNotes",
+          "currentAccountingPain",
+          "inputTypesAvailable",
+          "desiredOutputs",
+          "priorityTasks",
+          "approvalRequirements",
+          "implementationNotes"
+        ]
+      }
+    });
+    return;
+  }
+
+  const intake: ClientRequirementsIntake = {
+    clientName: body.clientName,
+    industryNotes: typeof body.industryNotes === "string" ? body.industryNotes : "",
+    currentAccountingPain:
+      typeof body.currentAccountingPain === "string" ? body.currentAccountingPain : "",
+    inputTypesAvailable: Array.isArray(body.inputTypesAvailable) ? body.inputTypesAvailable : [],
+    desiredOutputs: Array.isArray(body.desiredOutputs) ? body.desiredOutputs : [],
+    priorityTasks: Array.isArray(body.priorityTasks) ? body.priorityTasks : [],
+    approvalRequirements: Array.isArray(body.approvalRequirements) ? body.approvalRequirements : [],
+    implementationNotes: Array.isArray(body.implementationNotes) ? body.implementationNotes : []
+  };
+
+  res.json({
+    status: "success",
+    plan: buildClientWorkflowIntakePlan(intake)
   });
 });
 

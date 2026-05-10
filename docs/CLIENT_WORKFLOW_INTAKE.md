@@ -37,6 +37,23 @@ The workflow intake plan produces:
 - required client questions
 - recommended implementation steps
 
+## Demo endpoints
+
+The client workflow intake planner is exposed through demo-safe planning endpoints:
+
+- GET /client-requirements/mock-client/workflow-intake-plan
+- POST /client-requirements/workflow-intake-plan
+
+These endpoints return validation, blockers, routed workflows, required client questions, and recommended implementation steps.
+
+They do not execute accounting work.
+
+## Demo command
+
+Run the workflow intake demo with:
+
+- pnpm run demo:client-workflow-intake
+
 ## Safety boundary
 
 The intake plan does not execute accounting work.
