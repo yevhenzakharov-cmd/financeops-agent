@@ -1,5 +1,9 @@
 # FinanceOps Agent Implementation Model
 
+Related adapter plan: [Client First Adapter Build Plan](CLIENT_FIRST_ADAPTER_BUILD_PLAN.md).
+
+Related discovery form: [Client Discovery Form](CLIENT_DISCOVERY_FORM.md).
+
 Related intake guide: [Client Input and Output Request](CLIENT_INPUT_OUTPUT_REQUEST.md).
 
 Related guide: [Client Implementation Path](CLIENT_IMPLEMENTATION_PATH.md).

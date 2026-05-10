@@ -54,11 +54,13 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 3. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - connects requirements intake, workflow intake, task routing, controls, approvals, audit evidence, and production blockers.
 4. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - explains exactly what a real client should provide before client-specific adapters are built.
 5. [Client Input and Output Email Template](docs/CLIENT_INPUT_OUTPUT_EMAIL_TEMPLATE.md) - gives a copy-ready message for asking a client to send safe sample inputs and desired outputs.
-6. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
-7. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
-8. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
-9. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
-10. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
+6. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures the client workflow, fields, calculations, approval rules, and output expectations.
+7. [Client First Adapter Build Plan](docs/CLIENT_FIRST_ADAPTER_BUILD_PLAN.md) - explains how a safe sample input becomes the first client-specific adapter.
+8. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
+9. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
+10. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
+11. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
+12. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
 
 Recommended first local checks:
 

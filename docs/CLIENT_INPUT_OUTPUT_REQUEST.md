@@ -1,5 +1,9 @@
 # Client Input and Output Request
 
+Related adapter plan: [Client First Adapter Build Plan](CLIENT_FIRST_ADAPTER_BUILD_PLAN.md).
+
+Related discovery form: [Client Discovery Form](CLIENT_DISCOVERY_FORM.md).
+
 This guide explains what a real client should provide before a client-specific FinanceOps implementation begins.
 
 The public repository intentionally uses mock data only. Real input adapters, output destinations, approval rules, and production integrations should be added only after the client confirms their actual workflow, sample data, field meanings, and control requirements.

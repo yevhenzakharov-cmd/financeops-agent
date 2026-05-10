@@ -1,5 +1,9 @@
 # Client Input and Output Email Template
 
+Related adapter plan: [Client First Adapter Build Plan](CLIENT_FIRST_ADAPTER_BUILD_PLAN.md).
+
+Related discovery form: [Client Discovery Form](CLIENT_DISCOVERY_FORM.md).
+
 Use this message when asking a real client for the first safe sample packet.
 
 ## Short version
