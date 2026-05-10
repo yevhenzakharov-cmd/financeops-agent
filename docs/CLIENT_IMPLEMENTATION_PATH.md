@@ -1,5 +1,7 @@
 # Client Implementation Path
 
+Related intake guide: [Client Input and Output Request](CLIENT_INPUT_OUTPUT_REQUEST.md).
+
 This document connects the public FinanceOps Agent demo into a realistic client implementation path.
 
 The repo is not trying to prebuild every possible input source or output destination. It proves the governed FinanceOps core first, then shows how client-specific adapters, mappings, policies, and delivery paths can be added after discovery.

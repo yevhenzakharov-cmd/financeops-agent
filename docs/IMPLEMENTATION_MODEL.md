@@ -1,5 +1,7 @@
 # FinanceOps Agent Implementation Model
 
+Related intake guide: [Client Input and Output Request](CLIENT_INPUT_OUTPUT_REQUEST.md).
+
 Related guide: [Client Implementation Path](CLIENT_IMPLEMENTATION_PATH.md).
 
 This document explains how the FinanceOps Agent public demo can be adapted into a real client-specific finance operations implementation.
