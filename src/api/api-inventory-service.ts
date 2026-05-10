@@ -140,6 +140,28 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
       ]
     },
     {
+      method: "GET",
+      path: "/accounting/workflows/demo-routes",
+      group: "accounting",
+      accessLevel: "public_demo",
+      purpose: "Expose demo accounting workflow routing examples for reviewer and client discovery.",
+      riskNotes: [
+        "Read-only accounting workflow router endpoint.",
+        "Shows routing lanes, readiness states, approval boundaries, and blocked work without executing actions."
+      ]
+    },
+    {
+      method: "POST",
+      path: "/accounting/workflows/route",
+      group: "accounting",
+      accessLevel: "public_demo",
+      purpose: "Evaluate a client-described accounting workflow intent through the workflow router.",
+      riskNotes: [
+        "Read-only routing evaluator.",
+        "Does not move money, post accounting entries, write to external systems, or treat AI output as approval."
+      ]
+    },
+    {
       method: "POST",
       path: "/run-financeops-agent",
       group: "protected_action",

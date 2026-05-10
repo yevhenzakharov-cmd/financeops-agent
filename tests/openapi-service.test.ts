@@ -29,6 +29,8 @@ describe("openapi service", () => {
     expect(document.paths["/accounting/tasks"]?.get).toBeDefined();
     expect(document.paths["/accounting/tasks/{templateId}"]?.get).toBeDefined();
     expect(document.paths["/accounting/tasks/{templateId}/control-decision"]?.get).toBeDefined();
+    expect(document.paths["/accounting/workflows/demo-routes"]?.get).toBeDefined();
+    expect(document.paths["/accounting/workflows/route"]?.post).toBeDefined();
   });
 
   test("includes standard error schema", () => {

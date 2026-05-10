@@ -62,7 +62,8 @@
     "demo:client-risk-acceptance-package": "./scripts/demo-client-risk-acceptance-package.sh",
     "demo:client-production-readiness-package": "./scripts/demo-client-production-readiness-package.sh",
     "demo:api-inventory": "./scripts/demo-api-inventory.sh",
-    "demo:accounting-task-registry": "./scripts/demo-accounting-task-registry.sh"
+    "demo:accounting-task-registry": "./scripts/demo-accounting-task-registry.sh",
+    "demo:accounting-workflow-router": "./scripts/demo-accounting-workflow-router.sh"
   },
   "engines": {
     "node": ">=20"

@@ -103,6 +103,11 @@ import {
   listAccountingTaskTemplates,
   type AccountingTaskTemplateId
 } from "../security/accounting-task-registry.js";
+import {
+  buildDemoAccountingWorkflowRoutes,
+  routeAccountingWorkflowIntent,
+  type AccountingWorkflowIntent
+} from "../security/accounting-workflow-router.js";
 import { buildRequestObservabilitySummary, createRequestObservabilityMiddleware, getRecentRequestObservations } from "./request-observability.js";
 import { buildDemoRateLimitMiddleware, buildSecurityHeadersMiddleware, securityStatusHandler } from "./security-middleware.js";
 
@@ -993,6 +998,88 @@ app.get("/accounting/tasks/:templateId/control-decision", (req, res) => {
       template,
       decision: evaluateAccountingTaskTemplate(template.id)
     }
+  });
+});
+
+app.get("/accounting/workflows/demo-routes", (_req, res) => {
+  const routes = buildDemoAccountingWorkflowRoutes();
+
+  res.json({
+    status: "success",
+    result: {
+      packageVersion: "accounting-workflow-router-v1",
+      totalRoutes: routes.length,
+      routes
+    }
+  });
+});
+
+app.post("/accounting/workflows/route", (req, res) => {
+  const body = req.body as Partial<AccountingWorkflowIntent> | undefined;
+
+  if (!body || typeof body.title !== "string" || typeof body.requestedOutcome !== "string") {
+    res.status(400).json({
+      status: "error",
+      error: {
+        code: "invalid_accounting_workflow_intent",
+        message: "Accounting workflow routing requires title and requestedOutcome fields.",
+        requiredFields: ["title", "requestedOutcome"]
+      }
+    });
+    return;
+  }
+
+  const workflowIntent: AccountingWorkflowIntent = {
+    id: typeof body.id === "string" ? body.id : "demo-accounting-workflow-intent",
+    title: body.title,
+    requestedOutcome: body.requestedOutcome
+  };
+
+  if (body.templateId !== undefined) {
+    workflowIntent.templateId = body.templateId;
+  }
+
+  if (Array.isArray(body.keywords)) {
+    workflowIntent.keywords = body.keywords;
+  }
+
+  if (body.hasRequiredInputs !== undefined) {
+    workflowIntent.hasRequiredInputs = body.hasRequiredInputs;
+  }
+
+  if (body.requestedAutonomy !== undefined) {
+    workflowIntent.requestedAutonomy = body.requestedAutonomy;
+  }
+
+  if (body.riskLevel !== undefined) {
+    workflowIntent.riskLevel = body.riskLevel;
+  }
+
+  if (body.involvesExternalSystem !== undefined) {
+    workflowIntent.involvesExternalSystem = body.involvesExternalSystem;
+  }
+
+  if (body.involvesMoneyMovement !== undefined) {
+    workflowIntent.involvesMoneyMovement = body.involvesMoneyMovement;
+  }
+
+  if (body.involvesAccountingPosting !== undefined) {
+    workflowIntent.involvesAccountingPosting = body.involvesAccountingPosting;
+  }
+
+  if (body.involvesTaxOrLegalConclusion !== undefined) {
+    workflowIntent.involvesTaxOrLegalConclusion = body.involvesTaxOrLegalConclusion;
+  }
+
+  if (body.clientOutputDestination !== undefined) {
+    workflowIntent.clientOutputDestination = body.clientOutputDestination;
+  }
+
+  const route = routeAccountingWorkflowIntent(workflowIntent);
+
+  res.json({
+    status: "success",
+    result: route
   });
 });
 
