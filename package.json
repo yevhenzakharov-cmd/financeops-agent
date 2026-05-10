@@ -68,7 +68,8 @@
     "demo:client-adapter-readiness": "./scripts/demo-client-adapter-readiness.sh",
     "demo:reviewer-path": "./scripts/demo-reviewer-path.sh",
     "demo:client-onboarding-pack": "./scripts/demo-client-onboarding-pack.sh",
-    "demo:client-ready-checkpoint": "./scripts/demo-client-ready-checkpoint.sh"
+    "demo:client-ready-checkpoint": "./scripts/demo-client-ready-checkpoint.sh",
+    "demo:first-adapter-decision-tree": "./scripts/demo-first-adapter-decision-tree.sh"
   },
   "engines": {
     "node": ">=20"

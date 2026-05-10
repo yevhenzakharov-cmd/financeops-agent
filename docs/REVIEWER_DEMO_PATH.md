@@ -24,12 +24,15 @@ Client sample packet template: [`examples/client-sample-packet`](../examples/cli
 
 Client-ready checkpoint: [Client-Ready Checkpoint](CLIENT_READY_CHECKPOINT.md).
 
+First-adapter decision tree: [First Adapter Decision Tree](FIRST_ADAPTER_DECISION_TREE.md).
+
 ## Recommended commands
 
 - pnpm run verify:local
 - pnpm run demo:reviewer-path
 - pnpm run demo:client-onboarding-pack
 - pnpm run demo:client-ready-checkpoint
+- pnpm run demo:first-adapter-decision-tree
 
 The wrapper command runs the API inventory, accounting task registry, accounting workflow router, client workflow intake, and client adapter readiness demos:
 

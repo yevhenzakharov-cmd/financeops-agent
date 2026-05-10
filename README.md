@@ -56,6 +56,7 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 5. [Client Input and Output Email Template](docs/CLIENT_INPUT_OUTPUT_EMAIL_TEMPLATE.md) - gives a copy-ready message for asking a client to send safe sample inputs and desired outputs.
 6. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures the client workflow, fields, calculations, approval rules, and output expectations.
 7. [Client First Adapter Build Plan](docs/CLIENT_FIRST_ADAPTER_BUILD_PLAN.md) - explains how a safe sample input becomes the first client-specific adapter.
+8. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - explains how to choose the safest and highest-value first client adapter.
 8. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
 9. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
 10. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
@@ -69,6 +70,7 @@ Client onboarding pack command:
 ```bash
 pnpm run demo:client-onboarding-pack
 pnpm run demo:client-ready-checkpoint
+pnpm run demo:first-adapter-decision-tree
 ```
 
 Recommended first local checks:
