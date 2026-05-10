@@ -1,4 +1,5 @@
 import { MockFinanceOpsAdapter } from "../adapters/mock-financeops-adapter.js";
+import type { FinanceOpsInputAdapter } from "../adapters/financeops-input-adapter.js";
 import {
   calculateProjectMargin,
   detectOverdueInvoices,
@@ -30,6 +31,7 @@ import {
 } from "../security/audit-log.js";
 import { buildPaymentRecommendations } from "../payments/payment-recommendation-builder.js";
 import { MockClientOutputAdapter } from "../output-adapters/mock-client-output-adapter.js";
+import type { FinanceOpsOutputAdapter } from "../output-adapters/financeops-output-adapter.js";
 import { persistOutputArtifact } from "../output-adapters/output-artifact-store.js";
 
 function scoreAction(action: RankedAction): number {
@@ -40,11 +42,18 @@ function scoreAction(action: RankedAction): number {
   );
 }
 
-export async function runFinanceOpsPipeline() {
+export interface RunFinanceOpsPipelineOptions {
+  inputAdapter?: FinanceOpsInputAdapter;
+  outputAdapter?: FinanceOpsOutputAdapter;
+}
+
+export async function runFinanceOpsPipeline(
+  options: RunFinanceOpsPipelineOptions = {}
+) {
   const mode = getExecutionMode();
   const audit = createAuditLog();
 
-  const inputAdapter = new MockFinanceOpsAdapter();
+  const inputAdapter = options.inputAdapter ?? new MockFinanceOpsAdapter();
   const inputSnapshot = await inputAdapter.loadSnapshot();
 
   recordAuditEvent(audit, "initialization", "INPUT_SNAPSHOT_LOADED", {
@@ -145,7 +154,7 @@ export async function runFinanceOpsPipeline() {
     confidenceScore: cfoBriefing.confidenceScore
   });
 
-  const outputAdapter = new MockClientOutputAdapter();
+  const outputAdapter = options.outputAdapter ?? new MockClientOutputAdapter();
   const outputArtifact = await outputAdapter.buildArtifact({
     mode,
     inputSource: {
