@@ -64,6 +64,12 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 
 Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
 
+Client onboarding pack command:
+
+```bash
+pnpm run demo:client-onboarding-pack
+```
+
 Recommended first local checks:
 
 - pnpm run verify:local

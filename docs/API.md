@@ -158,3 +158,11 @@ Returns the broader adapter registry covering input, output, approval, and audit
 Recommended reviewer sequence:
 
 pnpm run demo:client-adapter-readiness
+
+## Client onboarding pack demo
+
+```bash
+pnpm run demo:client-onboarding-pack
+```
+
+Shows the request guide, email template, discovery form, first adapter plan, and sample packet files a client should review before providing safe inputs and desired outputs.

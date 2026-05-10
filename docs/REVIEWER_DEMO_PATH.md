@@ -26,6 +26,7 @@ Client sample packet template: [`examples/client-sample-packet`](../examples/cli
 
 - pnpm run verify:local
 - pnpm run demo:reviewer-path
+- pnpm run demo:client-onboarding-pack
 
 The wrapper command runs the API inventory, accounting task registry, accounting workflow router, client workflow intake, and client adapter readiness demos:
 
