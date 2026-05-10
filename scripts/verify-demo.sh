@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 BASE_URL="${BASE_URL:-http://localhost:3001}"
 DEMO_API_KEY="${DEMO_API_KEY:-local-demo-key}"
+VERIFY_PAYMENT_IDEMPOTENCY_KEY="${VERIFY_PAYMENT_IDEMPOTENCY_KEY:-verify-demo-payment-$(date +%s)}"
 set -euo pipefail
 
 echo "---- typecheck ----"
@@ -47,6 +48,10 @@ curl -s "$BASE_URL/api/inventory" | python3 -m json.tool | sed -n '1,120p'
 echo "---- audit visibility ----"
 curl -s "$BASE_URL/audit/visibility" | python3 -m json.tool | sed -n '1,120p'
 
+
+echo
+echo "---- protected mock payment approval route with key ----"
+curl -s "$BASE_URL/payments/payrec-001/approve-and-send" -X POST -H "Content-Type: application/json" -H "x-demo-api-key: $DEMO_API_KEY" -d "{\"approvedBy\":\"verify-demo-controller\",\"idempotencyKey\":\"$VERIFY_PAYMENT_IDEMPOTENCY_KEY\"}" | python3 -m json.tool | sed -n "1,120p"
 
 echo "---- artifact status ----"
 curl -s http://localhost:3001/artifacts/status | python3 -m json.tool || true

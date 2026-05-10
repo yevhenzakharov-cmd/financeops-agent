@@ -3,6 +3,7 @@ set -euo pipefail
 
 BASE_URL="${BASE_URL:-http://localhost:3001}"
 IDEMPOTENCY_KEY="${IDEMPOTENCY_KEY:-demo-payment-key-script-$(date +%s)}"
+DEMO_API_KEY="${DEMO_API_KEY:-local-demo-key}"
 
 echo "---- health ----"
 curl -s "$BASE_URL/health" | python3 -m json.tool
@@ -14,6 +15,8 @@ curl -s "$BASE_URL/system-summary" | python3 -m json.tool
 echo ""
 echo "---- run financeops agent: payment recommendations ----"
 curl -s -X POST "$BASE_URL/run-financeops-agent" \
+  -H "Content-Type: application/json" \
+  -H "x-demo-api-key: $DEMO_API_KEY" \
   | python3 -m json.tool \
   | grep -A 25 "paymentRecommendations"
 
@@ -21,6 +24,7 @@ echo ""
 echo "---- approve and send mock payment ----"
 curl -s -X POST "$BASE_URL/payments/payrec-001/approve-and-send" \
   -H "Content-Type: application/json" \
+  -H "x-demo-api-key: $DEMO_API_KEY" \
   -d "{\"approvedBy\":\"demo-cfo\",\"idempotencyKey\":\"$IDEMPOTENCY_KEY\"}" \
   | python3 -m json.tool
 
