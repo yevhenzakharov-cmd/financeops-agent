@@ -3,8 +3,9 @@ set -euo pipefail
 
 echo "==== FinanceOps Agent reviewer demo path ===="
 echo
-echo "This script runs the shortest buyer/reviewer walkthrough."
-echo "Run pnpm run verify:local separately first when you want the full quality-gate proof."
+echo "This script runs the shortest buyer/reviewer walkthrough after local verification."
+echo "Run pnpm run verify:local first when you want the full quality-gate proof."
+echo "This wrapper focuses only on reviewer-facing demo output."
 echo
 
 echo "==== API inventory ===="

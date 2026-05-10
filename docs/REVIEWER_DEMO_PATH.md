@@ -10,21 +10,18 @@ The project should be reviewed as a production-aware public demo and implementat
 2. Read the Reviewer Architecture Summary.
 3. Read the Implementation Model.
 4. Read the Client Implementation Path.
-4. Review the Accounting Task Registry.
-5. Review the Accounting Workflow Routing guide.
-6. Review the Client Workflow Intake guide.
-7. Run local verification.
-8. Run the API inventory demo.
-9. Run the accounting task registry demo.
-10. Run the accounting workflow router demo.
-11. Run the client workflow intake demo.
+5. Review the Accounting Task Registry.
+6. Review the Accounting Workflow Routing guide.
+7. Review the Client Workflow Intake guide.
+8. Run local verification.
+9. Run the reviewer demo path command.
 
 ## Recommended commands
 
 - pnpm run verify:local
 - pnpm run demo:reviewer-path
 
-The wrapper command runs:
+The wrapper command runs the API inventory, accounting task registry, accounting workflow router, client workflow intake, and client adapter readiness demos:
 
 - pnpm run demo:api-inventory
 - pnpm run demo:accounting-task-registry
