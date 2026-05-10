@@ -331,6 +331,20 @@ The core stays reusable. The adapters and policies become client-specific.
 
 The system is designed to handle nearly any structured finance operations input or output once the client provides the schema, field definitions, access pattern, and security requirements.
 
+The public repository intentionally includes one simulated input stack and one demo output stack. That is enough to prove the governed FinanceOps core without pretending that every future client will use the same source systems, accounting workflow, approval policy, or reporting destination.
+
+Real input and output adapters should be built only after client discovery confirms:
+
+- source system or file format
+- sample rows or payload examples
+- required field mappings
+- calculation or workflow objective
+- reviewer and approval policy
+- destination for the final output
+- security and deployment boundary
+
+This keeps the core code strong, reusable, and easier to adapt. The repo should be judged by the quality of the deterministic FinanceOps core, workflow routing, approval gates, audit evidence, API visibility, and implementation model rather than by the number of prebuilt third-party connectors.
+
 This includes:
 
 - different file formats

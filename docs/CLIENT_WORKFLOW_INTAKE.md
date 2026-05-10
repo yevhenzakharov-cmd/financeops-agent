@@ -81,3 +81,11 @@ The client can say:
 - here is who approves it
 
 The system can then classify the request and show whether it is ready, approval-gated, simulation-only, professionally reviewed, or blocked until missing client details are provided.
+
+## Why inputs and outputs stay client-specific
+
+The workflow intake layer exists because real finance automation cannot assume that every client uses the same files, systems, approvals, or output destinations.
+
+The public demo should therefore prove the reusable core with one simulated input stack and one demo output path. After a client confirms their actual accounting process, the implementation can add the correct adapter for that client's source data and the correct output path for that client's finance team.
+
+This keeps the system honest: the repo demonstrates the governed FinanceOps architecture, while client-specific input and output adapters are scoped during discovery and implementation.

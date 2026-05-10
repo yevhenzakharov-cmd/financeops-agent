@@ -67,6 +67,8 @@ The API currently runs on simulated company data.
 
 For real company usage, an input adapter can normalize company data into the internal schema, and an output adapter can format the result into the target business output.
 
+The public API demo intentionally shows one simulated input and one demo output path. Additional adapters should be added only after a client confirms their source systems, sample payloads, field mappings, approval policy, and desired output destination.
+
 The core agent pipeline does not need to be rewritten for each company or data source. Only the adapter layer changes.
 
 

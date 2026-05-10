@@ -33,6 +33,24 @@ Client input sources
   -> Audit log, execution ledger, approval queue, and CFO/reviewer outputs
   -> Output adapters
 
+## Public demo input and output boundary
+
+The public demo is intentionally narrow at the edges and strong in the middle.
+
+It includes:
+
+- one simulated finance input stack
+- one demo output path through local and API-visible artifacts
+- deterministic finance calculations
+- controlled workflow routing
+- approval-gated recommendations
+- audit evidence
+- reviewer-friendly documentation and APIs
+
+It intentionally does not prebuild every possible client input or output. Real clients may need OCR invoice intake, spreadsheet imports, payroll preparation, bank reconciliation exports, internal API adapters, accounting system writebacks, or reporting dashboards. Those should be added after the client provides actual files, schemas, access rules, approval requirements, and output expectations.
+
+This avoids bloating the public repo with speculative integrations and keeps the architecture focused on the reusable FinanceOps core.
+
 ## 1. Client input model
 
 A real implementation starts with the client's actual finance workflow.
