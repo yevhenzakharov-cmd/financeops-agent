@@ -31,6 +31,9 @@ The current version is a working public demo with:
 - API inventory
 - request observability
 - security boundary documentation
+- accounting control framework
+- accounting task registry
+- accounting workflow routing
 - due diligence package
 - control matrix
 - evidence binder
@@ -112,6 +115,9 @@ The current demo demonstrates:
 - client acceptance gates
 - client evidence package
 - client pilot proposal package
+- accounting task classification
+- accounting workflow routing
+- approval-gated accounting task planning
 
 ## What AI does and does not do
 
@@ -168,6 +174,24 @@ Each template records the task category, default risk level, default autonomy le
 
 This gives reviewers a clear enterprise pattern: the client provides the actual inputs, task, and desired output later, while the core already knows how to classify accounting work into controlled, reviewable, approval-gated task types.
 
+
+### Accounting workflow routing
+
+The repository includes an Accounting Workflow Router that maps a client-described accounting task into a controlled execution lane.
+
+This is designed for the real sales and implementation process:
+
+- the client explains the task
+- the client provides the actual input source later
+- the client defines the desired output later
+- the system classifies the workflow before execution
+- the system decides whether the task is read-only, deterministic, approval-gated, professional-review-required, simulation-only, or blocked
+
+This matters because each business will have different inputs, outputs, databases, finance systems, approval rules, and reporting needs. The core does not need every possible integration pre-built. It needs a safe routing model that can accept the client-specific workflow later and keep sensitive accounting work controlled.
+
+The router supports workflows such as payment approval preparation, journal entry draft preparation, tax calculation packets, external writeback dry runs, receivables review, reconciliation review, and CFO exception briefing.
+
+The final step for sensitive accounting work remains human review unless the task is explicitly classified as low-risk and read-only.
 
 ## Core architecture
 
