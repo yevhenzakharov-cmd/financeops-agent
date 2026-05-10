@@ -824,6 +824,54 @@ export function getApiInventoryRoutes(): ApiInventoryRoute[] {
     },
     {
       method: "GET",
+      path: "/client/implementation-readiness",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose:
+        "Expose client implementation readiness, missing required fields, mapping questions, data request packet, and governance brief.",
+      riskNotes: [
+        "Read-only implementation readiness endpoint.",
+        "Shows what is blocked until client-owned data, mapping, and approval policy exist."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/adapter-blueprint",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose:
+        "Expose the input adapter blueprint for mapping client-owned finance inputs into the normalized FinanceOps core schema.",
+      riskNotes: [
+        "Read-only adapter blueprint endpoint.",
+        "Does not connect to production source systems or handle credentials."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/output-delivery-plan",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose:
+        "Expose the output delivery plan for CFO briefing, exception queue, and payment approval request outputs.",
+      riskNotes: [
+        "Read-only output delivery planning endpoint.",
+        "Final delivery formats remain client-approved before production build."
+      ]
+    },
+    {
+      method: "GET",
+      path: "/client/build-package",
+      group: "client",
+      accessLevel: "public_demo",
+      purpose:
+        "Expose a builder-facing package combining readiness, adapter blueprint, output delivery plan, deployment checklist, and next actions.",
+      riskNotes: [
+        "Read-only build package endpoint.",
+        "Keeps production work blocked until client-owned controls exist."
+      ]
+    },
+    {
+      method: "GET",
       path: "/client/adapter-registry",
       group: "client",
       accessLevel: "public_demo",

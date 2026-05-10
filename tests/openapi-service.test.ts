@@ -66,6 +66,18 @@ describe("openapi service", () => {
     }
   });
 
+  test("documents client adapter and build readiness routes", () => {
+    const document = buildOpenApiDocument();
+
+    expect(document.paths["/client/implementation-readiness"]?.get).toBeDefined();
+    expect(document.paths["/client/adapter-blueprint"]?.get).toBeDefined();
+    expect(document.paths["/client/output-delivery-plan"]?.get).toBeDefined();
+    expect(document.paths["/client/build-package"]?.get).toBeDefined();
+    expect(document.paths["/client/adapter-registry"]?.get).toBeDefined();
+    expect(document.paths["/client/adapter-registry/summary"]?.get).toBeDefined();
+    expect(document.paths["/client/adapter-registry/validation"]?.get).toBeDefined();
+  });
+
   test("includes standard error schema", () => {
     const document = buildOpenApiDocument();
 

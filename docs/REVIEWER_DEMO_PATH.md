@@ -26,6 +26,7 @@ The project should be reviewed as a production-aware public demo and implementat
 - pnpm run demo:accounting-task-registry
 - pnpm run demo:accounting-workflow-router
 - pnpm run demo:client-workflow-intake
+- pnpm run demo:client-adapter-readiness
 
 ## Sales demo script
 
@@ -36,7 +37,8 @@ Use this sequence for a buyer, founder, hiring manager, senior engineer, or CFO-
 3. Run `pnpm run demo:accounting-task-registry` to show the reusable accounting task templates before a real client provides inputs and outputs.
 4. Run `pnpm run demo:accounting-workflow-router` to show how accounting workflows are routed into safe lanes: allowed, simulation-only, approval-gated, professionally reviewed, or blocked.
 5. Run `pnpm run demo:client-workflow-intake` to show how a client-described workflow becomes an implementation plan without pretending production adapters already exist.
-6. Close with the Implementation Model to explain why real input and output adapters are scoped after client discovery.
+6. Run `pnpm run demo:client-adapter-readiness` to show the adapter blueprint, output delivery plan, build package, and client-owned blockers.
+7. Close with the Implementation Model to explain why real input and output adapters are scoped after client discovery.
 
 The buyer-facing message is simple: this repo proves the governed FinanceOps core, while real client adapters are intentionally added only after the client confirms source data, required calculations, approval rules, and output destinations.
 

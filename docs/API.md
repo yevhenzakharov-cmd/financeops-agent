@@ -132,3 +132,29 @@ Accepts a client requirements intake payload and returns a workflow intake plan.
 Recommended demo command:
 
 pnpm run demo:client-workflow-intake
+
+## Client Adapter and Build Readiness
+
+GET /client/implementation-readiness
+
+Returns the current demo client's implementation readiness status, missing required fields, mapping questions, data request packet, and governance brief.
+
+GET /client/adapter-blueprint
+
+Returns a client input adapter blueprint showing which source adapters are ready, which require mapping, and which remain blocked until client-owned data exists.
+
+GET /client/output-delivery-plan
+
+Returns the output delivery plan for CFO briefing, exception queue, and payment approval request outputs.
+
+GET /client/build-package
+
+Returns a builder-facing package combining implementation readiness, adapter blueprint, output delivery plan, deployment checklist, and next actions.
+
+GET /client/adapter-registry
+
+Returns the broader adapter registry covering input, output, approval, and audit adapters. This endpoint is useful for explaining why the repo includes one simulated input/output path while real adapters are scoped per client.
+
+Recommended reviewer sequence:
+
+pnpm run demo:client-adapter-readiness
