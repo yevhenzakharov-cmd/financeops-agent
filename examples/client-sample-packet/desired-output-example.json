@@ -1,0 +1,26 @@
+{
+  "outputName": "Weekly FinanceOps Exception Briefing",
+  "audience": "Controller and CFO",
+  "format": "json_artifact_and_email_ready_summary",
+  "sections": [
+    "overdueInvoices",
+    "missingPayments",
+    "orphanBankTransactions",
+    "marginOrBudgetRisks",
+    "approvalRequiredItems"
+  ],
+  "approvalRules": {
+    "paymentsRequireHumanApproval": true,
+    "accountingWriteBackAllowed": false,
+    "taxOrLegalConclusionAllowed": false
+  },
+  "deliveryPreference": {
+    "firstBuild": "json_artifact",
+    "futureOptions": [
+      "csv_export",
+      "slack_summary",
+      "email_summary",
+      "dashboard_payload"
+    ]
+  }
+}

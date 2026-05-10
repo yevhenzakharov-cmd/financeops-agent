@@ -10,6 +10,8 @@ The public repository intentionally uses mock data only. Real input adapters, ou
 
 Related email template: [Client Input and Output Email Template](CLIENT_INPUT_OUTPUT_EMAIL_TEMPLATE.md).
 
+Client sample packet template: [`examples/client-sample-packet`](../examples/client-sample-packet).
+
 ## What the client should send first
 
 Ask the client for safe sample materials, not full private production data.

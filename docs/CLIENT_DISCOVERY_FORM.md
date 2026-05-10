@@ -143,6 +143,8 @@ The client should not send:
 - private bank data beyond safe samples
 - final tax or legal documents unless explicitly approved for secure handling
 
+Client sample packet template: [`examples/client-sample-packet`](../examples/client-sample-packet).
+
 ## First adapter readiness checklist
 
 The first adapter can be planned when the client provides:

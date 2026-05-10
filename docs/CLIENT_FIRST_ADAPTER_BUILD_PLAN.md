@@ -122,6 +122,8 @@ Production remains blocked until the client owns:
 - incident response
 - compliance signoff
 
+Client sample packet template: [`examples/client-sample-packet`](../examples/client-sample-packet).
+
 ## Definition of done for first adapter
 
 A first client adapter is ready for demo when:

@@ -1,0 +1,4 @@
+bankTransactionId,transactionDate,description,amount,currency,direction,reference
+bank-9001,2026-01-28,Incoming payment redacted customer A,12500,USD,inflow,inv-1001
+bank-9002,2026-02-02,Unmatched incoming payment,5000,USD,inflow,
+bank-9003,2026-02-10,Vendor payment redacted vendor A,3100,USD,outflow,vendor-001

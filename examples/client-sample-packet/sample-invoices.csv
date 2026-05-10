@@ -1,0 +1,4 @@
+invoiceId,customerId,customerName,amount,currency,status,issuedAt,dueAt,paidAt,projectCode
+inv-1001,cust-001,Redacted Customer A,12500,USD,paid,2026-01-05,2026-02-04,2026-01-28,project-alpha
+inv-1002,cust-002,Redacted Customer B,8400,USD,open,2026-01-18,2026-02-17,,project-alpha
+inv-1003,cust-003,Redacted Customer C,19200,USD,overdue,2025-12-20,2026-01-19,,project-beta

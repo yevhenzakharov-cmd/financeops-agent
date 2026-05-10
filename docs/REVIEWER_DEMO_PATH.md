@@ -20,6 +20,8 @@ The project should be reviewed as a production-aware public demo and implementat
 12. Run local verification.
 13. Run the reviewer demo path command.
 
+Client sample packet template: [`examples/client-sample-packet`](../examples/client-sample-packet).
+
 ## Recommended commands
 
 - pnpm run verify:local

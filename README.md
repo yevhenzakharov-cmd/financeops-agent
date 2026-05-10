@@ -62,6 +62,8 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 11. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
 12. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
 
+Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
+
 Recommended first local checks:
 
 - pnpm run verify:local
