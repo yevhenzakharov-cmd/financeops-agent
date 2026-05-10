@@ -55,25 +55,25 @@ If required fields or output examples are missing, do not build the adapter yet.
 
 Use this sequence:
 
-1. **CSV/Excel export adapter**  
+1. **CSV/Excel export adapter**
    Choose this when the client can export a spreadsheet or flat file from their accounting, ERP, bank, payroll, or payment system. This is usually the safest first adapter.
 
-2. **JSON export adapter**  
+2. **JSON export adapter**
    Choose this when the client already has structured exports or internal API payload examples.
 
-3. **Bank transaction export adapter**  
+3. **Bank transaction export adapter**
    Choose this when the first workflow is reconciliation, orphan transaction detection, or cash movement review.
 
-4. **Invoice export adapter**  
+4. **Invoice export adapter**
    Choose this when the first workflow is overdue invoice detection, AR exception review, or collections prioritization.
 
-5. **Payment approval preparation adapter**  
+5. **Payment approval preparation adapter**
    Choose this only when approval rules, reviewer owner, payment fields, and blocked-action rules are clear.
 
-6. **OCR invoice or receipt extraction workflow**  
+6. **OCR invoice or receipt extraction workflow**
    Choose this later unless the client already has clean document samples and accepts extraction uncertainty.
 
-7. **Live API integration**  
+7. **Live API integration**
    Choose this only after the flat-file or sample-packet workflow proves value and the client owns auth, secrets, permissions, and deployment controls.
 
 ## Step 4: Apply risk gating
