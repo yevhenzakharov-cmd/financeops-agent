@@ -56,6 +56,21 @@ The router keeps those workflows controlled.
 
 The AI layer can describe the task and explain results, but deterministic code and governance rules decide what is allowed, blocked, simulated, or approval-gated.
 
+## Demo endpoints
+
+The workflow router is exposed through read-only demo endpoints:
+
+- GET /accounting/workflows/demo-routes
+- POST /accounting/workflows/route
+
+These endpoints classify and explain workflow routing decisions. They do not execute payments, post accounting entries, write to external systems, or approve client work.
+
+## Demo command
+
+Run the workflow router demo with:
+
+- pnpm run demo:accounting-workflow-router
+
 ## Production boundary
 
 The router does not mean production integrations are ready.

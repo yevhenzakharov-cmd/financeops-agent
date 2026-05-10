@@ -48,12 +48,17 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 
 1. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level overview of the architecture, control boundaries, auditability, and reviewer-facing design.
 2. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - explains how the public demo can become a client-specific FinanceOps implementation.
-3. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
+3. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
+4. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
+5. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
+6. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
 
 Recommended first local checks:
 
 - pnpm run verify:local
 - pnpm run demo:api-inventory
+- pnpm run demo:accounting-task-registry
+- pnpm run demo:accounting-workflow-router
 
 
 ## What this project is
