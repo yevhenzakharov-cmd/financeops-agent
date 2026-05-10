@@ -1,4 +1,5 @@
-import { writeFileSync } from "fs";
+import { mkdirSync, writeFileSync } from "fs";
+import { dirname } from "path";
 
 /**
  * Strict but realistic secret detection patterns.
@@ -27,6 +28,8 @@ export function safeWriteJson(path: string, data: unknown): void {
   if (containsSecret(serialized)) {
     throw new Error("Secret pattern detected in output. Write blocked.");
   }
+
+  mkdirSync(dirname(path), { recursive: true });
 
   writeFileSync(path, serialized, {
     encoding: "utf-8"
