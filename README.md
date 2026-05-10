@@ -65,6 +65,7 @@ Recommended first local checks:
 - pnpm run demo:accounting-task-registry
 - pnpm run demo:accounting-workflow-router
 - pnpm run demo:client-workflow-intake
+- pnpm run demo:client-adapter-readiness
 
 
 ## What this project is
@@ -83,6 +84,30 @@ Instead of building a generic chatbot, the project follows a safer enterprise pa
 6. prepare approval-ready outputs
 7. generate audit evidence
 8. use AI only to explain already-computed results
+
+## Fast reviewer demo script
+
+For the shortest reviewer or buyer walkthrough, run:
+
+```bash
+pnpm run verify:local
+pnpm run demo:api-inventory
+pnpm run demo:accounting-task-registry
+pnpm run demo:accounting-workflow-router
+pnpm run demo:client-workflow-intake
+pnpm run demo:client-adapter-readiness
+```
+
+This sequence proves the core review story:
+
+- local quality gates pass
+- API inventory is visible
+- accounting work is classified before execution
+- workflow routing separates safe, approval-gated, professional-review, and blocked work
+- client workflow intake turns a vague finance request into a governed implementation plan
+- adapter readiness shows which inputs and outputs are reusable, which need mapping, and which remain blocked until client-owned setup exists
+
+The important takeaway is that the repo proves the governed FinanceOps core. Real client adapters are intentionally added after discovery confirms source data, required calculations, approval rules, and output destinations.
 
 ## What this project demonstrates
 
