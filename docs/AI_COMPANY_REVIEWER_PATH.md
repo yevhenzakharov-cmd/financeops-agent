@@ -51,7 +51,7 @@ The stronger local verification path is:
 
 - `pnpm run verify:local`
 
-Useful reviewer demo commands:
+Useful reviewer demo commands:\n\n- `pnpm run demo:reviewer-command-index`
 
 - `pnpm run demo:reviewer-path`
 - `pnpm run demo:ai-company-reviewer-path`

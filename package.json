@@ -70,7 +70,8 @@
     "demo:client-onboarding-pack": "./scripts/demo-client-onboarding-pack.sh",
     "demo:client-ready-checkpoint": "./scripts/demo-client-ready-checkpoint.sh",
     "demo:first-adapter-decision-tree": "./scripts/demo-first-adapter-decision-tree.sh",
-    "demo:ai-company-reviewer-path": "./scripts/demo-ai-company-reviewer-path.sh"
+    "demo:ai-company-reviewer-path": "./scripts/demo-ai-company-reviewer-path.sh",
+    "demo:reviewer-command-index": "./scripts/demo-reviewer-command-index.sh"
   },
   "engines": {
     "node": ">=20"

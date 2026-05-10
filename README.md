@@ -1,6 +1,6 @@
 # FinanceOps Agent
 
-For AI companies and hiring teams: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).
+For AI companies and hiring teams: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).\n\nReviewer command index: [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
 
 A governed FinanceOps automation system for client-specific accounting and finance operations.
 
@@ -109,7 +109,7 @@ For the shortest reviewer or buyer walkthrough, run:
 ```bash
 pnpm run verify:local
 pnpm run demo:reviewer-path
-pnpm run demo:ai-company-reviewer-path
+pnpm run demo:ai-company-reviewer-path\npnpm run demo:reviewer-command-index
 ```
 
 The wrapper command runs:
