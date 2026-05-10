@@ -65,7 +65,8 @@
     "demo:accounting-task-registry": "./scripts/demo-accounting-task-registry.sh",
     "demo:accounting-workflow-router": "./scripts/demo-accounting-workflow-router.sh",
     "demo:client-workflow-intake": "./scripts/demo-client-workflow-intake.sh",
-    "demo:client-adapter-readiness": "./scripts/demo-client-adapter-readiness.sh"
+    "demo:client-adapter-readiness": "./scripts/demo-client-adapter-readiness.sh",
+    "demo:reviewer-path": "./scripts/demo-reviewer-path.sh"
   },
   "engines": {
     "node": ">=20"

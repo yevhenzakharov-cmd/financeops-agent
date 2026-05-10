@@ -22,6 +22,10 @@ The project should be reviewed as a production-aware public demo and implementat
 ## Recommended commands
 
 - pnpm run verify:local
+- pnpm run demo:reviewer-path
+
+The wrapper command runs:
+
 - pnpm run demo:api-inventory
 - pnpm run demo:accounting-task-registry
 - pnpm run demo:accounting-workflow-router

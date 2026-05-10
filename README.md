@@ -91,6 +91,12 @@ For the shortest reviewer or buyer walkthrough, run:
 
 ```bash
 pnpm run verify:local
+pnpm run demo:reviewer-path
+```
+
+The wrapper command runs:
+
+```bash
 pnpm run demo:api-inventory
 pnpm run demo:accounting-task-registry
 pnpm run demo:accounting-workflow-router
