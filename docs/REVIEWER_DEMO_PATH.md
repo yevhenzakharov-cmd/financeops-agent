@@ -11,10 +11,12 @@ The project should be reviewed as a production-aware public demo and implementat
 3. Read the Implementation Model.
 4. Review the Accounting Task Registry.
 5. Review the Accounting Workflow Routing guide.
-6. Run local verification.
-7. Run the API inventory demo.
-8. Run the accounting task registry demo.
-9. Run the accounting workflow router demo.
+6. Review the Client Workflow Intake guide.
+7. Run local verification.
+8. Run the API inventory demo.
+9. Run the accounting task registry demo.
+10. Run the accounting workflow router demo.
+11. Run the client workflow intake demo.
 
 ## Recommended commands
 
@@ -22,6 +24,7 @@ The project should be reviewed as a production-aware public demo and implementat
 - pnpm run demo:api-inventory
 - pnpm run demo:accounting-task-registry
 - pnpm run demo:accounting-workflow-router
+- pnpm run demo:client-workflow-intake
 
 ## What to notice
 
@@ -29,7 +32,7 @@ The project is not trying to make AI perform accounting decisions.
 
 The intended pattern is:
 
-client input -> deterministic code -> control framework -> workflow routing -> approval gate -> audit evidence -> reviewer output
+client input -> workflow intake -> deterministic code -> control framework -> workflow routing -> approval gate -> audit evidence -> reviewer output
 
 The AI layer can explain already-computed outputs, but deterministic code and control rules decide what is allowed, blocked, simulated, or approval-gated.
 
@@ -50,4 +53,4 @@ Those pieces must be added only after a client confirms inputs, field mappings, 
 
 ## Reviewer takeaway
 
-The strongest review path is to verify that the repo already contains the reusable core: deterministic finance logic, accounting task classification, workflow routing, governance boundaries, audit artifacts, API visibility, and demo-safe documentation.
+The strongest review path is to verify that the repo already contains the reusable core: deterministic finance logic, accounting task classification, workflow intake planning, workflow routing, governance boundaries, audit artifacts, API visibility, and demo-safe documentation.
