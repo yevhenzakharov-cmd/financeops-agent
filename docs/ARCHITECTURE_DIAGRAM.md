@@ -1,63 +1,119 @@
-# FinanceOps Agent Architecture Diagram
+# FinanceOps Agent Architecture Overview
 
-This document gives technical reviewers, CFO-style buyers, founders, and potential clients a quick visual map of how the FinanceOps Agent works.
+This document gives technical reviewers, AI-company reviewers, CFO-style buyers, founders, and potential clients a quick visual map of the FinanceOps Agent architecture.
 
-The public repository is a demo-safe implementation core. It uses mock data, deterministic finance logic, approval-gated action boundaries, audit artifacts, and reviewer-facing API endpoints. Production use remains blocked until a client provides safe samples, accepted mappings, client-owned credentials, authentication, monitoring, and approval policies.
+FinanceOps Agent is a configurable FinanceOps automation core for client-specific accounting and finance operations workflows.
 
-## High-level system flow
+The public repository is a demo-safe implementation core. It uses mock data, deterministic finance logic, approval-gated action boundaries, audit artifacts, and reviewer-facing API endpoints.
+
+Production use remains blocked until a client provides safe samples, accepted mappings, client-owned credentials, authentication, authorization, monitoring, retention rules, deployment requirements, and approval policies.
+
+## High-level architecture
 
 ```mermaid
 flowchart TD
-    A["Client-owned finance inputs<br/>CSV, JSON, ERP export, bank export, APIs"] --> B["Input adapter layer<br/>Normalize client data into FinanceOps contracts"]
+    A["Client-specific finance workflow<br/>AP, AR, reconciliation, OCR, expense, margin, payroll support, reporting, audit evidence"] --> B["Client discovery and intake layer<br/>Workflow, inputs, outputs, rules, approvals, deployment boundary"]
 
-    B --> C["Deterministic FinanceOps core<br/>Overdue invoices, margin risk, budget burn, reconciliation"]
+    B --> C["Input adapter layer<br/>CSV, Excel, JSON, ERP export, bank export, PDFs, OCR data, APIs, email attachments"]
 
-    C --> D["Exception classifier<br/>Severity, category, source reference, review requirement"]
+    C --> D["Normalization and validation layer<br/>Map client fields into FinanceOps contracts<br/>Reject missing, malformed, unsafe, or unmapped data"]
 
-    D --> E["Action simulation layer<br/>Projected cash, margin, risk impact"]
+    D --> E["Deterministic FinanceOps core<br/>Validation, calculations, policy checks, exception logic, routing decisions"]
 
-    E --> F["Approval and safety gate<br/>Pass, warning, blocked, approval required"]
+    E --> F["Accounting task and workflow router<br/>Read-only, approval-required, professional-review, or blocked lane"]
 
-    F --> G["Execution ledger<br/>Decision reason and projected impact"]
-    F --> H["Approval queue<br/>Human-reviewable finance actions"]
-    F --> I["Payment recommendation boundary<br/>Mock/demo only unless client-owned approval exists"]
+    F --> G["Exception and risk classifier<br/>Severity, category, source reference, required reviewer"]
 
-    G --> J["Audit log<br/>Traceable event history"]
-    H --> J
-    I --> J
+    G --> H["Simulation and recommendation layer<br/>Projected cash, margin, risk, or operational impact"]
 
-    J --> K["Artifact registry<br/>Ledger, approvals, payment execution, client output artifact"]
+    H --> I["Approval and safety gate<br/>Pass, warning, blocked, approval required"]
 
-    K --> L["Reviewer API endpoints<br/>Artifacts, audit visibility, control matrix, readiness packages"]
+    I --> J["Execution ledger<br/>Decision reason, source evidence, projected impact"]
+    I --> K["Approval queue<br/>Human-reviewable actions and blocked items"]
+    I --> L["Sensitive action boundary<br/>Payments, accounting postings, tax/legal outputs remain gated or blocked"]
 
-    C --> M["CFO briefing layer<br/>AI-style explanation of already-computed deterministic outputs"]
-    M --> L
+    J --> M["Audit log<br/>Traceable event history"]
+    K --> M
+    L --> M
 
-    L --> N["Client handoff packages<br/>Readiness, pilot, procurement, compliance, go-live, sales handoff"]
+    M --> N["Artifact registry<br/>Ledger, approvals, payment artifacts, client output artifacts"]
+
+    E --> O["AI explanation and CFO briefing layer<br/>Explains already-computed deterministic outputs only"]
+
+    N --> P["Reviewer and client API endpoints<br/>Inventory, OpenAPI, audit visibility, artifacts, readiness, controls"]
+    O --> P
+
+    P --> Q["Client handoff packages<br/>Discovery, implementation, pilot, procurement, compliance, production readiness, sales handoff"]
 ```
 
-## What this proves
+## What is configurable per client
 
-- The FinanceOps Agent is not a generic chatbot. It is a governed finance automation core.
+A client-specific implementation can change:
+
+- input adapters
+- source documents and file formats
+- OCR or document extraction rules
+- normalized finance schemas
+- validation logic
+- calculation rules
+- exception detection logic
+- workflow routing rules
+- approval gates
+- output adapters
+- dashboard payloads
+- audit artifacts
+- delivery format
+- deployment boundary
+- authentication and authorization model
+- monitoring and retention requirements
+
+The reusable core stays stable. The client-specific adapter, mapping, workflow, approval, output, and deployment layers change per client.
+
+## Current demo workflows
+
+The public repository demonstrates the architecture through safe mock workflows, including:
+
+- overdue invoice review
+- bank reconciliation examples
+- orphan transaction detection
+- project margin review
+- budget burn review
+- payment approval boundary examples
+- CFO briefing generation
+- audit and artifact traceability
+- commercial and production-readiness packaging
+
+These workflows prove the pattern. They should not be described as the only workflows the system can support.
+
+## What this architecture proves
+
+- The FinanceOps Agent is not a generic chatbot.
+- It is a governed, configurable finance automation core.
 - Finance calculations are deterministic and traceable.
 - AI-style language is used only to explain already-computed outputs.
 - Sensitive actions are blocked, simulated, or approval-gated.
+- Client data, credentials, deployment, approvals, and monitoring remain client-owned for production.
 - Reviewer-facing endpoints expose auditability, artifacts, controls, readiness, and buyer-facing packages.
 
 ## Demo boundary
 
-The current public repository is suitable for portfolio, reviewer, discovery, and pilot conversations. It should not be described as a production deployment.
+The current public repository is suitable for portfolio, reviewer, discovery, and pilot conversations.
+
+It should not be described as a production deployment.
 
 Production requires client-owned controls for:
 
-- production data handling,
-- authentication and authorization,
-- secrets and credentials,
-- payment approval rules,
-- accounting posting rules,
-- monitoring and incident response,
-- audit retention,
-- client-specific source-system adapters.
+- production data handling
+- authentication and authorization
+- secrets and credentials
+- payment approval rules
+- accounting posting rules
+- tax and legal review boundaries
+- monitoring and incident response
+- audit retention
+- source-system adapters
+- deployment environment
+- compliance signoff
 
 ## Reviewer demo path
 
@@ -71,7 +127,27 @@ Recommended order for a technical or buyer reviewer:
 6. `/client/commercial-package`
 7. `/client/go-live-package`
 
+Recommended local commands:
+
+```bash
+pnpm run verify:local
+pnpm run demo:client-reviewer-dashboard-package
+pnpm run demo:ai-company-reviewer-path
+pnpm run demo:reviewer-path
+pnpm run demo:reviewer-command-index
+pnpm run demo:api-inventory
+pnpm run demo:openapi-contract
+pnpm run demo:audit-visibility
+pnpm run demo:accounting-workflow-router
+```
+
 ## Core design principle
 
-FinanceOps Agent should stay honest: deterministic logic creates the financial truth, audit artifacts preserve traceability, and AI only improves explanation and reviewer communication.
+FinanceOps Agent should stay honest:
 
+- deterministic logic creates the financial truth
+- adapters normalize client-specific inputs
+- governance decides what is safe, approval-gated, or blocked
+- audit artifacts preserve traceability
+- AI improves explanation and reviewer communication only
+- production remains blocked until client-owned controls exist
