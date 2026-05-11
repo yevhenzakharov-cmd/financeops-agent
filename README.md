@@ -68,43 +68,41 @@ This is not a finished enterprise product yet. It is a strong technical foundati
 
 ## Reviewer quick path
 
-If you are reviewing this repository for technical, product, or buyer-readiness reasons, start here:
+If you are reviewing this repository for technical, product, buyer-readiness, or AI-company hiring reasons, start with the strongest reviewer path:
 
-1. [Product Positioning](docs/PRODUCT_POSITIONING.md) - explains the broader configurable FinanceOps core, supported workflow types, safe claims, and claims to avoid.
-2. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level overview of the architecture, control boundaries, auditability, and reviewer-facing design.
-3. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - explains how the public demo can become a client-specific FinanceOps implementation.
-4. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - connects requirements intake, workflow intake, task routing, controls, approvals, audit evidence, and production blockers.
-5. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - explains exactly what a real client should provide before client-specific adapters are built.
-6. [Client Input and Output Email Template](docs/CLIENT_INPUT_OUTPUT_EMAIL_TEMPLATE.md) - gives a copy-ready message for asking a client to send safe sample inputs and desired outputs.
-7. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures the client workflow, fields, calculations, approval rules, and output expectations.
-8. [Client First Adapter Build Plan](docs/CLIENT_FIRST_ADAPTER_BUILD_PLAN.md) - explains how a safe sample input becomes the first client-specific adapter.
-9. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - explains how to choose the safest and highest-value first client adapter.
-10. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
-11. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
-12. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
-13. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
-14. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
-15. [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - gives a copy-ready walkthrough with command order, endpoint meaning, safe claims, and claims to avoid.
+1. [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - copy-ready walkthrough with command order, endpoint meaning, safe claims, and claims to avoid.
+2. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level architecture, control boundaries, auditability, and reviewer-facing design.
+3. [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
+4. [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - fastest command path for inspecting the repo without guessing.
+5. [Product Positioning](docs/PRODUCT_POSITIONING.md) - broader configurable FinanceOps core, supported workflow types, safe claims, and claims to avoid.
+6. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - how the public demo becomes a client-specific FinanceOps implementation.
+7. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - requirements intake, workflow routing, controls, approvals, audit evidence, and production blockers.
+8. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - what a real client should provide before client-specific adapters are built.
+9. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures workflow, fields, calculations, approval rules, and output expectations.
+10. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - how to choose the safest and highest-value first client adapter.
+11. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - reusable accounting task catalog and safety model.
+12. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - controlled execution lanes for client-described accounting work.
+13. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - how client discovery answers become routed accounting workflow plans.
+14. [API Overview](docs/API.md) - main API routes and demo interaction surface.
+15. [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - deterministic core, approval gates, audit layer, and reviewer-facing API surface.
 
 Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
 
-Client onboarding pack command:
+Recommended first local proof path:
 
-```bash
-pnpm run demo:client-onboarding-pack
-pnpm run demo:client-ready-checkpoint
-pnpm run demo:first-adapter-decision-tree
-```
+    pnpm run verify:local
+    pnpm run demo:client-reviewer-dashboard-package
+    pnpm run demo:ai-company-reviewer-path
+    pnpm run demo:reviewer-command-index
+    pnpm run demo:api-inventory
+    pnpm run demo:openapi-contract
+    pnpm run demo:audit-visibility
 
-Recommended first local checks:
+Optional client onboarding path:
 
-- pnpm run verify:local
-- pnpm run demo:api-inventory
-- pnpm run demo:accounting-task-registry
-- pnpm run demo:accounting-workflow-router
-- pnpm run demo:client-workflow-intake
-- pnpm run demo:client-adapter-readiness
-
+    pnpm run demo:client-onboarding-pack
+    pnpm run demo:client-ready-checkpoint
+    pnpm run demo:first-adapter-decision-tree
 
 ## What this project is
 
@@ -125,33 +123,33 @@ Instead of building a generic chatbot, the project follows a safer enterprise pa
 
 ## Fast reviewer demo script
 
-For the shortest reviewer or buyer walkthrough, run:
+For the strongest reviewer, buyer, or AI-company walkthrough, run:
 
-```bash
-pnpm run verify:local
-pnpm run demo:reviewer-path
-pnpm run demo:ai-company-reviewer-path
-pnpm run demo:reviewer-command-index
-```
-
-The wrapper command runs:
-
-```bash
-pnpm run demo:api-inventory
-pnpm run demo:accounting-task-registry
-pnpm run demo:accounting-workflow-router
-pnpm run demo:client-workflow-intake
-pnpm run demo:client-adapter-readiness
-```
+    pnpm run verify:local
+    pnpm run demo:client-reviewer-dashboard-package
+    pnpm run demo:ai-company-reviewer-path
+    pnpm run demo:reviewer-command-index
+    pnpm run demo:api-inventory
+    pnpm run demo:openapi-contract
+    pnpm run demo:audit-visibility
 
 This sequence proves the core review story:
 
 - local quality gates pass
+- the consolidated reviewer dashboard package gives one high-signal entry point
+- the AI-company reviewer path explains why the repo is technically relevant
+- the command index shows reviewers what to run without guessing
 - API inventory is visible
-- accounting work is classified before execution
-- workflow routing separates safe, approval-gated, professional-review, and blocked work
-- client workflow intake turns a vague finance request into a governed implementation plan
-- adapter readiness shows which inputs and outputs are reusable, which need mapping, and which remain blocked until client-owned setup exists
+- the OpenAPI contract exposes a machine-readable API surface
+- audit visibility proves traceable outputs and persisted artifacts
+- protected action-like routes remain separated from public reviewer endpoints
+
+Optional deeper accounting workflow path:
+
+    pnpm run demo:accounting-task-registry
+    pnpm run demo:accounting-workflow-router
+    pnpm run demo:client-workflow-intake
+    pnpm run demo:client-adapter-readiness
 
 The important takeaway is that the repo proves the governed FinanceOps core. Real client adapters are intentionally added after discovery confirms source data, required calculations, approval rules, and output destinations.
 

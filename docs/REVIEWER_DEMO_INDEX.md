@@ -8,12 +8,12 @@ The repository has many demo commands. This file highlights the commands that be
 
 ## Fastest reviewer path
 
-Run these first:
+Run these first from the repository root after dependencies are installed:
 
 - `pnpm run verify:local`
 - `pnpm run demo:client-reviewer-dashboard-package`
 - `pnpm run demo:ai-company-reviewer-path`
-- `pnpm run demo:reviewer-path`
+- `pnpm run demo:reviewer-command-index`
 - `pnpm run demo:api-inventory`
 - `pnpm run demo:openapi-contract`
 - `pnpm run demo:audit-visibility`
@@ -76,10 +76,11 @@ Use these to review product judgment, buyer-readiness, and implementation thinki
 1. Start with `pnpm run verify:local`.
 2. Run `pnpm run demo:client-reviewer-dashboard-package`.
 3. Run `pnpm run demo:ai-company-reviewer-path`.
-4. Run `pnpm run demo:api-inventory`.
-5. Run `pnpm run demo:accounting-workflow-router`.
-6. Run `pnpm run demo:audit-visibility`.
-7. Run `pnpm run demo:client-production-readiness-package`.
+4. Run `pnpm run demo:reviewer-command-index`.
+5. Run `pnpm run demo:api-inventory`.
+6. Run `pnpm run demo:accounting-workflow-router`.
+7. Run `pnpm run demo:audit-visibility`.
+8. Run `pnpm run demo:client-production-readiness-package`.
 
 ## Reviewer takeaway
 
