@@ -1,6 +1,10 @@
 # FinanceOps Agent
 
-For AI companies and hiring teams: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).\n\nReviewer command index: [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
+For AI companies and hiring teams: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).
+
+Reviewer command index: [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
+
+Architecture diagram: [FinanceOps Agent Architecture Diagram](docs/ARCHITECTURE_DIAGRAM.md).
 
 A governed FinanceOps automation system for client-specific accounting and finance operations.
 
@@ -59,11 +63,11 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 6. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures the client workflow, fields, calculations, approval rules, and output expectations.
 7. [Client First Adapter Build Plan](docs/CLIENT_FIRST_ADAPTER_BUILD_PLAN.md) - explains how a safe sample input becomes the first client-specific adapter.
 8. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - explains how to choose the safest and highest-value first client adapter.
-8. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
-9. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
-10. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
-11. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
-12. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
+9. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - shows the reusable accounting task catalog and safety model.
+10. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - shows how client-described accounting work is routed into controlled execution lanes.
+11. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
+12. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
+13. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
 
 Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
 
@@ -109,7 +113,8 @@ For the shortest reviewer or buyer walkthrough, run:
 ```bash
 pnpm run verify:local
 pnpm run demo:reviewer-path
-pnpm run demo:ai-company-reviewer-path\npnpm run demo:reviewer-command-index
+pnpm run demo:ai-company-reviewer-path
+pnpm run demo:reviewer-command-index
 ```
 
 The wrapper command runs:
