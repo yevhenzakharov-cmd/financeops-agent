@@ -1,5 +1,7 @@
 # Reviewer Demo Command Index
 
+- [Reviewer 60-Second Walkthrough](REVIEWER_60_SECOND_WALKTHROUGH.md) - fastest plain-English overview of what the repo proves.
+
 This index gives AI-company, technical, and CFO-style reviewers a short path through the most important FinanceOps Agent commands.
 
 For a copy-ready walkthrough with safe claims and claims to avoid, see [Reviewer Demo Script](REVIEWER_DEMO_SCRIPT.md). For the high-level system flow, see [Architecture Diagram](ARCHITECTURE_DIAGRAM.md).

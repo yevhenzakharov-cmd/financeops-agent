@@ -29,6 +29,7 @@ The honest boundary: this repo is a strong public demo and implementation founda
 
 ## Start here
 
+- [Reviewer 60-Second Walkthrough](docs/REVIEWER_60_SECOND_WALKTHROUGH.md) - fastest plain-English overview of what the repo proves.
 - [Product Positioning](docs/PRODUCT_POSITIONING.md) - explains the broader configurable FinanceOps core and safe product claims.
 - [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
 - [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - gives the fastest command path for inspecting the repo.
@@ -93,21 +94,22 @@ This is not a finished enterprise product yet. It is a strong technical foundati
 
 If you are reviewing this repository for technical, product, buyer-readiness, or AI-company hiring reasons, start with the strongest reviewer path:
 
-1. [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - copy-ready walkthrough with command order, endpoint meaning, safe claims, and claims to avoid.
-2. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level architecture, control boundaries, auditability, and reviewer-facing design.
-3. [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
-4. [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - fastest command path for inspecting the repo without guessing.
-5. [Product Positioning](docs/PRODUCT_POSITIONING.md) - broader configurable FinanceOps core, supported workflow types, safe claims, and claims to avoid.
-6. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - how the public demo becomes a client-specific FinanceOps implementation.
-7. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - requirements intake, workflow routing, controls, approvals, audit evidence, and production blockers.
-8. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - what a real client should provide before client-specific adapters are built.
-9. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures workflow, fields, calculations, approval rules, and output expectations.
-10. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - how to choose the safest and highest-value first client adapter.
-11. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - reusable accounting task catalog and safety model.
-12. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - controlled execution lanes for client-described accounting work.
-13. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - how client discovery answers become routed accounting workflow plans.
-14. [API Overview](docs/API.md) - main API routes and demo interaction surface.
-15. [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - deterministic core, approval gates, audit layer, and reviewer-facing API surface.
+1. [Reviewer 60-Second Walkthrough](docs/REVIEWER_60_SECOND_WALKTHROUGH.md) - fastest plain-English overview of what the repo proves.
+2. [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - copy-ready walkthrough with command order, endpoint meaning, safe claims, and claims to avoid.
+3. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level architecture, control boundaries, auditability, and reviewer-facing design.
+4. [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
+5. [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - fastest command path for inspecting the repo without guessing.
+6. [Product Positioning](docs/PRODUCT_POSITIONING.md) - broader configurable FinanceOps core, supported workflow types, safe claims, and claims to avoid.
+7. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - how the public demo becomes a client-specific FinanceOps implementation.
+8. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - requirements intake, workflow routing, controls, approvals, audit evidence, and production blockers.
+9. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - what a real client should provide before client-specific adapters are built.
+10. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures workflow, fields, calculations, approval rules, and output expectations.
+11. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - how to choose the safest and highest-value first client adapter.
+12. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - reusable accounting task catalog and safety model.
+13. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - controlled execution lanes for client-described accounting work.
+14. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - how client discovery answers become routed accounting workflow plans.
+15. [API Overview](docs/API.md) - main API routes and demo interaction surface.
+16. [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - deterministic core, approval gates, audit layer, and reviewer-facing API surface.
 
 Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
 
