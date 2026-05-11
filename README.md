@@ -18,6 +18,19 @@ The system is built around a deterministic FinanceOps core. The core handles cal
 
 AI is only used as an explanation and briefing layer on top of already-computed results. It can summarize and explain. It does not invent numbers, approve payments, post accounting entries, or make final finance decisions.
 
+
+## Product positioning
+
+FinanceOps Agent is a configurable finance operations automation core.
+
+It is not limited to checking invoices or preparing payment recommendations. Those are demo workflows that prove the pattern.
+
+The intended product direction is broader: each client can bring a different accounting or finance operations workflow, different inputs, different outputs, and different approval rules. The reusable core can then be modified into a client-specific implementation.
+
+Examples of client-specific workflows include invoice OCR extraction, accounts payable review, accounts receivable review, bank reconciliation, vendor or customer statement reconciliation, expense review, project margin review, budget variance review, cash-flow monitoring, payroll review support, payment approval preparation, month-end close support, reporting support, and audit evidence generation.
+
+See [Product Positioning](docs/PRODUCT_POSITIONING.md) for the full positioning and capability model.
+
 ## Current project status
 
 The current version is a working public demo with:
