@@ -40,7 +40,7 @@ export function buildClientReviewerDashboardPackage(): ClientReviewerDashboardPa
     packageVersion: "client-reviewer-dashboard-package-v1",
     status: "demo_ready_production_blocked",
     purpose:
-      "Give technical reviewers, CFO-style buyers, founders, hiring managers, and potential clients one consolidated package for reviewing what the FinanceOps Agent proves.",
+      "Give technical reviewers, CFO-style buyers, founders, and potential clients one consolidated package for reviewing what the FinanceOps Agent proves.",
     executiveSummary:
       "FinanceOps Agent is ready for demo, portfolio review, and pilot discussion because it exposes deterministic finance logic, approval boundaries, audit artifacts, client handoff packages, and commercial positioning. It remains blocked for production until client-owned data, auth, secrets, monitoring, mappings, approval policies, and deployment controls exist.",
     reviewerPath: [

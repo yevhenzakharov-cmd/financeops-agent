@@ -1,6 +1,6 @@
 # Client Reviewer Dashboard
 
-The Client Reviewer Dashboard is a compact proof endpoint for explaining FinanceOps Agent quickly to a technical reviewer, CFO, founder, operator, potential client, or hiring manager.
+The Client Reviewer Dashboard is a compact proof endpoint for explaining FinanceOps Agent quickly to a technical reviewer, CFO, founder, operator, or potential client.
 
 Endpoint: GET /client/reviewer-dashboard
 

@@ -1,6 +1,6 @@
 # FinanceOps Agent
 
-For AI companies and hiring teams: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).
+For AI companies and reviewers: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).
 
 Reviewer command index: [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
 

@@ -1,6 +1,6 @@
 # AI Company Reviewer Path
 
-This guide is for AI companies, hiring teams, senior engineers, and technical reviewers evaluating FinanceOps Agent as a public portfolio implementation foundation.
+This guide is for AI companies, senior engineers, and technical reviewers evaluating FinanceOps Agent as a public portfolio implementation foundation.
 
 The repository is still evolving. This guide shows the current strongest review path for evaluating the project as evidence of AI-agent architecture, TypeScript engineering, finance automation judgment, and production-aware safety design.
 

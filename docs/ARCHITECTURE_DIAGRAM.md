@@ -1,6 +1,6 @@
 # FinanceOps Agent Architecture Diagram
 
-This document gives technical reviewers, CFO-style buyers, founders, hiring managers, and potential clients a quick visual map of how the FinanceOps Agent works.
+This document gives technical reviewers, CFO-style buyers, founders, and potential clients a quick visual map of how the FinanceOps Agent works.
 
 The public repository is a demo-safe implementation core. It uses mock data, deterministic finance logic, approval-gated action boundaries, audit artifacts, and reviewer-facing API endpoints. Production use remains blocked until a client provides safe samples, accepted mappings, client-owned credentials, authentication, monitoring, and approval policies.
 
