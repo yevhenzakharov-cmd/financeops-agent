@@ -9,11 +9,23 @@ The repository has many demo commands. This file highlights the commands that be
 Run these first:
 
 - `pnpm run verify:local`
+- `pnpm run demo:client-reviewer-dashboard-package`
 - `pnpm run demo:ai-company-reviewer-path`
 - `pnpm run demo:reviewer-path`
 - `pnpm run demo:api-inventory`
 - `pnpm run demo:openapi-contract`
 - `pnpm run demo:audit-visibility`
+
+## Consolidated reviewer dashboard package
+
+Use this when a reviewer wants one first entry point instead of opening every individual package separately:
+
+- `pnpm run demo:client-reviewer-dashboard-package`
+- API route: `/client/reviewer-dashboard-package`
+
+This package is the best first reviewer handoff because it combines or points to the reviewer dashboard, reviewer audit, commercial package, evidence binder, control matrix, production readiness package, proof endpoints, suggested demo order, production blockers, and buyer/reviewer trust signals.
+
+It does not claim production readiness. It keeps the public repository honest by separating the mock-data environment from client-owned production controls.
 
 ## Core FinanceOps architecture
 
@@ -50,6 +62,7 @@ Use these to review auditability, governance, risk, and production blockers:
 
 Use these to review product judgment, buyer-readiness, and implementation thinking:
 
+- `pnpm run demo:client-reviewer-dashboard-package`
 - `pnpm run demo:client-commercial-package`
 - `pnpm run demo:client-enterprise-sales-brief`
 - `pnpm run demo:client-pilot-proposal-package`
@@ -59,11 +72,12 @@ Use these to review product judgment, buyer-readiness, and implementation thinki
 ## Recommended review sequence
 
 1. Start with `pnpm run verify:local`.
-2. Run `pnpm run demo:ai-company-reviewer-path`.
-3. Run `pnpm run demo:api-inventory`.
-4. Run `pnpm run demo:accounting-workflow-router`.
-5. Run `pnpm run demo:audit-visibility`.
-6. Run `pnpm run demo:client-production-readiness-package`.
+2. Run `pnpm run demo:client-reviewer-dashboard-package`.
+3. Run `pnpm run demo:ai-company-reviewer-path`.
+4. Run `pnpm run demo:api-inventory`.
+5. Run `pnpm run demo:accounting-workflow-router`.
+6. Run `pnpm run demo:audit-visibility`.
+7. Run `pnpm run demo:client-production-readiness-package`.
 
 ## Reviewer takeaway
 

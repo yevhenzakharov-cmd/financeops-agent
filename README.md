@@ -492,6 +492,18 @@ The repository includes multiple client-facing and reviewer-facing packages, inc
 
 These packages are meant to show how the project can move from technical demo to client discovery, pilot planning, procurement review, and production-readiness discussion.
 
+## Best first reviewer entry point
+
+For a fast reviewer handoff, start with the consolidated reviewer dashboard package:
+
+- API route: `/client/reviewer-dashboard-package`
+- local command path: `pnpm run demo:client-reviewer-dashboard-package`
+- purpose: combine the strongest buyer, reviewer, audit, control, readiness, proof-endpoint, blocker, and demo-order signals into one package
+
+Use this before opening the individual reviewer dashboard, reviewer audit, commercial package, evidence binder, control matrix, production readiness package, or proof endpoints one by one.
+
+This is still a demo-safe public repository path. It does not claim autonomous payment execution, autonomous accounting posting, or production readiness without client-owned controls.
+
 ## Enterprise safety boundaries
 
 The current public demo intentionally does not include:
