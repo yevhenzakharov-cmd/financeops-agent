@@ -25,7 +25,7 @@ pnpm run build
 
 echo
 echo "---- start API for demo verification ----"
-pnpm run api > "$API_LOG" 2>&1 &
+FINANCEOPS_BYPASS_DEMO_RATE_LIMIT=true pnpm run api > "$API_LOG" 2>&1 &
 API_PID=$!
 
 cleanup() {

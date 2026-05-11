@@ -4,6 +4,11 @@ import helmet from "helmet";
 
 export const SECURITY_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 export const SECURITY_RATE_LIMIT_MAX_REQUESTS = 300;
+export const SECURITY_RATE_LIMIT_BYPASS_ENV = "FINANCEOPS_BYPASS_DEMO_RATE_LIMIT";
+
+export function isDemoRateLimitBypassEnabled(env: NodeJS.ProcessEnv = process.env): boolean {
+  return env[SECURITY_RATE_LIMIT_BYPASS_ENV] === "true";
+}
 
 export function buildSecurityHeadersMiddleware() {
   return helmet({
@@ -12,11 +17,14 @@ export function buildSecurityHeadersMiddleware() {
 }
 
 export function buildDemoRateLimitMiddleware() {
+  const bypassForLocalVerification = isDemoRateLimitBypassEnabled();
+
   return rateLimit({
     windowMs: SECURITY_RATE_LIMIT_WINDOW_MS,
     limit: SECURITY_RATE_LIMIT_MAX_REQUESTS,
     standardHeaders: "draft-8",
     legacyHeaders: false,
+    skip: () => bypassForLocalVerification,
     message: {
       status: "error",
       error: {
@@ -43,10 +51,12 @@ export function buildSecurityStatus() {
       maxRequests: SECURITY_RATE_LIMIT_MAX_REQUESTS,
       standardHeaders: "draft-8",
       legacyHeaders: false,
-      scope: "demo_api_boundary"
+      scope: "demo_api_boundary",
+      localVerificationBypassEnv: SECURITY_RATE_LIMIT_BYPASS_ENV
     },
     reviewerNotes: [
       "This is a demo-safe HTTP hardening layer, not a complete production security program.",
+      "Local verification can bypass demo rate limiting through an explicit environment variable so smoke checks do not rate-limit themselves.",
       "Production implementations should tune limits per client traffic profile.",
       "Production implementations should use client-owned WAF, auth, monitoring, and incident response.",
       "No client-owned credentials or production data are stored in this public repository."

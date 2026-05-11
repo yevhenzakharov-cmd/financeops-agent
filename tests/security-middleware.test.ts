@@ -1,10 +1,12 @@
 import { describe, expect, test } from "vitest";
 import {
+  SECURITY_RATE_LIMIT_BYPASS_ENV,
   SECURITY_RATE_LIMIT_MAX_REQUESTS,
   SECURITY_RATE_LIMIT_WINDOW_MS,
   buildDemoRateLimitMiddleware,
   buildSecurityHeadersMiddleware,
   buildSecurityStatus,
+  isDemoRateLimitBypassEnabled,
   securityStatusHandler
 } from "../src/api/security-middleware.js";
 
@@ -21,6 +23,8 @@ describe("security middleware status", () => {
     expect(status.rateLimit.windowMs).toBe(SECURITY_RATE_LIMIT_WINDOW_MS);
     expect(status.rateLimit.maxRequests).toBe(SECURITY_RATE_LIMIT_MAX_REQUESTS);
     expect(status.rateLimit.legacyHeaders).toBe(false);
+    expect(status.rateLimit.localVerificationBypassEnv).toBe(SECURITY_RATE_LIMIT_BYPASS_ENV);
+    expect(status.reviewerNotes.some((note) => note.includes("Local verification can bypass demo rate limiting"))).toBe(true);
     expect(status.reviewerNotes.some((note) => note.includes("not a complete production security program"))).toBe(true);
   });
 
@@ -34,6 +38,12 @@ describe("security middleware status", () => {
     const middleware = buildDemoRateLimitMiddleware();
 
     expect(typeof middleware).toBe("function");
+  });
+
+  test("keeps local verification rate limit bypass explicit and disabled by default", () => {
+    expect(isDemoRateLimitBypassEnabled({})).toBe(false);
+    expect(isDemoRateLimitBypassEnabled({ [SECURITY_RATE_LIMIT_BYPASS_ENV]: "false" })).toBe(false);
+    expect(isDemoRateLimitBypassEnabled({ [SECURITY_RATE_LIMIT_BYPASS_ENV]: "true" })).toBe(true);
   });
 
   test("returns security status through the Express handler", () => {
@@ -61,7 +71,8 @@ describe("security middleware status", () => {
           enabled: true,
           provider: "express-rate-limit",
           windowMs: SECURITY_RATE_LIMIT_WINDOW_MS,
-          maxRequests: SECURITY_RATE_LIMIT_MAX_REQUESTS
+          maxRequests: SECURITY_RATE_LIMIT_MAX_REQUESTS,
+          localVerificationBypassEnv: SECURITY_RATE_LIMIT_BYPASS_ENV
         }
       }
     });
