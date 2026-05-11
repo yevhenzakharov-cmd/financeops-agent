@@ -133,6 +133,14 @@ This sequence proves the core review story:
 
 The important takeaway is that the repo proves the governed FinanceOps core. Real client adapters are intentionally added after discovery confirms source data, required calculations, approval rules, and output destinations.
 
+First client-shaped adapter scaffold:
+
+- `CsvInvoiceInputAdapter` reads a demo-safe invoice CSV fixture from `fixtures/client-samples/invoices-demo.csv`
+- the adapter validates rows before converting them into the normalized FinanceOps invoice shape
+- invalid statuses, missing required headers, and malformed amounts are blocked before the data enters the deterministic core
+- run `pnpm run demo:csv-invoice-adapter` to inspect the adapter output
+- this is a local fixture scaffold, not a production ERP, bank, or accounting-system integration
+
 ## What this project demonstrates
 
 The current demo demonstrates:
