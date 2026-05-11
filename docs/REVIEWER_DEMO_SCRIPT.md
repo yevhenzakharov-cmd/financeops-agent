@@ -20,6 +20,7 @@ AI can explain verified outputs, but AI is not the source of financial truth.
 
 Run these commands in this order:
 
+```bash
 pnpm run verify:local
 pnpm run demo:client-reviewer-dashboard-package
 pnpm run demo:ai-company-reviewer-path
@@ -27,6 +28,7 @@ pnpm run demo:reviewer-command-index
 pnpm run demo:api-inventory
 pnpm run demo:openapi-contract
 pnpm run demo:audit-visibility
+```
 
 This sequence proves the strongest review story:
 
@@ -54,7 +56,9 @@ The repo is not just a collection of static documents. It has a working TypeScri
 
 Run:
 
+```bash
 pnpm run demo:client-reviewer-dashboard-package
+```
 
 What it proves:
 
@@ -70,13 +74,15 @@ The project provides a consolidated reviewer package that summarizes the stronge
 
 Avoid claiming:
 
-The dashboard package proves the reviewer path is demo-ready. The system is production-ready only after client-owned inputs, outputs, controls, and deployment requirements are provided and accepted.
+The dashboard package proves the reviewer path is demo-ready. It does not prove enterprise production readiness. Production readiness depends on client-owned inputs, outputs, controls, authentication, authorization, secrets, deployment, monitoring, and accepted approval rules.
 
 ## Show API inventory
 
 Run:
 
+```bash
 pnpm run demo:api-inventory
+```
 
 What it proves:
 
@@ -98,7 +104,9 @@ The demo API key is production-grade authentication or role-based authorization.
 
 Run:
 
+```bash
 pnpm run demo:openapi-contract
+```
 
 What it proves:
 
@@ -119,7 +127,9 @@ The OpenAPI contract means the system is already ready for enterprise production
 
 Run:
 
+```bash
 pnpm run demo:audit-visibility
+```
 
 What it proves:
 
@@ -140,10 +150,12 @@ The public demo already satisfies a specific client audit standard, compliance f
 
 Use this path when the reviewer wants to inspect accounting workflow logic:
 
+```bash
 pnpm run demo:accounting-task-registry
 pnpm run demo:accounting-workflow-router
 pnpm run demo:client-workflow-intake
 pnpm run demo:client-adapter-readiness
+```
 
 What this proves:
 
@@ -164,11 +176,13 @@ The system can already connect to every client ERP, bank, payroll, or accounting
 
 Use this path when speaking with a founder, CFO-style buyer, or potential client:
 
+```bash
 pnpm run demo:client-commercial-package
 pnpm run demo:client-evidence-binder
 pnpm run demo:client-control-matrix
 pnpm run demo:client-production-readiness-package
 pnpm run demo:client-risk-acceptance-package
+```
 
 What this proves:
 
