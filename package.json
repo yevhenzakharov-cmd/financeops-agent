@@ -66,6 +66,7 @@
     "demo:accounting-workflow-router": "./scripts/demo-accounting-workflow-router.sh",
     "demo:client-workflow-intake": "./scripts/demo-client-workflow-intake.sh",
     "demo:client-adapter-readiness": "./scripts/demo-client-adapter-readiness.sh",
+    "demo:csv-invoice-adapter": "./scripts/demo-csv-invoice-adapter.sh",
     "demo:reviewer-path": "./scripts/demo-reviewer-path.sh",
     "demo:client-onboarding-pack": "./scripts/demo-client-onboarding-pack.sh",
     "demo:client-ready-checkpoint": "./scripts/demo-client-ready-checkpoint.sh",
