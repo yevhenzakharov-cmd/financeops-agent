@@ -920,7 +920,7 @@ app.get("/system-summary", (_req, res) => {
   res.json({
     service: "FinanceOps Agent",
     description:
-      "Governed autonomous FinanceOps agent for deterministic analysis, risk classification, action simulation, policy decisions, approval routing, ledger persistence, audit tracing, and AI CFO briefing.",
+      "Configurable FinanceOps automation core for deterministic analysis, risk classification, action simulation, policy decisions, approval routing, ledger persistence, audit tracing, and AI CFO briefing.",
     capabilities: [
       "deterministic_margin_analysis",
       "budget_burn_risk_detection",

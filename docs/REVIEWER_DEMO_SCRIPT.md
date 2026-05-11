@@ -70,7 +70,7 @@ The project provides a consolidated reviewer package that summarizes the stronge
 
 Avoid claiming:
 
-The dashboard package proves the system is production-ready for a real client.
+The dashboard package proves the system is already production-ready for a real client without client-owned controls.
 
 ## Show API inventory
 
