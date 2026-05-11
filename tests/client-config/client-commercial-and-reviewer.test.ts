@@ -102,6 +102,7 @@ describe("commercial and reviewer packages", () => {
     const validation = validateClientReviewerDashboardPackage(result);
 
     expect(result.packageVersion).toBe("client-reviewer-dashboard-package-v1");
+    expect(result.status).toBe("demo_ready_production_blocked");
     expect(result.reviewerDecision.demoReady).toBe(true);
     expect(result.reviewerDecision.pilotDiscussionReady).toBe(true);
     expect(result.reviewerDecision.productionReady).toBe(false);
@@ -111,9 +112,59 @@ describe("commercial and reviewer packages", () => {
     expect(result.evidenceBinder.items.length).toBeGreaterThan(0);
     expect(result.controlMatrix.items.length).toBeGreaterThan(0);
     expect(result.productionReadiness.gates.length).toBeGreaterThan(0);
+    expect(result.strongestProofPoints.length).toBeGreaterThanOrEqual(5);
+    expect(result.productionBoundaries.length).toBeGreaterThanOrEqual(5);
     expect(result.productionBoundaries.some((boundary) => boundary.includes("No autonomous money movement"))).toBe(true);
+    expect(result.recommendedNextActions.some((action) => action.includes("README"))).toBe(true);
     expect(validation.valid).toBe(true);
     expect(validation.status).toBe("pass");
+    expect(validation.errors).toEqual([]);
+    expect(validation.warnings).toEqual([]);
+  });
+
+  test("reviewer dashboard package validation blocks production-ready overclaim", () => {
+    const result = buildClientReviewerDashboardPackage();
+
+    const validation = validateClientReviewerDashboardPackage({
+      ...result,
+      reviewerDecision: {
+        ...result.reviewerDecision,
+        productionReady: true
+      }
+    });
+
+    expect(validation.valid).toBe(false);
+    expect(validation.status).toBe("fail");
+    expect(validation.errors).toContain("Reviewer package must not claim production readiness.");
+  });
+
+  test("reviewer dashboard package validation blocks demo-not-ready package", () => {
+    const result = buildClientReviewerDashboardPackage();
+
+    const validation = validateClientReviewerDashboardPackage({
+      ...result,
+      reviewerDecision: {
+        ...result.reviewerDecision,
+        demoReady: false
+      }
+    });
+
+    expect(validation.valid).toBe(false);
+    expect(validation.status).toBe("fail");
+    expect(validation.errors).toContain("Reviewer package should mark the demo as ready for review.");
+  });
+
+  test("reviewer dashboard package validation warns when reviewer proof points are thin", () => {
+    const result = buildClientReviewerDashboardPackage();
+
+    const validation = validateClientReviewerDashboardPackage({
+      ...result,
+      strongestProofPoints: ["Deterministic finance logic is separated from AI-style explanation."]
+    });
+
+    expect(validation.valid).toBe(true);
+    expect(validation.status).toBe("pass");
+    expect(validation.warnings).toContain("Reviewer package should include at least five proof points.");
   });
 
   test("builds reviewer audit with repository-oriented evaluation", () => {
