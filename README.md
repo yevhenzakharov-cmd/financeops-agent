@@ -1,18 +1,18 @@
 # FinanceOps Agent
 
-Product positioning: [FinanceOps Agent Product Positioning](docs/PRODUCT_POSITIONING.md).
-
-For AI companies and reviewers: [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md).
-
-Reviewer command index: [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
-
-Architecture overview: [FinanceOps Agent Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md).
-
 A configurable FinanceOps automation core for client-specific accounting and finance operations workflows.
 
 This repository is a public technical demo showing how a finance operations agent can be built with deterministic business logic, strict approval gates, auditability, API visibility, security boundaries, and client-specific implementation packages.
 
-The most important design principle:
+## Start here
+
+- [Product Positioning](docs/PRODUCT_POSITIONING.md) - explains the broader configurable FinanceOps core and safe product claims.
+- [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
+- [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - gives the fastest command path for inspecting the repo.
+- [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - shows the deterministic core, approval gates, audit layer, and reviewer-facing API surface.
+- [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - gives a copy-ready walkthrough for technical, product, and buyer review.
+
+## Core principle
 
 AI does not perform the financial calculations.
 
