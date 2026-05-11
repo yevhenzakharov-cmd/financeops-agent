@@ -6,7 +6,7 @@ FinanceOps Agent should be reviewed as a governed FinanceOps automation core and
 
 ## One-sentence positioning
 
-FinanceOps Agent is a governed finance automation demo built around deterministic TypeScript finance logic, approval gates, audit artifacts, reviewer-safe API visibility, and an AI explanation layer that does not perform financial calculations.
+FinanceOps Agent is a configurable FinanceOps automation core demo built around deterministic TypeScript finance logic, client-specific workflow configuration, approval gates, audit artifacts, reviewer-safe API visibility, and an AI explanation layer that does not perform financial calculations.
 
 ## Main message to reviewers
 

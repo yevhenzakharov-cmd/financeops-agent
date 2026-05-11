@@ -21,7 +21,7 @@ export function getClientSalesNarrative(): ClientSalesNarrative {
     clientName: commercialSummary.clientName,
     audience: ["CFO", "Controller", "Finance Operations Lead", "Founder"],
     opening:
-      "FinanceOps Agent is a governed finance operations agent that turns client finance data into traceable exception queues, CFO briefings, and approval-gated recommendations.",
+      "FinanceOps Agent is a configurable FinanceOps automation core that turns client-specific finance workflows into traceable exception queues, CFO briefings, and approval-gated recommendations.",
     problemStatement: [
       "Finance teams spend time manually reviewing overdue invoices, bank exceptions, and project margin risk.",
       "Important exceptions can stay hidden until someone manually reviews exports or spreadsheets.",

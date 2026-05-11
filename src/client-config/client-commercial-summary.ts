@@ -27,7 +27,7 @@ export function buildClientCommercialSummary(): ClientCommercialSummary {
     clientName: commercialPackage.clientName,
     status: commercialPackage.status,
     oneLinePitch:
-      "A governed FinanceOps agent that turns client finance data into traceable exception queues, CFO briefings, and approval-gated action recommendations.",
+      "A configurable FinanceOps automation core that turns client-specific finance workflows into traceable exception queues, CFO briefings, and approval-gated action recommendations.",
     strongestClaims: commercialPackage.readinessScore.salesSafeClaims,
     avoidClaims: commercialPackage.readinessScore.claimsToAvoid,
     nextBestAction

@@ -6,7 +6,7 @@ It is written for an AI engineer, full-stack engineer, CFO-style buyer, founder,
 
 ## One-line summary
 
-FinanceOps Agent is a governed finance automation demo built around a deterministic FinanceOps core, approval gates, auditability, API visibility, client-specific implementation planning, and an AI explanation layer that does not perform financial calculations.
+FinanceOps Agent is a configurable FinanceOps automation core demo built around a deterministic FinanceOps core, client-specific workflow configuration, approval gates, auditability, API visibility, client-specific implementation planning, and an AI explanation layer that does not perform financial calculations.
 
 ## Current status
 
