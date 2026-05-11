@@ -4,6 +4,8 @@ Reviewer guide: [AI Company Reviewer Path](AI_COMPANY_REVIEWER_PATH.md).
 
 Reviewer command index: [Reviewer Demo Command Index](REVIEWER_DEMO_INDEX.md).
 
+Copy-ready walkthrough: [Reviewer Demo Script](REVIEWER_DEMO_SCRIPT.md).
+
 This guide gives a reviewer the shortest path through the FinanceOps Agent repository.
 
 The project should be reviewed as a production-aware public demo and implementation foundation, not as a finished enterprise deployment.

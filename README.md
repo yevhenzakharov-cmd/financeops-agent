@@ -68,6 +68,7 @@ If you are reviewing this repository for technical, product, or buyer-readiness 
 11. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - shows how client discovery answers become routed accounting workflow plans.
 12. [API Overview](docs/API.md) - summarizes the main API routes and demo interaction surface.
 13. [Reviewer Demo Path](docs/REVIEWER_DEMO_PATH.md) - gives reviewers the fastest command-and-doc sequence.
+14. [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - gives a copy-ready walkthrough with command order, endpoint meaning, safe claims, and claims to avoid.
 
 Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
 

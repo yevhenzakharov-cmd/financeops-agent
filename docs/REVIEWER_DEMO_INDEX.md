@@ -2,6 +2,8 @@
 
 This index gives AI-company, technical, and CFO-style reviewers a short path through the most important FinanceOps Agent commands.
 
+For a copy-ready walkthrough with safe claims and claims to avoid, see [Reviewer Demo Script](REVIEWER_DEMO_SCRIPT.md).
+
 The repository has many demo commands. This file highlights the commands that best prove the working governed FinanceOps core, deterministic logic, safety boundaries, API visibility, auditability, and implementation foundation.
 
 ## Fastest reviewer path
