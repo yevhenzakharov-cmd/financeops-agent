@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
+# Verifies the demo API contract against an already-running local API.
+# Usage:
+#   pnpm run api
+#   pnpm run verify:demo
+#
+# If local traffic is rate-limited during repeated checks, start the API with:
+#   FINANCEOPS_BYPASS_DEMO_RATE_LIMIT=true pnpm run api
+#
+# For the full reviewer-safe quality gate, prefer:
+#   pnpm run verify:local
+#
 BASE_URL="${BASE_URL:-http://localhost:3001}"
 DEMO_API_KEY="${DEMO_API_KEY:-local-demo-key}"
 VERIFY_PAYMENT_IDEMPOTENCY_KEY="${VERIFY_PAYMENT_IDEMPOTENCY_KEY:-verify-demo-payment-$(date +%s)}"

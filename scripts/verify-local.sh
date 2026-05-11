@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Full local quality gate for reviewer-safe verification.
+# Runs lint, typecheck, tests, coverage, build, starts the API with the
+# local demo rate-limit bypass, then runs verify:demo against that API.
+#
 set -euo pipefail
 
 BASE_URL="${BASE_URL:-http://localhost:3001}"
