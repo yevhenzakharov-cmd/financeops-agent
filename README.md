@@ -4,6 +4,29 @@ A configurable FinanceOps automation core for client-specific accounting and fin
 
 This repository is a public technical demo showing how a finance operations agent can be built with deterministic business logic, strict approval gates, auditability, API visibility, security boundaries, and client-specific implementation packages.
 
+## 60-second reviewer summary
+
+FinanceOps Agent is not a generic AI chatbot. It is a governed FinanceOps automation core that shows how accounting and finance workflows can be made reviewable, auditable, and client-specific.
+
+The strongest proof points are:
+
+- deterministic finance logic for calculations, exception detection, reconciliation review, and risk classification
+- AI-style explanation only after the deterministic core has produced structured results
+- protected action-like routes for sensitive flows
+- public read-only reviewer endpoints for technical and buyer review
+- audit logs, execution ledgers, approval queues, and output artifacts
+- client implementation packages covering discovery, data requests, controls, evidence, procurement, security, compliance, pilot planning, and production blockers
+- clear separation between demo-safe mock data and future client-owned production deployment
+
+The fastest proof path is:
+
+    pnpm run verify:local
+    pnpm run demo:client-reviewer-dashboard-package
+    pnpm run demo:ai-company-reviewer-path
+    pnpm run demo:reviewer-command-index
+
+The honest boundary: this repo is a strong public demo and implementation foundation, not a finished enterprise deployment. Production use requires client-owned data, authentication, authorization, secrets, monitoring, approval policy, and deployment controls.
+
 ## Start here
 
 - [Product Positioning](docs/PRODUCT_POSITIONING.md) - explains the broader configurable FinanceOps core and safe product claims.
