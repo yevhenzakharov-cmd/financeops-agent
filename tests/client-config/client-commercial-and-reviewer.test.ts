@@ -107,6 +107,15 @@ describe("commercial and reviewer packages", () => {
     expect(result.reviewerDecision.pilotDiscussionReady).toBe(true);
     expect(result.reviewerDecision.productionReady).toBe(false);
     expect(result.dashboard.title).toBe("Client Reviewer Dashboard");
+    expect(result.reviewerScorecard.architectureSignal).toBe("strong");
+    expect(result.reviewerScorecard.financeControlSignal).toBe("strong");
+    expect(result.reviewerScorecard.auditabilitySignal).toBe("strong");
+    expect(result.reviewerScorecard.commercialSignal).toBe("strong");
+    expect(result.reviewerScorecard.productionReadinessSignal).toBe("blocked");
+    expect(result.reviewerScorecard.overallVerdict).toContain("Strong portfolio");
+    expect(result.reviewerScorecard.whyItMatters.length).toBeGreaterThanOrEqual(4);
+    expect(result.reviewerScorecard.evidenceToInspectFirst).toContain("pnpm run verify:local");
+    expect(result.reviewerScorecard.evidenceToInspectFirst).toContain("pnpm run demo:client-reviewer-dashboard-package");
     expect(result.audit.title).toContain("Reviewer");
     expect(result.commercialPackage.title).toContain("Commercial");
     expect(result.evidenceBinder.items.length).toBeGreaterThan(0);
@@ -136,6 +145,22 @@ describe("commercial and reviewer packages", () => {
     expect(validation.valid).toBe(false);
     expect(validation.status).toBe("fail");
     expect(validation.errors).toContain("Reviewer package must not claim production readiness.");
+  });
+
+  test("reviewer dashboard package validation blocks production-ready scorecard overclaim", () => {
+    const result = buildClientReviewerDashboardPackage();
+
+    const validation = validateClientReviewerDashboardPackage({
+      ...result,
+      reviewerScorecard: {
+        ...result.reviewerScorecard,
+        productionReadinessSignal: "strong" as never
+      }
+    });
+
+    expect(validation.valid).toBe(false);
+    expect(validation.status).toBe("fail");
+    expect(validation.errors).toContain("Reviewer scorecard must keep production readiness blocked.");
   });
 
   test("reviewer dashboard package validation blocks demo-not-ready package", () => {

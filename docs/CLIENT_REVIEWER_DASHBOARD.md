@@ -23,6 +23,27 @@ This endpoint is intentionally a reviewer and sales artifact. It does not claim 
 
 The dashboard should be shown before deeper endpoint walkthroughs because it gives reviewers a fast map of what the system proves and what remains blocked.
 
+
+## Consolidated Reviewer Dashboard Package
+
+Endpoint: GET /client/reviewer-dashboard-package
+
+Recommended command:
+
+pnpm run demo:client-reviewer-dashboard-package
+
+Use this as the first reviewer handoff. It combines the dashboard, reviewer audit, commercial package, evidence binder, control matrix, production readiness package, reviewer decision, strongest proof points, production boundaries, and reviewer scorecard.
+
+The scorecard is intentionally opinionated:
+
+- architecture signal: strong,
+- finance control signal: strong,
+- auditability signal: strong,
+- commercial signal: strong,
+- production readiness signal: blocked.
+
+This makes the project easier for an AI-company reviewer, senior engineer, CFO-style buyer, founder, or potential client to evaluate quickly without confusing demo readiness with production readiness.
+
 ## Related Fixture Endpoint
 
 GET /client/sample-input-fixtures
