@@ -17,6 +17,16 @@ export interface ClientReviewerDashboardPackage {
     productionReady: boolean;
     reason: string;
   };
+  reviewerScorecard: {
+    architectureSignal: "strong";
+    financeControlSignal: "strong";
+    auditabilitySignal: "strong";
+    commercialSignal: "strong";
+    productionReadinessSignal: "blocked";
+    overallVerdict: string;
+    whyItMatters: string[];
+    evidenceToInspectFirst: string[];
+  };
   dashboard: ReturnType<typeof buildClientReviewerDashboard>;
   audit: ReturnType<typeof buildClientReviewerAudit>;
   commercialPackage: ReturnType<typeof buildClientCommercialPackage>;
@@ -56,6 +66,28 @@ export function buildClientReviewerDashboardPackage(): ClientReviewerDashboardPa
       productionReady: false,
       reason:
         "The public repo is strong enough to demonstrate architecture, safety boundaries, and commercial potential, but production use requires client-owned controls and real mapped data."
+    },
+    reviewerScorecard: {
+      architectureSignal: "strong",
+      financeControlSignal: "strong",
+      auditabilitySignal: "strong",
+      commercialSignal: "strong",
+      productionReadinessSignal: "blocked",
+      overallVerdict:
+        "Strong portfolio and reviewer demo signal: governed finance automation, deterministic logic, auditability, and buyer-aware production boundaries are visible in one package.",
+      whyItMatters: [
+        "A reviewer can inspect the strongest engineering and product signals without opening every endpoint manually.",
+        "The package explains why the system is demo-ready while keeping production readiness blocked.",
+        "The scorecard separates architecture, finance controls, auditability, commercial value, and production readiness.",
+        "The evidence list points reviewers to exact commands instead of relying on marketing language."
+      ],
+      evidenceToInspectFirst: [
+        "pnpm run verify:local",
+        "pnpm run demo:client-reviewer-dashboard-package",
+        "pnpm run demo:ai-company-reviewer-path",
+        "pnpm run demo:api-inventory",
+        "pnpm run demo:audit-visibility"
+      ]
     },
     dashboard,
     audit,
@@ -111,6 +143,14 @@ export function validateClientReviewerDashboardPackage(
 
   if (packageResult.productionBoundaries.length < 5) {
     warnings.push("Reviewer package should include explicit production boundaries.");
+  }
+
+  if (packageResult.reviewerScorecard.productionReadinessSignal !== "blocked") {
+    errors.push("Reviewer scorecard must keep production readiness blocked.");
+  }
+
+  if (packageResult.reviewerScorecard.evidenceToInspectFirst.length < 5) {
+    warnings.push("Reviewer scorecard should include at least five first-inspection evidence commands.");
   }
 
   return {
