@@ -471,43 +471,24 @@ Artifact boundary:
 
 ## Current client package features
 
-The repository includes multiple client-facing and reviewer-facing packages, including:
+The repository includes structured client-facing and reviewer-facing packages for:
 
-- client readiness package
-- client build package
-- client acceptance package
-- client pilot plan
-- client production handoff package
-- client go-live package
-- client commercial package
-- client sales handoff package
-- client reviewer audit package
-- client reviewer dashboard package
-- client sample input fixtures package
-- client security boundary package
-- client validation matrix
-- client plugin contracts
-- client implementation manifest
-- client work order package
-- client repository starter
-- client adapter registry
-- client implementation roadmap
-- client deployment profile
-- client acceptance gate
-- client delivery package
-- client enterprise sales brief
-- client enterprise red-team package
-- client due diligence package
-- client control matrix
-- client evidence binder
-- client pilot decision packet
-- client pilot kickoff package
-- client pilot SOW package
-- client pilot proposal package
-- client procurement review package
-- client security questionnaire package
+- client discovery and requirements intake
+- adapter readiness and implementation planning
+- approval gates and governance boundaries
+- audit evidence and artifact traceability
+- buyer-facing commercial review
+- procurement, security, compliance, and risk review
+- pilot, production handoff, and go-live decision support
 
-These packages are meant to show how the project can move from technical demo to client discovery, pilot planning, procurement review, and production-readiness discussion.
+These packages show how the project can move from technical demo to client discovery, scoped pilot planning, procurement review, and production-readiness discussion.
+
+Fast package overview commands:
+
+- pnpm run demo:client-reviewer-dashboard-package
+- pnpm run demo:api-inventory
+
+For the full command list, see [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
 
 ## Enterprise safety boundaries
 
