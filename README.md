@@ -433,6 +433,12 @@ The project includes reviewer-friendly endpoints for:
 
 The goal is to make the project reviewable without forcing an engineer to inspect every file manually.
 
+Artifact boundary:
+- the normal FinanceOps pipeline writes ledger, approval queue, output artifact, audit log, and API response artifacts
+- the payment execution artifact is written only by the protected approval-gated mock payment route
+- `pnpm run verify:demo` runs the protected mock approval path so the full artifact registry can become healthy in a reviewer-safe way
+- this does not represent autonomous payment execution or real money movement
+
 ## Current client package features
 
 The repository includes multiple client-facing and reviewer-facing packages, including:

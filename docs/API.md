@@ -78,8 +78,10 @@ POST /payments/:paymentRecommendationId/approve-and-send
 
 Approves a payment recommendation and executes it through the mock payment adapter.
 
+This route is intentionally protected by the demo API key. It represents an approval-gated mock payment simulation, not autonomous money movement.
+
 Flow:
-agent recommends payment -> human approves -> mock payment adapter simulates execution -> payment execution record is persisted.
+agent recommends payment -> human approves -> protected mock payment adapter simulates execution -> payment execution record is persisted.
 
 Request body example:
 {
@@ -88,7 +90,7 @@ Request body example:
 }
 
 Example request:
-curl -s -X POST http://localhost:3001/payments/payrec-001/approve-and-send -H "Content-Type: application/json" -d '{"approvedBy":"demo-cfo","idempotencyKey":"demo-payment-key-001"}' | python3 -m json.tool
+curl -s -X POST http://localhost:3001/payments/payrec-001/approve-and-send -H "Content-Type: application/json" -H "x-demo-api-key: local-demo-key" -d '{"approvedBy":"demo-cfo","idempotencyKey":"demo-payment-key-001"}' | python3 -m json.tool
 
 Persisted output:
 outputs/payments/latest-payment-execution.json
