@@ -6,6 +6,7 @@ import { buildClientCommercialSummary } from "../../src/client-config/client-com
 import { buildClientCommercialValueHypothesis } from "../../src/client-config/client-commercial-value-hypothesis.js";
 import { buildClientReviewerAudit } from "../../src/client-config/client-reviewer-audit.js";
 import { buildClientReviewerDashboard } from "../../src/client-config/client-reviewer-dashboard.js";
+import { buildClientReviewerDashboardPackage, validateClientReviewerDashboardPackage } from "../../src/client-config/client-reviewer-dashboard-package.js";
 import { buildClientRoiModel } from "../../src/client-config/client-roi-model.js";
 
 function hasNonEmptyStringValue(value: unknown): boolean {
@@ -93,6 +94,26 @@ describe("commercial and reviewer packages", () => {
     expect(demoSection).toBeDefined();
     expect(demoSection?.bullets.length).toBeGreaterThan(0);
     expect(allBullets.some((bullet) => bullet.includes("/client/"))).toBe(true);
+  });
+
+
+  test("builds reviewer dashboard package with validation and production boundary", () => {
+    const result = buildClientReviewerDashboardPackage();
+    const validation = validateClientReviewerDashboardPackage(result);
+
+    expect(result.packageVersion).toBe("client-reviewer-dashboard-package-v1");
+    expect(result.reviewerDecision.demoReady).toBe(true);
+    expect(result.reviewerDecision.pilotDiscussionReady).toBe(true);
+    expect(result.reviewerDecision.productionReady).toBe(false);
+    expect(result.dashboard.title).toBe("Client Reviewer Dashboard");
+    expect(result.audit.title).toContain("Reviewer");
+    expect(result.commercialPackage.title).toContain("Commercial");
+    expect(result.evidenceBinder.items.length).toBeGreaterThan(0);
+    expect(result.controlMatrix.items.length).toBeGreaterThan(0);
+    expect(result.productionReadiness.gates.length).toBeGreaterThan(0);
+    expect(result.productionBoundaries.some((boundary) => boundary.includes("No autonomous money movement"))).toBe(true);
+    expect(validation.valid).toBe(true);
+    expect(validation.status).toBe("pass");
   });
 
   test("builds reviewer audit with repository-oriented evaluation", () => {

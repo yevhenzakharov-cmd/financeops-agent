@@ -58,6 +58,8 @@ import {
   getClientSalesHandoffPackage,
   buildClientReviewerAudit,
   buildClientReviewerDashboard,
+  buildClientReviewerDashboardPackage,
+  validateClientReviewerDashboardPackage,
   buildClientSampleInputFixtures,
   buildClientSecurityBoundary,
   buildClientValidationMatrix,
@@ -2032,6 +2034,17 @@ app.get("/client/plugin-contracts", (_req, res) => {
     status: "success",
     result: packageResult,
     validation: validateClientPluginContractsPackage(packageResult)
+  });
+});
+
+
+app.get("/client/reviewer-dashboard-package", (_req, res) => {
+  const packageResult = buildClientReviewerDashboardPackage();
+
+  res.json({
+    status: "success",
+    result: packageResult,
+    validation: validateClientReviewerDashboardPackage(packageResult)
   });
 });
 
