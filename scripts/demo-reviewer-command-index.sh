@@ -10,6 +10,7 @@ echo
 echo "==== Required index files ===="
 for file in \
   docs/REVIEWER_DEMO_INDEX.md \
+  docs/PRODUCT_POSITIONING.md \
   docs/AI_COMPANY_REVIEWER_PATH.md \
   docs/REVIEWER_DEMO_PATH.md \
   README.md
