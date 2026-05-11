@@ -98,7 +98,7 @@ import { getArtifactApiSurfaceSummary, getArtifactAuditDigest, getArtifactCompac
 import { persistApiResponse } from "./api-output-writer.js";
 import { registerStandardApiErrorHandlers } from "./error-response.js";
 import { buildDemoAuthStatus, requireDemoApiKey } from "./demo-auth.js";
-import { buildAuditVisibilityPackage, getAuditHealth, summarizeLatestAuditLog } from "./audit-read-service.js";
+import { registerAuditRoutes } from "./routes/audit-routes.js";
 import { buildApiInventoryPackage, getApiInventoryRoutes } from "./api-inventory-service.js";
 import { buildOpenApiDocument } from "./openapi-service.js";
 import {
@@ -1257,28 +1257,7 @@ app.get("/api/routes", (_req, res) => {
   });
 });
 
-app.get("/audit/health", (_req, res) => {
-  res.json({
-    status: "success",
-    health: getAuditHealth()
-  });
-});
-
-app.get("/audit/summary", (_req, res) => {
-  const summary = summarizeLatestAuditLog();
-
-  res.json({
-    status: summary ? "success" : "missing",
-    summary
-  });
-});
-
-app.get("/audit/visibility", (_req, res) => {
-  res.json({
-    status: "success",
-    result: buildAuditVisibilityPackage()
-  });
-});
+registerAuditRoutes(app);
 
 app.get("/security/http-hardening", securityStatusHandler);
 
