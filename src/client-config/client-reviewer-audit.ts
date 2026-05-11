@@ -34,8 +34,7 @@ export function buildClientReviewerAudit(): ClientReviewerAudit {
       "CFO",
       "founder",
       "operator",
-      "potential client",
-      "hiring manager"
+      "potential client"
     ],
     summary:
       "FinanceOps Agent demonstrates a governed finance automation system that separates deterministic finance logic from AI-style explanation, produces traceable artifacts, and frames production readiness honestly instead of pretending the public demo is fully deployable.",

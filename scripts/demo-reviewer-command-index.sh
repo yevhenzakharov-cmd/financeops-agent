@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "==== FinanceOps Agent reviewer demo command index ===="
 echo
-echo "This command lists the strongest reviewer commands for AI-company, hiring, technical, and CFO-style review."
+echo "This command lists the strongest reviewer commands for AI-company, technical, and CFO-style review."
 echo "It does not start the API server and does not require credentials."
 echo
 
@@ -25,6 +25,7 @@ done
 echo
 echo "==== Recommended first commands ===="
 echo "pnpm run verify:local"
+echo "pnpm run demo:client-reviewer-dashboard-package"
 echo "pnpm run demo:ai-company-reviewer-path"
 echo "pnpm run demo:reviewer-path"
 echo "pnpm run demo:api-inventory"

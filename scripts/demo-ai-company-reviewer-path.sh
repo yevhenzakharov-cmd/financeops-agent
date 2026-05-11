@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "==== FinanceOps Agent AI-company reviewer path ===="
 echo
-echo "This command previews the hiring/team reviewer guide."
+echo "This command previews the reviewer guide."
 echo "It does not start the API server and does not require credentials."
 echo
 

@@ -2,7 +2,7 @@
 
 This document gives a fast technical review of the FinanceOps Agent repository.
 
-It is written for an AI engineer, full-stack engineer, CFO-style buyer, founder, hiring manager, or technical reviewer who wants to understand what the project proves without reading every source file.
+It is written for an AI engineer, full-stack engineer, CFO-style buyer, founder, or technical reviewer who wants to understand what the project proves without reading every source file.
 
 ## One-line summary
 

@@ -1,6 +1,8 @@
 # Reviewer Demo Path
 
-Hiring/team reviewer guide: [AI Company Reviewer Path](AI_COMPANY_REVIEWER_PATH.md).\n\nReviewer command index: [Reviewer Demo Command Index](REVIEWER_DEMO_INDEX.md).
+Reviewer guide: [AI Company Reviewer Path](AI_COMPANY_REVIEWER_PATH.md).
+
+Reviewer command index: [Reviewer Demo Command Index](REVIEWER_DEMO_INDEX.md).
 
 This guide gives a reviewer the shortest path through the FinanceOps Agent repository.
 
@@ -20,7 +22,8 @@ The project should be reviewed as a production-aware public demo and implementat
 10. Review the Accounting Workflow Routing guide.
 11. Review the Client Workflow Intake guide.
 12. Run local verification.
-13. Run the reviewer demo path command.
+13. Run the consolidated reviewer dashboard package command.
+14. Run the reviewer demo path command.
 
 Client sample packet template: [`examples/client-sample-packet`](../examples/client-sample-packet).
 
@@ -31,13 +34,19 @@ First-adapter decision tree: [First Adapter Decision Tree](FIRST_ADAPTER_DECISIO
 ## Recommended commands
 
 - pnpm run verify:local
+- pnpm run demo:client-reviewer-dashboard-package
 - pnpm run demo:reviewer-path
-- pnpm run demo:ai-company-reviewer-path\n- pnpm run demo:reviewer-command-index
+- pnpm run demo:ai-company-reviewer-path
+- pnpm run demo:reviewer-command-index
 - pnpm run demo:client-onboarding-pack
 - pnpm run demo:client-ready-checkpoint
 - pnpm run demo:first-adapter-decision-tree
 
-The wrapper command runs the API inventory, accounting task registry, accounting workflow router, client workflow intake, and client adapter readiness demos:
+The consolidated reviewer dashboard package is the best first command because it shows the strongest reviewer, buyer, audit, control, readiness, proof-endpoint, blocker, and demo-order signals in one place.
+
+- pnpm run demo:client-reviewer-dashboard-package
+
+The reviewer path wrapper command then runs the API inventory, accounting task registry, accounting workflow router, client workflow intake, and client adapter readiness demos:
 
 - pnpm run demo:api-inventory
 - pnpm run demo:accounting-task-registry
@@ -47,15 +56,16 @@ The wrapper command runs the API inventory, accounting task registry, accounting
 
 ## Sales demo script
 
-Use this sequence for a buyer, founder, hiring manager, senior engineer, or CFO-style reviewer:
+Use this sequence for a buyer, founder, potential client, senior engineer, or CFO-style reviewer:
 
 1. Start with `pnpm run verify:local` to prove the repo passes lint, typecheck, tests, coverage, build, and demo verification.
-2. Run `pnpm run demo:api-inventory` to show the API surface, protected action routes, read-only reviewer routes, and production safety notes.
-3. Run `pnpm run demo:accounting-task-registry` to show the reusable accounting task templates before a real client provides inputs and outputs.
-4. Run `pnpm run demo:accounting-workflow-router` to show how accounting workflows are routed into safe lanes: allowed, simulation-only, approval-gated, professionally reviewed, or blocked.
-5. Run `pnpm run demo:client-workflow-intake` to show how a client-described workflow becomes an implementation plan without pretending production adapters already exist.
-6. Run `pnpm run demo:client-adapter-readiness` to show the adapter blueprint, output delivery plan, build package, and client-owned blockers.
-7. Close with the Implementation Model to explain why real input and output adapters are scoped after client discovery.
+2. Run `pnpm run demo:client-reviewer-dashboard-package` to show the strongest reviewer entry point in one consolidated package.
+3. Run `pnpm run demo:api-inventory` to show the API surface, protected action routes, read-only reviewer routes, and production safety notes.
+4. Run `pnpm run demo:accounting-task-registry` to show the reusable accounting task templates before a real client provides inputs and outputs.
+5. Run `pnpm run demo:accounting-workflow-router` to show how accounting workflows are routed into safe lanes: allowed, simulation-only, approval-gated, professionally reviewed, or blocked.
+6. Run `pnpm run demo:client-workflow-intake` to show how a client-described workflow becomes an implementation plan without pretending production adapters already exist.
+7. Run `pnpm run demo:client-adapter-readiness` to show the adapter blueprint, output delivery plan, build package, and client-owned blockers.
+8. Close with the Implementation Model to explain why real input and output adapters are scoped after client discovery.
 
 The buyer-facing message is simple: this repo proves the governed FinanceOps core, while real client adapters are intentionally added only after the client confirms source data, required calculations, approval rules, and output destinations.
 

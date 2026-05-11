@@ -38,8 +38,7 @@ export function buildClientReviewerDashboard(): ClientReviewerDashboard {
       "CFO",
       "founder",
       "operator",
-      "potential client",
-      "hiring manager"
+      "potential client"
     ],
     executiveSummary:
       "Reviewer-facing dashboard summary for quickly explaining what the FinanceOps Agent proves, what is demo-ready, what remains blocked, and which endpoints demonstrate the strongest parts of the system.",

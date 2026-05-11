@@ -1,6 +1,6 @@
 # Reviewer Demo Command Index
 
-This index gives AI-company reviewers, hiring teams, technical reviewers, and CFO-style reviewers a short path through the most important FinanceOps Agent commands.
+This index gives AI-company, technical, and CFO-style reviewers a short path through the most important FinanceOps Agent commands.
 
 The repository has many demo commands. This file highlights the commands that best prove the working governed FinanceOps core, deterministic logic, safety boundaries, API visibility, auditability, and implementation foundation.
 
@@ -58,7 +58,7 @@ Use these to review auditability, governance, risk, and production blockers:
 - `pnpm run demo:client-risk-acceptance-package`
 - `pnpm run demo:client-production-readiness-package`
 
-## Commercial and hiring-reviewer evidence
+## Commercial and reviewer evidence
 
 Use these to review product judgment, buyer-readiness, and implementation thinking:
 
