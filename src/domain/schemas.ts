@@ -31,12 +31,10 @@ export type Client = z.infer<typeof ClientSchema>;
  */
 
 export const DeliveryStageSchema = z.enum([
-  "preproduction",
-  "production",
-  "alpha",
-  "beta",
-  "release",
-  "post-release"
+  "discovery",
+  "pilot",
+  "implementation",
+  "production"
 ]);
 export type DeliveryStage = z.infer<typeof DeliveryStageSchema>;
 
@@ -54,7 +52,7 @@ export const ProjectSchema = z.object({
   id: z.string(),
   name: z.string(),
   clientId: z.string(),
-  engine: z.enum(["FinanceOpsCore", "Unreal"]),
+  engine: z.enum(["FinanceOpsCore"]),
   platform: z.array(z.enum(["Operations", "PC", "Console"])),
   stage: DeliveryStageSchema,
   budget: ProjectBudgetSchema,

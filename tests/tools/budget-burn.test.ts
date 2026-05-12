@@ -10,7 +10,7 @@ function buildProject(overrides: Partial<Project> = {}): Project {
     clientId: "client-budget-burn-test",
     engine: "FinanceOpsCore",
     platform: ["Operations"],
-    stage: "release",
+    stage: "implementation",
     budget: {
       totalBudget: {
         amount: 100000,
@@ -53,10 +53,10 @@ describe("budget burn evaluation", () => {
   test.each([
     ["preproduction", 10],
     ["production", 50],
-    ["alpha", 70],
-    ["beta", 85],
-    ["release", 95],
-    ["post-release", 100]
+    ["discovery", 70],
+    ["pilot", 85],
+    ["implementation", 95],
+    ["production_review", 100]
   ])("maps %s stage to expected burn percent %i", (stage, expectedBurnPercent) => {
     const result = evaluateBudgetBurn(
       buildProject({
@@ -69,11 +69,11 @@ describe("budget burn evaluation", () => {
     expect(result.expectedBurnPercent).toBe(expectedBurnPercent);
   });
 
-  test("keeps release-stage burn normal when variance is not above expected", () => {
+  test("keeps implementation-stage burn normal when variance is not above expected", () => {
     const result = evaluateBudgetBurn(
       buildProject({
-        id: "project-normal-release",
-        stage: "release"
+        id: "project-normal-implementation",
+        stage: "implementation"
       })
     );
 

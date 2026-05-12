@@ -16,7 +16,7 @@ const basePipelineResult = {
     clientId: "client-001",
     engine: "FinanceOpsCore",
     platform: ["Operations"],
-    stage: "beta",
+    stage: "pilot",
     budget: {
       totalBudget: {
         amount: 500000,
@@ -36,7 +36,7 @@ const basePipelineResult = {
   },
   burn: {
     projectId: "project-001",
-    stage: "beta",
+    stage: "pilot",
     burnPercent: 12,
     expectedBurnPercent: 85,
     varianceFromExpected: -73,
@@ -132,7 +132,7 @@ const basePipelineResult = {
         riskLevel: "high"
       }
     ],
-    confidenceScore: 0.86
+    confidenceScore: 0.9
   },
   auditTraceId: "trace-test"
 } satisfies FinanceOpsPipelineResult;
@@ -153,7 +153,7 @@ describe("MockClientOutputAdapter", () => {
       project: {
         id: "project-001",
         name: "Project Atlas",
-        stage: "beta"
+        stage: "pilot"
       },
       financeSummary: {
         marginPercent: 60,

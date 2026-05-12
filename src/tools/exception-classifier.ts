@@ -36,7 +36,7 @@ export function classifyFinanceExceptions(): FinanceException[] {
   }
 
   // 2️⃣ Overdue invoice exceptions
-  const overdue = detectOverdueInvoices(new Date("2025-05-01"));
+  const overdue = detectOverdueInvoices(new Date());
 
   for (const inv of overdue) {
     exceptions.push({

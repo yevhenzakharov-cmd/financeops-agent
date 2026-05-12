@@ -20,7 +20,7 @@ const customInputAdapter: FinanceOpsInputAdapter = {
           clientId: "client-custom-001",
           engine: "FinanceOpsCore",
           platform: ["Operations"],
-          stage: "beta",
+          stage: "pilot",
           budget: {
             totalBudget: {
               amount: 100000,

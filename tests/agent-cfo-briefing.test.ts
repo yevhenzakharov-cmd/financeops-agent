@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 import {
   buildDeterministicCFOBriefing,
@@ -6,7 +6,13 @@ import {
 } from "../src/agent/cfo-briefing.js";
 
 describe("CFO briefing", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-05-12T00:00:00.000Z"));
+  });
+
   afterEach(() => {
+    vi.useRealTimers();
     vi.unstubAllEnvs();
     vi.restoreAllMocks();
   });
@@ -23,17 +29,17 @@ describe("CFO briefing", () => {
         projectId: "project-001",
         riskLevel: "medium",
         explanation:
-          "Project Atlas has positive gross margin, but budget burn and reconciliation exceptions still require finance review before production-style action."
+          "Project Atlas requires finance review because budget burn variance is -73 percentage points from the expected 85% benchmark."
       }
     ]);
     expect(briefing.overdueReceivables).toEqual([
       {
         invoiceId: "inv-002",
-        daysOverdue: 402,
+        daysOverdue: 406,
         riskLevel: "high"
       }
     ]);
-    expect(briefing.confidenceScore).toBe(0.86);
+    expect(briefing.confidenceScore).toBe(0.9);
   });
 
   test("uses a lower deterministic confidence score when summary is empty", () => {
@@ -51,7 +57,7 @@ describe("CFO briefing", () => {
     expect(briefing.executiveSummary).toContain("deterministic review");
     expect(briefing.projectMarginRisks[0]?.riskLevel).toBe("medium");
     expect(briefing.overdueReceivables[0]?.riskLevel).toBe("high");
-    expect(briefing.confidenceScore).toBe(0.86);
+    expect(briefing.confidenceScore).toBe(0.9);
   });
 
   test("falls back to deterministic briefing when deterministic summary is empty and API key is not configured", async () => {

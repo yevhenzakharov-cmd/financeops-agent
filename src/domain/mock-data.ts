@@ -25,7 +25,7 @@ export const projects: Project[] = [
     clientId: "client-001",
     engine: "FinanceOpsCore",
     platform: ["Operations"],
-    stage: "beta",
+    stage: "pilot",
     budget: {
       totalBudget: { amount: 500000, currency: "USD" },
       approvedAt: "2025-01-10"
@@ -95,8 +95,8 @@ export const contractorCosts: ContractorCost[] = [
   {
     id: "cc-001",
     projectId: "project-001",
-    contractorName: "Senior Gameplay Programmer",
-    role: "Gameplay",
+    contractorName: "Senior Finance Operations Analyst",
+    role: "Finance Operations",
     date: "2025-02-28",
     amount: { amount: 40000, currency: "USD" }
   }

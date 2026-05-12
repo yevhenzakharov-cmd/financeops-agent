@@ -52,7 +52,7 @@ export function buildClientSampleInputFixtures(): ClientSampleInputFixturesPacka
         { name: "dueDate", type: "date", required: true, status: "ready", notes: "Used for aging and overdue classification." }
       ],
       sampleRows: [
-        { invoiceId: "INV-1001", customerName: "Northstar Games", amount: 42000, currency: "USD", status: "overdue", dueDate: "2026-04-12" },
+        { invoiceId: "INV-1001", customerName: "Northstar Services", amount: 42000, currency: "USD", status: "overdue", dueDate: "2026-04-12" },
         { invoiceId: "INV-1002", customerName: "Pixel Forge", amount: 18500, currency: "USD", status: "open", dueDate: "2026-05-20" }
       ],
       mappingQuestions: [],
@@ -73,7 +73,7 @@ export function buildClientSampleInputFixtures(): ClientSampleInputFixturesPacka
         { name: "reference", type: "string", required: false, status: "needs_mapping", notes: "Client must confirm whether references contain invoice IDs." }
       ],
       sampleRows: [
-        { bankTransactionId: "BANK-9001", postedAt: "2026-04-18", counterparty: "Northstar Games", amount: 42000, reference: "INV-1001" },
+        { bankTransactionId: "BANK-9001", postedAt: "2026-04-18", counterparty: "Northstar Services", amount: 42000, reference: "INV-1001" },
         { bankTransactionId: "BANK-9002", postedAt: "2026-04-19", counterparty: "Unknown Vendor", amount: -3100, reference: null }
       ],
       mappingQuestions: [

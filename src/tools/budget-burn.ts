@@ -20,13 +20,13 @@ function expectedBurnByStage(stage: string): number {
       return 10;
     case "production":
       return 50;
-    case "alpha":
+    case "discovery":
       return 70;
-    case "beta":
+    case "pilot":
       return 85;
-    case "release":
+    case "implementation":
       return 95;
-    case "post-release":
+    case "production_review":
       return 100;
     default:
       return 0;
