@@ -5,9 +5,10 @@ import {
   generateCFOBriefing
 } from "../src/agent/cfo-briefing.js";
 
-describe("CFO briefing fallback", () => {
+describe("CFO briefing", () => {
   afterEach(() => {
     vi.unstubAllEnvs();
+    vi.restoreAllMocks();
   });
 
   test("builds a deterministic CFO briefing when external AI is unavailable", () => {
@@ -16,10 +17,23 @@ describe("CFO briefing fallback", () => {
     );
 
     expect(briefing.executiveSummary).toContain("deterministic review");
-    expect(briefing.projectMarginRisks[0]?.projectId).toBe("project-001");
-    expect(briefing.overdueReceivables[0]?.invoiceId).toBe("inv-002");
-    expect(briefing.confidenceScore).toBeGreaterThan(0);
-    expect(briefing.confidenceScore).toBeLessThanOrEqual(1);
+    expect(briefing.executiveSummary).toContain("AI explanation is optional");
+    expect(briefing.projectMarginRisks).toEqual([
+      {
+        projectId: "project-001",
+        riskLevel: "medium",
+        explanation:
+          "Project Atlas has positive gross margin, but budget burn and reconciliation exceptions still require finance review before production-style action."
+      }
+    ]);
+    expect(briefing.overdueReceivables).toEqual([
+      {
+        invoiceId: "inv-002",
+        daysOverdue: 402,
+        riskLevel: "high"
+      }
+    ]);
+    expect(briefing.confidenceScore).toBe(0.86);
   });
 
   test("uses a lower deterministic confidence score when summary is empty", () => {
@@ -27,12 +41,6 @@ describe("CFO briefing fallback", () => {
 
     expect(briefing.confidenceScore).toBe(0.75);
     expect(briefing.executiveSummary).toContain("deterministic review");
-  });
-
-  test("uses a higher deterministic confidence score when summary is provided", () => {
-    const briefing = buildDeterministicCFOBriefing("Verified deterministic finance summary.");
-
-    expect(briefing.confidenceScore).toBe(0.86);
   });
 
   test("falls back to deterministic briefing when OpenAI API key is not configured", async () => {
@@ -43,5 +51,15 @@ describe("CFO briefing fallback", () => {
     expect(briefing.executiveSummary).toContain("deterministic review");
     expect(briefing.projectMarginRisks[0]?.riskLevel).toBe("medium");
     expect(briefing.overdueReceivables[0]?.riskLevel).toBe("high");
+    expect(briefing.confidenceScore).toBe(0.86);
+  });
+
+  test("falls back to deterministic briefing when deterministic summary is empty and API key is not configured", async () => {
+    vi.stubEnv("OPENAI_API_KEY", "");
+
+    const briefing = await generateCFOBriefing("");
+
+    expect(briefing.executiveSummary).toContain("deterministic review");
+    expect(briefing.confidenceScore).toBe(0.75);
   });
 });
