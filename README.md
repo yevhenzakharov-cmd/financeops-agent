@@ -92,6 +92,8 @@ This is not a finished enterprise product yet. It is a strong technical foundati
 
 ## Reviewer quick path
 
+- [Senior dev review share note](docs/SENIOR_DEV_REVIEW_SHARE_NOTE.md)
+
 If you are reviewing this repository for technical, product, buyer-readiness, or AI-company hiring reasons, start with the strongest reviewer path:
 
 1. [Reviewer 60-Second Walkthrough](docs/REVIEWER_60_SECOND_WALKTHROUGH.md) - fastest plain-English overview of what the repo proves.
