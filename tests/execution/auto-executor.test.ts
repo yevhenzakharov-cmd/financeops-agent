@@ -109,6 +109,30 @@ describe("evaluateExecution", () => {
     });
   });
 
+  test("approval-gates payment-like actions even when safe auto-execution mode is enabled", () => {
+    const decisions = evaluateExecution(
+      [buildAction({ actionType: "freeze_vendor_payments" })],
+      "auto_execute_safe"
+    );
+
+    expect(decisions[0]).toMatchObject({
+      decision: "requires_approval",
+      reason: "Sensitive finance action requires human approval"
+    });
+  });
+
+  test("approval-gates accounting write actions even when safe auto-execution mode is enabled", () => {
+    const decisions = evaluateExecution(
+      [buildAction({ actionType: "post_journal_entry" })],
+      "auto_execute_safe"
+    );
+
+    expect(decisions[0]).toMatchObject({
+      decision: "requires_approval",
+      reason: "Sensitive finance action requires human approval"
+    });
+  });
+
   test("allows negative margin actions when explicitly configured", () => {
     process.env.MIN_REQUIRED_MARGIN_DELTA = "0";
     process.env.ALLOW_NEGATIVE_MARGIN_ACTIONS = "true";

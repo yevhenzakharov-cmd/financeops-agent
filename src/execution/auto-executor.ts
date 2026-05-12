@@ -1,6 +1,28 @@
 import type { ExecutionMode } from "./execution-mode.js";
 import { getRiskAppetite } from "../config/risk-appetite.js";
 
+const APPROVAL_REQUIRED_ACTION_KEYWORDS = [
+  "payment",
+  "pay",
+  "vendor",
+  "transfer",
+  "bank",
+  "journal",
+  "ledger_post",
+  "accounting",
+  "payroll",
+  "tax",
+  "legal"
+] as const;
+
+function isApprovalRequiredFinanceAction(actionType: string): boolean {
+  const normalizedActionType = actionType.toLowerCase();
+
+  return APPROVAL_REQUIRED_ACTION_KEYWORDS.some((keyword) =>
+    normalizedActionType.includes(keyword)
+  );
+}
+
 export interface RankedAction {
   exceptionId: string;
   actionType: string;
@@ -69,6 +91,15 @@ export function evaluateExecution(
         actionType: action.actionType,
         decision: "requires_approval",
         reason: "Approval mode enabled"
+      };
+    }
+
+    if (isApprovalRequiredFinanceAction(action.actionType)) {
+      return {
+        exceptionId: action.exceptionId,
+        actionType: action.actionType,
+        decision: "requires_approval",
+        reason: "Sensitive finance action requires human approval"
       };
     }
 
