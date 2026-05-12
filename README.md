@@ -1,720 +1,133 @@
 # FinanceOps Agent
 
-A configurable FinanceOps automation core for client-specific accounting and finance operations workflows.
+A governed finance operations automation demo built in TypeScript.
 
-This repository is a public technical demo showing how a finance operations agent can be built with deterministic business logic, strict approval gates, auditability, API visibility, security boundaries, and client-specific implementation packages.
+FinanceOps Agent shows how a finance/accounting workflow can be turned into deterministic checks, approval-gated recommendations, audit-visible artifacts, and reviewer-ready API outputs.
+
+It is not a generic chatbot and it is not positioned as production-ready SaaS. The public repo is a demo-safe implementation core using mock data.
 
 ## Senior reviewer quick path
 
-FinanceOps Agent is a governed FinanceOps automation demo that shows deterministic finance logic, approval-gated sensitive actions, audit artifacts, API visibility, and buyer/reviewer-facing delivery packages.
+Start here if you are reviewing the repo quickly:
 
-Run this first:
+1. Read this README.
+2. Open [Reviewer 60-Second Walkthrough](docs/REVIEWER_60_SECOND_WALKTHROUGH.md).
+3. Open [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md).
+4. Open [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md).
+5. Run the fast reviewer commands below.
 
-- `pnpm run verify:local`
-- `pnpm run demo:reviewer-path`
-- `pnpm run demo:reviewer-command-index`
-- `pnpm run demo:api-inventory`
-- `pnpm run demo:audit-visibility`
+Share note for a senior dev reviewer: [Senior dev review share note](docs/SENIOR_DEV_REVIEW_SHARE_NOTE.md).
 
-Important review assets:
+## What this repo proves
 
-- `docs/REVIEWER_EVIDENCE_MAP.md` — maps reviewer questions to concrete proof.
-- `docs/REVIEWER_60_SECOND_WALKTHROUGH.md` — fastest human review path.
-- `docs/REVIEWER_ARCHITECTURE_SUMMARY.md` — architecture and safety-boundary summary.
+FinanceOps Agent demonstrates:
 
-Do not overclaim:
+- TypeScript-first backend architecture.
+- Deterministic finance workflow logic.
+- Mock-data finance operations pipeline.
+- Approval gates for sensitive finance actions.
+- Audit log, execution ledger, approval queue, and output artifact generation.
+- API inventory and OpenAPI-style contract visibility.
+- Client discovery, implementation, procurement, security, compliance, pilot, and go-live packages.
+- Buyer/reviewer-facing documentation and demo scripts.
+- Clear production blockers instead of overclaiming readiness.
 
-- this is not a production deployment;
-- it does not use real client financial data;
-- it does not autonomously move money;
-- it does not post accounting entries;
-- ROI is a discovery estimate until measured with real client workflow data.
+## What this repo does not claim
 
-## 60-second reviewer summary
+This repo does not claim:
 
-FinanceOps Agent is not a generic AI chatbot. It is a governed FinanceOps automation core that shows how accounting and finance workflows can be made reviewable, auditable, and client-specific.
+- production deployment readiness,
+- autonomous money movement,
+- real ERP, bank, accounting, payroll, or payment processor integration,
+- verified ROI,
+- legal, tax, or final accounting advice,
+- AI-generated financial truth.
 
-The strongest proof points are:
-
-- deterministic finance logic for calculations, exception detection, reconciliation review, and risk classification
-- AI-style explanation only after the deterministic core has produced structured results
-- protected action-like routes for sensitive flows
-- public read-only reviewer endpoints for technical and buyer review
-- audit logs, execution ledgers, approval queues, and output artifacts
-- client implementation packages covering discovery, data requests, controls, evidence, procurement, security, compliance, pilot planning, and production blockers
-- clear separation between demo-safe mock data and future client-owned production deployment
-
-The fastest proof path is:
-
-    pnpm run verify:local
-    pnpm run demo:client-reviewer-dashboard-package
-    pnpm run demo:ai-company-reviewer-path
-    pnpm run demo:reviewer-command-index
-
-The honest boundary: this repo is a strong public demo and implementation foundation, not a finished enterprise deployment. Production use requires client-owned data, authentication, authorization, secrets, monitoring, approval policy, and deployment controls.
+AI-style output is used only to explain already-computed deterministic results. Finance calculations, classifications, approval states, and artifacts come from typed workflow logic.
 
 ## Start here
 
+Key reviewer docs:
+
 - [Reviewer 60-Second Walkthrough](docs/REVIEWER_60_SECOND_WALKTHROUGH.md) - fastest plain-English overview of what the repo proves.
-- [Product Positioning](docs/PRODUCT_POSITIONING.md) - explains the broader configurable FinanceOps core and safe product claims.
-- [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
-- [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - gives the fastest command path for inspecting the repo.
-- [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - shows the deterministic core, approval gates, audit layer, and reviewer-facing API surface.
-- [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - gives a copy-ready walkthrough for technical, product, and buyer review.
+- [Product Positioning](docs/PRODUCT_POSITIONING.md) - broader configurable FinanceOps core and safe product claims.
+- [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - why the repo is relevant to AI companies, technical reviewers, and hiring teams.
+- [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - fastest command path for inspecting the repo.
+- [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - deterministic core, approval gates, audit layer, and reviewer-facing API surface.
+- [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - copy-ready walkthrough for technical, product, and buyer review.
+- [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level architecture, control boundaries, auditability, and reviewer-facing design.
+
+Additional implementation docs:
+
+- [Implementation Model](docs/IMPLEMENTATION_MODEL.md)
+- [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md)
+- [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md)
+- [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md)
+- [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md)
+- [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md)
+- [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md)
+- [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md)
+- [API Overview](docs/API.md)
+
+Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
 
 ## Core principle
 
-AI does not perform the financial calculations.
+The central design principle is simple:
 
-The system is built around a deterministic FinanceOps core. The core handles calculations, validation, policy checks, exception detection, risk classification, approval preparation, audit logging, and artifact generation.
+Finance logic should be deterministic. AI should explain verified outputs, not invent numbers or approve sensitive finance actions.
 
-AI is only used as an explanation and briefing layer on top of already-computed results. It can summarize and explain. It does not invent numbers, approve payments, post accounting entries, or make final finance decisions.
-
+Sensitive actions are either blocked, simulated, or approval-gated.
 
 ## Product positioning
 
-FinanceOps Agent is a configurable finance operations automation core.
+FinanceOps Agent is positioned as a configurable FinanceOps automation core.
 
-It is not limited to checking invoices or preparing payment recommendations. Those are demo workflows that prove the pattern.
-
-The intended product direction is broader: each client can bring a different accounting or finance operations workflow, different inputs, different outputs, and different approval rules. The reusable core can then be modified into a client-specific implementation.
-
-Examples of client-specific workflows include invoice OCR extraction, accounts payable review, accounts receivable review, bank reconciliation, vendor or customer statement reconciliation, expense review, project margin review, budget variance review, cash-flow monitoring, payroll review support, payment approval preparation, month-end close support, reporting support, and audit evidence generation.
+The public repo shows the reusable core. A real client implementation would clone or configure this core around the client's own inputs, mappings, workflows, approval rules, output formats, and deployment boundary.
 
 See [Product Positioning](docs/PRODUCT_POSITIONING.md) for the full positioning and capability model.
 
 ## Current project status
 
-The current version is a working public demo with:
-
-- deterministic FinanceOps logic
-- mock client data
-- protected action-like API routes
-- read-only reviewer endpoints
-- approval workflow
-- audit log generation
-- execution ledger generation
-- approval queue generation
-- payment recommendation artifacts
-- client output artifacts
-- artifact registry
-- OpenAPI contract
-- API inventory
-- request observability
-- security boundary documentation
-- accounting control framework
-- accounting task registry
-- accounting workflow routing
-- due diligence package
-- control matrix
-- evidence binder
-- procurement review package
-- security questionnaire package
-- local validation checks
-- pre-push verification
-- GitHub Actions CI
-
-This is not a finished enterprise product yet. It is a strong technical foundation and reviewable demo for a future client-specific FinanceOps product.
-
-## Reviewer quick path
-
-- [Senior dev review share note](docs/SENIOR_DEV_REVIEW_SHARE_NOTE.md)
-
-If you are reviewing this repository for technical, product, buyer-readiness, or AI-company hiring reasons, start with the strongest reviewer path:
-
-1. [Reviewer 60-Second Walkthrough](docs/REVIEWER_60_SECOND_WALKTHROUGH.md) - fastest plain-English overview of what the repo proves.
-2. [Reviewer Demo Script](docs/REVIEWER_DEMO_SCRIPT.md) - copy-ready walkthrough with command order, endpoint meaning, safe claims, and claims to avoid.
-3. [Reviewer Architecture Summary](docs/REVIEWER_ARCHITECTURE_SUMMARY.md) - senior-level architecture, control boundaries, auditability, and reviewer-facing design.
-4. [AI Company Reviewer Path](docs/AI_COMPANY_REVIEWER_PATH.md) - explains why the repo is relevant to AI companies, technical reviewers, and hiring teams.
-5. [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md) - fastest command path for inspecting the repo without guessing.
-6. [Product Positioning](docs/PRODUCT_POSITIONING.md) - broader configurable FinanceOps core, supported workflow types, safe claims, and claims to avoid.
-7. [Implementation Model](docs/IMPLEMENTATION_MODEL.md) - how the public demo becomes a client-specific FinanceOps implementation.
-8. [Client Implementation Path](docs/CLIENT_IMPLEMENTATION_PATH.md) - requirements intake, workflow routing, controls, approvals, audit evidence, and production blockers.
-9. [Client Input and Output Request](docs/CLIENT_INPUT_OUTPUT_REQUEST.md) - what a real client should provide before client-specific adapters are built.
-10. [Client Discovery Form](docs/CLIENT_DISCOVERY_FORM.md) - captures workflow, fields, calculations, approval rules, and output expectations.
-11. [First Adapter Decision Tree](docs/FIRST_ADAPTER_DECISION_TREE.md) - how to choose the safest and highest-value first client adapter.
-12. [Accounting Task Registry](docs/ACCOUNTING_TASK_REGISTRY.md) - reusable accounting task catalog and safety model.
-13. [Accounting Workflow Routing](docs/ACCOUNTING_WORKFLOW_ROUTING.md) - controlled execution lanes for client-described accounting work.
-14. [Client Workflow Intake](docs/CLIENT_WORKFLOW_INTAKE.md) - how client discovery answers become routed accounting workflow plans.
-15. [API Overview](docs/API.md) - main API routes and demo interaction surface.
-16. [Architecture Overview](docs/ARCHITECTURE_DIAGRAM.md) - deterministic core, approval gates, audit layer, and reviewer-facing API surface.
-
-Client sample packet template: [`examples/client-sample-packet`](examples/client-sample-packet).
-
-Recommended first local proof path:
-
-    pnpm run verify:local
-    pnpm run demo:client-reviewer-dashboard-package
-    pnpm run demo:ai-company-reviewer-path
-    pnpm run demo:reviewer-command-index
-    pnpm run demo:api-inventory
-    pnpm run demo:openapi-contract
-    pnpm run demo:audit-visibility
-
-Optional client onboarding path:
-
-    pnpm run demo:client-onboarding-pack
-    pnpm run demo:client-ready-checkpoint
-    pnpm run demo:first-adapter-decision-tree
-
-## What this project is
-
-FinanceOps Agent is a reusable governed automation core for finance operations.
-
-The goal is to build a system that can be adapted to each client’s actual finance process, inputs, outputs, approval policies, and hosting requirements.
-
-Instead of building a generic chatbot, the project follows a safer enterprise pattern:
-
-1. load client data through adapters
-2. normalize and validate the data
-3. run deterministic finance checks
-4. classify exceptions
-5. apply governance rules
-6. prepare approval-ready outputs
-7. generate audit evidence
-8. use AI only to explain already-computed results
-
-## Fast reviewer demo script
-
-For the strongest reviewer, buyer, or AI-company walkthrough, run:
-
-    pnpm run verify:local
-    pnpm run demo:client-reviewer-dashboard-package
-    pnpm run demo:ai-company-reviewer-path
-    pnpm run demo:reviewer-command-index
-    pnpm run demo:api-inventory
-    pnpm run demo:openapi-contract
-    pnpm run demo:audit-visibility
-
-This sequence proves the core review story:
-
-- local quality gates pass
-- the consolidated reviewer dashboard package gives one high-signal entry point
-- the AI-company reviewer path explains why the repo is technically relevant
-- the command index shows reviewers what to run without guessing
-- API inventory is visible
-- the OpenAPI contract exposes a machine-readable API surface
-- audit visibility proves traceable outputs and persisted artifacts
-- protected action-like routes remain separated from public reviewer endpoints
-
-Optional deeper accounting workflow path:
-
-    pnpm run demo:accounting-task-registry
-    pnpm run demo:accounting-workflow-router
-    pnpm run demo:client-workflow-intake
-    pnpm run demo:client-adapter-readiness
-
-The important takeaway is that the repo proves the governed FinanceOps core. Real client adapters are intentionally added after discovery confirms source data, required calculations, approval rules, and output destinations.
-
-First client-shaped adapter scaffold:
-
-- `CsvInvoiceInputAdapter` reads a demo-safe invoice CSV fixture from `fixtures/client-samples/invoices-demo.csv`
-- the adapter validates rows before converting them into the normalized FinanceOps invoice shape
-- invalid statuses, missing required headers, and malformed amounts are blocked before the data enters the deterministic core
-- run `pnpm run demo:csv-invoice-adapter` to inspect the adapter output
-- this is a local fixture scaffold, not a production ERP, bank, or accounting-system integration
-
-## What this project demonstrates
-
-The current demo demonstrates:
-
-- overdue invoice detection
-- missing payment detection
-- orphan bank transaction detection
-- reconciliation review
-- project margin review
-- budget burn review
-- exception classification
-- action simulation
-- approval queue generation
-- CFO-style briefing generation
-- audit log generation
-- execution ledger generation
-- payment recommendation artifact generation
-- client output artifact generation
-- protected action-like API routes
-- read-only reviewer API routes
-- demo API key gating
-- route inventory
-- OpenAPI contract generation
-- request observability
-- artifact registry
-- security boundary documentation
-- procurement review support
-- security questionnaire support
-- client implementation planning
-- client readiness checks
-- client deployment profile
-- client acceptance gates
-- client evidence package
-- client pilot proposal package
-- accounting task classification
-- accounting workflow routing
-- approval-gated accounting task planning
-
-## What AI does and does not do
-
-AI can:
-
-- explain already-computed results
-- produce CFO-style summaries
-- turn structured exceptions into readable briefings
-- help reviewers understand why something was flagged
-- help prepare business-facing outputs from deterministic data
-
-AI does not:
-
-- calculate financial results
-- decide whether invoices are overdue
-- decide whether payments are matched
-- decide margin or budget burn values
-- approve payments
-- send money
-- post accounting entries
-- provide final tax advice
-- provide final legal advice
-- bypass human approval gates
-
-The financial logic is deterministic. AI sits on top as a communication layer.
-
-### Accounting control framework
-
-The repository includes an Accounting Control Framework that classifies accounting department tasks before execution.
-
-It is designed around this operating model:
-
-- AI prepares and explains.
-- Code performs deterministic calculations.
-- Controls validate the task.
-- Human reviewers approve sensitive outcomes.
-- Audit artifacts record what happened.
-
-The framework handles task categories such as read-only analysis, deterministic calculation, approval preparation, external writeback, money movement, accounting posting, tax calculation, and tax/legal advice.
-
-Its decisions include allowed, optional review, approval required, professional review required, simulation only, blocked for missing data, and blocked for unsafe autonomy.
-
-This makes the core safer for future client-specific accounting workflows where the final step is usually accountant, controller, CFO, tax professional, or legal review unless the client explicitly classifies the task as low-risk.
-
-### Accounting task registry
-
-The repository also includes an Accounting Task Registry that defines reusable accounting department task templates before client-specific inputs and outputs are known.
-
-The registry is not meant to pre-build every possible business integration. It provides a typed catalog of common accounting workstreams that can later be adapted during client discovery.
-
-Current task templates include CFO exception briefing, receivables aging review, bank reconciliation review, budget variance review, project margin review, duplicate invoice review, expense policy exception review, payment approval preparation, journal entry draft preparation, tax calculation packets, tax/legal review packets, and external writeback dry runs.
-
-Each template records the task category, default risk level, default autonomy level, typical inputs, expected outputs, reviewer role, client configuration needed, and production boundary.
-
-This gives reviewers a clear enterprise pattern: the client provides the actual inputs, task, and desired output later, while the core already knows how to classify accounting work into controlled, reviewable, approval-gated task types.
-
-
-### Accounting workflow routing
-
-The repository includes an Accounting Workflow Router that maps a client-described accounting task into a controlled execution lane.
-
-This is designed for the real sales and implementation process:
-
-- the client explains the task
-- the client provides the actual input source later
-- the client defines the desired output later
-- the system classifies the workflow before execution
-- the system decides whether the task is read-only, deterministic, approval-gated, professional-review-required, simulation-only, or blocked
-
-This matters because each business will have different inputs, outputs, databases, finance systems, approval rules, and reporting needs. The core does not need every possible integration pre-built. It needs a safe routing model that can accept the client-specific workflow later and keep sensitive accounting work controlled.
-
-The router supports workflows such as payment approval preparation, journal entry draft preparation, tax calculation packets, external writeback dry runs, receivables review, reconciliation review, and CFO exception briefing.
-
-The final step for sensitive accounting work remains human review unless the task is explicitly classified as low-risk and read-only.
-
-## Core architecture
-
-The project is designed around four main layers.
-
-### 1. Input adapters
-
-Input adapters load and normalize client data.
-
-The current demo uses mock data, but the intended product can be adapted to many client input sources, including:
-
-- CSV exports
-- JSON files
-- Google Sheets
-- accounting system exports
-- ERP exports
-- bank transaction exports
-- payroll exports
-- payment processor exports
-- procurement exports
-- CRM exports
-- internal APIs
-- databases
-- data warehouses
-- webhook events
-- manual uploads
-- scheduled reports
-
-The exact adapter depends on the client’s real workflow and data format.
-
-### 2. Deterministic FinanceOps core
-
-The core performs the actual checks and calculations.
-
-Current examples include:
-
-- overdue invoice detection
-- budget burn review
-- project margin review
-- reconciliation checks
-- missing payment detection
-- orphan bank transaction detection
-- exception classification
-- risk level assignment
-- recommended action simulation
-- approval requirement detection
-
-This is the part that should be trusted for logic, not the AI layer.
-
-### 3. Governance and approval layer
-
-The governance layer decides what can happen next.
-
-Examples:
-
-- pass
-- warning
-- blocked
-- human review required
-- approval required
-- client-owned control required
-- production blocked
-
-This is especially important for finance workflows because payment-like actions, accounting write-backs, and sensitive decisions must remain controlled.
-
-### 4. Output adapters
-
-Output adapters deliver results to the right destination.
-
-The current demo generates local and API-visible artifacts, but the intended product can support many output destinations, including:
-
-- CFO briefing
-- approval queue
-- exception queue
-- audit log
-- execution ledger
-- dashboard UI
-- Slack notifications
-- email summaries
-- JSON API responses
-- CSV exports
-- PDF-style reports
-- accounting draft entries
-- ERP updates
-- payment approval requests
-- payroll review packages
-- procurement review packages
-- client-specific reports
-
-## Client-specific implementation model
-
-The product is intended to be implemented separately for each client.
-
-Each client can have:
-
-- their own dedicated website or dashboard
-- their own deployment
-- their own input adapters
-- their own output adapters
-- their own approval rules
-- their own roles and permissions
-- their own hosting environment
-- their own data retention rules
-- their own audit requirements
-- their own security requirements
-
-The final production implementation is not meant to be one generic shared website for every company.
-
-Instead, each client receives a tailored implementation based on their actual finance operations workflow.
-
-## How a real client implementation would work
-
-Before building a production client version, the client would provide:
-
-- exact input sources
-- sample files or API schemas
-- field definitions
-- output requirements
-- approval workflow requirements
-- user roles
-- hosting requirements
-- security requirements
-- monitoring requirements
-- audit requirements
-- reporting requirements
-- integration targets
-
-Then the codebase would be modified so the FinanceOps core does exactly what that client needs.
-
-For example, one client may need overdue invoice review and Slack alerts. Another client may need bank reconciliation and ERP draft entries. Another may need vendor payment approval preparation and a CFO dashboard.
-
-The core stays reusable. The adapters and policies become client-specific.
-
-## Input and output flexibility
-
-The system is designed to handle nearly any structured finance operations input or output once the client provides the schema, field definitions, access pattern, and security requirements.
-
-The public repository intentionally includes one simulated input stack and one demo output stack. That is enough to prove the governed FinanceOps core without pretending that every future client will use the same source systems, accounting workflow, approval policy, or reporting destination.
-
-Real input and output adapters should be built only after client discovery confirms:
-
-- source system or file format
-- sample rows or payload examples
-- required field mappings
-- calculation or workflow objective
-- reviewer and approval policy
-- destination for the final output
-- security and deployment boundary
-
-This keeps the core code strong, reusable, and easier to adapt. The repo should be judged by the quality of the deterministic FinanceOps core, workflow routing, approval gates, audit evidence, API visibility, and implementation model rather than by the number of prebuilt third-party connectors.
-
-This includes:
-
-- different file formats
-- different finance systems
-- different approval flows
-- different output destinations
-- different reviewer roles
-- different audit requirements
-- different hosting requirements
-
-The current repository proves the architecture with mock data and demo-safe artifacts. Production integrations would be added only after client-specific requirements are confirmed.
-
-## Current API and visibility features
-
-The project includes reviewer-friendly endpoints for:
-
-- service health
-- system summary
-- API inventory
-- API route list
-- OpenAPI contract
-- demo auth status
-- HTTP hardening status
-- request observability
-- audit visibility
-- artifact status
-- artifact health
-- artifact manifest
-- artifact size map
-- artifact readiness
-- client contract validation
-- client implementation plan
-- client requirements plan
-- client implementation readiness
-- client package validation routes
-
-The goal is to make the project reviewable without forcing an engineer to inspect every file manually.
-
-Artifact boundary:
-- the normal FinanceOps pipeline writes ledger, approval queue, output artifact, audit log, and API response artifacts
-- the payment execution artifact is written only by the protected approval-gated mock payment route
-- `pnpm run verify:demo` runs the protected mock approval path so the full artifact registry can become healthy in a reviewer-safe way
-- this does not represent autonomous payment execution or real money movement
-
-## Current client package features
-
-The repository includes structured client-facing and reviewer-facing packages for:
-
-- client discovery and requirements intake
-- adapter readiness and implementation planning
-- approval gates and governance boundaries
-- audit evidence and artifact traceability
-- buyer-facing commercial review
-- procurement, security, compliance, and risk review
-- pilot, production handoff, and go-live decision support
-
-These packages show how the project can move from technical demo to client discovery, scoped pilot planning, procurement review, and production-readiness discussion.
-
-Fast package overview commands:
-
-- pnpm run demo:client-reviewer-dashboard-package
-- pnpm run demo:api-inventory
-
-For the full command list, see [Reviewer Demo Command Index](docs/REVIEWER_DEMO_INDEX.md).
-
-## Enterprise safety boundaries
-
-The current public demo intentionally does not include:
-
-- production client data
-- production credentials
-- real payment execution
-- real accounting write-back
-- client-owned authentication
-- client-owned authorization
-- production secret management
-- production monitoring
-- production incident response
-- production deployment approval
-- enterprise compliance certification
-
-Those are blocked until a real client provides requirements and owns the production environment.
-
-## Why this matters
-
-Enterprise finance teams do not need an AI system that guesses.
-
-They need:
-
-- deterministic calculations
-- explainable outputs
-- audit logs
-- approval gates
-- blocked risky actions
-- traceable artifacts
-- clear security boundaries
-- client-owned credentials
-- client-owned data
-- client-owned hosting
-- client-specific integrations
-- reviewer-friendly evidence
-
-This repository is built to demonstrate those patterns.
-
-## Future roadmap
-
-### Phase 1: Technical review and demo polish
-
-- strengthen README
-- keep CI green
-- keep local validation simple
-- improve reviewer flow
-- add clearer architecture explanation
-- add more sample API output examples
-- improve test coverage for lower-covered files
-- clean up naming where useful
-
-### Phase 2: Client discovery
-
-- collect real client input examples
-- collect required output formats
-- define first workflow
-- define manual baseline
-- define approval policies
-- define user roles
-- define hosting requirements
-- define security requirements
-- define monitoring requirements
-- define success criteria
-
-### Phase 3: Client-specific adapter build
-
-- build input adapters
-- build output adapters
-- map client fields into the FinanceOps schema
-- configure client-specific workflow checks
-- configure client-specific approval rules
-- configure client-specific output artifacts
-- test against safe client sample data
-
-### Phase 4: Pilot deployment
-
-- deploy a client-specific website or dashboard
-- use client-approved hosting
-- keep private data in client-owned systems
-- keep secrets in client-owned secret management
-- run in approval-required mode
-- generate audit artifacts
-- review results with finance and technical stakeholders
-
-### Phase 5: Production hardening
-
-- client-owned authentication
-- role-based authorization
-- production logging
-- production monitoring
-- alerting
-- incident response
-- secure secret management
-- environment separation
-- data retention policy
-- disaster recovery planning
-- compliance review
-- production deployment checklist
-
-### Phase 6: Expanded automation
-
-Potential future workflows include:
-
-- accounts receivable review
-- accounts payable review
-- vendor payment approval
-- bank reconciliation
-- month-end close support
-- revenue recognition support
-- payroll review
-- procurement review
-- project profitability monitoring
-- cashflow monitoring
-- multi-entity reporting
-- multi-currency reporting
-- CFO dashboard
-- Slack and email reporting
-- ERP integrations
-- accounting draft write-back
-- payment processor approval flows
-- custom client reporting
-
-## How to run locally
-
-Install dependencies:
-
-- pnpm install
-
-Run full local verification:
-
-- pnpm run verify:local
-
-Run the API server:
-
-- pnpm run api
-
-Run demo verification:
-
-- pnpm run verify:demo
-
-Watch the latest GitHub Actions run after pushing:
-
-- pnpm run ci:watch
-
-## Current validation approach
-
-The project currently uses:
-
-- pnpm run lint:strict
-- pnpm run typecheck
-- pnpm run test
-- pnpm run test:coverage
-- pnpm run build
-- pnpm run verify:demo
-- pre-push verification
-- GitHub Actions CI
-- CI watcher for the exact pushed commit
-
-This helps prevent broken commits from being pushed unnoticed.
-
-## Reviewer note
-
-This project should be reviewed as a public technical demo and architecture foundation, not as a finished enterprise deployment.
-
-The strongest parts of the project are:
-
-- deterministic finance logic
-- governance boundaries
-- approval gates
-- auditability
-- API visibility
-- client-specific implementation planning
-- procurement and security review support
-- clear separation between finance logic and AI explanation
-
-The intended final product is a client-specific implementation where the core is adapted to each client’s inputs, outputs, workflows, controls, and hosting environment.
+Current status: **demo-ready / pilot-discussion-ready / production-blocked**.
+
+Ready now:
+
+- TypeScript finance workflow core.
+- Mock finance dataset.
+- Deterministic margin, burn, overdue invoice, and reconciliation logic.
+- Exception classification.
+- Approval-gated execution model.
+- Mock payment approval simulation.
+- Audit log generation.
+- Execution ledger and approval queue artifacts.
+- Output artifact store.
+- API inventory and OpenAPI-style contract.
+- Client readiness, discovery, implementation, procurement, security, compliance, pilot, and go-live packages.
+- Reviewer documentation and demo scripts.
+- Local verification and CI passing.
+
+Still blocked for production:
+
+- real client data adapter,
+- real ERP, bank, accounting, or payment integrations,
+- client-owned authentication and authorization,
+- client-owned secret management,
+- production deployment and monitoring,
+- approved client data samples,
+- accepted client output format,
+- final finance approval policy,
+- verified ROI claims.
+
+## Fast reviewer commands
+
+Run from the repository root:
+
+```bash
+pnpm install
+pnpm run verify:local
+pnpm run demo:reviewer-path
+pnpm run demo:reviewer-demo-script
+pnpm run demo:api-inventory
+pnpm run demo:openapi-contract
+pnpm run demo:audit-visibility
