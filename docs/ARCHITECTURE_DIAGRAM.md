@@ -27,7 +27,7 @@ flowchart TD
   K --> M
   L --> M
 
-  M --> N[Reviewer dashboard, evidence binder, control matrix, production readiness, and commercial package]
+  M --> N[Reviewer dashboard, evidence map, control matrix, readiness packages, audit visibility, and commercial / sales packages]
 ```
 
 ## How to read the diagram
@@ -51,6 +51,8 @@ The public repository is demo-safe and production-aware, but production remains 
 ## Best reviewer commands
 
 - `pnpm run verify:local`
+- `pnpm run demo:reviewer-path`
+- `pnpm run demo:reviewer-demo-script`
 - `pnpm run demo:client-reviewer-dashboard-package`
 - `pnpm run demo:ai-company-reviewer-path`
 - `pnpm run demo:reviewer-command-index`
