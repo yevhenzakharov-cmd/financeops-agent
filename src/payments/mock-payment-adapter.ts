@@ -26,12 +26,12 @@ export class MockPaymentAdapter implements PaymentAdapter {
 
     return {
       paymentRecommendationId: recommendation.id,
-      status: "simulated_sent",
+      status: "simulated_approval_recorded",
       provider: "mock",
       providerPaymentId: `mock-payment-${recommendation.id}`,
       idempotencyKey: approval.idempotencyKey,
       executedAt: new Date().toISOString(),
-      message: `Mock payment sent to ${recommendation.recipient.name} for ${recommendation.amount} ${recommendation.currency}.`
+      message: `Mock payment approval simulation recorded for ${recommendation.recipient.name} for ${recommendation.amount} ${recommendation.currency}.`
     };
   }
 }

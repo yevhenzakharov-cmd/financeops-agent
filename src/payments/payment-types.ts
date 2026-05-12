@@ -3,7 +3,7 @@ export type PaymentCurrency = "USD" | "EUR" | "GBP" | "UAH";
 export type PaymentExecutionStatus =
   | "pending_approval"
   | "approved"
-  | "simulated_sent"
+  | "simulated_approval_recorded"
   | "failed"
   | "blocked";
 
