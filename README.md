@@ -79,6 +79,22 @@ Finance logic should be deterministic. AI should explain verified outputs, not i
 
 Sensitive actions are either blocked, simulated, or approval-gated.
 
+## What the AI layer can help with
+
+In this repo, AI is not the source of financial truth. The deterministic TypeScript workflow computes classifications, risks, approval states, and artifacts first.
+
+The AI layer can sit around those verified outputs to help with:
+
+- Explaining deterministic finance outputs as CFO-style summaries, risk explanations, and reviewer-friendly briefings.
+- Reviewing finance exceptions such as overdue invoices, reconciliation issues, budget burn issues, margin risks, missing payments, and orphan bank transactions.
+- Preparing approval queues with severity, reason, recommended action, approval status, and human-review requirements.
+- Supporting document intake in a real client implementation, including OCR/document extraction from invoices, statements, reports, or client-provided files before deterministic validation and computation.
+- Generating client and buyer-facing packages such as discovery packs, readiness packs, procurement/security/compliance answers, pilot proposals, SOW-style drafts, and go-live packages.
+- Supporting client onboarding and discovery by identifying available inputs, required outputs, missing fields, and mappings that need confirmation.
+- Acting as a reviewer or demo guide across API endpoints, artifacts, production blockers, audit evidence, and safe product claims.
+- Assisting with audit and traceability by explaining audit logs, execution ledgers, approval queues, artifact manifests, and why each decision was produced.
+- Helping configure client-specific implementations by suggesting required adapters, mappings, approval rules, output formats, and deployment boundaries.
+
 ## Product positioning
 
 FinanceOps Agent is positioned as a configurable FinanceOps automation core.
