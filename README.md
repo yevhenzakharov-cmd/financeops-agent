@@ -690,3 +690,29 @@ The strongest parts of the project are:
 - clear separation between finance logic and AI explanation
 
 The intended final product is a client-specific implementation where the core is adapted to each client’s inputs, outputs, workflows, controls, and hosting environment.
+
+## Senior reviewer quick path
+
+FinanceOps Agent is a governed FinanceOps automation demo that shows deterministic finance logic, approval-gated sensitive actions, audit artifacts, API visibility, and buyer/reviewer-facing delivery packages.
+
+Run this first:
+
+- `pnpm run verify:local`
+- `pnpm run demo:reviewer-path`
+- `pnpm run demo:reviewer-command-index`
+- `pnpm run demo:api-inventory`
+- `pnpm run demo:audit-visibility`
+
+Important review assets:
+
+- `docs/REVIEWER_EVIDENCE_MAP.md` — maps reviewer questions to concrete proof.
+- `docs/REVIEWER_60_SECOND_WALKTHROUGH.md` — fastest human review path.
+- `docs/REVIEWER_ARCHITECTURE_SUMMARY.md` — architecture and safety-boundary summary.
+
+Do not overclaim:
+
+- this is not a production deployment;
+- it does not use real client financial data;
+- it does not autonomously move money;
+- it does not post accounting entries;
+- ROI is a discovery estimate until measured with real client workflow data.
